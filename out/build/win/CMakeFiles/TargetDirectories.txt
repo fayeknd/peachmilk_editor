@@ -1,3 +1,0 @@
-/home/faye/Documents/engine/out/build/win/CMakeFiles/engine.dir
-/home/faye/Documents/engine/out/build/win/CMakeFiles/edit_cache.dir
-/home/faye/Documents/engine/out/build/win/CMakeFiles/rebuild_cache.dir
