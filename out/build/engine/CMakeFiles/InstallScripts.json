@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/faye/Documents/engine/out/build/engine/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

@@ -1,0 +1,1 @@
+/usr/bin/c++ -static -Wl,--dependency-file=CMakeFiles/engine.dir/link.d CMakeFiles/engine.dir/src/main.cpp.o CMakeFiles/engine.dir/include/src/glad.c.o -o engine  /home/faye/Documents/engine/lib/libglfw3.a -lgdi32 -lopengl32 -lgcc_s_asneeded -lgcc_s_asneeded
