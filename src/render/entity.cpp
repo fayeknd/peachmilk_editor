@@ -24,6 +24,7 @@ void ScriptableEntity::create(std::string name) {
     s_availableID++;
     setParent(s_sceneEntity);
     m_initialised = true;
+    start();
 }
 
 void ScriptableEntity::_deserializeFnc() {

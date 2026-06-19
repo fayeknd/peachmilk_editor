@@ -583,4 +583,27 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: \
  /home/faye/Documents/engine/src/windowmanager/../render/../editor/../render/camera.hpp \
  /home/faye/Documents/engine/src/windowmanager/../render/../editor/../render/framebuffer.hpp \
  /home/faye/Documents/engine/src/windowmanager/../render/../editor/../render/level.hpp \
- /home/faye/Documents/engine/src/windowmanager/../system/mouse.hpp
+ /home/faye/Documents/engine/src/windowmanager/../system/mouse.hpp \
+ /home/faye/Documents/engine/src/windowmanager/../system/audio.hpp \
+ /home/faye/Documents/engine/src/windowmanager/../system/../../include/fmod/fmod.h \
+ /home/faye/Documents/engine/src/windowmanager/../system/../../include/fmod/fmod_common.h \
+ /home/faye/Documents/engine/src/windowmanager/../system/../../include/fmod/fmod_codec.h \
+ /home/faye/Documents/engine/src/windowmanager/../system/../../include/fmod/fmod_dsp.h \
+ /home/faye/Documents/engine/src/windowmanager/../system/../../include/fmod/fmod_dsp_effects.h \
+ /home/faye/Documents/engine/src/windowmanager/../system/../../include/fmod/fmod_output.h \
+ /home/faye/Documents/engine/src/windowmanager/../system/../../include/fmod/fmod_errors.h \
+ /home/faye/Documents/engine/src/windowmanager/../system/../../include/fmod/fmod.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.1.0/future \
+ /usr/x86_64-w64-mingw32/include/c++/16.1.0/mutex \
+ /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/std_mutex.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/unique_lock.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.1.0/condition_variable \
+ /usr/x86_64-w64-mingw32/include/c++/16.1.0/stop_token \
+ /usr/x86_64-w64-mingw32/include/c++/16.1.0/atomic \
+ /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/std_thread.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.1.0/semaphore \
+ /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/semaphore_base.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_timed_wait.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/this_thread_sleep.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_futex.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.1.0/thread

@@ -16,7 +16,6 @@
 #include "../include/imgui/imgui_impl_glfw.h"
 #include "../include/imgui/imgui_impl_opengl3.h"
 
-
 #define WND_TITLE "Peachmilk Editor"
 #define WND_W 600
 #define WND_H 600
@@ -41,7 +40,12 @@
 #define MAT_DEFAULT_EXT "pny" // peony
 #define TEX_DEFAULT_EXT "mgd" // marigold
 #define LEV_DEFAULT_EXT "lvd" // lavender
+#define MAX_AUDIO_CHANNELS 512
+#define AUDIO_DISTANCEFACTOR 1
+#define AUDIO_DOPPLER 1
+#define AUDIO_ROLLOFF 1
 #define FLAG std::cout << "flag" << std::endl;
 
 typedef void (*init_func)(void);
 typedef void (*window_hint_func)(int, int);
+typedef void (*critical_err_func)(void);

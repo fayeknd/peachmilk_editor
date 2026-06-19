@@ -417,6 +417,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/render/audiosource.o: src/render/audiosource.cpp.o
+.PHONY : src/render/audiosource.o
+
+# target to build an object file
+src/render/audiosource.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/render/audiosource.cpp.o
+.PHONY : src/render/audiosource.cpp.o
+
+src/render/audiosource.i: src/render/audiosource.cpp.i
+.PHONY : src/render/audiosource.i
+
+# target to preprocess a source file
+src/render/audiosource.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/render/audiosource.cpp.i
+.PHONY : src/render/audiosource.cpp.i
+
+src/render/audiosource.s: src/render/audiosource.cpp.s
+.PHONY : src/render/audiosource.s
+
+# target to generate assembly for a file
+src/render/audiosource.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/render/audiosource.cpp.s
+.PHONY : src/render/audiosource.cpp.s
+
 src/render/camera.o: src/render/camera.cpp.o
 .PHONY : src/render/camera.o
 
@@ -681,6 +705,30 @@ src/shader/shader.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/shader/shader.cpp.s
 .PHONY : src/shader/shader.cpp.s
 
+src/system/audio.o: src/system/audio.cpp.o
+.PHONY : src/system/audio.o
+
+# target to build an object file
+src/system/audio.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/system/audio.cpp.o
+.PHONY : src/system/audio.cpp.o
+
+src/system/audio.i: src/system/audio.cpp.i
+.PHONY : src/system/audio.i
+
+# target to preprocess a source file
+src/system/audio.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/system/audio.cpp.i
+.PHONY : src/system/audio.cpp.i
+
+src/system/audio.s: src/system/audio.cpp.s
+.PHONY : src/system/audio.s
+
+# target to generate assembly for a file
+src/system/audio.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/system/audio.cpp.s
+.PHONY : src/system/audio.cpp.s
+
 src/system/file.o: src/system/file.cpp.o
 .PHONY : src/system/file.o
 
@@ -822,6 +870,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/render/audiosource.o"
+	@echo "... src/render/audiosource.i"
+	@echo "... src/render/audiosource.s"
 	@echo "... src/render/camera.o"
 	@echo "... src/render/camera.i"
 	@echo "... src/render/camera.s"
@@ -855,6 +906,9 @@ help:
 	@echo "... src/shader/shader.o"
 	@echo "... src/shader/shader.i"
 	@echo "... src/shader/shader.s"
+	@echo "... src/system/audio.o"
+	@echo "... src/system/audio.i"
+	@echo "... src/system/audio.s"
 	@echo "... src/system/file.o"
 	@echo "... src/system/file.i"
 	@echo "... src/system/file.s"

@@ -6,6 +6,7 @@
 #include "../render/entity.hpp"
 #include "../render/camera.hpp"
 #include "../system/mouse.hpp"
+#include "../system/audio.hpp"
 
 void fb_resize_callback(GLFWwindow* window, int width, int height) {
     if (WindowManager::get()->m_resize_viewport_with_window) {
@@ -118,12 +119,6 @@ bool WindowManager::init(int width, int height, const char* title, window_hint_f
 
 }
 
-void WindowManager::triggerStarts() {
-    for (int i = 0; i < GameLevel::s_loadedEntities.size(); i++) {
-        GameLevel::s_loadedEntities.at(i)->start();
-    }
-}
-
 void WindowManager::triggerUpdates() {
     for (int i = 0; i < GameLevel::s_loadedEntities.size(); i++) {
         GameLevel::s_loadedEntities.at(i)->update();
@@ -141,7 +136,6 @@ void WindowManager::update() {
 }
 
 void WindowManager::begin() {
-    triggerStarts();
     Time::get().m_deltaTimer.start();
 
     while (!glfwWindowShouldClose(m_wnd)) {
@@ -149,6 +143,7 @@ void WindowManager::begin() {
             Time::resetDeltaTimer();
 
             m_frame++;
+            AudioManager::get().update(Camera::mainCamera->transform, Camera::mainCamera->m_isOrtho);
             Mouse::get().pollMouse();
             update();
             triggerDraws();

@@ -3,7 +3,7 @@
 
 void Camera::calculateVPMatrix() {
 
-    glm::vec3 euler = transform.getLocalEulerAngles();
+    glm::vec3 euler = transform.getGlobalEulerAngles();
     euler.y += Math::pi;
     glm::vec3 forward = glm::vec3(
 			glm::cos (euler.x) * glm::sin(euler.y),
@@ -16,8 +16,8 @@ void Camera::calculateVPMatrix() {
 			glm::sin(euler.x) * glm::cos(euler.y)
 		);
     m_viewMatrix = glm::lookAt(
-        transform.getLocalPosition(),
-        transform.getLocalPosition() + forward,
+        transform.getGlobalPosition(),
+        transform.getGlobalPosition() + forward,
         up
     );
 
@@ -25,7 +25,10 @@ void Camera::calculateVPMatrix() {
     float y = m_framebuffer->size().y;
 
     m_ortho_size = glm::vec4(-x/2, x/2, -y/2, y/2) / m_zoomFactor;
-    m_perspMatrix = glm::ortho(m_ortho_size.x, m_ortho_size.y, m_ortho_size.z, m_ortho_size.w, m_nearClip, m_farClip);
+    if (m_isOrtho)
+        m_perspMatrix = glm::ortho(m_ortho_size.x, m_ortho_size.y, m_ortho_size.z, m_ortho_size.w, m_nearClip, m_farClip);
+    else
+        m_perspMatrix = glm::perspective(m_fov, x/y, m_nearClip, m_farClip);
 
     m_vpMatrix = m_perspMatrix * m_viewMatrix;
 }

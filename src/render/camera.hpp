@@ -25,13 +25,15 @@ public:
     glm::mat4 vpMatrix() { return m_vpMatrix; }
     static std::vector<Camera*> allCameras() { return s_cameras; };
 
-    float m_fov = 30;
+    float m_fov = 75;
     float m_nearClip = 0;
     float m_farClip = 1000.0f;
     float m_zoomFactorDefault = 10.0f;
     float m_zoomFactor = m_zoomFactorDefault;
     float m_zoomFactorMin = 0.001f;
     float m_zoomFactorMax = 10000.0f;
+
+    bool m_isOrtho = true;
     
     glm::vec4 m_ortho_size;
 
@@ -45,7 +47,6 @@ public:
                 break;
             }
         }
-        delete this;
     }
 
 };

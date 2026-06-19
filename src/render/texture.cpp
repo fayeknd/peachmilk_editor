@@ -248,8 +248,10 @@ bool Texture::createTextureFromPath(const char* path, unsigned int filterMode, u
         m_textureData = getDataFromFileSTBI(filePath.c_str(), &w, &h, &m_channels);
 
         switch (m_channels) {
+            case 1:
+            m_format = GL_RGBA;
+            break;
             case 2:
-            // uh ok
             m_format = GL_RG;
             break;
             case 3:

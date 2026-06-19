@@ -45,7 +45,6 @@ public:
 
     virtual void onClose() {};
     virtual void triggerUpdates();
-    virtual void triggerStarts();
     virtual void triggerDraws();
     virtual void setFramebufferCallbacks();
     void centerWindow(); 

@@ -160,5 +160,17 @@
   "command": "/usr/bin/x86_64-w64-mingw32-g++   -static  -g -o CMakeFiles/engine.dir/src/render/level.cpp.o -c /home/faye/Documents/engine/src/render/level.cpp",
   "file": "/home/faye/Documents/engine/src/render/level.cpp",
   "output": "CMakeFiles/engine.dir/src/render/level.cpp.o"
+},
+{
+  "directory": "/home/faye/Documents/engine/out/build/win",
+  "command": "/usr/bin/x86_64-w64-mingw32-g++   -static  -g -o CMakeFiles/engine.dir/src/system/audio.cpp.o -c /home/faye/Documents/engine/src/system/audio.cpp",
+  "file": "/home/faye/Documents/engine/src/system/audio.cpp",
+  "output": "CMakeFiles/engine.dir/src/system/audio.cpp.o"
+},
+{
+  "directory": "/home/faye/Documents/engine/out/build/win",
+  "command": "/usr/bin/x86_64-w64-mingw32-g++   -static  -g -o CMakeFiles/engine.dir/src/render/audiosource.cpp.o -c /home/faye/Documents/engine/src/render/audiosource.cpp",
+  "file": "/home/faye/Documents/engine/src/render/audiosource.cpp",
+  "output": "CMakeFiles/engine.dir/src/render/audiosource.cpp.o"
 }
 ]

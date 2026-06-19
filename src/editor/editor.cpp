@@ -33,6 +33,8 @@ void EditorUI::start() {
     glm::vec2 size = WindowManager::get()->m_size;
     Camera::mainCamera->m_framebuffer = new Framebuffer;
     Camera::mainCamera->m_framebuffer->create(size.x, size.y);
+    Camera::mainCamera->m_serialize = false;
+    Camera::mainCamera->m_destroyOnLoad = false;
 
     m_materialIcon = *Texture::createNewTextureFromPath("editor_data/ui/texture1.mgd");
 
@@ -261,7 +263,7 @@ void EditorUI::imgui() {
                     std::string label = (Camera::allCameras()[i] == Camera::mainCamera) ? "Main Camera" : "Camera " + std::to_string(i);
                     if (ImGui::BeginMenu(label.c_str())){
                         if (ImGui::MenuItem("Reset View")) {
-                            Camera::mainCamera->transform.setLocalPosition({0,0,Camera::mainCamera->transform.getLocalPosition().z});
+                            Camera::mainCamera->transform.setGlobalPosition({0,0,Camera::mainCamera->transform.getGlobalPosition().z});
                             Camera::mainCamera->m_zoomFactor = 10.0f;
                         }
                         ImGui::EndMenu();
@@ -742,9 +744,9 @@ void EditorUI::imgui() {
         std::string zoom = "Zoom: " + std::to_string(Camera::mainCamera->m_zoomFactor / 10).substr(0, (Camera::mainCamera->m_zoomFactor >= 0.1) ? 5 : 10) + "x | ";
         ImGui::Text(zoom.c_str());
         ImGui::SameLine();
-        ImGui::Value("X", Camera::mainCamera->transform.getLocalPosition().x);
+        ImGui::Value("X", Camera::mainCamera->transform.getGlobalPosition().x);
         ImGui::SameLine();
-        ImGui::Value(" | Y", Camera::mainCamera->transform.getLocalPosition().y);
+        ImGui::Value(" | Y", Camera::mainCamera->transform.getGlobalPosition().y);
 
         ImGui::PopStyleColor();
         ImGui::PopStyleColor();
@@ -804,7 +806,7 @@ void EditorUI::moveAlongHandleX() {
     for (int i = 0; i < m_selectedSprites.size(); i++) {
         float offset = m_selectedSprites[i]->transform.getGlobalPosition().x - m_axisHandle.transform.getLocalPosition().x;
         float mouseOffset  = m_mousePosWhenPressed.x - m_axisHandle.m_handlePosWhenPressed.x;
-        m_selectedSprites[i]->transform.setGlobalPositionX(((Mouse::get().screenPos().x / Camera::mainCamera->m_zoomFactor) + Camera::mainCamera->transform.getLocalPosition().x));
+        m_selectedSprites[i]->transform.setGlobalPositionX(((Mouse::get().screenPos().x / Camera::mainCamera->m_zoomFactor) + Camera::mainCamera->transform.getGlobalPosition().x));
         m_selectedSprites[i]->transform.setGlobalPosition((m_selectedSprites[i]->transform.getGlobalPosition() + glm::vec3(offset, 0, 0)) - glm::vec3(mouseOffset, 0, 0));
     }
 }
@@ -813,7 +815,7 @@ void EditorUI::moveAlongHandleY() {
     for (int i = 0; i < m_selectedSprites.size(); i++) {
     float offset = m_selectedSprites[i]->transform.getGlobalPosition().y - m_axisHandle.transform.getLocalPosition().y;
         float mouseOffset  = m_mousePosWhenPressed.y - m_axisHandle.m_handlePosWhenPressed.y;
-        m_selectedSprites[i]->transform.setGlobalPositionY(((Mouse::get().screenPos().y / Camera::mainCamera->m_zoomFactor) + Camera::mainCamera->transform.getLocalPosition().y));
+        m_selectedSprites[i]->transform.setGlobalPositionY(((Mouse::get().screenPos().y / Camera::mainCamera->m_zoomFactor) + Camera::mainCamera->transform.getGlobalPosition().y));
         m_selectedSprites[i]->transform.setGlobalPosition((m_selectedSprites[i]->transform.getGlobalPosition() + glm::vec3(0, offset, 0)) - glm::vec3(0, mouseOffset, 0));
     }
 }
@@ -822,17 +824,18 @@ void EditorUI::update() {
 
     GLFWwindow* m_wnd = WindowManager::get()->m_wnd;
 
+
     static bool sFlag = false;
     if (glfwGetKey(m_wnd, GLFW_KEY_R) == GLFW_PRESS && !sFlag) {
         sFlag = true;
-        std::cout << "Trying to serialise material..." << std::endl;
+        std::cout << "Playing Sound" << std::endl;
+        AudioManager::get().playTestSound();
     }
-
-    if (glfwGetKey(m_wnd, GLFW_KEY_T) == GLFW_PRESS && sFlag) {
+    if (glfwGetKey(m_wnd, GLFW_KEY_R) == GLFW_RELEASE && sFlag) {
         sFlag = false;
-        std::cout << "Trying to deserialise material..." << std::endl;
-
     }
+    
+
 
     // i need a proper input system
     static bool saveShortcutFlag = false;
@@ -847,10 +850,10 @@ void EditorUI::update() {
 
     if (m_viewportHasMouse) {
         if (glfwGetMouseButton(m_wnd, GLFW_MOUSE_BUTTON_MIDDLE) == GLFW_PRESS) {
-            Camera::mainCamera->transform.setLocalPosition((glm::vec3(
+            Camera::mainCamera->transform.setGlobalPosition((glm::vec3(
                 -Mouse::get().posDelta().x,
                 Mouse::get().posDelta().y,
-                0) / Camera::mainCamera->m_zoomFactor) + Camera::mainCamera->transform.getLocalPosition());
+                0) / Camera::mainCamera->m_zoomFactor) + Camera::mainCamera->transform.getGlobalPosition());
         }
 
         if (Mouse::get().scrollDelta().y != 0 && !m_toolWndHovering) {
@@ -864,10 +867,10 @@ void EditorUI::update() {
                         mouseDistFromCenter *= -1;
                     }
 
-                    Camera::mainCamera->transform.setLocalPosition((glm::vec3(
+                    Camera::mainCamera->transform.setGlobalPosition((glm::vec3(
                     mouseDistFromCenter.x,
                     -mouseDistFromCenter.y,
-                    0)) + Camera::mainCamera->transform.getLocalPosition());
+                    0)) + Camera::mainCamera->transform.getGlobalPosition());
                 }
                 else {
                     Camera::mainCamera->m_zoomFactor = zoom_lf;
@@ -955,7 +958,7 @@ void EditorUI::update() {
 
             if (!m_mousePressedLF) {
                 m_mouseScreenPosWhenPressed = Mouse::get().screenPos();
-                m_mousePosWhenPressed = (m_mouseScreenPosWhenPressed / Camera::mainCamera->m_zoomFactor) + Camera::mainCamera->transform.getLocalPosition();
+                m_mousePosWhenPressed = (m_mouseScreenPosWhenPressed / Camera::mainCamera->m_zoomFactor) + Camera::mainCamera->transform.getGlobalPosition();
                 m_axisHandle.m_handlePosWhenPressed = m_axisHandle.transform.getLocalPosition();
             }
 
@@ -1031,7 +1034,7 @@ bool EditorUI::drawUI() {
     Camera::mainCamera->bindFramebuffer();
     if (m_multiSelect) {
 
-        glm::vec3 m = (Mouse::get().screenPos() / Camera::mainCamera->m_zoomFactor) + Camera::mainCamera->transform.getLocalPosition();
+        glm::vec3 m = (Mouse::get().screenPos() / Camera::mainCamera->m_zoomFactor) + Camera::mainCamera->transform.getGlobalPosition();
         float size_x = m.x - m_mousePosWhenPressed.x;
         float size_y = m.y - m_mousePosWhenPressed.y;
 

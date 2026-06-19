@@ -6,6 +6,7 @@
 #include "../../include/AirGuanZ/imfilebrowser.h"
 #include "../render/camera.hpp"
 #include "../render/blend.hpp"
+#include "../system/audio.hpp"
 
 class AxisHandle {
 private:
