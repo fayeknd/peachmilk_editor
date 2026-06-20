@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10.0)
 project(engine VERSION 0.1.0 LANGUAGES C CXX)
 
 SET(CMAKE_CXX_FLAGS    "-static ")
-#SET(CMAKE_CXX_FLAGS    "-statc -windows")
+#SET(CMAKE_CXX_FLAGS    "-static -windows")
 
 add_executable(engine src/main.cpp 
                 include/src/glad.c 

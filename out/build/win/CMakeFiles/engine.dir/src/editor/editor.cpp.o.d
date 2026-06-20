@@ -531,6 +531,7 @@ CMakeFiles/engine.dir/src/editor/editor.cpp.o: \
  /home/faye/Documents/engine/src/editor/../render/transform.hpp \
  /home/faye/Documents/engine/src/editor/../render/../system/math.hpp \
  /home/faye/Documents/engine/src/editor/../render/../system/generic.h \
+ /home/faye/Documents/engine/src/editor/../render/../system/vechelper.hpp \
  /home/faye/Documents/engine/src/editor/../render/sprite.hpp \
  /home/faye/Documents/engine/src/editor/../render/mesh.hpp \
  /home/faye/Documents/engine/src/editor/../render/vertex.hpp \

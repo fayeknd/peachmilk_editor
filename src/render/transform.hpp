@@ -2,6 +2,9 @@
 #include "../headers.h"
 #include "../system/math.hpp"
 #include "../system/generic.h"
+#include "../system/vechelper.hpp"
+
+using namespace vecmath;
 
 class Transform {
 protected:
@@ -89,11 +92,19 @@ public:
     void setLocalPositionX(float x);
     void setLocalPositionY(float y);
     void setLocalPositionZ(float z);
+    void translateLocalPosition(glm::vec3 pos);
+    void translateLocalPositionX(float x);
+    void translateLocalPositionY(float y);
+    void translateLocalPositionZ(float z);
 
     void setGlobalPosition(glm::vec3 pos);
     void setGlobalPositionX(float x);
     void setGlobalPositionY(float y);
     void setGlobalPositionZ(float z);
+    void translateGlobalPosition(glm::vec3 pos);
+    void translateGlobalPositionX(float x);
+    void translateGlobalPositionY(float y);
+    void translateGlobalPositionZ(float z);
 
     glm::vec3 getLocalScale() { return m_localScale; }
     glm::vec3 getGlobalScale() { return m_globalScale; }

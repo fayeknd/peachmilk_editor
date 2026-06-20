@@ -21,6 +21,7 @@ public:
 
     std::string m_loadedLevelPath = "";
     std::string getGameDataFolder();
+    std::string getSoundFolder();
     std::string getMaterialFolder();
     std::string getTextureFolder();
     std::string getLevelFolder();

@@ -40,6 +40,7 @@
 #define MAT_DEFAULT_EXT "pny" // peony
 #define TEX_DEFAULT_EXT "mgd" // marigold
 #define LEV_DEFAULT_EXT "lvd" // lavender
+#define SND_DEFAULT_EXT "sfn" // saffron
 #define MAX_AUDIO_CHANNELS 512
 #define AUDIO_DISTANCEFACTOR 1
 #define AUDIO_DOPPLER 1

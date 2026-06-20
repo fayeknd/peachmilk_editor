@@ -50,4 +50,6 @@ public:
     void playSound(FMOD_SOUND * sound, FMOD_CHANNEL ** channel = nullptr);
     void getResult(FMOD_RESULT r);
     void update(Transform & listener, bool is2D);
+
+    friend class AudioClip;
 };

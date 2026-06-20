@@ -21,15 +21,36 @@ public:
 
     Transform tx, ty;
 
+    Transform n, ne, e, se, s, sw, w, nw;
+
     int m_handleCount = 2;
 
     bool m_xHandle = false;
     bool m_yHandle = false;
     bool m_xyHandle = false;
 
+    bool m_nHandle = false;
+    bool m_neHandle = false;
+    bool m_eHandle = false;
+    bool m_seHandle = false;
+    bool m_sHandle = false;
+    bool m_swHandle = false; 
+    bool m_wHandle = false;
+    bool m_nwHandle = false;
+
     bool m_xHandleSelected = false;
     bool m_yHandleSelected = false;
-    bool m_xyHandleSelected;
+    bool m_xyHandleSelected = false;
+
+    bool m_nHandleSelected = false;
+    bool m_neHandleSelected = false;
+    bool m_eHandleSelected = false;
+    bool m_seHandleSelected = false;
+    bool m_sHandleSelected = false;
+    bool m_swHandleSelected = false; 
+    bool m_wHandleSelected = false;
+    bool m_nwHandleSelected = false;
+
 
     glm::vec3 m_handlePosWhenPressed;
 };
@@ -81,13 +102,17 @@ public:
 
     void update() override;
     bool drawUI();
-    void start() override;
+    void _start();
     void imgui();
     void createAxisHandle();
     void create(std::string name = "Editor ") override;
     void deleteEntity(ScriptableEntity* entity);
     void moveAlongHandleX();
     void moveAlongHandleY();
+    void scaleAlongN();
+    void scaleAlongE();
+    void scaleAlongS();
+    void scaleAlongW();
     bool drawMaterialPreview(Material* mat, float size, bool inTextureMenu = true);
     bool drawEntityUI(ScriptableEntity* spr, float xOffset = 0, bool open = false);
     

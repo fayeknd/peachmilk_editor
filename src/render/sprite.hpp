@@ -18,7 +18,7 @@ private:
 
 public:
 
-    unsigned int m_matID;
+    unsigned int m_matID = -1;
     static inline std::vector<ScriptableEntity*> s_sprites {};
     static void orderSprites(bool flip);
 
@@ -61,8 +61,19 @@ public:
 
     void _deserializeFnc() override { 
         ScriptableEntity::_deserializeFnc();
-        m_material = Material::getMaterialViaID(m_matID); 
+        if (m_matID != -1) m_material = Material::getMaterialViaID(m_matID);
+        if (!m_material) m_matID = -1; 
         Sprite::s_sprites.push_back(this);
     };
+
+    glm::vec2 getTL();
+    glm::vec2 getBR();
+    glm::vec2 getBL();
+    glm::vec2 getTR();
+
+    glm::vec2 getN();
+    glm::vec2 getS();
+    glm::vec2 getE();
+    glm::vec2 getW();
 
 };

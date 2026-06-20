@@ -7,6 +7,33 @@
 #include "../system/file.hpp"
 #include <fstream>
 
+/*
+-------------------------------------------------------------------------
+DO. NOT. LOOK AT THIS FILE.
+IT'S OKAY. IT WORKS. THAT'S ALL YOU NEED TO KNOW.
+DON'T SCROLL PLEASE.
+PLEASE.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------------------------------------------------
+*/
+
 void drop_callback(GLFWwindow* window, int count, const char** paths)
 {
     int i;
@@ -24,7 +51,7 @@ void drop_callback(GLFWwindow* window, int count, const char** paths)
     }
 }
 
-void EditorUI::start() {
+void EditorUI::_start() {
 
     m_serialize = false;
     m_selectionBox.m_serialize = false;
@@ -158,6 +185,7 @@ bool EditorUI::drawMaterialPreview(Material* mat, float size, bool inTextureMenu
         if (ImGui::ImageButton(("##Material_btn" + id_s).c_str(), mat->m_diffuseTexture->getID(), {size - 5, size - 5}, {0, 1}, {1, 0}, {0,0,0,0}, {mat->m_colour.x, mat->m_colour.y, mat->m_colour.z, mat->m_colour.w})) {
             if (inTextureMenu && m_leftClickedSprite_mat && m_materialEditorForSwapping) {
                 m_leftClickedSprite_mat->m_material = mat;
+                m_leftClickedSprite_mat->setScaleToTexelSize();
                 m_leftClickedSprite_mat = nullptr;
                 m_openMaterialEditor = false;
             }
@@ -813,10 +841,50 @@ void EditorUI::moveAlongHandleX() {
 void EditorUI::moveAlongHandleY() {
     m_axisHandle.m_yHandleSelected = true;
     for (int i = 0; i < m_selectedSprites.size(); i++) {
-    float offset = m_selectedSprites[i]->transform.getGlobalPosition().y - m_axisHandle.transform.getLocalPosition().y;
+        float offset = m_selectedSprites[i]->transform.getGlobalPosition().y - m_axisHandle.transform.getLocalPosition().y;
         float mouseOffset  = m_mousePosWhenPressed.y - m_axisHandle.m_handlePosWhenPressed.y;
         m_selectedSprites[i]->transform.setGlobalPositionY(((Mouse::get().screenPos().y / Camera::mainCamera->m_zoomFactor) + Camera::mainCamera->transform.getGlobalPosition().y));
         m_selectedSprites[i]->transform.setGlobalPosition((m_selectedSprites[i]->transform.getGlobalPosition() + glm::vec3(0, offset, 0)) - glm::vec3(0, mouseOffset, 0));
+    }
+}
+
+void EditorUI::scaleAlongN() {
+    for (int i = 0; i < m_selectedSprites.size(); i++) {
+        Sprite* spr = dynamic_cast<Sprite*>(m_selectedSprites[i]);
+        float delta = (Mouse::get().screenPos().y - Mouse::get().screenPosLF().y) / Camera::mainCamera->m_zoomFactor; 
+        float _ = spr->trueScaleGlobal().y;
+        spr->transform.setGlobalScaleY(spr->transform.getGlobalScale().y + (delta / ((spr->m_material->m_diffuseTexture) ? spr->m_material->m_diffuseTexture->dimensions().y: 1)));
+        spr->transform.translateGlobalPositionY((spr->trueScaleGlobal().y - _) / 2);
+    }
+}
+
+void EditorUI::scaleAlongE() {
+    for (int i = 0; i < m_selectedSprites.size(); i++) {
+        Sprite* spr = dynamic_cast<Sprite*>(m_selectedSprites[i]);
+        float delta = (Mouse::get().screenPos().x - Mouse::get().screenPosLF().x) / Camera::mainCamera->m_zoomFactor; 
+        float _ = spr->trueScaleGlobal().x;
+        spr->transform.setGlobalScaleX(spr->transform.getGlobalScale().x + (delta / ((spr->m_material->m_diffuseTexture) ? spr->m_material->m_diffuseTexture->dimensions().x: 1)));
+        spr->transform.translateGlobalPositionX((spr->trueScaleGlobal().x - _) / 2);
+    }
+}
+
+void EditorUI::scaleAlongS() {
+    for (int i = 0; i < m_selectedSprites.size(); i++) {
+        Sprite* spr = dynamic_cast<Sprite*>(m_selectedSprites[i]);
+        float delta = -(Mouse::get().screenPos().y - Mouse::get().screenPosLF().y) / Camera::mainCamera->m_zoomFactor; 
+        float _ = spr->trueScaleGlobal().y;
+        spr->transform.setGlobalScaleY(spr->transform.getGlobalScale().y + (delta / ((spr->m_material->m_diffuseTexture) ? spr->m_material->m_diffuseTexture->dimensions().y: 1)));
+        spr->transform.translateGlobalPositionY(-(spr->trueScaleGlobal().y - _) / 2);
+    }
+}
+
+void EditorUI::scaleAlongW() {
+    for (int i = 0; i < m_selectedSprites.size(); i++) {
+        Sprite* spr = dynamic_cast<Sprite*>(m_selectedSprites[i]);
+        float delta = -(Mouse::get().screenPos().x - Mouse::get().screenPosLF().x) / Camera::mainCamera->m_zoomFactor; 
+        float _ = spr->trueScaleGlobal().x;
+        spr->transform.setGlobalScaleX(spr->transform.getGlobalScale().x + (delta / ((spr->m_material->m_diffuseTexture) ? spr->m_material->m_diffuseTexture->dimensions().x: 1)));
+        spr->transform.translateGlobalPositionX(-(spr->trueScaleGlobal().x - _) / 2);
     }
 }
 
@@ -881,76 +949,14 @@ void EditorUI::update() {
     
     if (glfwGetKey(m_wnd, GLFW_KEY_DELETE) == GLFW_PRESS) {
         for (int i = 0; i < m_selectedSprites.size(); i++) {
-            ScriptableEntity* spr = m_selectedSprites[i];
-            Sprite* spr2 = dynamic_cast<Sprite*>(spr);
-            if (spr2) delete spr2;
-            else if (spr) delete spr;
+            GameLevel::deleteEntity(m_selectedSprites[i]);
+            m_selectedSprites.erase(m_selectedSprites.begin() + i);
         }
         m_selectedSprites.clear();
     }
 
     m_mousePressed = false;
     static bool hoverFlag = false;
-    if (m_selectedSprites.size() != 0) {
-        glm::vec3 pos{};
-        int i;
-        for (i = 0; i < m_selectedSprites.size(); i++) {
-            pos += m_selectedSprites[i]->transform.getGlobalPosition();
-        }
-        pos = pos / (float)i;
-        m_axisHandle.transform.setLocalPosition(pos);
-        m_axisHandle.transform.setLocalScale(glm::vec3(200) / Camera::mainCamera->m_zoomFactor);
-
-        m_axisHandle.tx.setLocalScale(glm::vec3(130, 30, 1) / Camera::mainCamera->m_zoomFactor);
-        m_axisHandle.tx.setLocalPosition(m_axisHandle.transform.getLocalPosition() + m_axisHandle.transformx.getLocalPosition() + glm::vec3(m_axisHandle.tx.getLocalScale().x/2.0f, 0, 0));
-        m_axisHandle.tx.setLocalRotation(m_axisHandle.transform.getLocalRotation() + m_axisHandle.transformx.getLocalRotation());
-
-        m_axisHandle.ty.setLocalScale(glm::vec3(30, 130, 1) / Camera::mainCamera->m_zoomFactor);
-        m_axisHandle.ty.setLocalPosition(m_axisHandle.transform.getLocalPosition() + m_axisHandle.transformy.getLocalPosition() + glm::vec3(0, m_axisHandle.ty.getLocalScale().y/2.0f, 0));
-        m_axisHandle.ty.setLocalRotation(m_axisHandle.transform.getLocalRotation() + m_axisHandle.transformy.getLocalRotation());
-
-        m_axisHandle.transformxy.setLocalScale(glm::vec3(20, 20, 1) / Camera::mainCamera->m_zoomFactor);
-        m_axisHandle.transformxy.setLocalPosition(m_axisHandle.transform.getLocalPosition() + glm::vec3(30, 30, 0) / Camera::mainCamera->m_zoomFactor);
-
-        if (!(m_axisHandle.m_xHandleSelected || m_axisHandle.m_yHandleSelected || m_axisHandle.m_xyHandleSelected)) {
-            m_axisHandle.m_xHandle = m_axisHandle.tx.checkCollisionAgainstPoint(Mouse::get().screenPos(), true);
-            m_axisHandle.m_yHandle = m_axisHandle.ty.checkCollisionAgainstPoint(Mouse::get().screenPos(), true);
-            m_axisHandle.m_xyHandle = m_axisHandle.transformxy.checkCollisionAgainstPoint(Mouse::get().screenPos(), true);
-
-            if (m_axisHandle.m_xHandle && !m_multiSelect) {
-                m_axisHandle.transformx.setLocalScaleY(1.1f); 
-                hoverFlag = true;
-            }
-            else {
-                m_axisHandle.transformx.setLocalScaleY(1);
-            }
-
-            if (!m_axisHandle.m_xHandle && m_axisHandle.m_yHandle && !m_multiSelect) {
-                m_axisHandle.transformy.setLocalScaleY(1.1f); 
-                hoverFlag = true;
-            }
-            else {
-                m_axisHandle.transformy.setLocalScaleY(1);
-            }
-
-            if (m_axisHandle.m_xyHandle) {
-                m_axisHandle.transformxy.setLocalScale(glm::vec3(1.1f) * glm::vec3(20, 20, 1) / Camera::mainCamera->m_zoomFactor); 
-                hoverFlag = true;
-            }
-            else {
-                m_axisHandle.transformxy.setLocalScale(glm::vec3(1) * glm::vec3(20, 20, 1) / Camera::mainCamera->m_zoomFactor);
-            }
-            if (!(m_axisHandle.m_xHandle || m_axisHandle.m_yHandle || m_axisHandle.m_xyHandle))
-                hoverFlag = false;
-        }
-
-    }
-
-    if (hoverFlag) {
-        Mouse::get().setMouseCursor(Mouse::get().s_handCursor);
-    }
-    else
-        Mouse::get().setMouseCursor(Mouse::get().s_defaultCursor);
 
     if (m_viewportHasMouse) {
         if (glfwGetMouseButton(m_wnd, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS) {
@@ -975,9 +981,65 @@ void EditorUI::update() {
                 moveAlongHandleY();
                 Mouse::get().setMouseCursor(Mouse::get().s_moveCursorNS);
             }
+            
+            else if ((m_axisHandle.m_nHandle) && !m_multiSelect) {
+                m_axisHandle.m_nHandleSelected = true;
+                scaleAlongN();
+                Mouse::get().setMouseCursor(Mouse::get().s_moveCursorNS);
+            }
+            else if ((m_axisHandle.m_eHandle) && !m_multiSelect) {
+                m_axisHandle.m_eHandleSelected = true;
+                scaleAlongE();
+                Mouse::get().setMouseCursor(Mouse::get().s_moveCursorWE);
+            }
+            else if ((m_axisHandle.m_sHandle) && !m_multiSelect) {
+                m_axisHandle.m_sHandleSelected = true;
+                scaleAlongS();
+                Mouse::get().setMouseCursor(Mouse::get().s_moveCursorNS);
+            }
+            else if ((m_axisHandle.m_wHandle) && !m_multiSelect) {
+                m_axisHandle.m_wHandleSelected = true;
+                scaleAlongW();
+                Mouse::get().setMouseCursor(Mouse::get().s_moveCursorWE);
+            }
+            else if ((m_axisHandle.m_neHandle) && !m_multiSelect) {
+                m_axisHandle.m_neHandleSelected = true;
+                scaleAlongN();
+                scaleAlongE();
+                Mouse::get().setMouseCursor(Mouse::get().s_moveCursorNESW);
+            }
+            else if ((m_axisHandle.m_seHandle) && !m_multiSelect) {
+                m_axisHandle.m_seHandleSelected = true;
+                scaleAlongE();
+                scaleAlongS();
+                Mouse::get().setMouseCursor(Mouse::get().s_moveCursorNESW);
+            }
+            else if ((m_axisHandle.m_swHandle) && !m_multiSelect) {
+                m_axisHandle.m_swHandleSelected = true;
+                scaleAlongS();
+                scaleAlongW();
+                Mouse::get().setMouseCursor(Mouse::get().s_moveCursorNESW);
+            }
+            else if ((m_axisHandle.m_nwHandle) && !m_multiSelect) {
+                m_axisHandle.m_nwHandleSelected = true;
+                scaleAlongW();
+                scaleAlongN();
+                Mouse::get().setMouseCursor(Mouse::get().s_moveCursorNESW);
+            }
 
-
-            if (Mouse::get().screenPos() != m_mouseScreenPosWhenPressed && !(m_axisHandle.m_xHandle || m_axisHandle.m_yHandle || m_axisHandle.m_xyHandle)) {
+            if (Mouse::get().screenPos() != m_mouseScreenPosWhenPressed && !(
+            m_axisHandle.m_xHandleSelected || 
+            m_axisHandle.m_yHandleSelected || 
+            m_axisHandle.m_xyHandleSelected || 
+            m_axisHandle.m_nHandleSelected || 
+            m_axisHandle.m_neHandleSelected || 
+            m_axisHandle.m_eHandleSelected || 
+            m_axisHandle.m_seHandleSelected || 
+            m_axisHandle.m_sHandleSelected || 
+            m_axisHandle.m_swHandleSelected || 
+            m_axisHandle.m_wHandleSelected || 
+            m_axisHandle.m_nwHandleSelected
+        )) {
                 m_multiSelect = true;
             }
         }
@@ -985,10 +1047,29 @@ void EditorUI::update() {
 
         if (glfwGetMouseButton(m_wnd, GLFW_MOUSE_BUTTON_LEFT) == GLFW_RELEASE && m_mousePressedLF) {
             
-            if (m_axisHandle.m_xHandleSelected || m_axisHandle.m_yHandleSelected || m_axisHandle.m_xyHandleSelected) {
+            if ((m_axisHandle.m_xHandleSelected || 
+            m_axisHandle.m_yHandleSelected || 
+            m_axisHandle.m_xyHandleSelected || 
+            m_axisHandle.m_nHandleSelected || 
+            m_axisHandle.m_neHandleSelected || 
+            m_axisHandle.m_eHandleSelected || 
+            m_axisHandle.m_seHandleSelected || 
+            m_axisHandle.m_sHandleSelected || 
+            m_axisHandle.m_swHandleSelected || 
+            m_axisHandle.m_wHandleSelected || 
+            m_axisHandle.m_nwHandleSelected
+        )) {
                 m_axisHandle.m_xHandleSelected = false;
                 m_axisHandle.m_yHandleSelected = false;
                 m_axisHandle.m_xyHandleSelected = false;
+                m_axisHandle.m_nHandleSelected = false;
+                m_axisHandle.m_neHandleSelected = false;
+                m_axisHandle.m_eHandleSelected = false;
+                m_axisHandle.m_seHandleSelected = false;
+                m_axisHandle.m_sHandleSelected = false;
+                m_axisHandle.m_swHandleSelected = false;
+                m_axisHandle.m_wHandleSelected = false;
+                m_axisHandle.m_nwHandleSelected = false;
             }
             else {
                 if (glfwGetKey(m_wnd, GLFW_KEY_LEFT_SHIFT) == GLFW_RELEASE) {
@@ -1022,6 +1103,194 @@ void EditorUI::update() {
         }
 
     }
+    
+    if (m_selectedSprites.size() != 0) {
+        glm::vec3 pos{};
+
+        glm::vec2 N, E, S, W, newN, newE, newS, newW;
+        int i;
+        for (i = 0; i < m_selectedSprites.size(); i++) {
+            pos += m_selectedSprites[i]->transform.getGlobalPosition();
+
+            Sprite* spr = dynamic_cast<Sprite*>(m_selectedSprites[i]);
+            if (spr) {
+                bool flag = false;
+                newN = spr->getN();
+                newE = spr->getE();
+                newS = spr->getS();
+                newW = spr->getW();
+                if (i == 0) flag = true;
+                if (newN.y < spr->transform.getGlobalPosition().y) flag = true;
+                if (newE.x < spr->transform.getGlobalPosition().x) flag = true;
+ 
+                if (newN.y > N.y || flag) N.y = newN.y;
+                if (newE.x > E.x || flag) E.x = newE.x;
+                if (newS.y < S.y || flag) S.y = newS.y;
+                if (newW.x < W.x || flag) W.x = newW.x;
+            }
+        }
+        pos = pos / (float)i;
+        m_axisHandle.transform.setLocalPosition(pos);
+        m_axisHandle.transform.setLocalScale(glm::vec3(200) / Camera::mainCamera->m_zoomFactor);
+        m_axisHandle.tx.setLocalScale(glm::vec3(130, 30, 1) / Camera::mainCamera->m_zoomFactor);
+        m_axisHandle.tx.setLocalPosition(m_axisHandle.transform.getLocalPosition() + m_axisHandle.transformx.getLocalPosition() + glm::vec3(m_axisHandle.tx.getLocalScale().x/2.0f, 0, 0));
+        m_axisHandle.tx.setLocalRotation(m_axisHandle.transform.getLocalRotation() + m_axisHandle.transformx.getLocalRotation());
+
+        m_axisHandle.ty.setLocalScale(glm::vec3(30, 130, 1) / Camera::mainCamera->m_zoomFactor);
+        m_axisHandle.ty.setLocalPosition(m_axisHandle.transform.getLocalPosition() + m_axisHandle.transformy.getLocalPosition() + glm::vec3(0, m_axisHandle.ty.getLocalScale().y/2.0f, 0));
+        m_axisHandle.ty.setLocalRotation(m_axisHandle.transform.getLocalRotation() + m_axisHandle.transformy.getLocalRotation());
+
+        m_axisHandle.transformxy.setLocalScale(glm::vec3(20, 20, 1) / Camera::mainCamera->m_zoomFactor);
+        m_axisHandle.transformxy.setLocalPosition(m_axisHandle.transform.getLocalPosition() + glm::vec3(30, 30, 0) / Camera::mainCamera->m_zoomFactor);
+
+        m_axisHandle.n.setLocalPosition(glm::vec3(pos.x, N.y, 0));
+        m_axisHandle.ne.setLocalPosition(glm::vec3(E.x, N.y, 0));
+        m_axisHandle.e.setLocalPosition(glm::vec3(E.x, pos.y, 0));
+        m_axisHandle.se.setLocalPosition(glm::vec3(E.x, S.y, 0));
+        m_axisHandle.s.setLocalPosition(glm::vec3(pos.x, S.y, 0));
+        m_axisHandle.sw.setLocalPosition(glm::vec3(W.x, S.y, 0));
+        m_axisHandle.w.setLocalPosition(glm::vec3(W.x, pos.y, 0));
+        m_axisHandle.nw.setLocalPosition(glm::vec3(W.x, N.y, 0));
+
+
+        if (!(m_axisHandle.m_xHandleSelected || 
+            m_axisHandle.m_yHandleSelected || 
+            m_axisHandle.m_xyHandleSelected || 
+            m_axisHandle.m_nHandleSelected || 
+            m_axisHandle.m_neHandleSelected || 
+            m_axisHandle.m_eHandleSelected || 
+            m_axisHandle.m_seHandleSelected || 
+            m_axisHandle.m_sHandleSelected || 
+            m_axisHandle.m_swHandleSelected || 
+            m_axisHandle.m_wHandleSelected || 
+            m_axisHandle.m_nwHandleSelected
+        )) {
+            m_axisHandle.m_xHandle = m_axisHandle.tx.checkCollisionAgainstPoint(Mouse::get().screenPos(), true);
+            m_axisHandle.m_yHandle = m_axisHandle.ty.checkCollisionAgainstPoint(Mouse::get().screenPos(), true);
+            m_axisHandle.m_xyHandle = m_axisHandle.transformxy.checkCollisionAgainstPoint(Mouse::get().screenPos(), true);
+
+            m_axisHandle.m_nHandle = m_axisHandle.n.checkCollisionAgainstPoint(Mouse::get().screenPos(), true);
+            m_axisHandle.m_neHandle = m_axisHandle.ne.checkCollisionAgainstPoint(Mouse::get().screenPos(), true);
+            m_axisHandle.m_eHandle = m_axisHandle.e.checkCollisionAgainstPoint(Mouse::get().screenPos(), true);
+            m_axisHandle.m_seHandle = m_axisHandle.se.checkCollisionAgainstPoint(Mouse::get().screenPos(), true);
+            m_axisHandle.m_sHandle = m_axisHandle.s.checkCollisionAgainstPoint(Mouse::get().screenPos(), true);
+            m_axisHandle.m_swHandle = m_axisHandle.sw.checkCollisionAgainstPoint(Mouse::get().screenPos(), true);
+            m_axisHandle.m_wHandle = m_axisHandle.w.checkCollisionAgainstPoint(Mouse::get().screenPos(), true);
+            m_axisHandle.m_nwHandle = m_axisHandle.nw.checkCollisionAgainstPoint(Mouse::get().screenPos(), true);
+
+            if (m_axisHandle.m_xHandle && !m_multiSelect) {
+                m_axisHandle.transformx.setLocalScaleY(1.1f); 
+                hoverFlag = true;
+            }
+            else {
+                m_axisHandle.transformx.setLocalScaleY(1);
+            }
+
+            if (!m_axisHandle.m_xHandle && m_axisHandle.m_yHandle && !m_multiSelect) {
+                m_axisHandle.transformy.setLocalScaleY(1.1f); 
+                hoverFlag = true;
+            }
+            else {
+                m_axisHandle.transformy.setLocalScaleY(1);
+            }
+
+            if (m_axisHandle.m_xyHandle) {
+                m_axisHandle.transformxy.setLocalScale(glm::vec3(1.1f) * glm::vec3(20, 20, 1) / Camera::mainCamera->m_zoomFactor); 
+                hoverFlag = true;
+            }
+            else {
+                m_axisHandle.transformxy.setLocalScale(glm::vec3(1) * glm::vec3(20, 20, 1) / Camera::mainCamera->m_zoomFactor);
+            }
+
+            glm::vec3 scale = ((glm::vec3(20, 20, 1) / Camera::mainCamera->m_zoomFactor)) / 1.5f;
+            if (m_axisHandle.m_nHandle && !m_multiSelect) {
+                m_axisHandle.n.setLocalScale(scale * 1.2f);
+                hoverFlag = true;
+            }
+            else {
+                m_axisHandle.n.setLocalScale(scale);
+            }
+
+            if (m_axisHandle.m_neHandle && !m_multiSelect) {
+                m_axisHandle.ne.setLocalScale(scale * 1.2f);
+                hoverFlag = true;
+            }
+            else {
+                m_axisHandle.ne.setLocalScale(scale);
+            }
+            
+            if (m_axisHandle.m_eHandle && !m_multiSelect) {
+                m_axisHandle.e.setLocalScale(scale * 1.2f);
+                hoverFlag = true;
+            }
+            else {
+                m_axisHandle.e.setLocalScale(scale);
+            }
+
+            if (m_axisHandle.m_seHandle && !m_multiSelect) {
+                m_axisHandle.se.setLocalScale(scale * 1.2f);
+                hoverFlag = true;
+            }
+            else {
+                m_axisHandle.se.setLocalScale(scale);
+            }
+
+            if (m_axisHandle.m_sHandle && !m_multiSelect) {
+                m_axisHandle.s.setLocalScale(scale * 1.2f);
+                hoverFlag = true;
+            }
+            else {
+                m_axisHandle.s.setLocalScale(scale);
+            }
+            
+            if (m_axisHandle.m_swHandle && !m_multiSelect) {
+                m_axisHandle.sw.setLocalScale(scale * 1.2f);
+                hoverFlag = true;
+            }
+            else {
+                m_axisHandle.sw.setLocalScale(scale);
+            }
+
+            if (m_axisHandle.m_wHandle && !m_multiSelect) {
+                m_axisHandle.w.setLocalScale(scale * 1.2f);
+                hoverFlag = true;
+            }
+            else {
+                m_axisHandle.w.setLocalScale(scale);
+            }
+
+            if (m_axisHandle.m_nwHandle && !m_multiSelect) {
+                m_axisHandle.nw.setLocalScale(scale * 1.2f);
+                hoverFlag = true;
+            }
+            else {
+                m_axisHandle.nw.setLocalScale(scale);
+            }
+
+            if (!(
+                m_axisHandle.m_xHandle|| 
+                m_axisHandle.m_yHandle  || 
+                m_axisHandle.m_xyHandle || 
+                m_axisHandle.m_nHandle  || 
+                m_axisHandle.m_neHandle || 
+                m_axisHandle.m_eHandle  || 
+                m_axisHandle.m_seHandle || 
+                m_axisHandle.m_sHandle  || 
+                m_axisHandle.m_swHandle || 
+                m_axisHandle.m_wHandle  || 
+                m_axisHandle.m_nwHandle))
+                hoverFlag = false;
+        }
+
+    }
+
+    if (hoverFlag) {
+        Mouse::get().setMouseCursor(Mouse::get().s_handCursor);
+    }
+    else
+        Mouse::get().setMouseCursor(Mouse::get().s_defaultCursor);
+
+    
     scroll_lf = Camera::mainCamera->m_zoomFactor;
     m_mousePressedLF = m_mousePressed;
     imgui();
@@ -1078,6 +1347,49 @@ bool EditorUI::drawUI() {
         m_axisHandle.transformy.calculateWorldMatrix();
         m_axisHandle.transformxy.calculateWorldMatrix();
         m_axisHandle.transform.calculateWorldMatrix();
+
+        m_axisHandle.n.calculateWorldMatrix();
+        m_axisHandle.ne.calculateWorldMatrix();
+        m_axisHandle.e.calculateWorldMatrix();
+        m_axisHandle.se.calculateWorldMatrix();
+        m_axisHandle.s.calculateWorldMatrix();
+        m_axisHandle.sw.calculateWorldMatrix();
+        m_axisHandle.w.calculateWorldMatrix();
+        m_axisHandle.nw.calculateWorldMatrix();
+
+
+                m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.n.localMatrix(), modelUniform);
+        m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
+        glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0); 
+
+        m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.ne.localMatrix(), modelUniform);
+        m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
+        glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0); 
+
+        m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.e.localMatrix(), modelUniform);
+        m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
+        glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0); 
+
+        m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.se.localMatrix(), modelUniform);
+        m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
+        glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0); 
+
+        m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.s.localMatrix(), modelUniform);
+        m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
+        glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0); 
+
+        m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.sw.localMatrix(), modelUniform);
+        m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
+        glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0); 
+
+        m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.w.localMatrix(), modelUniform);
+        m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
+        glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0); 
+
+        m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.nw.localMatrix(), modelUniform);
+        m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
+        glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0); 
+
         m_axisHandle.m_mesh.bind();
 
         //glDisable(GL_DEPTH_TEST);
@@ -1094,6 +1406,8 @@ bool EditorUI::drawUI() {
         m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.transformxy.localMatrix(), modelUniform);
         m_axisHandle.m_material.m_shader->setVec4({0, 1, 0, 1}, "handleCol");
         glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0); 
+
+        // dont look
 
         //glEnable(GL_DEPTH_TEST);
         m_axisHandle.m_material.m_shader->setBool(false, "drawHandle");

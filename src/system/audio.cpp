@@ -25,10 +25,9 @@ void AudioManager::create() {
     m_exInfo.nonblockcallback = nonblockcallback;
 
     std::cout << "Created FMOD System" << std::endl;
-
     createSound("birds.wav", &m_testSound, FMOD_3D, false);
-
     m_created = true;
+    
 }
 
 void AudioManager::getResult(FMOD_RESULT r) {
@@ -60,7 +59,7 @@ void AudioManager::update(Transform & listener, bool is2D) {
 
     // there's probably only ever gonna be one listener anyway
     // unless i decide to do something COMPLETELY wacky
-
+    
     m_pos.x = listener.getGlobalPosition().x;
     m_pos.y = listener.getGlobalPosition().y;
     m_pos.z = (is2D) ? 0 : listener.getGlobalPosition().z;

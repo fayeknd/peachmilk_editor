@@ -59,7 +59,7 @@ bool Sprite::checkCollisionAgainstPoint(glm::vec2 point, bool local) {
     }
     point = (point / Camera::mainCamera->m_zoomFactor);
     // point_worldPosition
-    glm::vec3 point_wp = glm::vec3(point.x, point.y, 0) + Camera::mainCamera->transform.getLocalPosition();
+    glm::vec3 point_wp = glm::vec3(point.x, point.y, 0) + Camera::mainCamera->transform.getGlobalPosition();
     // right, left, up, down
     float posX_r = pos.x + (scale.x / 2);
     float posX_l = posX_r - scale.x;
@@ -221,4 +221,31 @@ void Sprite::create(std::string name) {
     //setScaleToTexelSize();
 }
 
-CEREAL_REGISTER_TYPE(Sprite);
+glm::vec2 Sprite::getTL() {
+    return glm::vec2(length(transform.globalUp()) / 2.0f, length(transform.globalLeft()) / 2.0f);
+}
+
+glm::vec2 Sprite::getTR() {
+    return glm::vec2(length(transform.globalUp()) / 2.0f, length(transform.globalRight()) / 2.0f);
+}
+glm::vec2 Sprite::getBL() {
+    return glm::vec2(length(transform.globalDown()) / 2.0f, length(transform.globalLeft()) / 2.0f);
+}
+glm::vec2 Sprite::getBR() {
+    return glm::vec2(length(transform.globalUp()) / 2.0f, length(transform.globalLeft()) / 2.0f);
+}
+
+glm::vec2 Sprite::getN() {
+    return glm::vec2(0, (length(transform.globalUp() * trueScaleGlobal().y) / 2.0f) * ((transform.getGlobalScale().y > 0) ? 1.0f : -1.0f)) + glm::vec2(transform.getGlobalPosition().x, transform.getGlobalPosition().y);
+}
+glm::vec2 Sprite::getE() {
+    return glm::vec2(((length(transform.globalUp() * trueScaleGlobal().x) / 2.0f) * ((transform.getGlobalScale().x > 0) ? 1.0f : -1.0f)), 0) + glm::vec2(transform.getGlobalPosition().x, transform.getGlobalPosition().y);
+}
+glm::vec2 Sprite::getS() {
+    return glm::vec2(0, (-length(transform.globalUp() * trueScaleGlobal().y) / 2.0f) * ((transform.getGlobalScale().y > 0) ? 1.0f : -1.0f)) + glm::vec2(transform.getGlobalPosition().x, transform.getGlobalPosition().y);
+}
+glm::vec2 Sprite::getW() {
+    return glm::vec2(-((length(transform.globalUp() * trueScaleGlobal().x) / 2.0f) * ((transform.getGlobalScale().x > 0) ? 1.0f : -1.0f)), 0) + glm::vec2(transform.getGlobalPosition().x, transform.getGlobalPosition().y);
+}
+
+CEREAL_REGISTER_TYPE(Sprite)

@@ -1,7 +1,7 @@
 #include "level.hpp"
 #include "../editor/project.hpp"
 #include <fstream>
-#include "sprite.hpp"
+#include "../system/serializable_types.h"
 
 #define _SAVE_TYPE(Type) __SAVE_TYPE(Type, #Type)
 #define __SAVE_TYPE(Type, typename){                            \
@@ -42,23 +42,14 @@ void GameLevel::saveLevelData() {
         cereal::JSONOutputArchive oarchive(os);
         oarchive(serializable.size());
         for (int i = 0; i < serializable.size(); i++) {
-            while (true) {
-                _SAVE_TYPE(Sprite);
-                _SAVE_TYPE(ScriptableEntity);
-                break;
-            }
-            
+            SAVE_TYPES            
         }
         oarchive(*this);
     }   
 }
 
 void GameLevel::deleteEntity(ScriptableEntity *entity) {
-    while (true) {
-        _DELETE_TYPE(Sprite, entity);
-        _DELETE_TYPE(ScriptableEntity, entity);
-        break;
-    }
+    DELETE_ENTITY(entity);
 }
 
 void GameLevel::unloadLevel() {
@@ -105,11 +96,7 @@ void GameLevel::loadLevel(std::string path, bool additive) {
         std::string type;
         for (int i = 0; i < size; i++) {
             iarchive(type);
-            while (true) {
-                _LOAD_TYPE(Sprite)
-                _LOAD_TYPE(ScriptableEntity)
-                break;
-            }
+            LOAD_TYPES
         }
         
         for (int i = 0; i < s_loadedEntities.size(); i++) {

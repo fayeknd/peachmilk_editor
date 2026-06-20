@@ -7,7 +7,7 @@ class EditorWM : public WindowManager {
 
 public:
 
-    EditorUI m_editor;
+    EditorUI * m_editor = nullptr;
 
     void create(int width, int height, const char* title, init_func pre_init_func = nullptr, window_hint_func window_hints = nullptr, int gl_major = 4, int gl_minor = 6) override;
     void update() override;

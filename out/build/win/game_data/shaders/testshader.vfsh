@@ -1,0 +1,60 @@
+#EngineShader
+#VERTEX
+
+layout (location = 0) in vec3 aPos;
+layout (location = 1) in vec3 aNormal;
+layout (location = 2) in vec3 aColour;
+layout (location = 3) in vec2 aTexCoord;
+
+uniform mat4 model_mat4;
+uniform mat4 vp_mat4;
+out vec2 texCoord;
+
+void main() {
+    texCoord = aTexCoord;
+    gl_Position = vp_mat4 * model_mat4 * vec4(aPos, 1);
+}
+
+#FRAGMENT
+
+layout (location = 0) out vec4 FragCol;
+
+uniform sampler2D texture0;
+uniform bool texture0_applied = false;
+uniform bool wireframe = false;
+uniform bool highlighted = false;
+uniform bool drawSelectionBox = false;
+uniform bool drawHandle = false;
+uniform vec4 multiplyCol = vec4(1,1,1,1);
+uniform vec4 wireframeCol = vec4(1, 0, 1, 1);
+uniform vec4 highlightCol = vec4(0, 1, 0, 0.3f);
+uniform vec4 selectionBoxCol = vec4(0, 0, 1, 0.3f);
+uniform vec4 handleCol;
+in vec2 texCoord;
+
+vec4 diffuseTexture() {
+    if (texture0_applied) return texture(texture0, texCoord);
+    vec4 col = vec4(0, 0, 0, 1);
+    if ((texCoord.x < 0.5f && texCoord.y < 0.5f) || (texCoord.x >= 0.5f && texCoord.y >= 0.5f)) {
+        col = vec4(1, 0, 1, 1);
+    }
+    return col;
+}
+
+void main() {
+    if (drawHandle) {
+        FragCol = handleCol;
+        return;
+    }
+    if (drawSelectionBox) {
+        FragCol = selectionBoxCol;
+        return;
+    }
+    if (wireframe) {
+        FragCol = wireframeCol;
+        return;
+    }
+    FragCol = vec4(1) * diffuseTexture() * multiplyCol;
+    if (highlighted) FragCol = mix(FragCol, highlightCol, highlightCol.w);
+}
+

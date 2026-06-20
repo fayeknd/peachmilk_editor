@@ -6,6 +6,7 @@ private:
 
     glm::vec2 m_pos;
     glm::vec2 m_posLF;
+    glm::vec3 m_scrPosLF;
     glm::vec2 m_scrollOffset;
 
 public:
@@ -23,6 +24,7 @@ public:
     glm::vec2 posLastFrame() { return m_posLF; };
     glm::vec2 scrollDelta() { return m_scrollOffset; };
     glm::vec3 screenPos();
+    glm::vec3 screenPosLF() { return m_scrPosLF; };
     glm::vec3 rawScreenPos();
 
     void pollMouse();

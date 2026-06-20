@@ -36,15 +36,16 @@ void EditorWM::triggerDraws() {
     for (int i = Sprite::s_sprites.size() - 1; i >= 0; --i) {
         Sprite::s_sprites[i]->draw();
     }
-    m_editor.drawUI();
+    m_editor->drawUI();
 }
 
 bool EditorWM::init(int width, int height, const char* title, window_hint_func window_hints, int gl_major, int gl_minor) {
     if (!WindowManager::init(width, height, title, window_hints, gl_major, gl_minor)) {
         return false;
     }
-    m_editor.m_destroyOnLoad = false;
-    m_editor.m_serialize = false;
+    m_editor = new EditorUI;
+    m_editor->m_destroyOnLoad = false;
+    m_editor->m_serialize = false;
     int x, y, n;
     unsigned char* pixels = Texture::getDataFromFileSTBI("game_data/engine.png", &x, &y, &n);
     GLFWimage image[1];
@@ -71,7 +72,7 @@ bool EditorWM::init(int width, int height, const char* title, window_hint_func w
 
     glEnable(GL_BLEND);
     glClearColor(0.655f, 0.898f, 0.71f, 1.0f);
-    
+    m_editor->_start();
     return true;
 }
 

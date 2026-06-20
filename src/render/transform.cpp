@@ -42,7 +42,7 @@ bool Transform::checkCollisionAgainstPoint(glm::vec2 point, bool local) {
     }
     point = (point / Camera::mainCamera->m_zoomFactor);
     // point_worldPosition
-    glm::vec3 point_wp = glm::vec3(point.x, point.y, 0) + Camera::mainCamera->transform.m_localPosition;
+    glm::vec3 point_wp = glm::vec3(point.x, point.y, 0) + Camera::mainCamera->transform.m_globalPosition;
     // right, left, up, down
     float posX_r = pos.x + (scale.x / 2);
     float posX_l = posX_r - scale.x;
@@ -198,6 +198,24 @@ void Transform::setLocalPositionZ(float z) {
     m_localPosition.z = z; 
     m_dirty = true;
 }
+void Transform::translateLocalPosition(glm::vec3 pos) {
+    if (pos.z == 0) m_zDirty = true;
+    m_localPosition += pos;
+    m_dirty = true;
+}
+void Transform::translateLocalPositionX(float x) { 
+    m_localPosition.x += x; 
+    m_dirty = true;
+}
+void Transform::translateLocalPositionY(float y) { 
+    m_localPosition.y += y; 
+    m_dirty = true;
+}
+void Transform::translateLocalPositionZ(float z) { 
+    if (m_localPosition.z != z) m_dirty = true;
+    m_localPosition.z += z; 
+    m_dirty = true;
+}
 
 void Transform::setGlobalPositionX(float x) { 
     m_globalPosition.x = x; 
@@ -212,7 +230,24 @@ void Transform::setGlobalPositionZ(float z) {
     m_globalPosition.z = z; 
     m_gDirty = true;
 }
-
+void Transform::translateGlobalPosition(glm::vec3 pos) {
+    if (pos.z == 0) m_zDirty = true;
+    m_globalPosition += pos;
+    m_gDirty = true;
+}
+void Transform::translateGlobalPositionX(float x) { 
+    m_globalPosition.x += x; 
+    m_gDirty = true;
+}
+void Transform::translateGlobalPositionY(float y) { 
+    m_globalPosition.y += y; 
+    m_gDirty = true;
+}
+void Transform::translateGlobalPositionZ(float z) { 
+    if (m_globalPosition.z != z) m_dirty = true;
+    m_globalPosition.z += z; 
+    m_gDirty = true;
+}
 
 
 void Transform::setLocalScale(glm::vec3 scale) { 

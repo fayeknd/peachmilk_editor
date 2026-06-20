@@ -555,4 +555,5 @@ CMakeFiles/engine.dir/src/system/audio.cpp.o: \
  /home/faye/Documents/engine/src/system/../render/../../include/imgui/imgui_impl_glfw.h \
  /home/faye/Documents/engine/src/system/../render/../../include/imgui/imgui_impl_opengl3.h \
  /home/faye/Documents/engine/src/system/../render/../system/math.hpp \
- /home/faye/Documents/engine/src/system/../render/../system/generic.h
+ /home/faye/Documents/engine/src/system/../render/../system/generic.h \
+ /home/faye/Documents/engine/src/system/../render/../system/vechelper.hpp

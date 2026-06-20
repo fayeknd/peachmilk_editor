@@ -1,26 +1,19 @@
 #include "project.hpp"
 #include "../render/material.hpp"
 
-std::string Project::getGameDataFolder() {
-    std::string s(m_projectPath + "\\game_data");
-    if (!std::filesystem::is_directory(s)) std::filesystem::create_directory(s);
-    return s;
-}
-std::string Project::getMaterialFolder() {
-    std::string s(getGameDataFolder() + "\\materials");
-    if (!std::filesystem::is_directory(s)) std::filesystem::create_directory(s);
-    return s;
-}
-std::string Project::getTextureFolder() {
-    std::string s(getGameDataFolder() + "\\textures");
-    if (!std::filesystem::is_directory(s)) std::filesystem::create_directory(s);
-    return s;
-}
-std::string Project::getLevelFolder() {
-    std::string s(getGameDataFolder() + "\\levels");
-    if (!std::filesystem::is_directory(s)) std::filesystem::create_directory(s);
-    return s;
-}
+#define _GET_FOLDER(root, folder) {                                             \
+    std::string s(root + "\\" + folder);                                        \
+    if (!std::filesystem::is_directory(s)) std::filesystem::create_directory(s);\
+    return s;                                                                   \
+}                                                                               \
+
+#define GET_FOLDER(folder) _GET_FOLDER(getGameDataFolder(), folder)
+
+std::string Project::getGameDataFolder() {_GET_FOLDER(m_projectPath, "game_data")}
+std::string Project::getSoundFolder() {GET_FOLDER("sounds")}
+std::string Project::getMaterialFolder() {GET_FOLDER("materials")}
+std::string Project::getTextureFolder() {GET_FOLDER("textures")}
+std::string Project::getLevelFolder() {GET_FOLDER("levels")}
 void Project::setLoadedProject(Project* p) { 
     m_activeProject = p; 
 }

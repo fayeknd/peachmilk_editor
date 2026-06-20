@@ -571,6 +571,7 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: \
  /home/faye/Documents/engine/src/windowmanager/../render/transform.hpp \
  /home/faye/Documents/engine/src/windowmanager/../render/../system/math.hpp \
  /home/faye/Documents/engine/src/windowmanager/../render/../system/generic.h \
+ /home/faye/Documents/engine/src/windowmanager/../render/../system/vechelper.hpp \
  /home/faye/Documents/engine/src/windowmanager/../render/material.hpp \
  /home/faye/Documents/engine/src/windowmanager/../render/rendertexture.hpp \
  /home/faye/Documents/engine/src/windowmanager/../render/blend.hpp \

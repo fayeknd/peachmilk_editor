@@ -4,6 +4,7 @@
 void Mouse::pollMouse() {
     double x, y; 
     m_posLF = m_pos;
+    m_scrPosLF = screenPos();
     glfwGetCursorPos(WindowManager::get()->m_wnd, &x, &y);
     m_pos = glm::vec2(x, y);
 }

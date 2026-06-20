@@ -17,6 +17,11 @@ private:
 
 public:
 
+    template <class Archive>
+    void serialize(Archive & archive) {
+        archive(cereal::base_class<ScriptableEntity>(this), m_doppler, m_pitch, m_volume, m_muted, m_isPlaying);
+    } 
+
     void setPlaying(FMOD_BOOL playing);
     void setMuted(FMOD_BOOL muted);
     void setDoppler(float d);
@@ -32,6 +37,6 @@ public:
 
     void start() override;
     void update() override;
-    bool draw() override;
+    bool draw() override {return true;};
 
 };

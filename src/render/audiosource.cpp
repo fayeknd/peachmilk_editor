@@ -76,3 +76,5 @@ void AudioSource::update() {
 
     AudioManager::get().getResult(FMOD_Channel_Set3DAttributes(m_channel, &m_pos, &m_vel));
 }
+
+CEREAL_REGISTER_TYPE(AudioSource)
