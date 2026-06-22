@@ -13,7 +13,7 @@ Material* Material::getMaterialViaID(unsigned int id) {
 }
 
 void Material::deseralizeMaterials(std::string cache) {
-    if (cache == "") cache = Project::get()->getMaterialFolder().c_str();
+    if (cache == "") cache = Project::get()->getMaterialFolder();
     for (auto entry : std::filesystem::directory_iterator(cache)) {
         std::string file = entry.path().string();
         std::string ext(File::getExtension(file));
@@ -39,7 +39,7 @@ void Material::deseralizeMaterials(std::string cache) {
 void Material::serializeMaterials(std::string cache) {
     if (cache == "") cache = Project::get()->getMaterialFolder();
     for (int i = 0; i < Material::s_allMaterials.size(); i++) {
-        if (s_allMaterials[i]->m_doSerialize){
+        if (s_allMaterials[i]->m_serialize){
             std::string file = s_allMaterials[i]->m_serializedPath;
             if (file == "")
                 file = std::string(cache) + std::string("\\material") + std::to_string(i) + std::string(".") + MAT_DEFAULT_EXT;

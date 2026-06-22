@@ -28,7 +28,7 @@ void Camera::calculateVPMatrix() {
     if (m_isOrtho)
         m_perspMatrix = glm::ortho(m_ortho_size.x, m_ortho_size.y, m_ortho_size.z, m_ortho_size.w, m_nearClip, m_farClip);
     else
-        m_perspMatrix = glm::perspective(m_fov, x/y, m_nearClip, m_farClip);
+        m_perspMatrix = glm::perspective(-m_fov + (m_zoomFactor / 100), x/y, m_nearClip, m_farClip);
 
     m_vpMatrix = m_perspMatrix * m_viewMatrix;
 }

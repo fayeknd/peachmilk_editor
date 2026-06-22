@@ -6,7 +6,9 @@
 #include "../../include/AirGuanZ/imfilebrowser.h"
 #include "../render/camera.hpp"
 #include "../render/blend.hpp"
-#include "../system/audio.hpp"
+#include "../audio/audio.hpp"
+#include "../audio/audioclip.hpp"
+#include "../audio/channelgroup.hpp"
 
 class AxisHandle {
 private:
@@ -81,6 +83,7 @@ public:
     ImVec2 m_viewportSize;
 
     Texture m_materialIcon;
+    Texture m_channelMixerIcon;
 
     ImGui::FileBrowser m_fileDiag;
     std::vector<ScriptableEntity*> m_selectedSprites;
@@ -89,6 +92,7 @@ public:
     bool m_contextOpenTF = false;
     bool m_editingText = false;
     bool m_openMaterialEditor = false;
+    bool m_openChannelMixer = false;
     bool m_materialEditorForSwapping = false;
     bool m_rcoSelectedInUI = false;
     bool m_viewportHasMouse = false;
@@ -99,6 +103,7 @@ public:
 
     Material* m_rightClickedMaterial = nullptr;
     Sprite* m_leftClickedSprite_mat = nullptr;
+    AudioClip* m_selectedAudioClip = nullptr;
 
     void update() override;
     bool drawUI();

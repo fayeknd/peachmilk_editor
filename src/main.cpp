@@ -1,6 +1,6 @@
 #include <iostream>
 #include "editor/editorWM.hpp"
-#include "system/audio.hpp"
+#include "audio/audio.hpp"
 
 void _audio_err_callback() {
     exit(-1);

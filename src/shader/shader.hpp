@@ -18,11 +18,6 @@ private:
     unsigned int m_fsh;
     unsigned int m_gsh = -1;
 
-    void stripUnicode(std::string& str)
-	{
-		str.erase(std::__remove_if(str.begin(), str.end(), [](char c) {return !(c >= 0 && c < 128); }), str.end());
-	}
-
     void registerShader();
     void unregisterShader();
 

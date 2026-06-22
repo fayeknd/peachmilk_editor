@@ -6,7 +6,7 @@
 #include "../render/entity.hpp"
 #include "../render/camera.hpp"
 #include "../system/mouse.hpp"
-#include "../system/audio.hpp"
+#include "../audio/audio.hpp"
 
 void fb_resize_callback(GLFWwindow* window, int width, int height) {
     if (WindowManager::get()->m_resize_viewport_with_window) {
@@ -143,9 +143,9 @@ void WindowManager::begin() {
             Time::resetDeltaTimer();
 
             m_frame++;
-            AudioManager::get().update(Camera::mainCamera->transform, Camera::mainCamera->m_isOrtho);
             Mouse::get().pollMouse();
             update();
+            AudioManager::get().update(Camera::mainCamera->transform, Camera::mainCamera->m_isOrtho);
             triggerDraws();
             Mouse::get().glfw_updateScrollDelta(glm::vec2(0));
             glfwSwapBuffers(m_wnd);

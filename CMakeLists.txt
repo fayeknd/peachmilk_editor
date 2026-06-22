@@ -31,12 +31,14 @@ add_executable(engine src/main.cpp
                 src/render/rendertexture.cpp
                 src/editor/project.cpp
                 src/render/level.cpp
-                src/system/audio.cpp
-                src/render/audiosource.cpp
+                src/audio/audio.cpp
+                src/audio/audiosource.cpp
+                src/audio/audioclip.cpp
+                src/audio/channelgroup.cpp
                 engine.rc
                 )
 
-add_link_options(-static -static-libgcc -static-libstdc++)
+#add_link_options(-static -static-libgcc -static-libstdc++)
 
 
 target_link_libraries(engine PUBLIC 

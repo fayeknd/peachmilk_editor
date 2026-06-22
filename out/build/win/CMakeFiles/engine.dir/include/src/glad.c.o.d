@@ -23,7 +23,7 @@ CMakeFiles/engine.dir/include/src/glad.c.o: \
  /usr/x86_64-w64-mingw32/include/string.h \
  /usr/x86_64-w64-mingw32/include/sec_api/string_s.h \
  /home/faye/Documents/engine/include/src/../glad/glad.h \
- /usr/x86_64-w64-mingw32/include/KHR/khrplatform.h \
+ /usr/include/KHR/khrplatform.h \
  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdint.h \
  /usr/x86_64-w64-mingw32/include/stdint.h \
  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stddef.h \

@@ -2,7 +2,7 @@
 #include <filesystem>
 #include <fstream>
 
-const char* File::getWorkingDirectory() {
+std::string File::getWorkingDirectory() {
     std::ostringstream file;
     std::string file_s;
     
@@ -15,15 +15,10 @@ const char* File::getWorkingDirectory() {
     
    //std::cout << file_s << std::endl;
 
-    return file_s.c_str();
+    return file_s;
 }
 
-std::string File::getExtension(const std::string& file) {
-    size_t index = file.find_last_of('.');
-    std::string _ = file.substr(index + 1, file.size());
-    return _.c_str();
-}
-std::string File::getExtension(const char* file) {
+std::string File::getExtension(std::string file) {
     std::string s(file);
     size_t index = s.find_last_of('.');
     return s.substr(index + 1, s.size()).c_str();
@@ -34,6 +29,6 @@ bool File::fileExists(const std::string& file) {
     return f.good();
 }
 
-std::string File::getFullPath(const char *file) {
+std::string File::getFullPath(std::string file) {
     return std::filesystem::canonical(file).string();
 }

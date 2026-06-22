@@ -25,6 +25,7 @@ public:
     std::string getMaterialFolder();
     std::string getTextureFolder();
     std::string getLevelFolder();
+    std::string getChannelGroupFolder();
     static void setLoadedProject(Project* p);
     bool isDeserialized() { return m_deserialized; }
     std::string m_projectTitle = "";
@@ -41,5 +42,6 @@ public:
     std::string getFilepath() { return m_projectPath; } 
     void deserializeProjectInfo(std::string pInfoFile);
     bool saveProject();
+    void loadProject();
 
 };

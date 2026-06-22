@@ -1,5 +1,7 @@
 #include "project.hpp"
 #include "../render/material.hpp"
+#include "../audio/audioclip.hpp"
+#include "../audio/channelgroup.hpp"
 
 #define _GET_FOLDER(root, folder) {                                             \
     std::string s(root + "\\" + folder);                                        \
@@ -14,6 +16,7 @@ std::string Project::getSoundFolder() {GET_FOLDER("sounds")}
 std::string Project::getMaterialFolder() {GET_FOLDER("materials")}
 std::string Project::getTextureFolder() {GET_FOLDER("textures")}
 std::string Project::getLevelFolder() {GET_FOLDER("levels")}
+std::string Project::getChannelGroupFolder() {_GET_FOLDER(getSoundFolder(), "channelgroups")}
 void Project::setLoadedProject(Project* p) { 
     m_activeProject = p; 
 }
@@ -49,8 +52,9 @@ void Project::deserializeProjectInfo(std::string pInfoFile) {
         iarchive(*this);
         m_projectPath = File::getFullPath(p.parent_path().string().c_str());
         m_deserialized = true;
-        Camera::mainCamera->transform.setLocalPosition(m_campos);
+        Camera::mainCamera->transform.setGlobalPosition(m_campos);
         Camera::mainCamera->m_zoomFactor = m_zoom;
+        
     }
     is.close();
 }
@@ -59,5 +63,30 @@ bool Project::saveProject() {
     GameLevel::s_loadedLevel->saveLevelData();
     serializeProjectInfo();
     Material::serializeMaterials();
+    AudioClip::serializeSounds();
+    ChannelGroup::serializeChannelGroups();
     return true;
+}
+
+void Project::loadProject() {
+    Material::deseralizeMaterials();
+    AudioClip::deseralizeSounds();
+    ChannelGroup::deseralizeChannelGroups();
+    if (m_loadedLevelPath != "" && File::fileExists(m_loadedLevelPath)) {
+        GameLevel::loadLevel(m_loadedLevelPath, false);
+    }
+    else {
+        bool flag = false;
+        for (auto entry : std::filesystem::directory_iterator(getLevelFolder())) {
+            if (File::getExtension(entry.path().string()) == LEV_DEFAULT_EXT) {
+                GameLevel::loadLevel(entry.path().string(), false);
+                flag = true;
+                break;
+            }
+        }
+        if (!flag) {
+            GameLevel::createNewLevel();
+            GameLevel::loadLevel(getLevelFolder() + "\\New Level.lvd");
+        }
+    }
 }

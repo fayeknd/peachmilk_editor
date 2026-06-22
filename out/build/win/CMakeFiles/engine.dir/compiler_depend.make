@@ -1534,6 +1534,7 @@ CMakeFiles/engine.dir/include/imgui/imgui_widgets.cpp.o: /home/faye/Documents/en
 
 CMakeFiles/engine.dir/include/src/glad.c.o: /home/faye/Documents/engine/include/src/glad.c \
   /home/faye/Documents/engine/include/glad/glad.h \
+  /usr/include/KHR/khrplatform.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/adxintrin.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/ammintrin.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/amxavx512intrin.h \
@@ -1653,7 +1654,6 @@ CMakeFiles/engine.dir/include/src/glad.c.o: /home/faye/Documents/engine/include/
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/xsaveoptintrin.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/xsavesintrin.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/xtestintrin.h \
-  /usr/x86_64-w64-mingw32/include/KHR/khrplatform.h \
   /usr/x86_64-w64-mingw32/include/_bsd_types.h \
   /usr/x86_64-w64-mingw32/include/_mingw.h \
   /usr/x86_64-w64-mingw32/include/_mingw_mac.h \
@@ -1822,6 +1822,2289 @@ CMakeFiles/engine.dir/include/src/glad.c.o: /home/faye/Documents/engine/include/
   /usr/x86_64-w64-mingw32/include/wow64apiset.h \
   /usr/x86_64-w64-mingw32/include/wtypes.h \
   /usr/x86_64-w64-mingw32/include/wtypesbase.h
+
+CMakeFiles/engine.dir/src/audio/audio.cpp.o: /home/faye/Documents/engine/src/audio/audio.cpp \
+  /home/faye/Documents/engine/include/fmod/fmod.h \
+  /home/faye/Documents/engine/include/fmod/fmod_codec.h \
+  /home/faye/Documents/engine/include/fmod/fmod_common.h \
+  /home/faye/Documents/engine/include/fmod/fmod_dsp.h \
+  /home/faye/Documents/engine/include/fmod/fmod_dsp_effects.h \
+  /home/faye/Documents/engine/include/fmod/fmod_errors.h \
+  /home/faye/Documents/engine/include/fmod/fmod_output.h \
+  /home/faye/Documents/engine/include/GLFW/glfw3.h \
+  /home/faye/Documents/engine/include/cereal/macros.hpp \
+  /home/faye/Documents/engine/include/cereal/details/static_object.hpp \
+  /home/faye/Documents/engine/include/cereal/macros.hpp \
+  /home/faye/Documents/engine/include/cereal/details/helpers.hpp \
+  /home/faye/Documents/engine/include/cereal/macros.hpp \
+  /home/faye/Documents/engine/include/cereal/specialize.hpp \
+  /home/faye/Documents/engine/include/cereal/access.hpp \
+  /home/faye/Documents/engine/include/cereal/macros.hpp \
+  /home/faye/Documents/engine/include/cereal/details/helpers.hpp \
+  /home/faye/Documents/engine/include/cereal/details/traits.hpp \
+  /home/faye/Documents/engine/include/cereal/macros.hpp \
+  /home/faye/Documents/engine/include/cereal/cereal.hpp \
+  /home/faye/Documents/engine/include/cereal/details/polymorphic_impl_fwd.hpp \
+  /home/faye/Documents/engine/include/cereal/details/traits.hpp \
+  /home/faye/Documents/engine/include/cereal/types/base_class.hpp \
+  /home/faye/Documents/engine/include/cereal/types/common.hpp \
+  /home/faye/Documents/engine/include/cereal/cereal.hpp \
+  /home/faye/Documents/engine/include/cereal/details/util.hpp \
+  /home/faye/Documents/engine/include/cereal/external/base64.hpp \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/allocators.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/document.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/encodedstream.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/encodings.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/rapidjson.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/error/error.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/allocators.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/rapidjson.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/stream.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/biginteger.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/diyfp.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/dtoa.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/ieee754.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/itoa.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/meta.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/pow10.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/stack.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/strfunc.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/strtod.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/swap.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/istreamwrapper.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/memorystream.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/ostreamwrapper.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/prettywriter.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/rapidjson.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/reader.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/stream.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/stringbuffer.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/writer.h \
+  /home/faye/Documents/engine/include/cereal/archives/json.hpp \
+  /home/faye/Documents/engine/include/cereal/cereal.hpp \
+  /home/faye/Documents/engine/include/cereal/details/polymorphic_impl_fwd.hpp \
+  /home/faye/Documents/engine/include/cereal/details/static_object.hpp \
+  /home/faye/Documents/engine/include/cereal/types/memory.hpp \
+  /home/faye/Documents/engine/include/cereal/types/string.hpp \
+  /home/faye/Documents/engine/include/cereal/details/helpers.hpp \
+  /home/faye/Documents/engine/include/cereal/details/polymorphic_impl.hpp \
+  /home/faye/Documents/engine/include/cereal/details/traits.hpp \
+  /home/faye/Documents/engine/include/cereal/details/util.hpp \
+  /home/faye/Documents/engine/include/cereal/cereal.hpp \
+  /home/faye/Documents/engine/include/cereal/types/polymorphic.hpp \
+  /home/faye/Documents/engine/include/cereal/types/memory.hpp \
+  /home/faye/Documents/engine/include/cereal/types/array.hpp \
+  /home/faye/Documents/engine/include/cereal/types/base_class.hpp \
+  /home/faye/Documents/engine/include/cereal/types/polymorphic.hpp \
+  /home/faye/Documents/engine/include/cereal/types/string.hpp \
+  /home/faye/Documents/engine/include/glad/glad.h \
+  /home/faye/Documents/engine/include/glm/ext/vector_bool1.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_bool1_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_double1.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_double1_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_float1.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_float1_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_int1.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_int1_sized.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_uint1.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_uint1_sized.hpp \
+  /home/faye/Documents/engine/include/glm/gtc/vec1.hpp \
+  /home/faye/Documents/engine/include/glm/gtc/type_ptr.hpp \
+  /home/faye/Documents/engine/include/glm/gtc/type_ptr.inl \
+  /home/faye/Documents/engine/include/glm/common.hpp \
+  /home/faye/Documents/engine/include/glm/detail/func_vector_relational.inl \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/vector_relational.hpp \
+  /home/faye/Documents/engine/include/glm/detail/_fixes.hpp \
+  /home/faye/Documents/engine/include/glm/detail/compute_common.hpp \
+  /home/faye/Documents/engine/include/glm/detail/func_common.inl \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_vec1.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_vec1.inl \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat2x2.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat2x2.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_mat2x3.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat2x3.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_mat2x4.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat2x4.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_mat3x2.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat3x2.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_mat3x3.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat3x3.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_mat3x4.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat3x4.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_mat4x2.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat4x2.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_mat4x3.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat4x3.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_vec2.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_vec2.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_vec3.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_vec3.inl \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/ext/scalar_int_sized.hpp \
+  /home/faye/Documents/engine/include/glm/ext/scalar_uint_sized.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double2x2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double2x2_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double2x3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double2x3_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double2x4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double2x4_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double3x2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double3x2_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double3x3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double3x3_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double3x4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double3x4_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double4x2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double4x2_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double4x3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double4x3_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float2x2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float2x2_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float2x3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float2x3_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float2x4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float2x4_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float3x2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float3x2_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float3x3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float3x3_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float3x4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float3x4_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float4x2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float4x2_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float4x3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float4x3_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_bool2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_bool2_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_bool3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_bool3_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_bool4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_bool4_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_double2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_double2_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_double3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_double3_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_double4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_double4_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_float2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_float2_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_float3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_float3_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_float4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_float4_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_int2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_int2_sized.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_int3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_int3_sized.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_int4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_int4_sized.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_uint2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_uint2_sized.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_uint3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_uint3_sized.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_uint4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_uint4_sized.hpp \
+  /home/faye/Documents/engine/include/glm/detail/func_exponential.inl \
+  /home/faye/Documents/engine/include/glm/exponential.hpp \
+  /home/faye/Documents/engine/include/glm/detail/func_geometric.inl \
+  /home/faye/Documents/engine/include/glm/geometric.hpp \
+  /home/faye/Documents/engine/include/glm/detail/func_matrix.inl \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/mat2x2.hpp \
+  /home/faye/Documents/engine/include/glm/mat2x3.hpp \
+  /home/faye/Documents/engine/include/glm/mat2x4.hpp \
+  /home/faye/Documents/engine/include/glm/mat3x2.hpp \
+  /home/faye/Documents/engine/include/glm/mat3x3.hpp \
+  /home/faye/Documents/engine/include/glm/mat3x4.hpp \
+  /home/faye/Documents/engine/include/glm/mat4x2.hpp \
+  /home/faye/Documents/engine/include/glm/mat4x3.hpp \
+  /home/faye/Documents/engine/include/glm/matrix.hpp \
+  /home/faye/Documents/engine/include/glm/simd/platform.h \
+  /home/faye/Documents/engine/include/glm/vec2.hpp \
+  /home/faye/Documents/engine/include/glm/vec3.hpp \
+  /home/faye/Documents/engine/include/glm/vec4.hpp \
+  /home/faye/Documents/engine/include/glm/detail/_vectorize.hpp \
+  /home/faye/Documents/engine/include/glm/detail/compute_vector_decl.hpp \
+  /home/faye/Documents/engine/include/glm/detail/compute_vector_relational.hpp \
+  /home/faye/Documents/engine/include/glm/detail/qualifier.hpp \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat4x4.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat4x4.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_vec4.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_vec4.inl \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double4x4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double4x4_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float4x4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float4x4_precision.hpp \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_relational.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_relational.inl \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_float.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_quat.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_quat.inl \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_geometric.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_geometric.inl \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_common.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_common.inl \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_double.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_double_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_float.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_float_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_transform.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_transform.inl \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_trigonometric.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_trigonometric.inl \
+  /home/faye/Documents/engine/include/glm/ext/vector_relational.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_relational.inl \
+  /home/faye/Documents/engine/include/glm/detail/func_trigonometric.inl \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/trigonometric.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_clip_space.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_clip_space.inl \
+  /home/faye/Documents/engine/include/glm/ext/matrix_projection.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_projection.inl \
+  /home/faye/Documents/engine/include/glm/ext/matrix_transform.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_transform.inl \
+  /home/faye/Documents/engine/include/glm/ext/scalar_constants.hpp \
+  /home/faye/Documents/engine/include/glm/ext/scalar_constants.inl \
+  /home/faye/Documents/engine/include/glm/gtc/constants.hpp \
+  /home/faye/Documents/engine/include/glm/gtc/constants.inl \
+  /home/faye/Documents/engine/include/glm/gtc/matrix_transform.hpp \
+  /home/faye/Documents/engine/include/glm/gtc/matrix_transform.inl \
+  /home/faye/Documents/engine/include/glm/gtc/epsilon.hpp \
+  /home/faye/Documents/engine/include/glm/gtc/epsilon.inl \
+  /home/faye/Documents/engine/include/glm/gtc/quaternion.hpp \
+  /home/faye/Documents/engine/include/glm/gtc/quaternion.inl \
+  /home/faye/Documents/engine/include/glm/detail/_fixes.hpp \
+  /home/faye/Documents/engine/include/glm/detail/func_integer.inl \
+  /home/faye/Documents/engine/include/glm/detail/func_packing.inl \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_half.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_half.inl \
+  /home/faye/Documents/engine/include/glm/fwd.hpp \
+  /home/faye/Documents/engine/include/glm/glm.hpp \
+  /home/faye/Documents/engine/include/glm/integer.hpp \
+  /home/faye/Documents/engine/include/glm/packing.hpp \
+  /home/faye/Documents/engine/include/glm/gtx/transform.hpp \
+  /home/faye/Documents/engine/include/glm/gtx/transform.inl \
+  /home/faye/Documents/engine/include/glm/mat4x4.hpp \
+  /home/faye/Documents/engine/include/glm/gtx/matrix_decompose.hpp \
+  /home/faye/Documents/engine/include/glm/gtx/matrix_decompose.inl \
+  /home/faye/Documents/engine/include/imgui/imconfig.h \
+  /home/faye/Documents/engine/include/imgui/imgui.h \
+  /home/faye/Documents/engine/include/imgui/imgui_impl_glfw.h \
+  /home/faye/Documents/engine/include/imgui/imgui_impl_opengl3.h \
+  /home/faye/Documents/engine/src/headers.h \
+  /home/faye/Documents/engine/src/system/generic.h \
+  /home/faye/Documents/engine/src/system/math.hpp \
+  /home/faye/Documents/engine/src/system/vechelper.hpp \
+  /home/faye/Documents/engine/src/windowmanager/fullscreenmode.hpp \
+  /home/faye/Documents/engine/src/render/transform.hpp \
+  /home/faye/Documents/engine/src/audio/audio.hpp \
+  /usr/include/KHR/khrplatform.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/float.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/limits.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/mm_malloc.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdarg.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stddef.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdint.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/syslimits.h \
+  /usr/x86_64-w64-mingw32/include/_mingw.h \
+  /usr/x86_64-w64-mingw32/include/_mingw_mac.h \
+  /usr/x86_64-w64-mingw32/include/_mingw_off_t.h \
+  /usr/x86_64-w64-mingw32/include/_mingw_secapi.h \
+  /usr/x86_64-w64-mingw32/include/_mingw_stat64.h \
+  /usr/x86_64-w64-mingw32/include/_mingw_stdarg.h \
+  /usr/x86_64-w64-mingw32/include/_timeval.h \
+  /usr/x86_64-w64-mingw32/include/assert.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/array \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/atomic \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/backward/auto_ptr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/backward/binders.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bit \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/align.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/alloc_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/allocated_ptr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/allocator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_base.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_futex.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_lockfree_defines.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_timed_wait.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_wait.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/basic_ios.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/basic_ios.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/basic_string.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/basic_string.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/binders.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/char_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/charconv.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/chrono.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/concept_check.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/cpp_type_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/cxxabi_forced.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/cxxabi_init_exception.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/deque.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/enable_special_members.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/erase_if.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/exception.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/exception_defines.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/exception_ptr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/functexcept.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/functional_hash.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/hash_bytes.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/hashtable.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/hashtable_policy.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/intcmp.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/invoke.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ios_base.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/istream.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/iterator_concepts.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/locale_classes.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/locale_classes.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/locale_facets.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/locale_facets.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/localefwd.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/max_size_type.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/memory_resource.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/memoryfwd.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/move.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/nested_exception.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/new_allocator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/new_except.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/new_throw.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/node_handle.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ostream.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ostream.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ostream_insert.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ostream_print.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/parse_numbers.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/postypes.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/predefined_ops.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ptr_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/range_access.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ranges_algobase.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ranges_base.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ranges_cmp.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ranges_uninitialized.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ranges_util.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/refwrap.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/requires_hosted.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/semaphore_base.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/shared_ptr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/shared_ptr_atomic.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/shared_ptr_base.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/specfun.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/sstream.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/std_abs.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/std_function.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/std_mutex.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/std_thread.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stdexcept_except.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stdexcept_throw.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stdexcept_throwfwd.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_algobase.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_bvector.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_construct.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_deque.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_function.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_iterator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_iterator_base_funcs.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_iterator_base_types.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_map.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_multimap.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_multiset.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_pair.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_raw_storage_iter.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_relops.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_set.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_stack.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_tempbuf.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_tree.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_uninitialized.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_vector.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stream_iterator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/streambuf.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/streambuf_iterator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/string_view.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stringfwd.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/this_thread_sleep.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/unique_lock.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/unique_ptr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/unordered_map.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/unordered_set.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/uses_allocator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/uses_allocator_args.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/utility.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/vector.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/version.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cassert \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cctype \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cerrno \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cfloat \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/climits \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/clocale \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cmath \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/compare \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/concepts \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/condition_variable \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cstddef \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cstdint \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cstdio \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cstdlib \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cstring \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ctime \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cwchar \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cwctype \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cxxabi.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/debug/assertions.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/debug/debug.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/deque \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/exception \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/aligned_buffer.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/alloc_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/atomicity.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/concurrence.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/numeric_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/string_conversions.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/type_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/functional \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/future \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/initializer_list \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ios \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/iosfwd \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/iostream \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/istream \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/iterator \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/limits \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/map \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/memory \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/mutex \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/new \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/numbers \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ostream \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/execution_defs.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/glue_memory_defs.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/pstl_config.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ratio \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/semaphore \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/set \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/source_location \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/sstream \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/stack \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/stdexcept \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/stdlib.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/stop_token \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/streambuf \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/string \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/string_view \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/system_error \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/thread \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/bessel_function.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/beta_function.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/ell_integral.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/exp_integral.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/gamma.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/hypergeometric.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/legendre_function.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/modified_bessel_func.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/poly_hermite.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/poly_laguerre.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/riemann_zeta.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/special_function_util.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tuple \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/type_traits \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/typeindex \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/typeinfo \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/unordered_map \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/unordered_set \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/utility \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/vector \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/atomic_word.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/c++allocator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/c++config.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/c++locale.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/cpu_defines.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/ctype_base.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/ctype_inline.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/cxxabi_tweaks.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/error_constants.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/gthr-default.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/gthr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/os_defines.h \
+  /usr/x86_64-w64-mingw32/include/corecrt.h \
+  /usr/x86_64-w64-mingw32/include/corecrt_startup.h \
+  /usr/x86_64-w64-mingw32/include/corecrt_stdio_config.h \
+  /usr/x86_64-w64-mingw32/include/corecrt_wconio.h \
+  /usr/x86_64-w64-mingw32/include/corecrt_wctype.h \
+  /usr/x86_64-w64-mingw32/include/corecrt_wstdlib.h \
+  /usr/x86_64-w64-mingw32/include/crtdefs.h \
+  /usr/x86_64-w64-mingw32/include/ctype.h \
+  /usr/x86_64-w64-mingw32/include/errno.h \
+  /usr/x86_64-w64-mingw32/include/float.h \
+  /usr/x86_64-w64-mingw32/include/inttypes.h \
+  /usr/x86_64-w64-mingw32/include/limits.h \
+  /usr/x86_64-w64-mingw32/include/locale.h \
+  /usr/x86_64-w64-mingw32/include/malloc.h \
+  /usr/x86_64-w64-mingw32/include/math.h \
+  /usr/x86_64-w64-mingw32/include/process.h \
+  /usr/x86_64-w64-mingw32/include/pthread.h \
+  /usr/x86_64-w64-mingw32/include/pthread_compat.h \
+  /usr/x86_64-w64-mingw32/include/pthread_signal.h \
+  /usr/x86_64-w64-mingw32/include/pthread_time.h \
+  /usr/x86_64-w64-mingw32/include/pthread_unistd.h \
+  /usr/x86_64-w64-mingw32/include/sched.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/stdio_s.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/stdlib_s.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/string_s.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/sys/timeb_s.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/wchar_s.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/wconio_s.h \
+  /usr/x86_64-w64-mingw32/include/signal.h \
+  /usr/x86_64-w64-mingw32/include/stdarg.h \
+  /usr/x86_64-w64-mingw32/include/stddef.h \
+  /usr/x86_64-w64-mingw32/include/stdint.h \
+  /usr/x86_64-w64-mingw32/include/stdio.h \
+  /usr/x86_64-w64-mingw32/include/stdlib.h \
+  /usr/x86_64-w64-mingw32/include/string.h \
+  /usr/x86_64-w64-mingw32/include/swprintf.inl \
+  /usr/x86_64-w64-mingw32/include/sys/timeb.h \
+  /usr/x86_64-w64-mingw32/include/sys/types.h \
+  /usr/x86_64-w64-mingw32/include/time.h \
+  /usr/x86_64-w64-mingw32/include/vadefs.h \
+  /usr/x86_64-w64-mingw32/include/wchar.h \
+  /usr/x86_64-w64-mingw32/include/wctype.h
+
+CMakeFiles/engine.dir/src/audio/audioclip.cpp.o: /home/faye/Documents/engine/src/audio/audioclip.cpp \
+  /home/faye/Documents/engine/include/fmod/fmod.h \
+  /home/faye/Documents/engine/include/fmod/fmod_codec.h \
+  /home/faye/Documents/engine/include/fmod/fmod_common.h \
+  /home/faye/Documents/engine/include/fmod/fmod_dsp.h \
+  /home/faye/Documents/engine/include/fmod/fmod_dsp_effects.h \
+  /home/faye/Documents/engine/include/fmod/fmod_errors.h \
+  /home/faye/Documents/engine/include/fmod/fmod_output.h \
+  /home/faye/Documents/engine/src/render/camera.hpp \
+  /home/faye/Documents/engine/src/render/entity.hpp \
+  /home/faye/Documents/engine/src/render/framebuffer.hpp \
+  /home/faye/Documents/engine/src/render/level.hpp \
+  /home/faye/Documents/engine/src/render/rendertexture.hpp \
+  /home/faye/Documents/engine/src/system/file.hpp \
+  /home/faye/Documents/engine/src/editor/project.hpp \
+  /home/faye/Documents/engine/include/GLFW/glfw3.h \
+  /home/faye/Documents/engine/include/cereal/macros.hpp \
+  /home/faye/Documents/engine/include/cereal/details/static_object.hpp \
+  /home/faye/Documents/engine/include/cereal/macros.hpp \
+  /home/faye/Documents/engine/include/cereal/details/helpers.hpp \
+  /home/faye/Documents/engine/include/cereal/macros.hpp \
+  /home/faye/Documents/engine/include/cereal/specialize.hpp \
+  /home/faye/Documents/engine/include/cereal/access.hpp \
+  /home/faye/Documents/engine/include/cereal/macros.hpp \
+  /home/faye/Documents/engine/include/cereal/details/helpers.hpp \
+  /home/faye/Documents/engine/include/cereal/details/traits.hpp \
+  /home/faye/Documents/engine/include/cereal/macros.hpp \
+  /home/faye/Documents/engine/include/cereal/cereal.hpp \
+  /home/faye/Documents/engine/include/cereal/details/polymorphic_impl_fwd.hpp \
+  /home/faye/Documents/engine/include/cereal/details/traits.hpp \
+  /home/faye/Documents/engine/include/cereal/types/base_class.hpp \
+  /home/faye/Documents/engine/include/cereal/types/common.hpp \
+  /home/faye/Documents/engine/include/cereal/cereal.hpp \
+  /home/faye/Documents/engine/include/cereal/details/util.hpp \
+  /home/faye/Documents/engine/include/cereal/external/base64.hpp \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/allocators.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/document.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/encodedstream.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/encodings.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/rapidjson.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/error/error.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/allocators.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/rapidjson.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/stream.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/biginteger.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/diyfp.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/dtoa.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/ieee754.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/itoa.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/meta.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/pow10.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/stack.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/strfunc.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/strtod.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/swap.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/istreamwrapper.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/memorystream.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/ostreamwrapper.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/prettywriter.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/rapidjson.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/reader.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/stream.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/stringbuffer.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/writer.h \
+  /home/faye/Documents/engine/include/cereal/archives/json.hpp \
+  /home/faye/Documents/engine/include/cereal/cereal.hpp \
+  /home/faye/Documents/engine/include/cereal/details/polymorphic_impl_fwd.hpp \
+  /home/faye/Documents/engine/include/cereal/details/static_object.hpp \
+  /home/faye/Documents/engine/include/cereal/types/memory.hpp \
+  /home/faye/Documents/engine/include/cereal/types/string.hpp \
+  /home/faye/Documents/engine/include/cereal/details/helpers.hpp \
+  /home/faye/Documents/engine/include/cereal/details/polymorphic_impl.hpp \
+  /home/faye/Documents/engine/include/cereal/details/traits.hpp \
+  /home/faye/Documents/engine/include/cereal/details/util.hpp \
+  /home/faye/Documents/engine/include/cereal/cereal.hpp \
+  /home/faye/Documents/engine/include/cereal/types/polymorphic.hpp \
+  /home/faye/Documents/engine/include/cereal/types/memory.hpp \
+  /home/faye/Documents/engine/include/cereal/types/array.hpp \
+  /home/faye/Documents/engine/include/cereal/types/base_class.hpp \
+  /home/faye/Documents/engine/include/cereal/types/polymorphic.hpp \
+  /home/faye/Documents/engine/include/cereal/types/string.hpp \
+  /home/faye/Documents/engine/include/glad/glad.h \
+  /home/faye/Documents/engine/include/glm/ext/vector_bool1.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_bool1_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_double1.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_double1_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_float1.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_float1_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_int1.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_int1_sized.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_uint1.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_uint1_sized.hpp \
+  /home/faye/Documents/engine/include/glm/gtc/vec1.hpp \
+  /home/faye/Documents/engine/include/glm/gtc/type_ptr.hpp \
+  /home/faye/Documents/engine/include/glm/gtc/type_ptr.inl \
+  /home/faye/Documents/engine/include/glm/common.hpp \
+  /home/faye/Documents/engine/include/glm/detail/func_vector_relational.inl \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/vector_relational.hpp \
+  /home/faye/Documents/engine/include/glm/detail/_fixes.hpp \
+  /home/faye/Documents/engine/include/glm/detail/compute_common.hpp \
+  /home/faye/Documents/engine/include/glm/detail/func_common.inl \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_vec1.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_vec1.inl \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat2x2.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat2x2.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_mat2x3.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat2x3.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_mat2x4.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat2x4.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_mat3x2.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat3x2.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_mat3x3.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat3x3.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_mat3x4.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat3x4.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_mat4x2.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat4x2.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_mat4x3.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat4x3.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_vec2.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_vec2.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_vec3.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_vec3.inl \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/ext/scalar_int_sized.hpp \
+  /home/faye/Documents/engine/include/glm/ext/scalar_uint_sized.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double2x2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double2x2_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double2x3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double2x3_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double2x4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double2x4_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double3x2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double3x2_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double3x3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double3x3_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double3x4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double3x4_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double4x2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double4x2_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double4x3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double4x3_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float2x2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float2x2_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float2x3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float2x3_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float2x4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float2x4_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float3x2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float3x2_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float3x3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float3x3_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float3x4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float3x4_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float4x2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float4x2_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float4x3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float4x3_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_bool2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_bool2_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_bool3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_bool3_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_bool4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_bool4_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_double2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_double2_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_double3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_double3_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_double4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_double4_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_float2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_float2_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_float3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_float3_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_float4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_float4_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_int2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_int2_sized.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_int3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_int3_sized.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_int4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_int4_sized.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_uint2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_uint2_sized.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_uint3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_uint3_sized.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_uint4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_uint4_sized.hpp \
+  /home/faye/Documents/engine/include/glm/detail/func_exponential.inl \
+  /home/faye/Documents/engine/include/glm/exponential.hpp \
+  /home/faye/Documents/engine/include/glm/detail/func_geometric.inl \
+  /home/faye/Documents/engine/include/glm/geometric.hpp \
+  /home/faye/Documents/engine/include/glm/detail/func_matrix.inl \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/mat2x2.hpp \
+  /home/faye/Documents/engine/include/glm/mat2x3.hpp \
+  /home/faye/Documents/engine/include/glm/mat2x4.hpp \
+  /home/faye/Documents/engine/include/glm/mat3x2.hpp \
+  /home/faye/Documents/engine/include/glm/mat3x3.hpp \
+  /home/faye/Documents/engine/include/glm/mat3x4.hpp \
+  /home/faye/Documents/engine/include/glm/mat4x2.hpp \
+  /home/faye/Documents/engine/include/glm/mat4x3.hpp \
+  /home/faye/Documents/engine/include/glm/matrix.hpp \
+  /home/faye/Documents/engine/include/glm/simd/platform.h \
+  /home/faye/Documents/engine/include/glm/vec2.hpp \
+  /home/faye/Documents/engine/include/glm/vec3.hpp \
+  /home/faye/Documents/engine/include/glm/vec4.hpp \
+  /home/faye/Documents/engine/include/glm/detail/_vectorize.hpp \
+  /home/faye/Documents/engine/include/glm/detail/compute_vector_decl.hpp \
+  /home/faye/Documents/engine/include/glm/detail/compute_vector_relational.hpp \
+  /home/faye/Documents/engine/include/glm/detail/qualifier.hpp \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat4x4.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat4x4.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_vec4.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_vec4.inl \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double4x4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double4x4_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float4x4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float4x4_precision.hpp \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_relational.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_relational.inl \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_float.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_quat.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_quat.inl \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_geometric.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_geometric.inl \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_common.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_common.inl \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_double.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_double_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_float.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_float_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_transform.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_transform.inl \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_trigonometric.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_trigonometric.inl \
+  /home/faye/Documents/engine/include/glm/ext/vector_relational.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_relational.inl \
+  /home/faye/Documents/engine/include/glm/detail/func_trigonometric.inl \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/trigonometric.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_clip_space.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_clip_space.inl \
+  /home/faye/Documents/engine/include/glm/ext/matrix_projection.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_projection.inl \
+  /home/faye/Documents/engine/include/glm/ext/matrix_transform.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_transform.inl \
+  /home/faye/Documents/engine/include/glm/ext/scalar_constants.hpp \
+  /home/faye/Documents/engine/include/glm/ext/scalar_constants.inl \
+  /home/faye/Documents/engine/include/glm/gtc/constants.hpp \
+  /home/faye/Documents/engine/include/glm/gtc/constants.inl \
+  /home/faye/Documents/engine/include/glm/gtc/matrix_transform.hpp \
+  /home/faye/Documents/engine/include/glm/gtc/matrix_transform.inl \
+  /home/faye/Documents/engine/include/glm/gtc/epsilon.hpp \
+  /home/faye/Documents/engine/include/glm/gtc/epsilon.inl \
+  /home/faye/Documents/engine/include/glm/gtc/quaternion.hpp \
+  /home/faye/Documents/engine/include/glm/gtc/quaternion.inl \
+  /home/faye/Documents/engine/include/glm/detail/_fixes.hpp \
+  /home/faye/Documents/engine/include/glm/detail/func_integer.inl \
+  /home/faye/Documents/engine/include/glm/detail/func_packing.inl \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_half.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_half.inl \
+  /home/faye/Documents/engine/include/glm/fwd.hpp \
+  /home/faye/Documents/engine/include/glm/glm.hpp \
+  /home/faye/Documents/engine/include/glm/integer.hpp \
+  /home/faye/Documents/engine/include/glm/packing.hpp \
+  /home/faye/Documents/engine/include/glm/gtx/transform.hpp \
+  /home/faye/Documents/engine/include/glm/gtx/transform.inl \
+  /home/faye/Documents/engine/include/glm/mat4x4.hpp \
+  /home/faye/Documents/engine/include/glm/gtx/matrix_decompose.hpp \
+  /home/faye/Documents/engine/include/glm/gtx/matrix_decompose.inl \
+  /home/faye/Documents/engine/include/imgui/imconfig.h \
+  /home/faye/Documents/engine/include/imgui/imgui.h \
+  /home/faye/Documents/engine/include/imgui/imgui_impl_glfw.h \
+  /home/faye/Documents/engine/include/imgui/imgui_impl_opengl3.h \
+  /home/faye/Documents/engine/src/headers.h \
+  /home/faye/Documents/engine/src/system/generic.h \
+  /home/faye/Documents/engine/src/system/math.hpp \
+  /home/faye/Documents/engine/src/system/vechelper.hpp \
+  /home/faye/Documents/engine/src/windowmanager/fullscreenmode.hpp \
+  /home/faye/Documents/engine/src/render/transform.hpp \
+  /home/faye/Documents/engine/src/audio/audio.hpp \
+  /home/faye/Documents/engine/src/audio/audioclip.hpp \
+  /usr/include/KHR/khrplatform.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/float.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/limits.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/mm_malloc.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdarg.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stddef.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdint.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/syslimits.h \
+  /usr/x86_64-w64-mingw32/include/_mingw.h \
+  /usr/x86_64-w64-mingw32/include/_mingw_mac.h \
+  /usr/x86_64-w64-mingw32/include/_mingw_off_t.h \
+  /usr/x86_64-w64-mingw32/include/_mingw_secapi.h \
+  /usr/x86_64-w64-mingw32/include/_mingw_stat64.h \
+  /usr/x86_64-w64-mingw32/include/_mingw_stdarg.h \
+  /usr/x86_64-w64-mingw32/include/_timeval.h \
+  /usr/x86_64-w64-mingw32/include/assert.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/array \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/atomic \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/backward/auto_ptr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/backward/binders.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bit \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/align.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/alloc_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/allocated_ptr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/allocator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_base.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_futex.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_lockfree_defines.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_timed_wait.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_wait.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/basic_ios.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/basic_ios.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/basic_string.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/basic_string.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/binders.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/char_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/charconv.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/chrono.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/codecvt.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/concept_check.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/cpp_type_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/cxxabi_forced.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/cxxabi_init_exception.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/deque.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/enable_special_members.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/erase_if.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/exception.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/exception_defines.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/exception_ptr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/fs_dir.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/fs_fwd.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/fs_ops.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/fs_path.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/fstream.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/functexcept.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/functional_hash.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/hash_bytes.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/hashtable.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/hashtable_policy.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/intcmp.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/invoke.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ios_base.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/istream.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/iterator_concepts.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/locale_classes.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/locale_classes.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/locale_conv.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/locale_facets.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/locale_facets.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/locale_facets_nonio.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/locale_facets_nonio.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/localefwd.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/max_size_type.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/memory_resource.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/memoryfwd.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/move.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/nested_exception.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/new_allocator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/new_except.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/new_throw.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/node_handle.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ostream.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ostream.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ostream_insert.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ostream_print.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/parse_numbers.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/postypes.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/predefined_ops.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ptr_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/quoted_string.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/range_access.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ranges_algobase.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ranges_base.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ranges_cmp.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ranges_uninitialized.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ranges_util.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/refwrap.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/requires_hosted.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/semaphore_base.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/shared_ptr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/shared_ptr_atomic.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/shared_ptr_base.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/specfun.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/sstream.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/std_abs.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/std_function.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/std_mutex.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/std_thread.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stdexcept_except.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stdexcept_throw.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stdexcept_throwfwd.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_algobase.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_bvector.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_construct.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_deque.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_function.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_iterator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_iterator_base_funcs.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_iterator_base_types.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_map.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_multimap.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_multiset.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_pair.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_raw_storage_iter.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_relops.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_set.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_stack.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_tempbuf.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_tree.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_uninitialized.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_vector.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stream_iterator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/streambuf.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/streambuf_iterator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/string_view.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stringfwd.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/this_thread_sleep.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/unique_lock.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/unique_ptr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/unordered_map.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/unordered_set.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/uses_allocator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/uses_allocator_args.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/utility.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/vector.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/version.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cassert \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cctype \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cerrno \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cfloat \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/climits \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/clocale \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cmath \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/codecvt \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/compare \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/concepts \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/condition_variable \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cstddef \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cstdint \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cstdio \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cstdlib \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cstring \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ctime \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cwchar \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cwctype \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cxxabi.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/debug/assertions.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/debug/debug.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/deque \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/exception \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/aligned_buffer.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/alloc_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/atomicity.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/concurrence.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/numeric_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/string_conversions.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/type_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/filesystem \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/fstream \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/functional \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/future \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/initializer_list \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/iomanip \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ios \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/iosfwd \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/iostream \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/istream \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/iterator \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/limits \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/locale \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/map \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/memory \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/mutex \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/new \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/numbers \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ostream \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/execution_defs.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/glue_memory_defs.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/pstl_config.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ratio \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/semaphore \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/set \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/source_location \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/sstream \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/stack \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/stdexcept \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/stdlib.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/stop_token \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/streambuf \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/string \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/string_view \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/system_error \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/thread \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/bessel_function.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/beta_function.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/ell_integral.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/exp_integral.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/gamma.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/hypergeometric.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/legendre_function.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/modified_bessel_func.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/poly_hermite.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/poly_laguerre.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/riemann_zeta.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/special_function_util.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tuple \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/type_traits \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/typeindex \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/typeinfo \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/unordered_map \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/unordered_set \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/utility \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/vector \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/atomic_word.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/basic_file.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/c++allocator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/c++config.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/c++io.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/c++locale.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/cpu_defines.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/ctype_base.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/ctype_inline.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/cxxabi_tweaks.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/error_constants.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/gthr-default.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/gthr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/messages_members.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/os_defines.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/time_members.h \
+  /usr/x86_64-w64-mingw32/include/corecrt.h \
+  /usr/x86_64-w64-mingw32/include/corecrt_startup.h \
+  /usr/x86_64-w64-mingw32/include/corecrt_stdio_config.h \
+  /usr/x86_64-w64-mingw32/include/corecrt_wconio.h \
+  /usr/x86_64-w64-mingw32/include/corecrt_wctype.h \
+  /usr/x86_64-w64-mingw32/include/corecrt_wstdlib.h \
+  /usr/x86_64-w64-mingw32/include/crtdefs.h \
+  /usr/x86_64-w64-mingw32/include/ctype.h \
+  /usr/x86_64-w64-mingw32/include/errno.h \
+  /usr/x86_64-w64-mingw32/include/float.h \
+  /usr/x86_64-w64-mingw32/include/inttypes.h \
+  /usr/x86_64-w64-mingw32/include/limits.h \
+  /usr/x86_64-w64-mingw32/include/locale.h \
+  /usr/x86_64-w64-mingw32/include/malloc.h \
+  /usr/x86_64-w64-mingw32/include/math.h \
+  /usr/x86_64-w64-mingw32/include/process.h \
+  /usr/x86_64-w64-mingw32/include/pthread.h \
+  /usr/x86_64-w64-mingw32/include/pthread_compat.h \
+  /usr/x86_64-w64-mingw32/include/pthread_signal.h \
+  /usr/x86_64-w64-mingw32/include/pthread_time.h \
+  /usr/x86_64-w64-mingw32/include/pthread_unistd.h \
+  /usr/x86_64-w64-mingw32/include/sched.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/stdio_s.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/stdlib_s.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/string_s.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/sys/timeb_s.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/wchar_s.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/wconio_s.h \
+  /usr/x86_64-w64-mingw32/include/signal.h \
+  /usr/x86_64-w64-mingw32/include/stdarg.h \
+  /usr/x86_64-w64-mingw32/include/stddef.h \
+  /usr/x86_64-w64-mingw32/include/stdint.h \
+  /usr/x86_64-w64-mingw32/include/stdio.h \
+  /usr/x86_64-w64-mingw32/include/stdlib.h \
+  /usr/x86_64-w64-mingw32/include/string.h \
+  /usr/x86_64-w64-mingw32/include/swprintf.inl \
+  /usr/x86_64-w64-mingw32/include/sys/timeb.h \
+  /usr/x86_64-w64-mingw32/include/sys/types.h \
+  /usr/x86_64-w64-mingw32/include/time.h \
+  /usr/x86_64-w64-mingw32/include/vadefs.h \
+  /usr/x86_64-w64-mingw32/include/wchar.h \
+  /usr/x86_64-w64-mingw32/include/wctype.h
+
+CMakeFiles/engine.dir/src/audio/audiosource.cpp.o: /home/faye/Documents/engine/src/audio/audiosource.cpp \
+  /home/faye/Documents/engine/include/GLFW/glfw3.h \
+  /home/faye/Documents/engine/include/cereal/macros.hpp \
+  /home/faye/Documents/engine/include/cereal/details/static_object.hpp \
+  /home/faye/Documents/engine/include/cereal/macros.hpp \
+  /home/faye/Documents/engine/include/cereal/details/helpers.hpp \
+  /home/faye/Documents/engine/include/cereal/macros.hpp \
+  /home/faye/Documents/engine/include/cereal/specialize.hpp \
+  /home/faye/Documents/engine/include/cereal/access.hpp \
+  /home/faye/Documents/engine/include/cereal/macros.hpp \
+  /home/faye/Documents/engine/include/cereal/details/helpers.hpp \
+  /home/faye/Documents/engine/include/cereal/details/traits.hpp \
+  /home/faye/Documents/engine/include/cereal/macros.hpp \
+  /home/faye/Documents/engine/include/cereal/cereal.hpp \
+  /home/faye/Documents/engine/include/cereal/details/polymorphic_impl_fwd.hpp \
+  /home/faye/Documents/engine/include/cereal/details/traits.hpp \
+  /home/faye/Documents/engine/include/cereal/types/base_class.hpp \
+  /home/faye/Documents/engine/include/cereal/types/common.hpp \
+  /home/faye/Documents/engine/include/cereal/cereal.hpp \
+  /home/faye/Documents/engine/include/cereal/details/util.hpp \
+  /home/faye/Documents/engine/include/cereal/external/base64.hpp \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/allocators.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/document.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/encodedstream.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/encodings.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/rapidjson.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/error/error.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/allocators.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/rapidjson.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/stream.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/biginteger.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/diyfp.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/dtoa.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/ieee754.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/itoa.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/meta.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/pow10.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/stack.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/strfunc.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/strtod.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/swap.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/istreamwrapper.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/memorystream.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/ostreamwrapper.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/prettywriter.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/rapidjson.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/reader.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/stream.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/stringbuffer.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/writer.h \
+  /home/faye/Documents/engine/include/cereal/archives/json.hpp \
+  /home/faye/Documents/engine/include/cereal/cereal.hpp \
+  /home/faye/Documents/engine/include/cereal/details/polymorphic_impl_fwd.hpp \
+  /home/faye/Documents/engine/include/cereal/details/static_object.hpp \
+  /home/faye/Documents/engine/include/cereal/types/memory.hpp \
+  /home/faye/Documents/engine/include/cereal/types/string.hpp \
+  /home/faye/Documents/engine/include/cereal/details/helpers.hpp \
+  /home/faye/Documents/engine/include/cereal/details/polymorphic_impl.hpp \
+  /home/faye/Documents/engine/include/cereal/details/traits.hpp \
+  /home/faye/Documents/engine/include/cereal/details/util.hpp \
+  /home/faye/Documents/engine/include/cereal/cereal.hpp \
+  /home/faye/Documents/engine/include/cereal/types/polymorphic.hpp \
+  /home/faye/Documents/engine/include/cereal/types/memory.hpp \
+  /home/faye/Documents/engine/include/cereal/types/array.hpp \
+  /home/faye/Documents/engine/include/cereal/types/base_class.hpp \
+  /home/faye/Documents/engine/include/cereal/types/polymorphic.hpp \
+  /home/faye/Documents/engine/include/cereal/types/string.hpp \
+  /home/faye/Documents/engine/include/fmod/fmod.h \
+  /home/faye/Documents/engine/include/fmod/fmod_codec.h \
+  /home/faye/Documents/engine/include/fmod/fmod_common.h \
+  /home/faye/Documents/engine/include/fmod/fmod_dsp.h \
+  /home/faye/Documents/engine/include/fmod/fmod_dsp_effects.h \
+  /home/faye/Documents/engine/include/fmod/fmod_errors.h \
+  /home/faye/Documents/engine/include/fmod/fmod_output.h \
+  /home/faye/Documents/engine/include/glad/glad.h \
+  /home/faye/Documents/engine/include/glm/ext/vector_bool1.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_bool1_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_double1.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_double1_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_float1.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_float1_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_int1.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_int1_sized.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_uint1.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_uint1_sized.hpp \
+  /home/faye/Documents/engine/include/glm/gtc/vec1.hpp \
+  /home/faye/Documents/engine/include/glm/gtc/type_ptr.hpp \
+  /home/faye/Documents/engine/include/glm/gtc/type_ptr.inl \
+  /home/faye/Documents/engine/include/glm/common.hpp \
+  /home/faye/Documents/engine/include/glm/detail/func_vector_relational.inl \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/vector_relational.hpp \
+  /home/faye/Documents/engine/include/glm/detail/_fixes.hpp \
+  /home/faye/Documents/engine/include/glm/detail/compute_common.hpp \
+  /home/faye/Documents/engine/include/glm/detail/func_common.inl \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_vec1.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_vec1.inl \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat2x2.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat2x2.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_mat2x3.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat2x3.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_mat2x4.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat2x4.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_mat3x2.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat3x2.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_mat3x3.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat3x3.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_mat3x4.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat3x4.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_mat4x2.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat4x2.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_mat4x3.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat4x3.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_vec2.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_vec2.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_vec3.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_vec3.inl \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/ext/scalar_int_sized.hpp \
+  /home/faye/Documents/engine/include/glm/ext/scalar_uint_sized.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double2x2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double2x2_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double2x3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double2x3_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double2x4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double2x4_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double3x2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double3x2_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double3x3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double3x3_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double3x4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double3x4_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double4x2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double4x2_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double4x3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double4x3_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float2x2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float2x2_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float2x3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float2x3_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float2x4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float2x4_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float3x2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float3x2_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float3x3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float3x3_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float3x4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float3x4_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float4x2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float4x2_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float4x3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float4x3_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_bool2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_bool2_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_bool3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_bool3_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_bool4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_bool4_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_double2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_double2_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_double3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_double3_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_double4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_double4_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_float2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_float2_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_float3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_float3_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_float4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_float4_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_int2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_int2_sized.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_int3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_int3_sized.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_int4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_int4_sized.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_uint2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_uint2_sized.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_uint3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_uint3_sized.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_uint4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_uint4_sized.hpp \
+  /home/faye/Documents/engine/include/glm/detail/func_exponential.inl \
+  /home/faye/Documents/engine/include/glm/exponential.hpp \
+  /home/faye/Documents/engine/include/glm/detail/func_geometric.inl \
+  /home/faye/Documents/engine/include/glm/geometric.hpp \
+  /home/faye/Documents/engine/include/glm/detail/func_matrix.inl \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/mat2x2.hpp \
+  /home/faye/Documents/engine/include/glm/mat2x3.hpp \
+  /home/faye/Documents/engine/include/glm/mat2x4.hpp \
+  /home/faye/Documents/engine/include/glm/mat3x2.hpp \
+  /home/faye/Documents/engine/include/glm/mat3x3.hpp \
+  /home/faye/Documents/engine/include/glm/mat3x4.hpp \
+  /home/faye/Documents/engine/include/glm/mat4x2.hpp \
+  /home/faye/Documents/engine/include/glm/mat4x3.hpp \
+  /home/faye/Documents/engine/include/glm/matrix.hpp \
+  /home/faye/Documents/engine/include/glm/simd/platform.h \
+  /home/faye/Documents/engine/include/glm/vec2.hpp \
+  /home/faye/Documents/engine/include/glm/vec3.hpp \
+  /home/faye/Documents/engine/include/glm/vec4.hpp \
+  /home/faye/Documents/engine/include/glm/detail/_vectorize.hpp \
+  /home/faye/Documents/engine/include/glm/detail/compute_vector_decl.hpp \
+  /home/faye/Documents/engine/include/glm/detail/compute_vector_relational.hpp \
+  /home/faye/Documents/engine/include/glm/detail/qualifier.hpp \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat4x4.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat4x4.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_vec4.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_vec4.inl \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double4x4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double4x4_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float4x4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float4x4_precision.hpp \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_relational.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_relational.inl \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_float.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_quat.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_quat.inl \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_geometric.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_geometric.inl \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_common.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_common.inl \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_double.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_double_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_float.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_float_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_transform.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_transform.inl \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_trigonometric.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_trigonometric.inl \
+  /home/faye/Documents/engine/include/glm/ext/vector_relational.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_relational.inl \
+  /home/faye/Documents/engine/include/glm/detail/func_trigonometric.inl \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/trigonometric.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_clip_space.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_clip_space.inl \
+  /home/faye/Documents/engine/include/glm/ext/matrix_projection.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_projection.inl \
+  /home/faye/Documents/engine/include/glm/ext/matrix_transform.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_transform.inl \
+  /home/faye/Documents/engine/include/glm/ext/scalar_constants.hpp \
+  /home/faye/Documents/engine/include/glm/ext/scalar_constants.inl \
+  /home/faye/Documents/engine/include/glm/gtc/constants.hpp \
+  /home/faye/Documents/engine/include/glm/gtc/constants.inl \
+  /home/faye/Documents/engine/include/glm/gtc/matrix_transform.hpp \
+  /home/faye/Documents/engine/include/glm/gtc/matrix_transform.inl \
+  /home/faye/Documents/engine/include/glm/gtc/epsilon.hpp \
+  /home/faye/Documents/engine/include/glm/gtc/epsilon.inl \
+  /home/faye/Documents/engine/include/glm/gtc/quaternion.hpp \
+  /home/faye/Documents/engine/include/glm/gtc/quaternion.inl \
+  /home/faye/Documents/engine/include/glm/detail/_fixes.hpp \
+  /home/faye/Documents/engine/include/glm/detail/func_integer.inl \
+  /home/faye/Documents/engine/include/glm/detail/func_packing.inl \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_half.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_half.inl \
+  /home/faye/Documents/engine/include/glm/fwd.hpp \
+  /home/faye/Documents/engine/include/glm/glm.hpp \
+  /home/faye/Documents/engine/include/glm/integer.hpp \
+  /home/faye/Documents/engine/include/glm/packing.hpp \
+  /home/faye/Documents/engine/include/glm/gtx/transform.hpp \
+  /home/faye/Documents/engine/include/glm/gtx/transform.inl \
+  /home/faye/Documents/engine/include/glm/mat4x4.hpp \
+  /home/faye/Documents/engine/include/glm/gtx/matrix_decompose.hpp \
+  /home/faye/Documents/engine/include/glm/gtx/matrix_decompose.inl \
+  /home/faye/Documents/engine/include/imgui/imconfig.h \
+  /home/faye/Documents/engine/include/imgui/imgui.h \
+  /home/faye/Documents/engine/include/imgui/imgui_impl_glfw.h \
+  /home/faye/Documents/engine/include/imgui/imgui_impl_opengl3.h \
+  /home/faye/Documents/engine/src/headers.h \
+  /home/faye/Documents/engine/src/system/generic.h \
+  /home/faye/Documents/engine/src/system/math.hpp \
+  /home/faye/Documents/engine/src/system/vechelper.hpp \
+  /home/faye/Documents/engine/src/render/camera.hpp \
+  /home/faye/Documents/engine/src/render/entity.hpp \
+  /home/faye/Documents/engine/src/render/framebuffer.hpp \
+  /home/faye/Documents/engine/src/render/rendertexture.hpp \
+  /home/faye/Documents/engine/src/render/transform.hpp \
+  /home/faye/Documents/engine/src/windowmanager/fullscreenmode.hpp \
+  /home/faye/Documents/engine/src/audio/audio.hpp \
+  /home/faye/Documents/engine/src/audio/audioclip.hpp \
+  /home/faye/Documents/engine/src/audio/audiosource.hpp \
+  /home/faye/Documents/engine/src/audio/channelgroup.hpp \
+  /usr/include/KHR/khrplatform.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/float.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/limits.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/mm_malloc.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdarg.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stddef.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdint.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/syslimits.h \
+  /usr/x86_64-w64-mingw32/include/_mingw.h \
+  /usr/x86_64-w64-mingw32/include/_mingw_mac.h \
+  /usr/x86_64-w64-mingw32/include/_mingw_off_t.h \
+  /usr/x86_64-w64-mingw32/include/_mingw_secapi.h \
+  /usr/x86_64-w64-mingw32/include/_mingw_stat64.h \
+  /usr/x86_64-w64-mingw32/include/_mingw_stdarg.h \
+  /usr/x86_64-w64-mingw32/include/_timeval.h \
+  /usr/x86_64-w64-mingw32/include/assert.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/array \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/atomic \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/backward/auto_ptr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/backward/binders.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bit \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/align.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/alloc_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/allocated_ptr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/allocator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_base.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_futex.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_lockfree_defines.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_timed_wait.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_wait.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/basic_ios.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/basic_ios.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/basic_string.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/basic_string.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/binders.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/char_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/charconv.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/chrono.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/concept_check.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/cpp_type_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/cxxabi_forced.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/cxxabi_init_exception.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/deque.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/enable_special_members.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/erase_if.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/exception.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/exception_defines.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/exception_ptr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/functexcept.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/functional_hash.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/hash_bytes.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/hashtable.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/hashtable_policy.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/intcmp.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/invoke.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ios_base.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/istream.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/iterator_concepts.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/locale_classes.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/locale_classes.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/locale_facets.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/locale_facets.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/localefwd.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/max_size_type.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/memory_resource.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/memoryfwd.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/move.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/nested_exception.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/new_allocator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/new_except.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/new_throw.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/node_handle.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ostream.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ostream.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ostream_insert.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ostream_print.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/parse_numbers.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/postypes.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/predefined_ops.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ptr_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/range_access.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ranges_algobase.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ranges_base.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ranges_cmp.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ranges_uninitialized.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ranges_util.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/refwrap.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/requires_hosted.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/semaphore_base.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/shared_ptr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/shared_ptr_atomic.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/shared_ptr_base.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/specfun.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/sstream.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/std_abs.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/std_function.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/std_mutex.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/std_thread.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stdexcept_except.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stdexcept_throw.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stdexcept_throwfwd.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_algobase.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_bvector.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_construct.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_deque.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_function.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_iterator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_iterator_base_funcs.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_iterator_base_types.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_map.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_multimap.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_multiset.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_pair.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_raw_storage_iter.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_relops.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_set.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_stack.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_tempbuf.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_tree.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_uninitialized.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_vector.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stream_iterator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/streambuf.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/streambuf_iterator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/string_view.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stringfwd.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/this_thread_sleep.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/unique_lock.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/unique_ptr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/unordered_map.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/unordered_set.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/uses_allocator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/uses_allocator_args.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/utility.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/vector.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/version.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cassert \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cctype \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cerrno \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cfloat \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/climits \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/clocale \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cmath \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/compare \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/concepts \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/condition_variable \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cstddef \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cstdint \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cstdio \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cstdlib \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cstring \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ctime \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cwchar \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cwctype \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cxxabi.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/debug/assertions.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/debug/debug.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/deque \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/exception \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/aligned_buffer.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/alloc_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/atomicity.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/concurrence.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/numeric_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/string_conversions.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/type_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/functional \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/future \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/initializer_list \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ios \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/iosfwd \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/iostream \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/istream \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/iterator \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/limits \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/map \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/memory \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/mutex \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/new \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/numbers \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ostream \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/execution_defs.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/glue_memory_defs.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/pstl_config.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ratio \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/semaphore \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/set \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/source_location \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/sstream \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/stack \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/stdexcept \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/stdlib.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/stop_token \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/streambuf \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/string \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/string_view \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/system_error \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/thread \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/bessel_function.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/beta_function.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/ell_integral.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/exp_integral.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/gamma.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/hypergeometric.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/legendre_function.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/modified_bessel_func.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/poly_hermite.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/poly_laguerre.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/riemann_zeta.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/special_function_util.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tuple \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/type_traits \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/typeindex \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/typeinfo \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/unordered_map \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/unordered_set \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/utility \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/vector \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/atomic_word.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/c++allocator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/c++config.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/c++locale.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/cpu_defines.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/ctype_base.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/ctype_inline.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/cxxabi_tweaks.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/error_constants.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/gthr-default.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/gthr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/os_defines.h \
+  /usr/x86_64-w64-mingw32/include/corecrt.h \
+  /usr/x86_64-w64-mingw32/include/corecrt_startup.h \
+  /usr/x86_64-w64-mingw32/include/corecrt_stdio_config.h \
+  /usr/x86_64-w64-mingw32/include/corecrt_wconio.h \
+  /usr/x86_64-w64-mingw32/include/corecrt_wctype.h \
+  /usr/x86_64-w64-mingw32/include/corecrt_wstdlib.h \
+  /usr/x86_64-w64-mingw32/include/crtdefs.h \
+  /usr/x86_64-w64-mingw32/include/ctype.h \
+  /usr/x86_64-w64-mingw32/include/errno.h \
+  /usr/x86_64-w64-mingw32/include/float.h \
+  /usr/x86_64-w64-mingw32/include/inttypes.h \
+  /usr/x86_64-w64-mingw32/include/limits.h \
+  /usr/x86_64-w64-mingw32/include/locale.h \
+  /usr/x86_64-w64-mingw32/include/malloc.h \
+  /usr/x86_64-w64-mingw32/include/math.h \
+  /usr/x86_64-w64-mingw32/include/process.h \
+  /usr/x86_64-w64-mingw32/include/pthread.h \
+  /usr/x86_64-w64-mingw32/include/pthread_compat.h \
+  /usr/x86_64-w64-mingw32/include/pthread_signal.h \
+  /usr/x86_64-w64-mingw32/include/pthread_time.h \
+  /usr/x86_64-w64-mingw32/include/pthread_unistd.h \
+  /usr/x86_64-w64-mingw32/include/sched.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/stdio_s.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/stdlib_s.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/string_s.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/sys/timeb_s.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/wchar_s.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/wconio_s.h \
+  /usr/x86_64-w64-mingw32/include/signal.h \
+  /usr/x86_64-w64-mingw32/include/stdarg.h \
+  /usr/x86_64-w64-mingw32/include/stddef.h \
+  /usr/x86_64-w64-mingw32/include/stdint.h \
+  /usr/x86_64-w64-mingw32/include/stdio.h \
+  /usr/x86_64-w64-mingw32/include/stdlib.h \
+  /usr/x86_64-w64-mingw32/include/string.h \
+  /usr/x86_64-w64-mingw32/include/swprintf.inl \
+  /usr/x86_64-w64-mingw32/include/sys/timeb.h \
+  /usr/x86_64-w64-mingw32/include/sys/types.h \
+  /usr/x86_64-w64-mingw32/include/time.h \
+  /usr/x86_64-w64-mingw32/include/vadefs.h \
+  /usr/x86_64-w64-mingw32/include/wchar.h \
+  /usr/x86_64-w64-mingw32/include/wctype.h
+
+CMakeFiles/engine.dir/src/audio/channelgroup.cpp.o: /home/faye/Documents/engine/src/audio/channelgroup.cpp \
+  /home/faye/Documents/engine/include/fmod/fmod.h \
+  /home/faye/Documents/engine/include/fmod/fmod_codec.h \
+  /home/faye/Documents/engine/include/fmod/fmod_common.h \
+  /home/faye/Documents/engine/include/fmod/fmod_dsp.h \
+  /home/faye/Documents/engine/include/fmod/fmod_dsp_effects.h \
+  /home/faye/Documents/engine/include/fmod/fmod_errors.h \
+  /home/faye/Documents/engine/include/fmod/fmod_output.h \
+  /home/faye/Documents/engine/src/render/camera.hpp \
+  /home/faye/Documents/engine/src/render/framebuffer.hpp \
+  /home/faye/Documents/engine/src/render/level.hpp \
+  /home/faye/Documents/engine/src/render/rendertexture.hpp \
+  /home/faye/Documents/engine/src/system/file.hpp \
+  /home/faye/Documents/engine/src/editor/project.hpp \
+  /home/faye/Documents/engine/include/GLFW/glfw3.h \
+  /home/faye/Documents/engine/include/cereal/macros.hpp \
+  /home/faye/Documents/engine/include/cereal/details/static_object.hpp \
+  /home/faye/Documents/engine/include/cereal/macros.hpp \
+  /home/faye/Documents/engine/include/cereal/details/helpers.hpp \
+  /home/faye/Documents/engine/include/cereal/macros.hpp \
+  /home/faye/Documents/engine/include/cereal/specialize.hpp \
+  /home/faye/Documents/engine/include/cereal/access.hpp \
+  /home/faye/Documents/engine/include/cereal/macros.hpp \
+  /home/faye/Documents/engine/include/cereal/details/helpers.hpp \
+  /home/faye/Documents/engine/include/cereal/details/traits.hpp \
+  /home/faye/Documents/engine/include/cereal/macros.hpp \
+  /home/faye/Documents/engine/include/cereal/cereal.hpp \
+  /home/faye/Documents/engine/include/cereal/details/polymorphic_impl_fwd.hpp \
+  /home/faye/Documents/engine/include/cereal/details/traits.hpp \
+  /home/faye/Documents/engine/include/cereal/types/base_class.hpp \
+  /home/faye/Documents/engine/include/cereal/types/common.hpp \
+  /home/faye/Documents/engine/include/cereal/cereal.hpp \
+  /home/faye/Documents/engine/include/cereal/details/util.hpp \
+  /home/faye/Documents/engine/include/cereal/external/base64.hpp \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/allocators.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/document.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/encodedstream.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/encodings.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/rapidjson.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/error/error.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/allocators.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/rapidjson.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/stream.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/biginteger.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/diyfp.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/dtoa.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/ieee754.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/itoa.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/meta.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/pow10.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/stack.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/strfunc.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/strtod.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/swap.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/istreamwrapper.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/memorystream.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/ostreamwrapper.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/prettywriter.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/rapidjson.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/reader.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/stream.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/stringbuffer.h \
+  /home/faye/Documents/engine/include/cereal/external/rapidjson/writer.h \
+  /home/faye/Documents/engine/include/cereal/archives/json.hpp \
+  /home/faye/Documents/engine/include/cereal/cereal.hpp \
+  /home/faye/Documents/engine/include/cereal/details/polymorphic_impl_fwd.hpp \
+  /home/faye/Documents/engine/include/cereal/details/static_object.hpp \
+  /home/faye/Documents/engine/include/cereal/types/memory.hpp \
+  /home/faye/Documents/engine/include/cereal/types/string.hpp \
+  /home/faye/Documents/engine/include/cereal/details/helpers.hpp \
+  /home/faye/Documents/engine/include/cereal/details/polymorphic_impl.hpp \
+  /home/faye/Documents/engine/include/cereal/details/traits.hpp \
+  /home/faye/Documents/engine/include/cereal/details/util.hpp \
+  /home/faye/Documents/engine/include/cereal/cereal.hpp \
+  /home/faye/Documents/engine/include/cereal/types/polymorphic.hpp \
+  /home/faye/Documents/engine/include/cereal/types/memory.hpp \
+  /home/faye/Documents/engine/include/cereal/types/array.hpp \
+  /home/faye/Documents/engine/include/cereal/types/base_class.hpp \
+  /home/faye/Documents/engine/include/cereal/types/polymorphic.hpp \
+  /home/faye/Documents/engine/include/cereal/types/string.hpp \
+  /home/faye/Documents/engine/include/glad/glad.h \
+  /home/faye/Documents/engine/include/glm/ext/vector_bool1.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_bool1_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_double1.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_double1_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_float1.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_float1_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_int1.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_int1_sized.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_uint1.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_uint1_sized.hpp \
+  /home/faye/Documents/engine/include/glm/gtc/vec1.hpp \
+  /home/faye/Documents/engine/include/glm/gtc/type_ptr.hpp \
+  /home/faye/Documents/engine/include/glm/gtc/type_ptr.inl \
+  /home/faye/Documents/engine/include/glm/common.hpp \
+  /home/faye/Documents/engine/include/glm/detail/func_vector_relational.inl \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/vector_relational.hpp \
+  /home/faye/Documents/engine/include/glm/detail/_fixes.hpp \
+  /home/faye/Documents/engine/include/glm/detail/compute_common.hpp \
+  /home/faye/Documents/engine/include/glm/detail/func_common.inl \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_vec1.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_vec1.inl \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat2x2.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat2x2.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_mat2x3.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat2x3.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_mat2x4.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat2x4.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_mat3x2.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat3x2.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_mat3x3.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat3x3.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_mat3x4.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat3x4.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_mat4x2.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat4x2.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_mat4x3.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat4x3.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_vec2.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_vec2.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_vec3.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_vec3.inl \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/ext/scalar_int_sized.hpp \
+  /home/faye/Documents/engine/include/glm/ext/scalar_uint_sized.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double2x2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double2x2_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double2x3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double2x3_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double2x4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double2x4_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double3x2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double3x2_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double3x3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double3x3_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double3x4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double3x4_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double4x2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double4x2_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double4x3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double4x3_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float2x2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float2x2_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float2x3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float2x3_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float2x4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float2x4_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float3x2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float3x2_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float3x3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float3x3_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float3x4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float3x4_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float4x2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float4x2_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float4x3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float4x3_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_bool2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_bool2_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_bool3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_bool3_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_bool4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_bool4_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_double2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_double2_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_double3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_double3_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_double4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_double4_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_float2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_float2_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_float3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_float3_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_float4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_float4_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_int2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_int2_sized.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_int3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_int3_sized.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_int4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_int4_sized.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_uint2.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_uint2_sized.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_uint3.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_uint3_sized.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_uint4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_uint4_sized.hpp \
+  /home/faye/Documents/engine/include/glm/detail/func_exponential.inl \
+  /home/faye/Documents/engine/include/glm/exponential.hpp \
+  /home/faye/Documents/engine/include/glm/detail/func_geometric.inl \
+  /home/faye/Documents/engine/include/glm/geometric.hpp \
+  /home/faye/Documents/engine/include/glm/detail/func_matrix.inl \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/mat2x2.hpp \
+  /home/faye/Documents/engine/include/glm/mat2x3.hpp \
+  /home/faye/Documents/engine/include/glm/mat2x4.hpp \
+  /home/faye/Documents/engine/include/glm/mat3x2.hpp \
+  /home/faye/Documents/engine/include/glm/mat3x3.hpp \
+  /home/faye/Documents/engine/include/glm/mat3x4.hpp \
+  /home/faye/Documents/engine/include/glm/mat4x2.hpp \
+  /home/faye/Documents/engine/include/glm/mat4x3.hpp \
+  /home/faye/Documents/engine/include/glm/matrix.hpp \
+  /home/faye/Documents/engine/include/glm/simd/platform.h \
+  /home/faye/Documents/engine/include/glm/vec2.hpp \
+  /home/faye/Documents/engine/include/glm/vec3.hpp \
+  /home/faye/Documents/engine/include/glm/vec4.hpp \
+  /home/faye/Documents/engine/include/glm/detail/_vectorize.hpp \
+  /home/faye/Documents/engine/include/glm/detail/compute_vector_decl.hpp \
+  /home/faye/Documents/engine/include/glm/detail/compute_vector_relational.hpp \
+  /home/faye/Documents/engine/include/glm/detail/qualifier.hpp \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat4x4.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_mat4x4.inl \
+  /home/faye/Documents/engine/include/glm/detail/type_vec4.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_vec4.inl \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double4x4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_double4x4_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float4x4.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_float4x4_precision.hpp \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_relational.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_relational.inl \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_float.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_quat.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_quat.inl \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_geometric.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_geometric.inl \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_common.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_common.inl \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_double.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_double_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_float.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_float_precision.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_transform.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_transform.inl \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_trigonometric.hpp \
+  /home/faye/Documents/engine/include/glm/ext/quaternion_trigonometric.inl \
+  /home/faye/Documents/engine/include/glm/ext/vector_relational.hpp \
+  /home/faye/Documents/engine/include/glm/ext/vector_relational.inl \
+  /home/faye/Documents/engine/include/glm/detail/func_trigonometric.inl \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/trigonometric.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_clip_space.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_clip_space.inl \
+  /home/faye/Documents/engine/include/glm/ext/matrix_projection.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_projection.inl \
+  /home/faye/Documents/engine/include/glm/ext/matrix_transform.hpp \
+  /home/faye/Documents/engine/include/glm/ext/matrix_transform.inl \
+  /home/faye/Documents/engine/include/glm/ext/scalar_constants.hpp \
+  /home/faye/Documents/engine/include/glm/ext/scalar_constants.inl \
+  /home/faye/Documents/engine/include/glm/gtc/constants.hpp \
+  /home/faye/Documents/engine/include/glm/gtc/constants.inl \
+  /home/faye/Documents/engine/include/glm/gtc/matrix_transform.hpp \
+  /home/faye/Documents/engine/include/glm/gtc/matrix_transform.inl \
+  /home/faye/Documents/engine/include/glm/gtc/epsilon.hpp \
+  /home/faye/Documents/engine/include/glm/gtc/epsilon.inl \
+  /home/faye/Documents/engine/include/glm/gtc/quaternion.hpp \
+  /home/faye/Documents/engine/include/glm/gtc/quaternion.inl \
+  /home/faye/Documents/engine/include/glm/detail/_fixes.hpp \
+  /home/faye/Documents/engine/include/glm/detail/func_integer.inl \
+  /home/faye/Documents/engine/include/glm/detail/func_packing.inl \
+  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_half.hpp \
+  /home/faye/Documents/engine/include/glm/detail/type_half.inl \
+  /home/faye/Documents/engine/include/glm/fwd.hpp \
+  /home/faye/Documents/engine/include/glm/glm.hpp \
+  /home/faye/Documents/engine/include/glm/integer.hpp \
+  /home/faye/Documents/engine/include/glm/packing.hpp \
+  /home/faye/Documents/engine/include/glm/gtx/transform.hpp \
+  /home/faye/Documents/engine/include/glm/gtx/transform.inl \
+  /home/faye/Documents/engine/include/glm/mat4x4.hpp \
+  /home/faye/Documents/engine/include/glm/gtx/matrix_decompose.hpp \
+  /home/faye/Documents/engine/include/glm/gtx/matrix_decompose.inl \
+  /home/faye/Documents/engine/include/imgui/imconfig.h \
+  /home/faye/Documents/engine/include/imgui/imgui.h \
+  /home/faye/Documents/engine/include/imgui/imgui_impl_glfw.h \
+  /home/faye/Documents/engine/include/imgui/imgui_impl_opengl3.h \
+  /home/faye/Documents/engine/src/headers.h \
+  /home/faye/Documents/engine/src/system/generic.h \
+  /home/faye/Documents/engine/src/system/math.hpp \
+  /home/faye/Documents/engine/src/system/vechelper.hpp \
+  /home/faye/Documents/engine/src/windowmanager/fullscreenmode.hpp \
+  /home/faye/Documents/engine/src/render/entity.hpp \
+  /home/faye/Documents/engine/src/render/transform.hpp \
+  /home/faye/Documents/engine/src/audio/audio.hpp \
+  /home/faye/Documents/engine/src/audio/audioclip.hpp \
+  /home/faye/Documents/engine/src/audio/audiosource.hpp \
+  /home/faye/Documents/engine/src/audio/channelgroup.hpp \
+  /usr/include/KHR/khrplatform.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/float.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/limits.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/mm_malloc.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdarg.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stddef.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdint.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/syslimits.h \
+  /usr/x86_64-w64-mingw32/include/_mingw.h \
+  /usr/x86_64-w64-mingw32/include/_mingw_mac.h \
+  /usr/x86_64-w64-mingw32/include/_mingw_off_t.h \
+  /usr/x86_64-w64-mingw32/include/_mingw_secapi.h \
+  /usr/x86_64-w64-mingw32/include/_mingw_stat64.h \
+  /usr/x86_64-w64-mingw32/include/_mingw_stdarg.h \
+  /usr/x86_64-w64-mingw32/include/_timeval.h \
+  /usr/x86_64-w64-mingw32/include/assert.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/array \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/atomic \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/backward/auto_ptr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/backward/binders.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bit \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/align.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/alloc_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/allocated_ptr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/allocator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_base.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_futex.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_lockfree_defines.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_timed_wait.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_wait.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/basic_ios.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/basic_ios.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/basic_string.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/basic_string.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/binders.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/char_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/charconv.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/chrono.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/codecvt.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/concept_check.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/cpp_type_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/cxxabi_forced.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/cxxabi_init_exception.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/deque.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/enable_special_members.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/erase_if.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/exception.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/exception_defines.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/exception_ptr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/fs_dir.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/fs_fwd.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/fs_ops.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/fs_path.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/fstream.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/functexcept.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/functional_hash.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/hash_bytes.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/hashtable.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/hashtable_policy.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/intcmp.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/invoke.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ios_base.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/istream.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/iterator_concepts.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/locale_classes.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/locale_classes.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/locale_conv.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/locale_facets.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/locale_facets.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/locale_facets_nonio.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/locale_facets_nonio.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/localefwd.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/max_size_type.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/memory_resource.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/memoryfwd.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/move.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/nested_exception.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/new_allocator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/new_except.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/new_throw.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/node_handle.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ostream.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ostream.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ostream_insert.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ostream_print.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/parse_numbers.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/postypes.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/predefined_ops.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ptr_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/quoted_string.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/range_access.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ranges_algobase.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ranges_base.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ranges_cmp.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ranges_uninitialized.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ranges_util.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/refwrap.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/requires_hosted.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/semaphore_base.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/shared_ptr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/shared_ptr_atomic.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/shared_ptr_base.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/specfun.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/sstream.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/std_abs.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/std_function.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/std_mutex.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/std_thread.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stdexcept_except.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stdexcept_throw.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stdexcept_throwfwd.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_algobase.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_bvector.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_construct.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_deque.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_function.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_iterator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_iterator_base_funcs.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_iterator_base_types.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_map.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_multimap.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_multiset.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_pair.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_raw_storage_iter.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_relops.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_set.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_stack.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_tempbuf.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_tree.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_uninitialized.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_vector.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stream_iterator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/streambuf.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/streambuf_iterator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/string_view.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stringfwd.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/this_thread_sleep.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/unique_lock.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/unique_ptr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/unordered_map.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/unordered_set.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/uses_allocator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/uses_allocator_args.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/utility.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/vector.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/version.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cassert \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cctype \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cerrno \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cfloat \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/climits \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/clocale \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cmath \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/codecvt \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/compare \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/concepts \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/condition_variable \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cstddef \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cstdint \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cstdio \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cstdlib \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cstring \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ctime \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cwchar \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cwctype \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cxxabi.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/debug/assertions.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/debug/debug.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/deque \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/exception \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/aligned_buffer.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/alloc_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/atomicity.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/concurrence.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/numeric_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/string_conversions.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/type_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/filesystem \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/fstream \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/functional \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/future \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/initializer_list \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/iomanip \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ios \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/iosfwd \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/iostream \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/istream \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/iterator \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/limits \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/locale \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/map \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/memory \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/mutex \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/new \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/numbers \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ostream \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/execution_defs.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/glue_memory_defs.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/pstl_config.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ratio \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/semaphore \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/set \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/source_location \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/sstream \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/stack \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/stdexcept \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/stdlib.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/stop_token \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/streambuf \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/string \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/string_view \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/system_error \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/thread \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/bessel_function.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/beta_function.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/ell_integral.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/exp_integral.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/gamma.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/hypergeometric.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/legendre_function.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/modified_bessel_func.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/poly_hermite.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/poly_laguerre.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/riemann_zeta.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/special_function_util.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tuple \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/type_traits \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/typeindex \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/typeinfo \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/unordered_map \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/unordered_set \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/utility \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/vector \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/atomic_word.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/basic_file.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/c++allocator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/c++config.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/c++io.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/c++locale.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/cpu_defines.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/ctype_base.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/ctype_inline.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/cxxabi_tweaks.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/error_constants.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/gthr-default.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/gthr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/messages_members.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/os_defines.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/time_members.h \
+  /usr/x86_64-w64-mingw32/include/corecrt.h \
+  /usr/x86_64-w64-mingw32/include/corecrt_startup.h \
+  /usr/x86_64-w64-mingw32/include/corecrt_stdio_config.h \
+  /usr/x86_64-w64-mingw32/include/corecrt_wconio.h \
+  /usr/x86_64-w64-mingw32/include/corecrt_wctype.h \
+  /usr/x86_64-w64-mingw32/include/corecrt_wstdlib.h \
+  /usr/x86_64-w64-mingw32/include/crtdefs.h \
+  /usr/x86_64-w64-mingw32/include/ctype.h \
+  /usr/x86_64-w64-mingw32/include/errno.h \
+  /usr/x86_64-w64-mingw32/include/float.h \
+  /usr/x86_64-w64-mingw32/include/inttypes.h \
+  /usr/x86_64-w64-mingw32/include/limits.h \
+  /usr/x86_64-w64-mingw32/include/locale.h \
+  /usr/x86_64-w64-mingw32/include/malloc.h \
+  /usr/x86_64-w64-mingw32/include/math.h \
+  /usr/x86_64-w64-mingw32/include/process.h \
+  /usr/x86_64-w64-mingw32/include/pthread.h \
+  /usr/x86_64-w64-mingw32/include/pthread_compat.h \
+  /usr/x86_64-w64-mingw32/include/pthread_signal.h \
+  /usr/x86_64-w64-mingw32/include/pthread_time.h \
+  /usr/x86_64-w64-mingw32/include/pthread_unistd.h \
+  /usr/x86_64-w64-mingw32/include/sched.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/stdio_s.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/stdlib_s.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/string_s.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/sys/timeb_s.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/wchar_s.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/wconio_s.h \
+  /usr/x86_64-w64-mingw32/include/signal.h \
+  /usr/x86_64-w64-mingw32/include/stdarg.h \
+  /usr/x86_64-w64-mingw32/include/stddef.h \
+  /usr/x86_64-w64-mingw32/include/stdint.h \
+  /usr/x86_64-w64-mingw32/include/stdio.h \
+  /usr/x86_64-w64-mingw32/include/stdlib.h \
+  /usr/x86_64-w64-mingw32/include/string.h \
+  /usr/x86_64-w64-mingw32/include/swprintf.inl \
+  /usr/x86_64-w64-mingw32/include/sys/timeb.h \
+  /usr/x86_64-w64-mingw32/include/sys/types.h \
+  /usr/x86_64-w64-mingw32/include/time.h \
+  /usr/x86_64-w64-mingw32/include/vadefs.h \
+  /usr/x86_64-w64-mingw32/include/wchar.h \
+  /usr/x86_64-w64-mingw32/include/wctype.h
 
 CMakeFiles/engine.dir/src/editor/editor.cpp.o: /home/faye/Documents/engine/src/editor/editor.cpp \
   /home/faye/Documents/engine/include/AirGuanZ/imfilebrowser.h \
@@ -2092,6 +4375,17 @@ CMakeFiles/engine.dir/src/editor/editor.cpp.o: /home/faye/Documents/engine/src/e
   /home/faye/Documents/engine/include/imgui/imgui.h \
   /home/faye/Documents/engine/include/imgui/imgui_impl_glfw.h \
   /home/faye/Documents/engine/include/imgui/imgui_impl_opengl3.h \
+  /home/faye/Documents/engine/include/fmod/fmod.h \
+  /home/faye/Documents/engine/include/fmod/fmod_codec.h \
+  /home/faye/Documents/engine/include/fmod/fmod_common.h \
+  /home/faye/Documents/engine/include/fmod/fmod_dsp.h \
+  /home/faye/Documents/engine/include/fmod/fmod_dsp_effects.h \
+  /home/faye/Documents/engine/include/fmod/fmod_errors.h \
+  /home/faye/Documents/engine/include/fmod/fmod_output.h \
+  /home/faye/Documents/engine/src/audio/audio.hpp \
+  /home/faye/Documents/engine/src/audio/audioclip.hpp \
+  /home/faye/Documents/engine/src/audio/audiosource.hpp \
+  /home/faye/Documents/engine/src/audio/channelgroup.hpp \
   /home/faye/Documents/engine/src/headers.h \
   /home/faye/Documents/engine/src/render/camera.hpp \
   /home/faye/Documents/engine/src/render/framebuffer.hpp \
@@ -2113,18 +4407,11 @@ CMakeFiles/engine.dir/src/editor/editor.cpp.o: /home/faye/Documents/engine/src/e
   /home/faye/Documents/engine/src/render/sprite.hpp \
   /home/faye/Documents/engine/src/render/transform.hpp \
   /home/faye/Documents/engine/src/render/vertex.hpp \
-  /home/faye/Documents/engine/include/fmod/fmod.h \
-  /home/faye/Documents/engine/include/fmod/fmod_codec.h \
-  /home/faye/Documents/engine/include/fmod/fmod_common.h \
-  /home/faye/Documents/engine/include/fmod/fmod_dsp.h \
-  /home/faye/Documents/engine/include/fmod/fmod_dsp_effects.h \
-  /home/faye/Documents/engine/include/fmod/fmod_errors.h \
-  /home/faye/Documents/engine/include/fmod/fmod_output.h \
-  /home/faye/Documents/engine/src/system/audio.hpp \
   /home/faye/Documents/engine/src/system/mouse.hpp \
   /home/faye/Documents/engine/src/windowmanager/WindowManager.hpp \
   /home/faye/Documents/engine/src/windowmanager/fullscreenmode.hpp \
   /home/faye/Documents/engine/src/editor/editor.hpp \
+  /usr/include/KHR/khrplatform.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/float.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/limits.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/mm_malloc.h \
@@ -2132,7 +4419,6 @@ CMakeFiles/engine.dir/src/editor/editor.cpp.o: /home/faye/Documents/engine/src/e
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stddef.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdint.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/syslimits.h \
-  /usr/x86_64-w64-mingw32/include/KHR/khrplatform.h \
   /usr/x86_64-w64-mingw32/include/_mingw.h \
   /usr/x86_64-w64-mingw32/include/_mingw_mac.h \
   /usr/x86_64-w64-mingw32/include/_mingw_off_t.h \
@@ -2343,6 +4629,7 @@ CMakeFiles/engine.dir/src/editor/editor.cpp.o: /home/faye/Documents/engine/src/e
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/ratio \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/semaphore \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/set \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/source_location \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/span \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/sstream \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/stack \
@@ -2435,6 +4722,17 @@ CMakeFiles/engine.dir/src/editor/editor.cpp.o: /home/faye/Documents/engine/src/e
 
 CMakeFiles/engine.dir/src/editor/editorWM.cpp.o: /home/faye/Documents/engine/src/editor/editorWM.cpp \
   /home/faye/Documents/engine/include/AirGuanZ/imfilebrowser.h \
+  /home/faye/Documents/engine/include/fmod/fmod.h \
+  /home/faye/Documents/engine/include/fmod/fmod_codec.h \
+  /home/faye/Documents/engine/include/fmod/fmod_common.h \
+  /home/faye/Documents/engine/include/fmod/fmod_dsp.h \
+  /home/faye/Documents/engine/include/fmod/fmod_dsp_effects.h \
+  /home/faye/Documents/engine/include/fmod/fmod_errors.h \
+  /home/faye/Documents/engine/include/fmod/fmod_output.h \
+  /home/faye/Documents/engine/src/audio/audio.hpp \
+  /home/faye/Documents/engine/src/audio/audioclip.hpp \
+  /home/faye/Documents/engine/src/audio/audiosource.hpp \
+  /home/faye/Documents/engine/src/audio/channelgroup.hpp \
   /home/faye/Documents/engine/src/render/camera.hpp \
   /home/faye/Documents/engine/src/render/framebuffer.hpp \
   /home/faye/Documents/engine/src/render/level.hpp \
@@ -2455,14 +4753,6 @@ CMakeFiles/engine.dir/src/editor/editorWM.cpp.o: /home/faye/Documents/engine/src
   /home/faye/Documents/engine/src/render/sprite.hpp \
   /home/faye/Documents/engine/src/render/transform.hpp \
   /home/faye/Documents/engine/src/render/vertex.hpp \
-  /home/faye/Documents/engine/include/fmod/fmod.h \
-  /home/faye/Documents/engine/include/fmod/fmod_codec.h \
-  /home/faye/Documents/engine/include/fmod/fmod_common.h \
-  /home/faye/Documents/engine/include/fmod/fmod_dsp.h \
-  /home/faye/Documents/engine/include/fmod/fmod_dsp_effects.h \
-  /home/faye/Documents/engine/include/fmod/fmod_errors.h \
-  /home/faye/Documents/engine/include/fmod/fmod_output.h \
-  /home/faye/Documents/engine/src/system/audio.hpp \
   /home/faye/Documents/engine/src/editor/editor.hpp \
   /home/faye/Documents/engine/src/system/mouse.hpp \
   /home/faye/Documents/engine/include/GLFW/glfw3.h \
@@ -2736,6 +5026,7 @@ CMakeFiles/engine.dir/src/editor/editorWM.cpp.o: /home/faye/Documents/engine/src
   /home/faye/Documents/engine/src/windowmanager/fullscreenmode.hpp \
   /home/faye/Documents/engine/src/windowmanager/WindowManager.hpp \
   /home/faye/Documents/engine/src/editor/editorWM.hpp \
+  /usr/include/KHR/khrplatform.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/float.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/limits.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/mm_malloc.h \
@@ -2743,7 +5034,6 @@ CMakeFiles/engine.dir/src/editor/editorWM.cpp.o: /home/faye/Documents/engine/src
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stddef.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdint.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/syslimits.h \
-  /usr/x86_64-w64-mingw32/include/KHR/khrplatform.h \
   /usr/x86_64-w64-mingw32/include/_mingw.h \
   /usr/x86_64-w64-mingw32/include/_mingw_mac.h \
   /usr/x86_64-w64-mingw32/include/_mingw_off_t.h \
@@ -2954,6 +5244,7 @@ CMakeFiles/engine.dir/src/editor/editorWM.cpp.o: /home/faye/Documents/engine/src
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/ratio \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/semaphore \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/set \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/source_location \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/span \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/sstream \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/stack \
@@ -3312,6 +5603,17 @@ CMakeFiles/engine.dir/src/editor/project.cpp.o: /home/faye/Documents/engine/src/
   /home/faye/Documents/engine/include/imgui/imgui.h \
   /home/faye/Documents/engine/include/imgui/imgui_impl_glfw.h \
   /home/faye/Documents/engine/include/imgui/imgui_impl_opengl3.h \
+  /home/faye/Documents/engine/include/fmod/fmod.h \
+  /home/faye/Documents/engine/include/fmod/fmod_codec.h \
+  /home/faye/Documents/engine/include/fmod/fmod_common.h \
+  /home/faye/Documents/engine/include/fmod/fmod_dsp.h \
+  /home/faye/Documents/engine/include/fmod/fmod_dsp_effects.h \
+  /home/faye/Documents/engine/include/fmod/fmod_errors.h \
+  /home/faye/Documents/engine/include/fmod/fmod_output.h \
+  /home/faye/Documents/engine/src/audio/audio.hpp \
+  /home/faye/Documents/engine/src/audio/audioclip.hpp \
+  /home/faye/Documents/engine/src/audio/audiosource.hpp \
+  /home/faye/Documents/engine/src/audio/channelgroup.hpp \
   /home/faye/Documents/engine/src/headers.h \
   /home/faye/Documents/engine/src/render/texture.hpp \
   /home/faye/Documents/engine/src/shader/ShaderManager.hpp \
@@ -3330,6 +5632,7 @@ CMakeFiles/engine.dir/src/editor/project.cpp.o: /home/faye/Documents/engine/src/
   /home/faye/Documents/engine/src/system/file.hpp \
   /home/faye/Documents/engine/src/windowmanager/fullscreenmode.hpp \
   /home/faye/Documents/engine/src/editor/project.hpp \
+  /usr/include/KHR/khrplatform.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/float.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/limits.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/mm_malloc.h \
@@ -3337,7 +5640,6 @@ CMakeFiles/engine.dir/src/editor/project.cpp.o: /home/faye/Documents/engine/src/
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stddef.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdint.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/syslimits.h \
-  /usr/x86_64-w64-mingw32/include/KHR/khrplatform.h \
   /usr/x86_64-w64-mingw32/include/_mingw.h \
   /usr/x86_64-w64-mingw32/include/_mingw_mac.h \
   /usr/x86_64-w64-mingw32/include/_mingw_off_t.h \
@@ -3347,6 +5649,7 @@ CMakeFiles/engine.dir/src/editor/project.cpp.o: /home/faye/Documents/engine/src/
   /usr/x86_64-w64-mingw32/include/_timeval.h \
   /usr/x86_64-w64-mingw32/include/assert.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/array \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/atomic \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/backward/auto_ptr.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/backward/binders.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/bit \
@@ -3355,7 +5658,9 @@ CMakeFiles/engine.dir/src/editor/project.cpp.o: /home/faye/Documents/engine/src/
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/allocated_ptr.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/allocator.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_base.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_futex.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_lockfree_defines.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_timed_wait.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_wait.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/basic_ios.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/basic_ios.tcc \
@@ -3425,6 +5730,7 @@ CMakeFiles/engine.dir/src/editor/project.cpp.o: /home/faye/Documents/engine/src/
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ranges_util.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/refwrap.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/requires_hosted.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/semaphore_base.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/shared_ptr.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/shared_ptr_atomic.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/shared_ptr_base.h \
@@ -3432,6 +5738,8 @@ CMakeFiles/engine.dir/src/editor/project.cpp.o: /home/faye/Documents/engine/src/
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/sstream.tcc \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/std_abs.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/std_function.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/std_mutex.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/std_thread.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stdexcept_except.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stdexcept_throw.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stdexcept_throwfwd.h \
@@ -3460,6 +5768,8 @@ CMakeFiles/engine.dir/src/editor/project.cpp.o: /home/faye/Documents/engine/src/
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/streambuf_iterator.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/string_view.tcc \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stringfwd.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/this_thread_sleep.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/unique_lock.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/unique_ptr.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/unordered_map.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/unordered_set.h \
@@ -3478,6 +5788,7 @@ CMakeFiles/engine.dir/src/editor/project.cpp.o: /home/faye/Documents/engine/src/
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/codecvt \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/compare \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/concepts \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/condition_variable \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/cstddef \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/cstdint \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/cstdio \
@@ -3501,6 +5812,7 @@ CMakeFiles/engine.dir/src/editor/project.cpp.o: /home/faye/Documents/engine/src/
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/filesystem \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/fstream \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/functional \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/future \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/initializer_list \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/iomanip \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/ios \
@@ -3512,6 +5824,7 @@ CMakeFiles/engine.dir/src/editor/project.cpp.o: /home/faye/Documents/engine/src/
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/locale \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/map \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/memory \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/mutex \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/new \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/numbers \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/ostream \
@@ -3519,15 +5832,19 @@ CMakeFiles/engine.dir/src/editor/project.cpp.o: /home/faye/Documents/engine/src/
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/glue_memory_defs.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/pstl_config.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/ratio \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/semaphore \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/set \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/source_location \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/sstream \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/stack \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/stdexcept \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/stdlib.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/stop_token \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/streambuf \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/string \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/string_view \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/system_error \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/thread \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/bessel_function.tcc \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/beta_function.tcc \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/ell_integral.tcc \
@@ -3609,6 +5926,17 @@ CMakeFiles/engine.dir/src/editor/project.cpp.o: /home/faye/Documents/engine/src/
 
 CMakeFiles/engine.dir/src/main.cpp.o: /home/faye/Documents/engine/src/main.cpp \
   /home/faye/Documents/engine/include/AirGuanZ/imfilebrowser.h \
+  /home/faye/Documents/engine/include/fmod/fmod.h \
+  /home/faye/Documents/engine/include/fmod/fmod_codec.h \
+  /home/faye/Documents/engine/include/fmod/fmod_common.h \
+  /home/faye/Documents/engine/include/fmod/fmod_dsp.h \
+  /home/faye/Documents/engine/include/fmod/fmod_dsp_effects.h \
+  /home/faye/Documents/engine/include/fmod/fmod_errors.h \
+  /home/faye/Documents/engine/include/fmod/fmod_output.h \
+  /home/faye/Documents/engine/src/audio/audio.hpp \
+  /home/faye/Documents/engine/src/audio/audioclip.hpp \
+  /home/faye/Documents/engine/src/audio/audiosource.hpp \
+  /home/faye/Documents/engine/src/audio/channelgroup.hpp \
   /home/faye/Documents/engine/src/render/camera.hpp \
   /home/faye/Documents/engine/src/render/framebuffer.hpp \
   /home/faye/Documents/engine/src/render/level.hpp \
@@ -3629,14 +5957,6 @@ CMakeFiles/engine.dir/src/main.cpp.o: /home/faye/Documents/engine/src/main.cpp \
   /home/faye/Documents/engine/src/render/sprite.hpp \
   /home/faye/Documents/engine/src/render/transform.hpp \
   /home/faye/Documents/engine/src/render/vertex.hpp \
-  /home/faye/Documents/engine/include/fmod/fmod.h \
-  /home/faye/Documents/engine/include/fmod/fmod_codec.h \
-  /home/faye/Documents/engine/include/fmod/fmod_common.h \
-  /home/faye/Documents/engine/include/fmod/fmod_dsp.h \
-  /home/faye/Documents/engine/include/fmod/fmod_dsp_effects.h \
-  /home/faye/Documents/engine/include/fmod/fmod_errors.h \
-  /home/faye/Documents/engine/include/fmod/fmod_output.h \
-  /home/faye/Documents/engine/src/system/audio.hpp \
   /home/faye/Documents/engine/src/editor/editor.hpp \
   /home/faye/Documents/engine/include/GLFW/glfw3.h \
   /home/faye/Documents/engine/include/cereal/macros.hpp \
@@ -3909,6 +6229,7 @@ CMakeFiles/engine.dir/src/main.cpp.o: /home/faye/Documents/engine/src/main.cpp \
   /home/faye/Documents/engine/src/windowmanager/fullscreenmode.hpp \
   /home/faye/Documents/engine/src/windowmanager/WindowManager.hpp \
   /home/faye/Documents/engine/src/editor/editorWM.hpp \
+  /usr/include/KHR/khrplatform.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/float.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/limits.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/mm_malloc.h \
@@ -3916,7 +6237,6 @@ CMakeFiles/engine.dir/src/main.cpp.o: /home/faye/Documents/engine/src/main.cpp \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stddef.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdint.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/syslimits.h \
-  /usr/x86_64-w64-mingw32/include/KHR/khrplatform.h \
   /usr/x86_64-w64-mingw32/include/_mingw.h \
   /usr/x86_64-w64-mingw32/include/_mingw_mac.h \
   /usr/x86_64-w64-mingw32/include/_mingw_off_t.h \
@@ -4127,6 +6447,7 @@ CMakeFiles/engine.dir/src/main.cpp.o: /home/faye/Documents/engine/src/main.cpp \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/ratio \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/semaphore \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/set \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/source_location \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/span \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/sstream \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/stack \
@@ -4174,565 +6495,6 @@ CMakeFiles/engine.dir/src/main.cpp.o: /home/faye/Documents/engine/src/main.cpp \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/messages_members.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/os_defines.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/time_members.h \
-  /usr/x86_64-w64-mingw32/include/corecrt.h \
-  /usr/x86_64-w64-mingw32/include/corecrt_startup.h \
-  /usr/x86_64-w64-mingw32/include/corecrt_stdio_config.h \
-  /usr/x86_64-w64-mingw32/include/corecrt_wconio.h \
-  /usr/x86_64-w64-mingw32/include/corecrt_wctype.h \
-  /usr/x86_64-w64-mingw32/include/corecrt_wstdlib.h \
-  /usr/x86_64-w64-mingw32/include/crtdefs.h \
-  /usr/x86_64-w64-mingw32/include/ctype.h \
-  /usr/x86_64-w64-mingw32/include/errno.h \
-  /usr/x86_64-w64-mingw32/include/float.h \
-  /usr/x86_64-w64-mingw32/include/inttypes.h \
-  /usr/x86_64-w64-mingw32/include/limits.h \
-  /usr/x86_64-w64-mingw32/include/locale.h \
-  /usr/x86_64-w64-mingw32/include/malloc.h \
-  /usr/x86_64-w64-mingw32/include/math.h \
-  /usr/x86_64-w64-mingw32/include/process.h \
-  /usr/x86_64-w64-mingw32/include/pthread.h \
-  /usr/x86_64-w64-mingw32/include/pthread_compat.h \
-  /usr/x86_64-w64-mingw32/include/pthread_signal.h \
-  /usr/x86_64-w64-mingw32/include/pthread_time.h \
-  /usr/x86_64-w64-mingw32/include/pthread_unistd.h \
-  /usr/x86_64-w64-mingw32/include/sched.h \
-  /usr/x86_64-w64-mingw32/include/sec_api/stdio_s.h \
-  /usr/x86_64-w64-mingw32/include/sec_api/stdlib_s.h \
-  /usr/x86_64-w64-mingw32/include/sec_api/string_s.h \
-  /usr/x86_64-w64-mingw32/include/sec_api/sys/timeb_s.h \
-  /usr/x86_64-w64-mingw32/include/sec_api/wchar_s.h \
-  /usr/x86_64-w64-mingw32/include/sec_api/wconio_s.h \
-  /usr/x86_64-w64-mingw32/include/signal.h \
-  /usr/x86_64-w64-mingw32/include/stdarg.h \
-  /usr/x86_64-w64-mingw32/include/stddef.h \
-  /usr/x86_64-w64-mingw32/include/stdint.h \
-  /usr/x86_64-w64-mingw32/include/stdio.h \
-  /usr/x86_64-w64-mingw32/include/stdlib.h \
-  /usr/x86_64-w64-mingw32/include/string.h \
-  /usr/x86_64-w64-mingw32/include/swprintf.inl \
-  /usr/x86_64-w64-mingw32/include/sys/timeb.h \
-  /usr/x86_64-w64-mingw32/include/sys/types.h \
-  /usr/x86_64-w64-mingw32/include/time.h \
-  /usr/x86_64-w64-mingw32/include/vadefs.h \
-  /usr/x86_64-w64-mingw32/include/wchar.h \
-  /usr/x86_64-w64-mingw32/include/wctype.h
-
-CMakeFiles/engine.dir/src/render/audiosource.cpp.o: /home/faye/Documents/engine/src/render/audiosource.cpp \
-  /home/faye/Documents/engine/include/GLFW/glfw3.h \
-  /home/faye/Documents/engine/include/cereal/macros.hpp \
-  /home/faye/Documents/engine/include/cereal/details/static_object.hpp \
-  /home/faye/Documents/engine/include/cereal/macros.hpp \
-  /home/faye/Documents/engine/include/cereal/details/helpers.hpp \
-  /home/faye/Documents/engine/include/cereal/macros.hpp \
-  /home/faye/Documents/engine/include/cereal/specialize.hpp \
-  /home/faye/Documents/engine/include/cereal/access.hpp \
-  /home/faye/Documents/engine/include/cereal/macros.hpp \
-  /home/faye/Documents/engine/include/cereal/details/helpers.hpp \
-  /home/faye/Documents/engine/include/cereal/details/traits.hpp \
-  /home/faye/Documents/engine/include/cereal/macros.hpp \
-  /home/faye/Documents/engine/include/cereal/cereal.hpp \
-  /home/faye/Documents/engine/include/cereal/details/polymorphic_impl_fwd.hpp \
-  /home/faye/Documents/engine/include/cereal/details/traits.hpp \
-  /home/faye/Documents/engine/include/cereal/types/base_class.hpp \
-  /home/faye/Documents/engine/include/cereal/types/common.hpp \
-  /home/faye/Documents/engine/include/cereal/cereal.hpp \
-  /home/faye/Documents/engine/include/cereal/details/util.hpp \
-  /home/faye/Documents/engine/include/cereal/external/base64.hpp \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/allocators.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/document.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/encodedstream.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/encodings.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/rapidjson.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/error/error.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/allocators.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/rapidjson.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/stream.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/biginteger.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/diyfp.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/dtoa.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/ieee754.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/itoa.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/meta.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/pow10.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/stack.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/strfunc.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/strtod.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/swap.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/istreamwrapper.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/memorystream.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/ostreamwrapper.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/prettywriter.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/rapidjson.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/reader.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/stream.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/stringbuffer.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/writer.h \
-  /home/faye/Documents/engine/include/cereal/archives/json.hpp \
-  /home/faye/Documents/engine/include/cereal/cereal.hpp \
-  /home/faye/Documents/engine/include/cereal/details/polymorphic_impl_fwd.hpp \
-  /home/faye/Documents/engine/include/cereal/details/static_object.hpp \
-  /home/faye/Documents/engine/include/cereal/types/memory.hpp \
-  /home/faye/Documents/engine/include/cereal/types/string.hpp \
-  /home/faye/Documents/engine/include/cereal/details/helpers.hpp \
-  /home/faye/Documents/engine/include/cereal/details/polymorphic_impl.hpp \
-  /home/faye/Documents/engine/include/cereal/details/traits.hpp \
-  /home/faye/Documents/engine/include/cereal/details/util.hpp \
-  /home/faye/Documents/engine/include/cereal/cereal.hpp \
-  /home/faye/Documents/engine/include/cereal/types/polymorphic.hpp \
-  /home/faye/Documents/engine/include/cereal/types/memory.hpp \
-  /home/faye/Documents/engine/include/cereal/types/array.hpp \
-  /home/faye/Documents/engine/include/cereal/types/base_class.hpp \
-  /home/faye/Documents/engine/include/cereal/types/polymorphic.hpp \
-  /home/faye/Documents/engine/include/cereal/types/string.hpp \
-  /home/faye/Documents/engine/include/glad/glad.h \
-  /home/faye/Documents/engine/include/glm/ext/vector_bool1.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_bool1_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_double1.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_double1_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_float1.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_float1_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_int1.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_int1_sized.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_uint1.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_uint1_sized.hpp \
-  /home/faye/Documents/engine/include/glm/gtc/vec1.hpp \
-  /home/faye/Documents/engine/include/glm/gtc/type_ptr.hpp \
-  /home/faye/Documents/engine/include/glm/gtc/type_ptr.inl \
-  /home/faye/Documents/engine/include/glm/common.hpp \
-  /home/faye/Documents/engine/include/glm/detail/func_vector_relational.inl \
-  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
-  /home/faye/Documents/engine/include/glm/vector_relational.hpp \
-  /home/faye/Documents/engine/include/glm/detail/_fixes.hpp \
-  /home/faye/Documents/engine/include/glm/detail/compute_common.hpp \
-  /home/faye/Documents/engine/include/glm/detail/func_common.inl \
-  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_vec1.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_vec1.inl \
-  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_mat2x2.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_mat2x2.inl \
-  /home/faye/Documents/engine/include/glm/detail/type_mat2x3.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_mat2x3.inl \
-  /home/faye/Documents/engine/include/glm/detail/type_mat2x4.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_mat2x4.inl \
-  /home/faye/Documents/engine/include/glm/detail/type_mat3x2.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_mat3x2.inl \
-  /home/faye/Documents/engine/include/glm/detail/type_mat3x3.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_mat3x3.inl \
-  /home/faye/Documents/engine/include/glm/detail/type_mat3x4.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_mat3x4.inl \
-  /home/faye/Documents/engine/include/glm/detail/type_mat4x2.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_mat4x2.inl \
-  /home/faye/Documents/engine/include/glm/detail/type_mat4x3.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_mat4x3.inl \
-  /home/faye/Documents/engine/include/glm/detail/type_vec2.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_vec2.inl \
-  /home/faye/Documents/engine/include/glm/detail/type_vec3.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_vec3.inl \
-  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
-  /home/faye/Documents/engine/include/glm/ext/scalar_int_sized.hpp \
-  /home/faye/Documents/engine/include/glm/ext/scalar_uint_sized.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_double2x2.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_double2x2_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_double2x3.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_double2x3_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_double2x4.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_double2x4_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_double3x2.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_double3x2_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_double3x3.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_double3x3_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_double3x4.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_double3x4_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_double4x2.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_double4x2_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_double4x3.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_double4x3_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_float2x2.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_float2x2_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_float2x3.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_float2x3_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_float2x4.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_float2x4_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_float3x2.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_float3x2_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_float3x3.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_float3x3_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_float3x4.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_float3x4_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_float4x2.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_float4x2_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_float4x3.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_float4x3_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_bool2.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_bool2_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_bool3.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_bool3_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_bool4.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_bool4_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_double2.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_double2_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_double3.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_double3_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_double4.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_double4_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_float2.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_float2_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_float3.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_float3_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_float4.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_float4_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_int2.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_int2_sized.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_int3.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_int3_sized.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_int4.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_int4_sized.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_uint2.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_uint2_sized.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_uint3.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_uint3_sized.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_uint4.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_uint4_sized.hpp \
-  /home/faye/Documents/engine/include/glm/detail/func_exponential.inl \
-  /home/faye/Documents/engine/include/glm/exponential.hpp \
-  /home/faye/Documents/engine/include/glm/detail/func_geometric.inl \
-  /home/faye/Documents/engine/include/glm/geometric.hpp \
-  /home/faye/Documents/engine/include/glm/detail/func_matrix.inl \
-  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
-  /home/faye/Documents/engine/include/glm/mat2x2.hpp \
-  /home/faye/Documents/engine/include/glm/mat2x3.hpp \
-  /home/faye/Documents/engine/include/glm/mat2x4.hpp \
-  /home/faye/Documents/engine/include/glm/mat3x2.hpp \
-  /home/faye/Documents/engine/include/glm/mat3x3.hpp \
-  /home/faye/Documents/engine/include/glm/mat3x4.hpp \
-  /home/faye/Documents/engine/include/glm/mat4x2.hpp \
-  /home/faye/Documents/engine/include/glm/mat4x3.hpp \
-  /home/faye/Documents/engine/include/glm/matrix.hpp \
-  /home/faye/Documents/engine/include/glm/simd/platform.h \
-  /home/faye/Documents/engine/include/glm/vec2.hpp \
-  /home/faye/Documents/engine/include/glm/vec3.hpp \
-  /home/faye/Documents/engine/include/glm/vec4.hpp \
-  /home/faye/Documents/engine/include/glm/detail/_vectorize.hpp \
-  /home/faye/Documents/engine/include/glm/detail/compute_vector_decl.hpp \
-  /home/faye/Documents/engine/include/glm/detail/compute_vector_relational.hpp \
-  /home/faye/Documents/engine/include/glm/detail/qualifier.hpp \
-  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_mat4x4.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_mat4x4.inl \
-  /home/faye/Documents/engine/include/glm/detail/type_vec4.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_vec4.inl \
-  /home/faye/Documents/engine/include/glm/ext/matrix_double4x4.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_double4x4_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_float4x4.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_float4x4_precision.hpp \
-  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
-  /home/faye/Documents/engine/include/glm/ext/quaternion_relational.hpp \
-  /home/faye/Documents/engine/include/glm/ext/quaternion_relational.inl \
-  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_float.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_quat.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_quat.inl \
-  /home/faye/Documents/engine/include/glm/ext/quaternion_geometric.hpp \
-  /home/faye/Documents/engine/include/glm/ext/quaternion_geometric.inl \
-  /home/faye/Documents/engine/include/glm/ext/quaternion_common.hpp \
-  /home/faye/Documents/engine/include/glm/ext/quaternion_common.inl \
-  /home/faye/Documents/engine/include/glm/ext/quaternion_double.hpp \
-  /home/faye/Documents/engine/include/glm/ext/quaternion_double_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/quaternion_float.hpp \
-  /home/faye/Documents/engine/include/glm/ext/quaternion_float_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/quaternion_transform.hpp \
-  /home/faye/Documents/engine/include/glm/ext/quaternion_transform.inl \
-  /home/faye/Documents/engine/include/glm/ext/quaternion_trigonometric.hpp \
-  /home/faye/Documents/engine/include/glm/ext/quaternion_trigonometric.inl \
-  /home/faye/Documents/engine/include/glm/ext/vector_relational.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_relational.inl \
-  /home/faye/Documents/engine/include/glm/detail/func_trigonometric.inl \
-  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
-  /home/faye/Documents/engine/include/glm/trigonometric.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_clip_space.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_clip_space.inl \
-  /home/faye/Documents/engine/include/glm/ext/matrix_projection.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_projection.inl \
-  /home/faye/Documents/engine/include/glm/ext/matrix_transform.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_transform.inl \
-  /home/faye/Documents/engine/include/glm/ext/scalar_constants.hpp \
-  /home/faye/Documents/engine/include/glm/ext/scalar_constants.inl \
-  /home/faye/Documents/engine/include/glm/gtc/constants.hpp \
-  /home/faye/Documents/engine/include/glm/gtc/constants.inl \
-  /home/faye/Documents/engine/include/glm/gtc/matrix_transform.hpp \
-  /home/faye/Documents/engine/include/glm/gtc/matrix_transform.inl \
-  /home/faye/Documents/engine/include/glm/gtc/epsilon.hpp \
-  /home/faye/Documents/engine/include/glm/gtc/epsilon.inl \
-  /home/faye/Documents/engine/include/glm/gtc/quaternion.hpp \
-  /home/faye/Documents/engine/include/glm/gtc/quaternion.inl \
-  /home/faye/Documents/engine/include/glm/detail/_fixes.hpp \
-  /home/faye/Documents/engine/include/glm/detail/func_integer.inl \
-  /home/faye/Documents/engine/include/glm/detail/func_packing.inl \
-  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_half.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_half.inl \
-  /home/faye/Documents/engine/include/glm/fwd.hpp \
-  /home/faye/Documents/engine/include/glm/glm.hpp \
-  /home/faye/Documents/engine/include/glm/integer.hpp \
-  /home/faye/Documents/engine/include/glm/packing.hpp \
-  /home/faye/Documents/engine/include/glm/gtx/transform.hpp \
-  /home/faye/Documents/engine/include/glm/gtx/transform.inl \
-  /home/faye/Documents/engine/include/glm/mat4x4.hpp \
-  /home/faye/Documents/engine/include/glm/gtx/matrix_decompose.hpp \
-  /home/faye/Documents/engine/include/glm/gtx/matrix_decompose.inl \
-  /home/faye/Documents/engine/include/imgui/imconfig.h \
-  /home/faye/Documents/engine/include/imgui/imgui.h \
-  /home/faye/Documents/engine/include/imgui/imgui_impl_glfw.h \
-  /home/faye/Documents/engine/include/imgui/imgui_impl_opengl3.h \
-  /home/faye/Documents/engine/src/headers.h \
-  /home/faye/Documents/engine/include/fmod/fmod.h \
-  /home/faye/Documents/engine/include/fmod/fmod_codec.h \
-  /home/faye/Documents/engine/include/fmod/fmod_common.h \
-  /home/faye/Documents/engine/include/fmod/fmod_dsp.h \
-  /home/faye/Documents/engine/include/fmod/fmod_dsp_effects.h \
-  /home/faye/Documents/engine/include/fmod/fmod_errors.h \
-  /home/faye/Documents/engine/include/fmod/fmod_output.h \
-  /home/faye/Documents/engine/src/system/audio.hpp \
-  /home/faye/Documents/engine/src/system/generic.h \
-  /home/faye/Documents/engine/src/system/math.hpp \
-  /home/faye/Documents/engine/src/system/vechelper.hpp \
-  /home/faye/Documents/engine/src/windowmanager/fullscreenmode.hpp \
-  /home/faye/Documents/engine/src/render/audiosource.hpp \
-  /home/faye/Documents/engine/src/render/camera.hpp \
-  /home/faye/Documents/engine/src/render/entity.hpp \
-  /home/faye/Documents/engine/src/render/framebuffer.hpp \
-  /home/faye/Documents/engine/src/render/rendertexture.hpp \
-  /home/faye/Documents/engine/src/render/transform.hpp \
-  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/float.h \
-  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/limits.h \
-  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/mm_malloc.h \
-  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdarg.h \
-  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stddef.h \
-  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdint.h \
-  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/syslimits.h \
-  /usr/x86_64-w64-mingw32/include/KHR/khrplatform.h \
-  /usr/x86_64-w64-mingw32/include/_mingw.h \
-  /usr/x86_64-w64-mingw32/include/_mingw_mac.h \
-  /usr/x86_64-w64-mingw32/include/_mingw_off_t.h \
-  /usr/x86_64-w64-mingw32/include/_mingw_secapi.h \
-  /usr/x86_64-w64-mingw32/include/_mingw_stat64.h \
-  /usr/x86_64-w64-mingw32/include/_mingw_stdarg.h \
-  /usr/x86_64-w64-mingw32/include/_timeval.h \
-  /usr/x86_64-w64-mingw32/include/assert.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/array \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/atomic \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/backward/auto_ptr.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/backward/binders.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bit \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/align.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/alloc_traits.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/allocated_ptr.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/allocator.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_base.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_futex.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_lockfree_defines.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_timed_wait.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_wait.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/basic_ios.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/basic_ios.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/basic_string.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/basic_string.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/binders.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/char_traits.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/charconv.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/chrono.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/concept_check.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/cpp_type_traits.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/cxxabi_forced.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/cxxabi_init_exception.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/deque.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/enable_special_members.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/erase_if.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/exception.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/exception_defines.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/exception_ptr.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/functexcept.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/functional_hash.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/hash_bytes.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/hashtable.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/hashtable_policy.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/intcmp.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/invoke.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ios_base.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/istream.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/iterator_concepts.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/locale_classes.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/locale_classes.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/locale_facets.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/locale_facets.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/localefwd.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/max_size_type.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/memory_resource.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/memoryfwd.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/move.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/nested_exception.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/new_allocator.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/new_except.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/new_throw.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/node_handle.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ostream.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ostream.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ostream_insert.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ostream_print.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/parse_numbers.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/postypes.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/predefined_ops.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ptr_traits.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/range_access.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ranges_algobase.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ranges_base.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ranges_cmp.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ranges_uninitialized.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ranges_util.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/refwrap.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/requires_hosted.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/semaphore_base.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/shared_ptr.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/shared_ptr_atomic.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/shared_ptr_base.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/specfun.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/sstream.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/std_abs.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/std_function.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/std_mutex.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/std_thread.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stdexcept_except.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stdexcept_throw.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stdexcept_throwfwd.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_algobase.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_bvector.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_construct.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_deque.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_function.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_iterator.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_iterator_base_funcs.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_iterator_base_types.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_map.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_multimap.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_multiset.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_pair.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_raw_storage_iter.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_relops.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_set.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_stack.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_tempbuf.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_tree.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_uninitialized.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_vector.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stream_iterator.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/streambuf.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/streambuf_iterator.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/string_view.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stringfwd.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/this_thread_sleep.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/unique_lock.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/unique_ptr.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/unordered_map.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/unordered_set.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/uses_allocator.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/uses_allocator_args.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/utility.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/vector.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/version.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cassert \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cctype \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cerrno \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cfloat \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/climits \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/clocale \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cmath \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/compare \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/concepts \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/condition_variable \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cstddef \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cstdint \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cstdio \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cstdlib \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cstring \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ctime \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cwchar \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cwctype \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cxxabi.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/debug/assertions.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/debug/debug.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/deque \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/exception \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/aligned_buffer.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/alloc_traits.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/atomicity.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/concurrence.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/numeric_traits.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/string_conversions.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/type_traits.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/functional \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/future \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/initializer_list \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ios \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/iosfwd \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/iostream \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/istream \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/iterator \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/limits \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/map \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/memory \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/mutex \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/new \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/numbers \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ostream \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/execution_defs.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/glue_memory_defs.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/pstl_config.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ratio \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/semaphore \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/set \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/sstream \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/stack \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/stdexcept \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/stdlib.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/stop_token \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/streambuf \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/string \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/string_view \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/system_error \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/thread \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/bessel_function.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/beta_function.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/ell_integral.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/exp_integral.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/gamma.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/hypergeometric.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/legendre_function.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/modified_bessel_func.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/poly_hermite.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/poly_laguerre.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/riemann_zeta.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/special_function_util.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tuple \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/type_traits \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/typeindex \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/typeinfo \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/unordered_map \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/unordered_set \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/utility \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/vector \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/atomic_word.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/c++allocator.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/c++config.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/c++locale.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/cpu_defines.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/ctype_base.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/ctype_inline.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/cxxabi_tweaks.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/error_constants.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/gthr-default.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/gthr.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/os_defines.h \
   /usr/x86_64-w64-mingw32/include/corecrt.h \
   /usr/x86_64-w64-mingw32/include/corecrt_startup.h \
   /usr/x86_64-w64-mingw32/include/corecrt_stdio_config.h \
@@ -5055,6 +6817,7 @@ CMakeFiles/engine.dir/src/render/camera.cpp.o: /home/faye/Documents/engine/src/r
   /home/faye/Documents/engine/src/render/framebuffer.hpp \
   /home/faye/Documents/engine/src/render/rendertexture.hpp \
   /home/faye/Documents/engine/src/render/transform.hpp \
+  /usr/include/KHR/khrplatform.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/float.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/limits.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/mm_malloc.h \
@@ -5062,7 +6825,6 @@ CMakeFiles/engine.dir/src/render/camera.cpp.o: /home/faye/Documents/engine/src/r
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stddef.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdint.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/syslimits.h \
-  /usr/x86_64-w64-mingw32/include/KHR/khrplatform.h \
   /usr/x86_64-w64-mingw32/include/_mingw.h \
   /usr/x86_64-w64-mingw32/include/_mingw_mac.h \
   /usr/x86_64-w64-mingw32/include/_mingw_off_t.h \
@@ -5226,6 +6988,7 @@ CMakeFiles/engine.dir/src/render/camera.cpp.o: /home/faye/Documents/engine/src/r
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/glue_memory_defs.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/pstl_config.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/set \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/source_location \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/sstream \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/stack \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/stdexcept \
@@ -5599,6 +7362,7 @@ CMakeFiles/engine.dir/src/render/entity.cpp.o: /home/faye/Documents/engine/src/r
   /home/faye/Documents/engine/src/render/sprite.hpp \
   /home/faye/Documents/engine/src/render/transform.hpp \
   /home/faye/Documents/engine/src/render/vertex.hpp \
+  /usr/include/KHR/khrplatform.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/float.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/limits.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/mm_malloc.h \
@@ -5606,7 +7370,6 @@ CMakeFiles/engine.dir/src/render/entity.cpp.o: /home/faye/Documents/engine/src/r
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stddef.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdint.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/syslimits.h \
-  /usr/x86_64-w64-mingw32/include/KHR/khrplatform.h \
   /usr/x86_64-w64-mingw32/include/_mingw.h \
   /usr/x86_64-w64-mingw32/include/_mingw_mac.h \
   /usr/x86_64-w64-mingw32/include/_mingw_off_t.h \
@@ -5802,6 +7565,7 @@ CMakeFiles/engine.dir/src/render/entity.cpp.o: /home/faye/Documents/engine/src/r
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/pstl_config.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/ratio \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/set \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/source_location \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/span \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/sstream \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/stack \
@@ -6162,6 +7926,7 @@ CMakeFiles/engine.dir/src/render/framebuffer.cpp.o: /home/faye/Documents/engine/
   /home/faye/Documents/engine/src/windowmanager/fullscreenmode.hpp \
   /home/faye/Documents/engine/src/render/framebuffer.hpp \
   /home/faye/Documents/engine/src/render/rendertexture.hpp \
+  /usr/include/KHR/khrplatform.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/float.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/limits.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/mm_malloc.h \
@@ -6169,7 +7934,6 @@ CMakeFiles/engine.dir/src/render/framebuffer.cpp.o: /home/faye/Documents/engine/
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stddef.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdint.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/syslimits.h \
-  /usr/x86_64-w64-mingw32/include/KHR/khrplatform.h \
   /usr/x86_64-w64-mingw32/include/_mingw.h \
   /usr/x86_64-w64-mingw32/include/_mingw_mac.h \
   /usr/x86_64-w64-mingw32/include/_mingw_off_t.h \
@@ -6333,6 +8097,7 @@ CMakeFiles/engine.dir/src/render/framebuffer.cpp.o: /home/faye/Documents/engine/
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/glue_memory_defs.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/pstl_config.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/set \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/source_location \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/sstream \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/stack \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/stdexcept \
@@ -6690,9 +8455,6 @@ CMakeFiles/engine.dir/src/render/level.cpp.o: /home/faye/Documents/engine/src/re
   /home/faye/Documents/engine/src/system/file.hpp \
   /home/faye/Documents/engine/src/editor/project.hpp \
   /home/faye/Documents/engine/src/headers.h \
-  /home/faye/Documents/engine/src/render/texture.hpp \
-  /home/faye/Documents/engine/src/shader/ShaderManager.hpp \
-  /home/faye/Documents/engine/src/shader/shader.hpp \
   /home/faye/Documents/engine/include/fmod/fmod.h \
   /home/faye/Documents/engine/include/fmod/fmod_codec.h \
   /home/faye/Documents/engine/include/fmod/fmod_common.h \
@@ -6700,9 +8462,13 @@ CMakeFiles/engine.dir/src/render/level.cpp.o: /home/faye/Documents/engine/src/re
   /home/faye/Documents/engine/include/fmod/fmod_dsp_effects.h \
   /home/faye/Documents/engine/include/fmod/fmod_errors.h \
   /home/faye/Documents/engine/include/fmod/fmod_output.h \
-  /home/faye/Documents/engine/src/system/audio.hpp \
+  /home/faye/Documents/engine/src/audio/audio.hpp \
+  /home/faye/Documents/engine/src/audio/audioclip.hpp \
+  /home/faye/Documents/engine/src/audio/audiosource.hpp \
+  /home/faye/Documents/engine/src/render/texture.hpp \
+  /home/faye/Documents/engine/src/shader/ShaderManager.hpp \
+  /home/faye/Documents/engine/src/shader/shader.hpp \
   /home/faye/Documents/engine/src/system/time.hpp \
-  /home/faye/Documents/engine/src/render/audiosource.hpp \
   /home/faye/Documents/engine/src/render/blend.hpp \
   /home/faye/Documents/engine/src/render/material.hpp \
   /home/faye/Documents/engine/src/render/mesh.hpp \
@@ -6716,6 +8482,7 @@ CMakeFiles/engine.dir/src/render/level.cpp.o: /home/faye/Documents/engine/src/re
   /home/faye/Documents/engine/src/render/entity.hpp \
   /home/faye/Documents/engine/src/render/level.hpp \
   /home/faye/Documents/engine/src/render/transform.hpp \
+  /usr/include/KHR/khrplatform.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/float.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/limits.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/mm_malloc.h \
@@ -6723,7 +8490,6 @@ CMakeFiles/engine.dir/src/render/level.cpp.o: /home/faye/Documents/engine/src/re
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stddef.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdint.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/syslimits.h \
-  /usr/x86_64-w64-mingw32/include/KHR/khrplatform.h \
   /usr/x86_64-w64-mingw32/include/_mingw.h \
   /usr/x86_64-w64-mingw32/include/_mingw_mac.h \
   /usr/x86_64-w64-mingw32/include/_mingw_off_t.h \
@@ -6931,6 +8697,7 @@ CMakeFiles/engine.dir/src/render/level.cpp.o: /home/faye/Documents/engine/src/re
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/ratio \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/semaphore \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/set \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/source_location \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/span \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/sstream \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/stack \
@@ -7307,6 +9074,7 @@ CMakeFiles/engine.dir/src/render/material.cpp.o: /home/faye/Documents/engine/src
   /home/faye/Documents/engine/src/render/blend.hpp \
   /home/faye/Documents/engine/src/render/material.hpp \
   /home/faye/Documents/engine/src/render/rendertexture.hpp \
+  /usr/include/KHR/khrplatform.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/float.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/limits.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/mm_malloc.h \
@@ -7314,7 +9082,6 @@ CMakeFiles/engine.dir/src/render/material.cpp.o: /home/faye/Documents/engine/src
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stddef.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdint.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/syslimits.h \
-  /usr/x86_64-w64-mingw32/include/KHR/khrplatform.h \
   /usr/x86_64-w64-mingw32/include/_mingw.h \
   /usr/x86_64-w64-mingw32/include/_mingw_mac.h \
   /usr/x86_64-w64-mingw32/include/_mingw_off_t.h \
@@ -7497,6 +9264,7 @@ CMakeFiles/engine.dir/src/render/material.cpp.o: /home/faye/Documents/engine/src
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/pstl_config.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/ratio \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/set \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/source_location \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/sstream \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/stack \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/stdexcept \
@@ -7856,6 +9624,7 @@ CMakeFiles/engine.dir/src/render/mesh.cpp.o: /home/faye/Documents/engine/src/ren
   /home/faye/Documents/engine/src/windowmanager/fullscreenmode.hpp \
   /home/faye/Documents/engine/src/render/mesh.hpp \
   /home/faye/Documents/engine/src/render/vertex.hpp \
+  /usr/include/KHR/khrplatform.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/float.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/limits.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/mm_malloc.h \
@@ -7863,7 +9632,6 @@ CMakeFiles/engine.dir/src/render/mesh.cpp.o: /home/faye/Documents/engine/src/ren
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stddef.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdint.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/syslimits.h \
-  /usr/x86_64-w64-mingw32/include/KHR/khrplatform.h \
   /usr/x86_64-w64-mingw32/include/_mingw.h \
   /usr/x86_64-w64-mingw32/include/_mingw_mac.h \
   /usr/x86_64-w64-mingw32/include/_mingw_off_t.h \
@@ -8027,6 +9795,7 @@ CMakeFiles/engine.dir/src/render/mesh.cpp.o: /home/faye/Documents/engine/src/ren
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/glue_memory_defs.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/pstl_config.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/set \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/source_location \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/sstream \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/stack \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/stdexcept \
@@ -8381,6 +10150,7 @@ CMakeFiles/engine.dir/src/render/rendertexture.cpp.o: /home/faye/Documents/engin
   /home/faye/Documents/engine/src/headers.h \
   /home/faye/Documents/engine/src/windowmanager/fullscreenmode.hpp \
   /home/faye/Documents/engine/src/render/rendertexture.hpp \
+  /usr/include/KHR/khrplatform.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/float.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/limits.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/mm_malloc.h \
@@ -8388,7 +10158,6 @@ CMakeFiles/engine.dir/src/render/rendertexture.cpp.o: /home/faye/Documents/engin
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stddef.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdint.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/syslimits.h \
-  /usr/x86_64-w64-mingw32/include/KHR/khrplatform.h \
   /usr/x86_64-w64-mingw32/include/_mingw.h \
   /usr/x86_64-w64-mingw32/include/_mingw_mac.h \
   /usr/x86_64-w64-mingw32/include/_mingw_off_t.h \
@@ -8552,6 +10321,7 @@ CMakeFiles/engine.dir/src/render/rendertexture.cpp.o: /home/faye/Documents/engin
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/glue_memory_defs.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/pstl_config.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/set \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/source_location \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/sstream \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/stack \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/stdexcept \
@@ -8925,6 +10695,7 @@ CMakeFiles/engine.dir/src/render/sprite.cpp.o: /home/faye/Documents/engine/src/r
   /home/faye/Documents/engine/src/render/sprite.hpp \
   /home/faye/Documents/engine/src/render/transform.hpp \
   /home/faye/Documents/engine/src/render/vertex.hpp \
+  /usr/include/KHR/khrplatform.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/float.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/limits.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/mm_malloc.h \
@@ -8932,7 +10703,6 @@ CMakeFiles/engine.dir/src/render/sprite.cpp.o: /home/faye/Documents/engine/src/r
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stddef.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdint.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/syslimits.h \
-  /usr/x86_64-w64-mingw32/include/KHR/khrplatform.h \
   /usr/x86_64-w64-mingw32/include/_mingw.h \
   /usr/x86_64-w64-mingw32/include/_mingw_mac.h \
   /usr/x86_64-w64-mingw32/include/_mingw_off_t.h \
@@ -9128,6 +10898,7 @@ CMakeFiles/engine.dir/src/render/sprite.cpp.o: /home/faye/Documents/engine/src/r
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/pstl_config.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/ratio \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/set \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/source_location \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/span \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/sstream \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/stack \
@@ -9500,6 +11271,7 @@ CMakeFiles/engine.dir/src/render/texture.cpp.o: /home/faye/Documents/engine/src/
   /home/faye/Documents/engine/src/system/file.hpp \
   /home/faye/Documents/engine/src/windowmanager/fullscreenmode.hpp \
   /home/faye/Documents/engine/src/render/texture.hpp \
+  /usr/include/KHR/khrplatform.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/emmintrin.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/float.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/limits.h \
@@ -9510,7 +11282,6 @@ CMakeFiles/engine.dir/src/render/texture.cpp.o: /home/faye/Documents/engine/src/
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdint.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/syslimits.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/xmmintrin.h \
-  /usr/x86_64-w64-mingw32/include/KHR/khrplatform.h \
   /usr/x86_64-w64-mingw32/include/_mingw.h \
   /usr/x86_64-w64-mingw32/include/_mingw_mac.h \
   /usr/x86_64-w64-mingw32/include/_mingw_off_t.h \
@@ -9701,6 +11472,7 @@ CMakeFiles/engine.dir/src/render/texture.cpp.o: /home/faye/Documents/engine/src/
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/pstl_config.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/ratio \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/set \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/source_location \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/sstream \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/stack \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/stdexcept \
@@ -10079,6 +11851,7 @@ CMakeFiles/engine.dir/src/render/transform.cpp.o: /home/faye/Documents/engine/sr
   /home/faye/Documents/engine/src/render/sprite.hpp \
   /home/faye/Documents/engine/src/render/transform.hpp \
   /home/faye/Documents/engine/src/render/vertex.hpp \
+  /usr/include/KHR/khrplatform.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/float.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/limits.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/mm_malloc.h \
@@ -10086,7 +11859,6 @@ CMakeFiles/engine.dir/src/render/transform.cpp.o: /home/faye/Documents/engine/sr
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stddef.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdint.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/syslimits.h \
-  /usr/x86_64-w64-mingw32/include/KHR/khrplatform.h \
   /usr/x86_64-w64-mingw32/include/_mingw.h \
   /usr/x86_64-w64-mingw32/include/_mingw_mac.h \
   /usr/x86_64-w64-mingw32/include/_mingw_off_t.h \
@@ -10282,6 +12054,7 @@ CMakeFiles/engine.dir/src/render/transform.cpp.o: /home/faye/Documents/engine/sr
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/pstl_config.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/ratio \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/set \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/source_location \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/span \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/sstream \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/stack \
@@ -10645,6 +12418,7 @@ CMakeFiles/engine.dir/src/shader/shader.cpp.o: /home/faye/Documents/engine/src/s
   /home/faye/Documents/engine/src/windowmanager/fullscreenmode.hpp \
   /home/faye/Documents/engine/src/shader/ShaderManager.hpp \
   /home/faye/Documents/engine/src/shader/shader.hpp \
+  /usr/include/KHR/khrplatform.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/float.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/limits.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/mm_malloc.h \
@@ -10652,7 +12426,6 @@ CMakeFiles/engine.dir/src/shader/shader.cpp.o: /home/faye/Documents/engine/src/s
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stddef.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdint.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/syslimits.h \
-  /usr/x86_64-w64-mingw32/include/KHR/khrplatform.h \
   /usr/x86_64-w64-mingw32/include/_mingw.h \
   /usr/x86_64-w64-mingw32/include/_mingw_mac.h \
   /usr/x86_64-w64-mingw32/include/_mingw_off_t.h \
@@ -10835,6 +12608,7 @@ CMakeFiles/engine.dir/src/shader/shader.cpp.o: /home/faye/Documents/engine/src/s
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/pstl_config.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/ratio \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/set \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/source_location \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/sstream \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/stack \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/stdexcept \
@@ -10879,560 +12653,6 @@ CMakeFiles/engine.dir/src/shader/shader.cpp.o: /home/faye/Documents/engine/src/s
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/messages_members.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/os_defines.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/time_members.h \
-  /usr/x86_64-w64-mingw32/include/corecrt.h \
-  /usr/x86_64-w64-mingw32/include/corecrt_startup.h \
-  /usr/x86_64-w64-mingw32/include/corecrt_stdio_config.h \
-  /usr/x86_64-w64-mingw32/include/corecrt_wconio.h \
-  /usr/x86_64-w64-mingw32/include/corecrt_wctype.h \
-  /usr/x86_64-w64-mingw32/include/corecrt_wstdlib.h \
-  /usr/x86_64-w64-mingw32/include/crtdefs.h \
-  /usr/x86_64-w64-mingw32/include/ctype.h \
-  /usr/x86_64-w64-mingw32/include/errno.h \
-  /usr/x86_64-w64-mingw32/include/float.h \
-  /usr/x86_64-w64-mingw32/include/inttypes.h \
-  /usr/x86_64-w64-mingw32/include/limits.h \
-  /usr/x86_64-w64-mingw32/include/locale.h \
-  /usr/x86_64-w64-mingw32/include/malloc.h \
-  /usr/x86_64-w64-mingw32/include/math.h \
-  /usr/x86_64-w64-mingw32/include/process.h \
-  /usr/x86_64-w64-mingw32/include/pthread.h \
-  /usr/x86_64-w64-mingw32/include/pthread_compat.h \
-  /usr/x86_64-w64-mingw32/include/pthread_signal.h \
-  /usr/x86_64-w64-mingw32/include/pthread_time.h \
-  /usr/x86_64-w64-mingw32/include/pthread_unistd.h \
-  /usr/x86_64-w64-mingw32/include/sched.h \
-  /usr/x86_64-w64-mingw32/include/sec_api/stdio_s.h \
-  /usr/x86_64-w64-mingw32/include/sec_api/stdlib_s.h \
-  /usr/x86_64-w64-mingw32/include/sec_api/string_s.h \
-  /usr/x86_64-w64-mingw32/include/sec_api/sys/timeb_s.h \
-  /usr/x86_64-w64-mingw32/include/sec_api/wchar_s.h \
-  /usr/x86_64-w64-mingw32/include/sec_api/wconio_s.h \
-  /usr/x86_64-w64-mingw32/include/signal.h \
-  /usr/x86_64-w64-mingw32/include/stdarg.h \
-  /usr/x86_64-w64-mingw32/include/stddef.h \
-  /usr/x86_64-w64-mingw32/include/stdint.h \
-  /usr/x86_64-w64-mingw32/include/stdio.h \
-  /usr/x86_64-w64-mingw32/include/stdlib.h \
-  /usr/x86_64-w64-mingw32/include/string.h \
-  /usr/x86_64-w64-mingw32/include/swprintf.inl \
-  /usr/x86_64-w64-mingw32/include/sys/timeb.h \
-  /usr/x86_64-w64-mingw32/include/sys/types.h \
-  /usr/x86_64-w64-mingw32/include/time.h \
-  /usr/x86_64-w64-mingw32/include/vadefs.h \
-  /usr/x86_64-w64-mingw32/include/wchar.h \
-  /usr/x86_64-w64-mingw32/include/wctype.h
-
-CMakeFiles/engine.dir/src/system/audio.cpp.o: /home/faye/Documents/engine/src/system/audio.cpp \
-  /home/faye/Documents/engine/include/fmod/fmod.h \
-  /home/faye/Documents/engine/include/fmod/fmod_codec.h \
-  /home/faye/Documents/engine/include/fmod/fmod_common.h \
-  /home/faye/Documents/engine/include/fmod/fmod_dsp.h \
-  /home/faye/Documents/engine/include/fmod/fmod_dsp_effects.h \
-  /home/faye/Documents/engine/include/fmod/fmod_errors.h \
-  /home/faye/Documents/engine/include/fmod/fmod_output.h \
-  /home/faye/Documents/engine/include/GLFW/glfw3.h \
-  /home/faye/Documents/engine/include/cereal/macros.hpp \
-  /home/faye/Documents/engine/include/cereal/details/static_object.hpp \
-  /home/faye/Documents/engine/include/cereal/macros.hpp \
-  /home/faye/Documents/engine/include/cereal/details/helpers.hpp \
-  /home/faye/Documents/engine/include/cereal/macros.hpp \
-  /home/faye/Documents/engine/include/cereal/specialize.hpp \
-  /home/faye/Documents/engine/include/cereal/access.hpp \
-  /home/faye/Documents/engine/include/cereal/macros.hpp \
-  /home/faye/Documents/engine/include/cereal/details/helpers.hpp \
-  /home/faye/Documents/engine/include/cereal/details/traits.hpp \
-  /home/faye/Documents/engine/include/cereal/macros.hpp \
-  /home/faye/Documents/engine/include/cereal/cereal.hpp \
-  /home/faye/Documents/engine/include/cereal/details/polymorphic_impl_fwd.hpp \
-  /home/faye/Documents/engine/include/cereal/details/traits.hpp \
-  /home/faye/Documents/engine/include/cereal/types/base_class.hpp \
-  /home/faye/Documents/engine/include/cereal/types/common.hpp \
-  /home/faye/Documents/engine/include/cereal/cereal.hpp \
-  /home/faye/Documents/engine/include/cereal/details/util.hpp \
-  /home/faye/Documents/engine/include/cereal/external/base64.hpp \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/allocators.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/document.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/encodedstream.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/encodings.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/rapidjson.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/error/error.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/allocators.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/rapidjson.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/stream.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/biginteger.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/diyfp.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/dtoa.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/ieee754.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/itoa.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/meta.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/pow10.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/stack.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/strfunc.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/strtod.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/internal/swap.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/istreamwrapper.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/memorystream.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/ostreamwrapper.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/prettywriter.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/rapidjson.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/reader.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/stream.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/stringbuffer.h \
-  /home/faye/Documents/engine/include/cereal/external/rapidjson/writer.h \
-  /home/faye/Documents/engine/include/cereal/archives/json.hpp \
-  /home/faye/Documents/engine/include/cereal/cereal.hpp \
-  /home/faye/Documents/engine/include/cereal/details/polymorphic_impl_fwd.hpp \
-  /home/faye/Documents/engine/include/cereal/details/static_object.hpp \
-  /home/faye/Documents/engine/include/cereal/types/memory.hpp \
-  /home/faye/Documents/engine/include/cereal/types/string.hpp \
-  /home/faye/Documents/engine/include/cereal/details/helpers.hpp \
-  /home/faye/Documents/engine/include/cereal/details/polymorphic_impl.hpp \
-  /home/faye/Documents/engine/include/cereal/details/traits.hpp \
-  /home/faye/Documents/engine/include/cereal/details/util.hpp \
-  /home/faye/Documents/engine/include/cereal/cereal.hpp \
-  /home/faye/Documents/engine/include/cereal/types/polymorphic.hpp \
-  /home/faye/Documents/engine/include/cereal/types/memory.hpp \
-  /home/faye/Documents/engine/include/cereal/types/array.hpp \
-  /home/faye/Documents/engine/include/cereal/types/base_class.hpp \
-  /home/faye/Documents/engine/include/cereal/types/polymorphic.hpp \
-  /home/faye/Documents/engine/include/cereal/types/string.hpp \
-  /home/faye/Documents/engine/include/glad/glad.h \
-  /home/faye/Documents/engine/include/glm/ext/vector_bool1.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_bool1_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_double1.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_double1_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_float1.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_float1_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_int1.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_int1_sized.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_uint1.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_uint1_sized.hpp \
-  /home/faye/Documents/engine/include/glm/gtc/vec1.hpp \
-  /home/faye/Documents/engine/include/glm/gtc/type_ptr.hpp \
-  /home/faye/Documents/engine/include/glm/gtc/type_ptr.inl \
-  /home/faye/Documents/engine/include/glm/common.hpp \
-  /home/faye/Documents/engine/include/glm/detail/func_vector_relational.inl \
-  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
-  /home/faye/Documents/engine/include/glm/vector_relational.hpp \
-  /home/faye/Documents/engine/include/glm/detail/_fixes.hpp \
-  /home/faye/Documents/engine/include/glm/detail/compute_common.hpp \
-  /home/faye/Documents/engine/include/glm/detail/func_common.inl \
-  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_vec1.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_vec1.inl \
-  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_mat2x2.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_mat2x2.inl \
-  /home/faye/Documents/engine/include/glm/detail/type_mat2x3.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_mat2x3.inl \
-  /home/faye/Documents/engine/include/glm/detail/type_mat2x4.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_mat2x4.inl \
-  /home/faye/Documents/engine/include/glm/detail/type_mat3x2.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_mat3x2.inl \
-  /home/faye/Documents/engine/include/glm/detail/type_mat3x3.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_mat3x3.inl \
-  /home/faye/Documents/engine/include/glm/detail/type_mat3x4.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_mat3x4.inl \
-  /home/faye/Documents/engine/include/glm/detail/type_mat4x2.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_mat4x2.inl \
-  /home/faye/Documents/engine/include/glm/detail/type_mat4x3.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_mat4x3.inl \
-  /home/faye/Documents/engine/include/glm/detail/type_vec2.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_vec2.inl \
-  /home/faye/Documents/engine/include/glm/detail/type_vec3.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_vec3.inl \
-  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
-  /home/faye/Documents/engine/include/glm/ext/scalar_int_sized.hpp \
-  /home/faye/Documents/engine/include/glm/ext/scalar_uint_sized.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_double2x2.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_double2x2_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_double2x3.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_double2x3_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_double2x4.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_double2x4_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_double3x2.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_double3x2_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_double3x3.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_double3x3_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_double3x4.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_double3x4_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_double4x2.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_double4x2_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_double4x3.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_double4x3_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_float2x2.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_float2x2_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_float2x3.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_float2x3_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_float2x4.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_float2x4_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_float3x2.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_float3x2_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_float3x3.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_float3x3_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_float3x4.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_float3x4_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_float4x2.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_float4x2_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_float4x3.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_float4x3_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_bool2.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_bool2_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_bool3.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_bool3_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_bool4.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_bool4_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_double2.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_double2_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_double3.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_double3_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_double4.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_double4_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_float2.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_float2_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_float3.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_float3_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_float4.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_float4_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_int2.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_int2_sized.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_int3.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_int3_sized.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_int4.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_int4_sized.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_uint2.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_uint2_sized.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_uint3.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_uint3_sized.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_uint4.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_uint4_sized.hpp \
-  /home/faye/Documents/engine/include/glm/detail/func_exponential.inl \
-  /home/faye/Documents/engine/include/glm/exponential.hpp \
-  /home/faye/Documents/engine/include/glm/detail/func_geometric.inl \
-  /home/faye/Documents/engine/include/glm/geometric.hpp \
-  /home/faye/Documents/engine/include/glm/detail/func_matrix.inl \
-  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
-  /home/faye/Documents/engine/include/glm/mat2x2.hpp \
-  /home/faye/Documents/engine/include/glm/mat2x3.hpp \
-  /home/faye/Documents/engine/include/glm/mat2x4.hpp \
-  /home/faye/Documents/engine/include/glm/mat3x2.hpp \
-  /home/faye/Documents/engine/include/glm/mat3x3.hpp \
-  /home/faye/Documents/engine/include/glm/mat3x4.hpp \
-  /home/faye/Documents/engine/include/glm/mat4x2.hpp \
-  /home/faye/Documents/engine/include/glm/mat4x3.hpp \
-  /home/faye/Documents/engine/include/glm/matrix.hpp \
-  /home/faye/Documents/engine/include/glm/simd/platform.h \
-  /home/faye/Documents/engine/include/glm/vec2.hpp \
-  /home/faye/Documents/engine/include/glm/vec3.hpp \
-  /home/faye/Documents/engine/include/glm/vec4.hpp \
-  /home/faye/Documents/engine/include/glm/detail/_vectorize.hpp \
-  /home/faye/Documents/engine/include/glm/detail/compute_vector_decl.hpp \
-  /home/faye/Documents/engine/include/glm/detail/compute_vector_relational.hpp \
-  /home/faye/Documents/engine/include/glm/detail/qualifier.hpp \
-  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_mat4x4.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_mat4x4.inl \
-  /home/faye/Documents/engine/include/glm/detail/type_vec4.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_vec4.inl \
-  /home/faye/Documents/engine/include/glm/ext/matrix_double4x4.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_double4x4_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_float4x4.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_float4x4_precision.hpp \
-  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
-  /home/faye/Documents/engine/include/glm/ext/quaternion_relational.hpp \
-  /home/faye/Documents/engine/include/glm/ext/quaternion_relational.inl \
-  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_float.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_quat.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_quat.inl \
-  /home/faye/Documents/engine/include/glm/ext/quaternion_geometric.hpp \
-  /home/faye/Documents/engine/include/glm/ext/quaternion_geometric.inl \
-  /home/faye/Documents/engine/include/glm/ext/quaternion_common.hpp \
-  /home/faye/Documents/engine/include/glm/ext/quaternion_common.inl \
-  /home/faye/Documents/engine/include/glm/ext/quaternion_double.hpp \
-  /home/faye/Documents/engine/include/glm/ext/quaternion_double_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/quaternion_float.hpp \
-  /home/faye/Documents/engine/include/glm/ext/quaternion_float_precision.hpp \
-  /home/faye/Documents/engine/include/glm/ext/quaternion_transform.hpp \
-  /home/faye/Documents/engine/include/glm/ext/quaternion_transform.inl \
-  /home/faye/Documents/engine/include/glm/ext/quaternion_trigonometric.hpp \
-  /home/faye/Documents/engine/include/glm/ext/quaternion_trigonometric.inl \
-  /home/faye/Documents/engine/include/glm/ext/vector_relational.hpp \
-  /home/faye/Documents/engine/include/glm/ext/vector_relational.inl \
-  /home/faye/Documents/engine/include/glm/detail/func_trigonometric.inl \
-  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
-  /home/faye/Documents/engine/include/glm/trigonometric.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_clip_space.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_clip_space.inl \
-  /home/faye/Documents/engine/include/glm/ext/matrix_projection.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_projection.inl \
-  /home/faye/Documents/engine/include/glm/ext/matrix_transform.hpp \
-  /home/faye/Documents/engine/include/glm/ext/matrix_transform.inl \
-  /home/faye/Documents/engine/include/glm/ext/scalar_constants.hpp \
-  /home/faye/Documents/engine/include/glm/ext/scalar_constants.inl \
-  /home/faye/Documents/engine/include/glm/gtc/constants.hpp \
-  /home/faye/Documents/engine/include/glm/gtc/constants.inl \
-  /home/faye/Documents/engine/include/glm/gtc/matrix_transform.hpp \
-  /home/faye/Documents/engine/include/glm/gtc/matrix_transform.inl \
-  /home/faye/Documents/engine/include/glm/gtc/epsilon.hpp \
-  /home/faye/Documents/engine/include/glm/gtc/epsilon.inl \
-  /home/faye/Documents/engine/include/glm/gtc/quaternion.hpp \
-  /home/faye/Documents/engine/include/glm/gtc/quaternion.inl \
-  /home/faye/Documents/engine/include/glm/detail/_fixes.hpp \
-  /home/faye/Documents/engine/include/glm/detail/func_integer.inl \
-  /home/faye/Documents/engine/include/glm/detail/func_packing.inl \
-  /home/faye/Documents/engine/include/glm/detail/setup.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_half.hpp \
-  /home/faye/Documents/engine/include/glm/detail/type_half.inl \
-  /home/faye/Documents/engine/include/glm/fwd.hpp \
-  /home/faye/Documents/engine/include/glm/glm.hpp \
-  /home/faye/Documents/engine/include/glm/integer.hpp \
-  /home/faye/Documents/engine/include/glm/packing.hpp \
-  /home/faye/Documents/engine/include/glm/gtx/transform.hpp \
-  /home/faye/Documents/engine/include/glm/gtx/transform.inl \
-  /home/faye/Documents/engine/include/glm/mat4x4.hpp \
-  /home/faye/Documents/engine/include/glm/gtx/matrix_decompose.hpp \
-  /home/faye/Documents/engine/include/glm/gtx/matrix_decompose.inl \
-  /home/faye/Documents/engine/include/imgui/imconfig.h \
-  /home/faye/Documents/engine/include/imgui/imgui.h \
-  /home/faye/Documents/engine/include/imgui/imgui_impl_glfw.h \
-  /home/faye/Documents/engine/include/imgui/imgui_impl_opengl3.h \
-  /home/faye/Documents/engine/src/headers.h \
-  /home/faye/Documents/engine/src/system/generic.h \
-  /home/faye/Documents/engine/src/system/math.hpp \
-  /home/faye/Documents/engine/src/system/vechelper.hpp \
-  /home/faye/Documents/engine/src/windowmanager/fullscreenmode.hpp \
-  /home/faye/Documents/engine/src/render/transform.hpp \
-  /home/faye/Documents/engine/src/system/audio.hpp \
-  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/float.h \
-  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/limits.h \
-  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/mm_malloc.h \
-  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdarg.h \
-  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stddef.h \
-  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdint.h \
-  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/syslimits.h \
-  /usr/x86_64-w64-mingw32/include/KHR/khrplatform.h \
-  /usr/x86_64-w64-mingw32/include/_mingw.h \
-  /usr/x86_64-w64-mingw32/include/_mingw_mac.h \
-  /usr/x86_64-w64-mingw32/include/_mingw_off_t.h \
-  /usr/x86_64-w64-mingw32/include/_mingw_secapi.h \
-  /usr/x86_64-w64-mingw32/include/_mingw_stat64.h \
-  /usr/x86_64-w64-mingw32/include/_mingw_stdarg.h \
-  /usr/x86_64-w64-mingw32/include/_timeval.h \
-  /usr/x86_64-w64-mingw32/include/assert.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/array \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/atomic \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/backward/auto_ptr.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/backward/binders.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bit \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/align.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/alloc_traits.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/allocated_ptr.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/allocator.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_base.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_futex.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_lockfree_defines.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_timed_wait.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_wait.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/basic_ios.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/basic_ios.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/basic_string.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/basic_string.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/binders.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/char_traits.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/charconv.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/chrono.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/concept_check.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/cpp_type_traits.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/cxxabi_forced.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/cxxabi_init_exception.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/deque.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/enable_special_members.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/erase_if.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/exception.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/exception_defines.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/exception_ptr.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/functexcept.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/functional_hash.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/hash_bytes.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/hashtable.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/hashtable_policy.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/intcmp.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/invoke.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ios_base.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/istream.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/iterator_concepts.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/locale_classes.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/locale_classes.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/locale_facets.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/locale_facets.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/localefwd.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/max_size_type.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/memory_resource.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/memoryfwd.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/move.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/nested_exception.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/new_allocator.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/new_except.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/new_throw.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/node_handle.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ostream.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ostream.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ostream_insert.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ostream_print.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/parse_numbers.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/postypes.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/predefined_ops.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ptr_traits.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/range_access.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ranges_algobase.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ranges_base.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ranges_cmp.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ranges_uninitialized.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ranges_util.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/refwrap.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/requires_hosted.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/semaphore_base.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/shared_ptr.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/shared_ptr_atomic.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/shared_ptr_base.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/specfun.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/sstream.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/std_abs.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/std_function.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/std_mutex.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/std_thread.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stdexcept_except.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stdexcept_throw.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stdexcept_throwfwd.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_algobase.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_bvector.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_construct.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_deque.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_function.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_iterator.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_iterator_base_funcs.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_iterator_base_types.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_map.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_multimap.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_multiset.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_pair.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_raw_storage_iter.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_relops.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_set.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_stack.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_tempbuf.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_tree.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_uninitialized.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_vector.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stream_iterator.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/streambuf.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/streambuf_iterator.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/string_view.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stringfwd.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/this_thread_sleep.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/unique_lock.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/unique_ptr.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/unordered_map.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/unordered_set.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/uses_allocator.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/uses_allocator_args.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/utility.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/vector.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/version.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cassert \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cctype \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cerrno \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cfloat \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/climits \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/clocale \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cmath \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/compare \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/concepts \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/condition_variable \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cstddef \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cstdint \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cstdio \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cstdlib \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cstring \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ctime \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cwchar \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cwctype \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/cxxabi.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/debug/assertions.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/debug/debug.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/deque \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/exception \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/aligned_buffer.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/alloc_traits.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/atomicity.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/concurrence.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/numeric_traits.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/string_conversions.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/type_traits.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/functional \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/future \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/initializer_list \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ios \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/iosfwd \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/iostream \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/istream \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/iterator \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/limits \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/map \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/memory \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/mutex \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/new \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/numbers \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ostream \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/execution_defs.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/glue_memory_defs.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/pstl_config.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/ratio \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/semaphore \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/set \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/sstream \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/stack \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/stdexcept \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/stdlib.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/stop_token \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/streambuf \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/string \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/string_view \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/system_error \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/thread \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/bessel_function.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/beta_function.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/ell_integral.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/exp_integral.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/gamma.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/hypergeometric.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/legendre_function.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/modified_bessel_func.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/poly_hermite.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/poly_laguerre.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/riemann_zeta.tcc \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/special_function_util.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/tuple \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/type_traits \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/typeindex \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/typeinfo \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/unordered_map \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/unordered_set \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/utility \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/vector \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/atomic_word.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/c++allocator.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/c++config.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/c++locale.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/cpu_defines.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/ctype_base.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/ctype_inline.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/cxxabi_tweaks.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/error_constants.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/gthr-default.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/gthr.h \
-  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/os_defines.h \
   /usr/x86_64-w64-mingw32/include/corecrt.h \
   /usr/x86_64-w64-mingw32/include/corecrt_startup.h \
   /usr/x86_64-w64-mingw32/include/corecrt_stdio_config.h \
@@ -11950,6 +13170,7 @@ CMakeFiles/engine.dir/src/system/mouse.cpp.o: /home/faye/Documents/engine/src/sy
   /home/faye/Documents/engine/src/windowmanager/fullscreenmode.hpp \
   /home/faye/Documents/engine/src/windowmanager/WindowManager.hpp \
   /home/faye/Documents/engine/src/system/mouse.hpp \
+  /usr/include/KHR/khrplatform.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/float.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/limits.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/mm_malloc.h \
@@ -11957,7 +13178,6 @@ CMakeFiles/engine.dir/src/system/mouse.cpp.o: /home/faye/Documents/engine/src/sy
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stddef.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdint.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/syslimits.h \
-  /usr/x86_64-w64-mingw32/include/KHR/khrplatform.h \
   /usr/x86_64-w64-mingw32/include/_mingw.h \
   /usr/x86_64-w64-mingw32/include/_mingw_mac.h \
   /usr/x86_64-w64-mingw32/include/_mingw_off_t.h \
@@ -12121,6 +13341,7 @@ CMakeFiles/engine.dir/src/system/mouse.cpp.o: /home/faye/Documents/engine/src/sy
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/glue_memory_defs.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/pstl_config.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/set \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/source_location \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/sstream \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/stack \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/stdexcept \
@@ -12475,6 +13696,7 @@ CMakeFiles/engine.dir/src/system/time.cpp.o: /home/faye/Documents/engine/src/sys
   /home/faye/Documents/engine/src/headers.h \
   /home/faye/Documents/engine/src/windowmanager/fullscreenmode.hpp \
   /home/faye/Documents/engine/src/system/time.hpp \
+  /usr/include/KHR/khrplatform.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/float.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/limits.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/mm_malloc.h \
@@ -12482,7 +13704,6 @@ CMakeFiles/engine.dir/src/system/time.cpp.o: /home/faye/Documents/engine/src/sys
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stddef.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdint.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/syslimits.h \
-  /usr/x86_64-w64-mingw32/include/KHR/khrplatform.h \
   /usr/x86_64-w64-mingw32/include/_mingw.h \
   /usr/x86_64-w64-mingw32/include/_mingw_mac.h \
   /usr/x86_64-w64-mingw32/include/_mingw_off_t.h \
@@ -12668,6 +13889,7 @@ CMakeFiles/engine.dir/src/system/time.cpp.o: /home/faye/Documents/engine/src/sys
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/pstl_config.h \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/ratio \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/set \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/source_location \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/span \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/sstream \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/stack \
@@ -13022,6 +14244,14 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
   /home/faye/Documents/engine/include/imgui/imgui.h \
   /home/faye/Documents/engine/include/imgui/imgui_impl_glfw.h \
   /home/faye/Documents/engine/include/imgui/imgui_impl_opengl3.h \
+  /home/faye/Documents/engine/include/fmod/fmod.h \
+  /home/faye/Documents/engine/include/fmod/fmod_codec.h \
+  /home/faye/Documents/engine/include/fmod/fmod_common.h \
+  /home/faye/Documents/engine/include/fmod/fmod_dsp.h \
+  /home/faye/Documents/engine/include/fmod/fmod_dsp_effects.h \
+  /home/faye/Documents/engine/include/fmod/fmod_errors.h \
+  /home/faye/Documents/engine/include/fmod/fmod_output.h \
+  /home/faye/Documents/engine/src/audio/audio.hpp \
   /home/faye/Documents/engine/src/headers.h \
   /home/faye/Documents/engine/src/render/camera.hpp \
   /home/faye/Documents/engine/src/render/framebuffer.hpp \
@@ -13042,18 +14272,11 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
   /home/faye/Documents/engine/src/render/texture.hpp \
   /home/faye/Documents/engine/src/shader/ShaderManager.hpp \
   /home/faye/Documents/engine/src/shader/shader.hpp \
-  /home/faye/Documents/engine/include/fmod/fmod.h \
-  /home/faye/Documents/engine/include/fmod/fmod_codec.h \
-  /home/faye/Documents/engine/include/fmod/fmod_common.h \
-  /home/faye/Documents/engine/include/fmod/fmod_dsp.h \
-  /home/faye/Documents/engine/include/fmod/fmod_dsp_effects.h \
-  /home/faye/Documents/engine/include/fmod/fmod_errors.h \
-  /home/faye/Documents/engine/include/fmod/fmod_output.h \
-  /home/faye/Documents/engine/src/system/audio.hpp \
   /home/faye/Documents/engine/src/system/mouse.hpp \
   /home/faye/Documents/engine/src/system/time.hpp \
   /home/faye/Documents/engine/src/windowmanager/fullscreenmode.hpp \
   /home/faye/Documents/engine/src/windowmanager/WindowManager.hpp \
+  /usr/include/KHR/khrplatform.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/float.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/limits.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/mm_malloc.h \
@@ -13061,7 +14284,6 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stddef.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdint.h \
   /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/syslimits.h \
-  /usr/x86_64-w64-mingw32/include/KHR/khrplatform.h \
   /usr/x86_64-w64-mingw32/include/_mingw.h \
   /usr/x86_64-w64-mingw32/include/_mingw_mac.h \
   /usr/x86_64-w64-mingw32/include/_mingw_off_t.h \
@@ -13269,6 +14491,7 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/ratio \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/semaphore \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/set \
+  /usr/x86_64-w64-mingw32/include/c++/16.1.0/source_location \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/span \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/sstream \
   /usr/x86_64-w64-mingw32/include/c++/16.1.0/stack \
@@ -13366,8 +14589,6 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
 
 /home/faye/Documents/engine/src/system/mouse.cpp:
 
-/home/faye/Documents/engine/src/system/audio.cpp:
-
 /home/faye/Documents/engine/src/stb.h:
 
 /home/faye/Documents/engine/include/stb_image/stb_image.h:
@@ -13382,9 +14603,95 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
 
 /home/faye/Documents/engine/src/system/serializable_types.h:
 
-/home/faye/Documents/engine/src/render/audiosource.cpp:
-
 /home/faye/Documents/engine/src/editor/editorWM.hpp:
+
+/usr/x86_64-w64-mingw32/include/c++/16.1.0/span:
+
+/usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/glue_algorithm_defs.h:
+
+/usr/x86_64-w64-mingw32/include/c++/16.1.0/optional:
+
+/usr/x86_64-w64-mingw32/include/c++/16.1.0/format:
+
+/usr/x86_64-w64-mingw32/include/c++/16.1.0/charconv:
+
+/usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/uniform_int_dist.h:
+
+/usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/unicode.h:
+
+/usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_heap.h:
+
+/usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ranges_algo.h:
+
+/usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/monostate.h:
+
+/home/faye/Documents/engine/src/render/camera.cpp:
+
+/usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/formatfwd.h:
+
+/usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/algorithmfwd.h:
+
+/usr/x86_64-w64-mingw32/include/c++/16.1.0/algorithm:
+
+/home/faye/Documents/engine/src/editor/editor.hpp:
+
+/home/faye/Documents/engine/src/render/sprite.hpp:
+
+/home/faye/Documents/engine/src/render/mesh.hpp:
+
+/home/faye/Documents/engine/src/render/material.hpp:
+
+/home/faye/Documents/engine/src/editor/project.cpp:
+
+/home/faye/Documents/engine/src/system/time.hpp:
+
+/home/faye/Documents/engine/src/shader/shader.hpp:
+
+/home/faye/Documents/engine/src/editor/editor.cpp:
+
+/home/faye/Documents/engine/src/audio/channelgroup.hpp:
+
+/usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/messages_members.h:
+
+/usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/basic_file.h:
+
+/home/faye/Documents/engine/src/render/blend.hpp:
+
+/usr/x86_64-w64-mingw32/include/c++/16.1.0/iomanip:
+
+/usr/x86_64-w64-mingw32/include/c++/16.1.0/fstream:
+
+/usr/x86_64-w64-mingw32/include/c++/16.1.0/filesystem:
+
+/usr/x86_64-w64-mingw32/include/c++/16.1.0/codecvt:
+
+/usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/quoted_string.h:
+
+/usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/locale_facets_nonio.tcc:
+
+/usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/locale_facets_nonio.h:
+
+/usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/locale_conv.h:
+
+/usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/fs_ops.h:
+
+/usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/fs_fwd.h:
+
+/usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/fs_dir.h:
+
+/usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/codecvt.h:
+
+/home/faye/Documents/engine/src/editor/project.hpp:
+
+/home/faye/Documents/engine/src/system/file.hpp:
+
+/home/faye/Documents/engine/src/render/rendertexture.hpp:
+
+/home/faye/Documents/engine/src/render/level.hpp:
+
+/home/faye/Documents/engine/src/render/entity.hpp:
+
+/home/faye/Documents/engine/src/render/camera.hpp:
 
 /usr/x86_64-w64-mingw32/include/wctype.h:
 
@@ -13418,9 +14725,9 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
 
 /usr/x86_64-w64-mingw32/include/corecrt_startup.h:
 
-/usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/messages_members.h:
-
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/gthr-default.h:
+
+/home/faye/Documents/engine/src/audio/audiosource.hpp:
 
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/error_constants.h:
 
@@ -13429,8 +14736,6 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/ctype_base.h:
 
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/c++allocator.h:
-
-/usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/basic_file.h:
 
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/atomic_word.h:
 
@@ -13452,15 +14757,9 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
 
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/stdexcept:
 
-/usr/x86_64-w64-mingw32/include/c++/16.1.0/span:
-
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/semaphore:
 
-/usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/glue_algorithm_defs.h:
-
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/ostream:
-
-/usr/x86_64-w64-mingw32/include/c++/16.1.0/optional:
 
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/mutex:
 
@@ -13473,12 +14772,6 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/initializer_list:
 
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/future:
-
-/usr/x86_64-w64-mingw32/include/c++/16.1.0/fstream:
-
-/usr/x86_64-w64-mingw32/include/c++/16.1.0/format:
-
-/usr/x86_64-w64-mingw32/include/c++/16.1.0/filesystem:
 
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/ext/string_conversions.h:
 
@@ -13500,10 +14793,6 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
 
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/cstdint:
 
-/usr/x86_64-w64-mingw32/include/c++/16.1.0/codecvt:
-
-/usr/x86_64-w64-mingw32/include/c++/16.1.0/charconv:
-
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/cctype:
 
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/cassert:
@@ -13514,10 +14803,6 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
 
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/unique_lock.h:
 
-/usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/uniform_int_dist.h:
-
-/usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/unicode.h:
-
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/glue_memory_defs.h:
 
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/streambuf_iterator.h:
@@ -13527,8 +14812,6 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_relops.h:
 
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_raw_storage_iter.h:
-
-/usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_heap.h:
 
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_deque.h:
 
@@ -13552,11 +14835,7 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
 
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ranges_util.h:
 
-/usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ranges_algo.h:
-
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/range_access.h:
-
-/usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/quoted_string.h:
 
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/postypes.h:
 
@@ -13570,17 +14849,9 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
 
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/new_throw.h:
 
-/usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/monostate.h:
-
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/clocale:
 
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/memoryfwd.h:
-
-/usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/locale_facets_nonio.tcc:
-
-/usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/locale_facets_nonio.h:
-
-/usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/locale_conv.h:
 
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_tree.h:
 
@@ -13594,17 +14865,11 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
 
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/hashtable.h:
 
+/home/faye/Documents/engine/src/system/mouse.hpp:
+
+/usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/hash_bytes.h:
+
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/functexcept.h:
-
-/usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/fs_ops.h:
-
-/usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/fs_fwd.h:
-
-/usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/fs_dir.h:
-
-/home/faye/Documents/engine/src/render/camera.cpp:
-
-/usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/formatfwd.h:
 
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/set:
 
@@ -13617,8 +14882,6 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/deque.tcc:
 
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/cxxabi_forced.h:
-
-/usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/codecvt.h:
 
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/tuple:
 
@@ -13652,59 +14915,13 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
 
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/align.h:
 
-/usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/algorithmfwd.h:
-
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/atomic:
 
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/array:
 
-/usr/x86_64-w64-mingw32/include/c++/16.1.0/algorithm:
-
-/home/faye/Documents/engine/src/editor/editor.hpp:
+/home/faye/Documents/engine/src/audio/audio.hpp:
 
 /home/faye/Documents/engine/src/windowmanager/fullscreenmode.hpp:
-
-/usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/hash_bytes.h:
-
-/home/faye/Documents/engine/src/system/mouse.hpp:
-
-/home/faye/Documents/engine/include/fmod/fmod_output.h:
-
-/usr/x86_64-w64-mingw32/include/corecrt_wconio.h:
-
-/home/faye/Documents/engine/include/fmod/fmod_errors.h:
-
-/home/faye/Documents/engine/src/windowmanager/WindowManager.hpp:
-
-/home/faye/Documents/engine/include/fmod/fmod.h:
-
-/home/faye/Documents/engine/src/render/sprite.hpp:
-
-/home/faye/Documents/engine/src/render/rendertexture.hpp:
-
-/home/faye/Documents/engine/src/render/mesh.hpp:
-
-/home/faye/Documents/engine/src/render/material.hpp:
-
-/home/faye/Documents/engine/src/render/entity.hpp:
-
-/usr/x86_64-w64-mingw32/include/c++/16.1.0/iomanip:
-
-/home/faye/Documents/engine/src/render/blend.hpp:
-
-/home/faye/Documents/engine/src/editor/project.cpp:
-
-/home/faye/Documents/engine/src/system/time.hpp:
-
-/home/faye/Documents/engine/src/shader/shader.hpp:
-
-/home/faye/Documents/engine/src/editor/project.hpp:
-
-/home/faye/Documents/engine/src/system/file.hpp:
-
-/home/faye/Documents/engine/src/render/level.hpp:
-
-/home/faye/Documents/engine/src/render/camera.hpp:
 
 /home/faye/Documents/engine/src/headers.h:
 
@@ -13780,6 +14997,12 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
 
 /home/faye/Documents/engine/include/glm/detail/type_mat4x4.hpp:
 
+/home/faye/Documents/engine/include/glm/detail/compute_vector_relational.hpp:
+
+/home/faye/Documents/engine/src/system/vechelper.hpp:
+
+/home/faye/Documents/engine/include/glm/detail/compute_vector_decl.hpp:
+
 /usr/x86_64-w64-mingw32/include/stdint.h:
 
 /home/faye/Documents/engine/include/glm/ext/matrix_double4x4.hpp:
@@ -13828,6 +15051,12 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
 
 /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512vp2intersectvlintrin.h:
 
+/usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/fstream.tcc:
+
+/home/faye/Documents/engine/include/glm/detail/_vectorize.hpp:
+
+/usr/x86_64-w64-mingw32/include/playsoundapi.h:
+
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/typeindex:
 
 /usr/x86_64-w64-mingw32/include/minwindef.h:
@@ -13853,6 +15082,10 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
 /home/faye/Documents/engine/include/glm/ext/vector_int2.hpp:
 
 /usr/x86_64-w64-mingw32/include/limits.h:
+
+/usr/x86_64-w64-mingw32/include/corecrt_wconio.h:
+
+/home/faye/Documents/engine/include/fmod/fmod_errors.h:
 
 /home/faye/Documents/engine/include/glm/ext/matrix_float3x4_precision.hpp:
 
@@ -13958,9 +15191,9 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
 
 /home/faye/Documents/engine/include/imgui/imconfig.h:
 
-/home/faye/Documents/engine/include/glm/trigonometric.hpp:
+/home/faye/Documents/engine/include/AirGuanZ/imfilebrowser.h:
 
-/usr/x86_64-w64-mingw32/include/c++/16.1.0/math.h:
+/home/faye/Documents/engine/include/glm/detail/type_vec1.inl:
 
 /usr/x86_64-w64-mingw32/include/psdk_inc/intrin-impl.h:
 
@@ -14023,6 +15256,12 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
 /home/faye/Documents/engine/include/imgui/imgui_impl_glfw.h:
 
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/new_except.h:
+
+/home/faye/Documents/engine/include/glm/trigonometric.hpp:
+
+/usr/x86_64-w64-mingw32/include/c++/16.1.0/math.h:
+
+/usr/include/KHR/khrplatform.h:
 
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/exception_defines.h:
 
@@ -14124,11 +15363,15 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
 
 /usr/x86_64-w64-mingw32/include/psdk_inc/_fd_types.h:
 
+/home/faye/Documents/engine/src/audio/audioclip.cpp:
+
 /home/faye/Documents/engine/include/glm/detail/type_mat3x4.hpp:
 
 /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avxintrin.h:
 
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/move.h:
+
+/home/faye/Documents/engine/src/audio/channelgroup.cpp:
 
 /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512vpopcntdqvlintrin.h:
 
@@ -14176,6 +15419,8 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
 
 /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/serializeintrin.h:
 
+/home/faye/Documents/engine/src/audio/audioclip.hpp:
+
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_pair.h:
 
 /home/faye/Documents/engine/include/glm/ext/vector_bool1_precision.hpp:
@@ -14183,8 +15428,6 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/cpu_defines.h:
 
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/stl_iterator_base_types.h:
-
-/usr/x86_64-w64-mingw32/include/KHR/khrplatform.h:
 
 /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avxvnniint16intrin.h:
 
@@ -14207,14 +15450,6 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/bessel_function.tcc:
 
 /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512bf16intrin.h:
-
-/usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/c++locale.h:
-
-/home/faye/Documents/engine/include/glm/gtc/quaternion.inl:
-
-/usr/x86_64-w64-mingw32/include/bemapiset.h:
-
-/usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/ell_integral.tcc:
 
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/std_abs.h:
 
@@ -14298,7 +15533,7 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
 
 /home/faye/Documents/engine/include/imgui/imgui.cpp:
 
-/home/faye/Documents/engine/src/render/audiosource.hpp:
+/home/faye/Documents/engine/src/audio/audiosource.cpp:
 
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/map:
 
@@ -14371,6 +15606,8 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
 /home/faye/Documents/engine/include/glm/detail/type_mat2x3.inl:
 
 /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/ia32intrin.h:
+
+/usr/x86_64-w64-mingw32/include/c++/16.1.0/source_location:
 
 /home/faye/Documents/engine/include/glm/gtc/constants.inl:
 
@@ -14468,9 +15705,9 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
 
 /usr/x86_64-w64-mingw32/include/corecrt.h:
 
-/usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ostream.h:
-
 /home/faye/Documents/engine/src/render/texture.hpp:
+
+/usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ostream.h:
 
 /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512vp2intersectintrin.h:
 
@@ -14489,10 +15726,6 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
 /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avxneconvertintrin.h:
 
 /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/x86gprintrin.h:
-
-/home/faye/Documents/engine/include/fmod/fmod_codec.h:
-
-/usr/x86_64-w64-mingw32/include/psdk_inc/_xmitfile.h:
 
 /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/fmaintrin.h:
 
@@ -14527,6 +15760,14 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
 /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/pkuintrin.h:
 
 /usr/x86_64-w64-mingw32/include/_mingw_off_t.h:
+
+/home/faye/Documents/engine/include/glm/gtx/transform.inl:
+
+/home/faye/Documents/engine/include/glm/packing.hpp:
+
+/home/faye/Documents/engine/include/glm/vec2.hpp:
+
+/home/faye/Documents/engine/include/cereal/details/polymorphic_impl.hpp:
 
 /usr/x86_64-w64-mingw32/include/stringapiset.h:
 
@@ -14678,10 +15919,6 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
 
 /home/faye/Documents/engine/include/cereal/archives/json.hpp:
 
-/home/faye/Documents/engine/include/glm/detail/type_vec1.inl:
-
-/home/faye/Documents/engine/include/AirGuanZ/imfilebrowser.h:
-
 /usr/x86_64-w64-mingw32/include/nb30.h:
 
 /usr/x86_64-w64-mingw32/include/processtopologyapi.h:
@@ -14707,6 +15944,10 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
 /usr/x86_64-w64-mingw32/include/_timeval.h:
 
 /usr/x86_64-w64-mingw32/include/propidl.h:
+
+/home/faye/Documents/engine/include/glm/vec3.hpp:
+
+/home/faye/Documents/engine/include/cereal/details/static_object.hpp:
 
 /usr/x86_64-w64-mingw32/include/prsht.h:
 
@@ -14790,10 +16031,6 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
 
 /usr/x86_64-w64-mingw32/include/winspool.h:
 
-/home/faye/Documents/engine/include/cereal/details/static_object.hpp:
-
-/home/faye/Documents/engine/include/glm/vec3.hpp:
-
 /usr/x86_64-w64-mingw32/include/wtypesbase.h:
 
 /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/xsaveoptintrin.h:
@@ -14822,13 +16059,25 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
 
 /home/faye/Documents/engine/include/glm/ext/matrix_float2x4_precision.hpp:
 
-/home/faye/Documents/engine/src/editor/editor.cpp:
+/usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/c++locale.h:
 
-/usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/fstream.tcc:
+/home/faye/Documents/engine/include/glm/gtc/quaternion.inl:
 
-/usr/x86_64-w64-mingw32/include/playsoundapi.h:
+/usr/x86_64-w64-mingw32/include/bemapiset.h:
 
-/home/faye/Documents/engine/include/glm/detail/_vectorize.hpp:
+/usr/x86_64-w64-mingw32/include/c++/16.1.0/tr1/ell_integral.tcc:
+
+/home/faye/Documents/engine/src/audio/audio.cpp:
+
+/home/faye/Documents/engine/src/windowmanager/WindowManager.hpp:
+
+/home/faye/Documents/engine/include/fmod/fmod.h:
+
+/usr/x86_64-w64-mingw32/include/psdk_inc/_xmitfile.h:
+
+/home/faye/Documents/engine/include/fmod/fmod_codec.h:
+
+/home/faye/Documents/engine/include/fmod/fmod_output.h:
 
 /home/faye/Documents/engine/include/cereal/macros.hpp:
 
@@ -14998,8 +16247,6 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
 
 /home/faye/Documents/engine/include/glm/ext/matrix_double2x3_precision.hpp:
 
-/home/faye/Documents/engine/src/system/audio.hpp:
-
 /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/x86intrin.h:
 
 /usr/x86_64-w64-mingw32/include/winreg.h:
@@ -15033,10 +16280,6 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
 /usr/x86_64-w64-mingw32/include/c++/16.1.0/backward/auto_ptr.h:
 
 /home/faye/Documents/engine/include/glm/ext/matrix_float4x3.hpp:
-
-/home/faye/Documents/engine/src/system/vechelper.hpp:
-
-/home/faye/Documents/engine/include/glm/detail/compute_vector_decl.hpp:
 
 /home/faye/Documents/engine/include/glm/glm.hpp:
 
@@ -15095,13 +16338,3 @@ CMakeFiles/engine.dir/src/windowmanager/WindowManager.cpp.o: /home/faye/Document
 /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/avx512bitalgvlintrin.h:
 
 /home/faye/Documents/engine/include/glm/matrix.hpp:
-
-/home/faye/Documents/engine/include/glm/gtx/transform.inl:
-
-/home/faye/Documents/engine/include/glm/packing.hpp:
-
-/home/faye/Documents/engine/include/cereal/details/polymorphic_impl.hpp:
-
-/home/faye/Documents/engine/include/glm/vec2.hpp:
-
-/home/faye/Documents/engine/include/glm/detail/compute_vector_relational.hpp:

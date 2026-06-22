@@ -3,7 +3,7 @@ CMakeFiles/engine.dir/src/editor/project.cpp.o: \
  /home/faye/Documents/engine/src/editor/project.hpp \
  /home/faye/Documents/engine/src/editor/../headers.h \
  /home/faye/Documents/engine/src/editor/../../include/glad/glad.h \
- /usr/x86_64-w64-mingw32/include/KHR/khrplatform.h \
+ /usr/include/KHR/khrplatform.h \
  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdint.h \
  /usr/x86_64-w64-mingw32/include/stdint.h \
  /usr/x86_64-w64-mingw32/include/crtdefs.h \
@@ -527,6 +527,7 @@ CMakeFiles/engine.dir/src/editor/project.cpp.o: \
  /usr/x86_64-w64-mingw32/include/_mingw_stdarg.h \
  /home/faye/Documents/engine/src/editor/../../include/imgui/imgui_impl_glfw.h \
  /home/faye/Documents/engine/src/editor/../../include/imgui/imgui_impl_opengl3.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.1.0/source_location \
  /usr/x86_64-w64-mingw32/include/c++/16.1.0/fstream \
  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/codecvt.h \
  /usr/x86_64-w64-mingw32/include/c++/16.1.0/x86_64-w64-mingw32/bits/basic_file.h \
@@ -564,4 +565,30 @@ CMakeFiles/engine.dir/src/editor/project.cpp.o: \
  /home/faye/Documents/engine/src/editor/../render/../shader/ShaderManager.hpp \
  /home/faye/Documents/engine/src/editor/../render/../shader/shader.hpp \
  /home/faye/Documents/engine/src/editor/../render/../shader/../render/texture.hpp \
- /home/faye/Documents/engine/src/editor/../render/blend.hpp
+ /home/faye/Documents/engine/src/editor/../render/blend.hpp \
+ /home/faye/Documents/engine/src/editor/../audio/audioclip.hpp \
+ /home/faye/Documents/engine/src/editor/../audio/audio.hpp \
+ /home/faye/Documents/engine/src/editor/../audio/../../include/fmod/fmod.h \
+ /home/faye/Documents/engine/src/editor/../audio/../../include/fmod/fmod_common.h \
+ /home/faye/Documents/engine/src/editor/../audio/../../include/fmod/fmod_codec.h \
+ /home/faye/Documents/engine/src/editor/../audio/../../include/fmod/fmod_dsp.h \
+ /home/faye/Documents/engine/src/editor/../audio/../../include/fmod/fmod_dsp_effects.h \
+ /home/faye/Documents/engine/src/editor/../audio/../../include/fmod/fmod_output.h \
+ /home/faye/Documents/engine/src/editor/../audio/../../include/fmod/fmod_errors.h \
+ /home/faye/Documents/engine/src/editor/../audio/../../include/fmod/fmod.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.1.0/future \
+ /usr/x86_64-w64-mingw32/include/c++/16.1.0/mutex \
+ /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/std_mutex.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/unique_lock.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.1.0/condition_variable \
+ /usr/x86_64-w64-mingw32/include/c++/16.1.0/stop_token \
+ /usr/x86_64-w64-mingw32/include/c++/16.1.0/atomic \
+ /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/std_thread.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.1.0/semaphore \
+ /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/semaphore_base.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_timed_wait.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/this_thread_sleep.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_futex.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.1.0/thread \
+ /home/faye/Documents/engine/src/editor/../audio/channelgroup.hpp \
+ /home/faye/Documents/engine/src/editor/../audio/audiosource.hpp

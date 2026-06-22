@@ -163,14 +163,26 @@
 },
 {
   "directory": "/home/faye/Documents/engine/out/build/win",
-  "command": "/usr/bin/x86_64-w64-mingw32-g++   -static  -g -o CMakeFiles/engine.dir/src/system/audio.cpp.o -c /home/faye/Documents/engine/src/system/audio.cpp",
-  "file": "/home/faye/Documents/engine/src/system/audio.cpp",
-  "output": "CMakeFiles/engine.dir/src/system/audio.cpp.o"
+  "command": "/usr/bin/x86_64-w64-mingw32-g++   -static  -g -o CMakeFiles/engine.dir/src/audio/audio.cpp.o -c /home/faye/Documents/engine/src/audio/audio.cpp",
+  "file": "/home/faye/Documents/engine/src/audio/audio.cpp",
+  "output": "CMakeFiles/engine.dir/src/audio/audio.cpp.o"
 },
 {
   "directory": "/home/faye/Documents/engine/out/build/win",
-  "command": "/usr/bin/x86_64-w64-mingw32-g++   -static  -g -o CMakeFiles/engine.dir/src/render/audiosource.cpp.o -c /home/faye/Documents/engine/src/render/audiosource.cpp",
-  "file": "/home/faye/Documents/engine/src/render/audiosource.cpp",
-  "output": "CMakeFiles/engine.dir/src/render/audiosource.cpp.o"
+  "command": "/usr/bin/x86_64-w64-mingw32-g++   -static  -g -o CMakeFiles/engine.dir/src/audio/audiosource.cpp.o -c /home/faye/Documents/engine/src/audio/audiosource.cpp",
+  "file": "/home/faye/Documents/engine/src/audio/audiosource.cpp",
+  "output": "CMakeFiles/engine.dir/src/audio/audiosource.cpp.o"
+},
+{
+  "directory": "/home/faye/Documents/engine/out/build/win",
+  "command": "/usr/bin/x86_64-w64-mingw32-g++   -static  -g -o CMakeFiles/engine.dir/src/audio/audioclip.cpp.o -c /home/faye/Documents/engine/src/audio/audioclip.cpp",
+  "file": "/home/faye/Documents/engine/src/audio/audioclip.cpp",
+  "output": "CMakeFiles/engine.dir/src/audio/audioclip.cpp.o"
+},
+{
+  "directory": "/home/faye/Documents/engine/out/build/win",
+  "command": "/usr/bin/x86_64-w64-mingw32-g++   -static  -g -o CMakeFiles/engine.dir/src/audio/channelgroup.cpp.o -c /home/faye/Documents/engine/src/audio/channelgroup.cpp",
+  "file": "/home/faye/Documents/engine/src/audio/channelgroup.cpp",
+  "output": "CMakeFiles/engine.dir/src/audio/channelgroup.cpp.o"
 }
 ]

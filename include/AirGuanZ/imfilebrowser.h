@@ -855,7 +855,6 @@ inline void ImGui::FileBrowser::Display()
     }
 
     SameLine();
-
     Text(GetSelected().filename().string().c_str());
 
     if(!statusStr_.empty() && !(flags_ & ImGuiFileBrowserFlags_NoStatusBar))

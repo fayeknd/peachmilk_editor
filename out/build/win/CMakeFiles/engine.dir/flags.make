@@ -7,11 +7,11 @@ C_DEFINES =
 
 C_INCLUDES = 
 
-C_FLAGS = 
+C_FLAGS = -g
 
 CXX_DEFINES = 
 
 CXX_INCLUDES = 
 
-CXX_FLAGS = -static 
+CXX_FLAGS = -static  -g
 

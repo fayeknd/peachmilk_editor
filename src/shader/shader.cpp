@@ -74,9 +74,6 @@ Shader* Shader::createShader(const char* shFilePath, const char* shaderName) {
     m_vsh = glCreateShader(GL_VERTEX_SHADER);
     m_fsh = glCreateShader(GL_FRAGMENT_SHADER);
 
-    stripUnicode(vshCode);
-    stripUnicode(fshCode);
-
     const char* vsh_c = vshCode.c_str();
     const char* fsh_c = fshCode.c_str();
     const char* gsh_c = gshCode.c_str();
@@ -92,7 +89,6 @@ Shader* Shader::createShader(const char* shFilePath, const char* shaderName) {
 
     if (hasGshHeader) {
         m_gsh = glCreateShader(GL_GEOMETRY_SHADER);
-        stripUnicode(gshCode);
         glShaderSource(m_gsh, 1, &gsh_c, NULL);
         glCompileShader(m_gsh);
         checkCompileErrors(m_gsh);

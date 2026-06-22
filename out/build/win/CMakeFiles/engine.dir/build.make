@@ -450,33 +450,61 @@ CMakeFiles/engine.dir/src/render/level.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/engine.dir/src/render/level.cpp.s"
 	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/faye/Documents/engine/src/render/level.cpp -o CMakeFiles/engine.dir/src/render/level.cpp.s
 
-CMakeFiles/engine.dir/src/system/audio.cpp.o: CMakeFiles/engine.dir/flags.make
-CMakeFiles/engine.dir/src/system/audio.cpp.o: /home/faye/Documents/engine/src/system/audio.cpp
-CMakeFiles/engine.dir/src/system/audio.cpp.o: CMakeFiles/engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/faye/Documents/engine/out/build/win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/engine.dir/src/system/audio.cpp.o"
-	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/engine.dir/src/system/audio.cpp.o -MF CMakeFiles/engine.dir/src/system/audio.cpp.o.d -o CMakeFiles/engine.dir/src/system/audio.cpp.o -c /home/faye/Documents/engine/src/system/audio.cpp
+CMakeFiles/engine.dir/src/audio/audio.cpp.o: CMakeFiles/engine.dir/flags.make
+CMakeFiles/engine.dir/src/audio/audio.cpp.o: /home/faye/Documents/engine/src/audio/audio.cpp
+CMakeFiles/engine.dir/src/audio/audio.cpp.o: CMakeFiles/engine.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/faye/Documents/engine/out/build/win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/engine.dir/src/audio/audio.cpp.o"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/engine.dir/src/audio/audio.cpp.o -MF CMakeFiles/engine.dir/src/audio/audio.cpp.o.d -o CMakeFiles/engine.dir/src/audio/audio.cpp.o -c /home/faye/Documents/engine/src/audio/audio.cpp
 
-CMakeFiles/engine.dir/src/system/audio.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/engine.dir/src/system/audio.cpp.i"
-	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/faye/Documents/engine/src/system/audio.cpp > CMakeFiles/engine.dir/src/system/audio.cpp.i
+CMakeFiles/engine.dir/src/audio/audio.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/engine.dir/src/audio/audio.cpp.i"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/faye/Documents/engine/src/audio/audio.cpp > CMakeFiles/engine.dir/src/audio/audio.cpp.i
 
-CMakeFiles/engine.dir/src/system/audio.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/engine.dir/src/system/audio.cpp.s"
-	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/faye/Documents/engine/src/system/audio.cpp -o CMakeFiles/engine.dir/src/system/audio.cpp.s
+CMakeFiles/engine.dir/src/audio/audio.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/engine.dir/src/audio/audio.cpp.s"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/faye/Documents/engine/src/audio/audio.cpp -o CMakeFiles/engine.dir/src/audio/audio.cpp.s
 
-CMakeFiles/engine.dir/src/render/audiosource.cpp.o: CMakeFiles/engine.dir/flags.make
-CMakeFiles/engine.dir/src/render/audiosource.cpp.o: /home/faye/Documents/engine/src/render/audiosource.cpp
-CMakeFiles/engine.dir/src/render/audiosource.cpp.o: CMakeFiles/engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/faye/Documents/engine/out/build/win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/engine.dir/src/render/audiosource.cpp.o"
-	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/engine.dir/src/render/audiosource.cpp.o -MF CMakeFiles/engine.dir/src/render/audiosource.cpp.o.d -o CMakeFiles/engine.dir/src/render/audiosource.cpp.o -c /home/faye/Documents/engine/src/render/audiosource.cpp
+CMakeFiles/engine.dir/src/audio/audiosource.cpp.o: CMakeFiles/engine.dir/flags.make
+CMakeFiles/engine.dir/src/audio/audiosource.cpp.o: /home/faye/Documents/engine/src/audio/audiosource.cpp
+CMakeFiles/engine.dir/src/audio/audiosource.cpp.o: CMakeFiles/engine.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/faye/Documents/engine/out/build/win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/engine.dir/src/audio/audiosource.cpp.o"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/engine.dir/src/audio/audiosource.cpp.o -MF CMakeFiles/engine.dir/src/audio/audiosource.cpp.o.d -o CMakeFiles/engine.dir/src/audio/audiosource.cpp.o -c /home/faye/Documents/engine/src/audio/audiosource.cpp
 
-CMakeFiles/engine.dir/src/render/audiosource.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/engine.dir/src/render/audiosource.cpp.i"
-	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/faye/Documents/engine/src/render/audiosource.cpp > CMakeFiles/engine.dir/src/render/audiosource.cpp.i
+CMakeFiles/engine.dir/src/audio/audiosource.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/engine.dir/src/audio/audiosource.cpp.i"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/faye/Documents/engine/src/audio/audiosource.cpp > CMakeFiles/engine.dir/src/audio/audiosource.cpp.i
 
-CMakeFiles/engine.dir/src/render/audiosource.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/engine.dir/src/render/audiosource.cpp.s"
-	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/faye/Documents/engine/src/render/audiosource.cpp -o CMakeFiles/engine.dir/src/render/audiosource.cpp.s
+CMakeFiles/engine.dir/src/audio/audiosource.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/engine.dir/src/audio/audiosource.cpp.s"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/faye/Documents/engine/src/audio/audiosource.cpp -o CMakeFiles/engine.dir/src/audio/audiosource.cpp.s
+
+CMakeFiles/engine.dir/src/audio/audioclip.cpp.o: CMakeFiles/engine.dir/flags.make
+CMakeFiles/engine.dir/src/audio/audioclip.cpp.o: /home/faye/Documents/engine/src/audio/audioclip.cpp
+CMakeFiles/engine.dir/src/audio/audioclip.cpp.o: CMakeFiles/engine.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/faye/Documents/engine/out/build/win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/engine.dir/src/audio/audioclip.cpp.o"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/engine.dir/src/audio/audioclip.cpp.o -MF CMakeFiles/engine.dir/src/audio/audioclip.cpp.o.d -o CMakeFiles/engine.dir/src/audio/audioclip.cpp.o -c /home/faye/Documents/engine/src/audio/audioclip.cpp
+
+CMakeFiles/engine.dir/src/audio/audioclip.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/engine.dir/src/audio/audioclip.cpp.i"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/faye/Documents/engine/src/audio/audioclip.cpp > CMakeFiles/engine.dir/src/audio/audioclip.cpp.i
+
+CMakeFiles/engine.dir/src/audio/audioclip.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/engine.dir/src/audio/audioclip.cpp.s"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/faye/Documents/engine/src/audio/audioclip.cpp -o CMakeFiles/engine.dir/src/audio/audioclip.cpp.s
+
+CMakeFiles/engine.dir/src/audio/channelgroup.cpp.o: CMakeFiles/engine.dir/flags.make
+CMakeFiles/engine.dir/src/audio/channelgroup.cpp.o: /home/faye/Documents/engine/src/audio/channelgroup.cpp
+CMakeFiles/engine.dir/src/audio/channelgroup.cpp.o: CMakeFiles/engine.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/faye/Documents/engine/out/build/win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/engine.dir/src/audio/channelgroup.cpp.o"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/engine.dir/src/audio/channelgroup.cpp.o -MF CMakeFiles/engine.dir/src/audio/channelgroup.cpp.o.d -o CMakeFiles/engine.dir/src/audio/channelgroup.cpp.o -c /home/faye/Documents/engine/src/audio/channelgroup.cpp
+
+CMakeFiles/engine.dir/src/audio/channelgroup.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/engine.dir/src/audio/channelgroup.cpp.i"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/faye/Documents/engine/src/audio/channelgroup.cpp > CMakeFiles/engine.dir/src/audio/channelgroup.cpp.i
+
+CMakeFiles/engine.dir/src/audio/channelgroup.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/engine.dir/src/audio/channelgroup.cpp.s"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/faye/Documents/engine/src/audio/channelgroup.cpp -o CMakeFiles/engine.dir/src/audio/channelgroup.cpp.s
 
 # Object files for target engine
 engine_OBJECTS = \
@@ -507,8 +535,10 @@ engine_OBJECTS = \
 "CMakeFiles/engine.dir/src/render/rendertexture.cpp.o" \
 "CMakeFiles/engine.dir/src/editor/project.cpp.o" \
 "CMakeFiles/engine.dir/src/render/level.cpp.o" \
-"CMakeFiles/engine.dir/src/system/audio.cpp.o" \
-"CMakeFiles/engine.dir/src/render/audiosource.cpp.o"
+"CMakeFiles/engine.dir/src/audio/audio.cpp.o" \
+"CMakeFiles/engine.dir/src/audio/audiosource.cpp.o" \
+"CMakeFiles/engine.dir/src/audio/audioclip.cpp.o" \
+"CMakeFiles/engine.dir/src/audio/channelgroup.cpp.o"
 
 # External object files for target engine
 engine_EXTERNAL_OBJECTS =
@@ -540,14 +570,16 @@ engine: CMakeFiles/engine.dir/src/render/framebuffer.cpp.o
 engine: CMakeFiles/engine.dir/src/render/rendertexture.cpp.o
 engine: CMakeFiles/engine.dir/src/editor/project.cpp.o
 engine: CMakeFiles/engine.dir/src/render/level.cpp.o
-engine: CMakeFiles/engine.dir/src/system/audio.cpp.o
-engine: CMakeFiles/engine.dir/src/render/audiosource.cpp.o
+engine: CMakeFiles/engine.dir/src/audio/audio.cpp.o
+engine: CMakeFiles/engine.dir/src/audio/audiosource.cpp.o
+engine: CMakeFiles/engine.dir/src/audio/audioclip.cpp.o
+engine: CMakeFiles/engine.dir/src/audio/channelgroup.cpp.o
 engine: CMakeFiles/engine.dir/build.make
 engine: /home/faye/Documents/engine/lib/libglfw3.a
 engine: /home/faye/Documents/engine/lib/fmod_vc.lib
 engine: /home/faye/Documents/engine/lib/fmodL_vc.lib
 engine: CMakeFiles/engine.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/faye/Documents/engine/out/build/win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Linking CXX executable engine"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/faye/Documents/engine/out/build/win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Linking CXX executable engine"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/engine.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

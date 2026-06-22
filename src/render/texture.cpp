@@ -23,11 +23,11 @@ bool Texture::saveAsMGD(const char* pathOverride) {
     return true;
 }
  */
-unsigned char* Texture::getDataFromFileSTBI(const char *file, int *x, int *y, int* c) {
-    return stbi_load(file, x, y, c, 0);
+unsigned char* Texture::getDataFromFileSTBI(std::string file, int *x, int *y, int* c) {
+    return stbi_load(file.c_str(), x, y, c, 0);
 }
 
-unsigned char* Texture::getDataFromFileMGD(const char *file, int *x, int *y, unsigned int* filtering, bool flipVertical, bool flipHorizontal, int rotate) {
+unsigned char* Texture::getDataFromFileMGD(std::string file, int *x, int *y, unsigned int* filtering, bool flipVertical, bool flipHorizontal, int rotate) {
     std::ifstream is(file);
     std::string line; 
     
@@ -147,7 +147,7 @@ void Texture::shouldFlip(bool flag) {
     m_shouldFlip = flag;
 }
 
-Texture* Texture::getLoadedTexture(const char* path) {
+Texture* Texture::getLoadedTexture(std::string path) {
     // if the given path already exists in one of the textures, set the texture pointer to that texture.
     std::filesystem::path p(path);
     std::filesystem::path p2;
@@ -169,21 +169,21 @@ Texture* Texture::getWithID(unsigned int id) {
     return nullptr;
 }
 
-Texture* Texture::createNewTextureFromPath(const char* path, unsigned int filterMode, unsigned int format, unsigned int textureType) {
+Texture* Texture::createNewTextureFromPath(std::string path, unsigned int filterMode, unsigned int format, unsigned int textureType, bool serialize) {
     Texture* t = getLoadedTexture(path);
     if (t != nullptr) {
         std::cout << "Texture is already loaded!" << std::endl;
         return t;
     }
     t = new Texture;
-    if (!t->createTextureFromPath(path, filterMode, format, textureType)) {
+    if (!t->createTextureFromPath(path, filterMode, format, textureType, serialize)) {
         delete t; 
         return nullptr;
     }
     return t;
 }
 
-void Texture::writeDataToMGD(Texture* t, const char* filePath) {
+void Texture::writeDataToMGD(Texture* t, std::string  filePath) {
     if (!t->m_textureData) return;
     int y = 0;
     int w = t->m_size.x;
@@ -224,8 +224,9 @@ void Texture::writeDataToMGD(Texture* t, const char* filePath) {
     os.close();
 }
 
-bool Texture::createTextureFromPath(const char* path, unsigned int filterMode, unsigned int format, unsigned int textureType) {
+bool Texture::createTextureFromPath(std::string path, unsigned int filterMode, unsigned int format, unsigned int textureType, bool serialize) {
     
+    m_serialize = serialize;
     std::string filePath = path;
     
     if (!File::fileExists(path)) {
@@ -235,7 +236,7 @@ bool Texture::createTextureFromPath(const char* path, unsigned int filterMode, u
             return false; 
         }
     }
-    m_fullPath = File::getFullPath(filePath.c_str());
+    m_fullPath = File::getFullPath(filePath);
 
     std::string ext = File::getExtension(filePath);
     if (ext == "webp") {
@@ -266,16 +267,18 @@ bool Texture::createTextureFromPath(const char* path, unsigned int filterMode, u
         }
         m_filterMode = filterMode;
         m_size = glm::vec2(w, h);
-         int tries = 0;
-        std::string s = filePath;
-        std::filesystem::path p(s);
-        if (p.parent_path() != Project::get()->getTextureFolder()) {
-            while (File::fileExists(s)) {
-                s = std::string(Project::get()->getTextureFolder()) + std::string("/texture") + std::to_string(tries) + std::string(".") + ext;    
-                tries++;
+        if (m_serialize) {\
+            int tries = 0;
+            std::string s = filePath;
+            std::filesystem::path p(s);
+            if (p.parent_path() != Project::get()->getTextureFolder()) {
+                while (File::fileExists(s)) {
+                    s = std::string(Project::get()->getTextureFolder()) + std::string("/texture") + std::to_string(tries) + std::string(".") + ext;    
+                    tries++;
+                }
+                std::filesystem::copy_file(filePath, s);
+                m_fullPath = File::getFullPath(s.c_str());
             }
-            std::filesystem::copy_file(filePath, s);
-            m_fullPath = File::getFullPath(s.c_str());
         }
         // mgd files were a terrible idea
         

@@ -15,6 +15,7 @@
 #include "../include/imgui/imgui.h"
 #include "../include/imgui/imgui_impl_glfw.h"
 #include "../include/imgui/imgui_impl_opengl3.h"
+#include <source_location>
 
 #define WND_TITLE "Peachmilk Editor"
 #define WND_W 600
@@ -41,11 +42,18 @@
 #define TEX_DEFAULT_EXT "mgd" // marigold
 #define LEV_DEFAULT_EXT "lvd" // lavender
 #define SND_DEFAULT_EXT "sfn" // saffron
+#define CHN_DEFAULT_EXT "mnf"
 #define MAX_AUDIO_CHANNELS 512
 #define AUDIO_DISTANCEFACTOR 1
 #define AUDIO_DOPPLER 1
 #define AUDIO_ROLLOFF 1
-#define FLAG std::cout << "flag" << std::endl;
+#define AUDIO_MIN_FALLOFF_DEFAULT 100
+#define AUDIO_MAX_FALLOFF_DEFAULT 3000
+#define AUDIO_MAX_FALLOFF_MAX 5000
+#define AUDIO_MAX_VOLUME 400
+
+#define _FLAG(ex) std::cout << "flag " << ex << std::endl;
+#define FLAG _FLAG("")
 
 typedef void (*init_func)(void);
 typedef void (*window_hint_func)(int, int);

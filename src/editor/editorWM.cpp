@@ -7,7 +7,7 @@
 #include "../render/camera.hpp"
 #include "../system/mouse.hpp"
 #include "../editor/editor.hpp"
-
+#include "../audio/audioclip.hpp"
 
 void EditorWM::create(int width, int height, const char* title, init_func pre_init_func, window_hint_func window_hints, int gl_major, int gl_minor) {
     WindowManager::create(width, height, title, pre_init_func, window_hints, gl_major, gl_minor);
@@ -126,7 +126,7 @@ bool EditorWM::createProjectSelection() {
         ImGui::Text("Projects");
         ImGui::NewLine();
         if (textFlag) {
-            if (ImGui::InputText("##name", buf, 32));
+            ImGui::InputText("##name", buf, 32);
             if (glfwGetKey(m_wnd, GLFW_KEY_ENTER) == GLFW_PRESS) {
                 textFlag = false;
                 Project* newProject = new Project;
@@ -169,24 +169,7 @@ bool EditorWM::createProjectSelection() {
     for (auto p : projects) {
         if (Project::get() != p) delete p;
     }
-    Material::deseralizeMaterials();
-    if (Project::get()->m_loadedLevelPath != "" && File::fileExists(Project::get()->m_loadedLevelPath)) {
-        GameLevel::loadLevel(Project::get()->m_loadedLevelPath, false);
-    }
-    else {
-        bool flag = false;
-        for (auto entry : std::filesystem::directory_iterator(Project::get()->getLevelFolder())) {
-            if (File::getExtension(entry.path().string()) == LEV_DEFAULT_EXT) {
-                GameLevel::loadLevel(entry.path().string(), false);
-                flag = true;
-                break;
-            }
-        }
-        if (!flag) {
-            GameLevel::createNewLevel();
-            GameLevel::loadLevel(Project::get()->getLevelFolder() + "\\New Level.lvd");
-        }
-    }
+    Project::get()->loadProject();
     if (!flag)
     {
         // the program was closed naturally and therefore

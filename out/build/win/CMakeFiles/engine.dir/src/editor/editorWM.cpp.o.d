@@ -166,7 +166,7 @@ CMakeFiles/engine.dir/src/editor/editorWM.cpp.o: \
  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/istream.tcc \
  /home/faye/Documents/engine/src/editor/../windowmanager/../headers.h \
  /home/faye/Documents/engine/src/editor/../windowmanager/../../include/glad/glad.h \
- /usr/x86_64-w64-mingw32/include/KHR/khrplatform.h \
+ /usr/include/KHR/khrplatform.h \
  /usr/lib/gcc/x86_64-w64-mingw32/16.1.0/include/stdint.h \
  /usr/x86_64-w64-mingw32/include/stdint.h \
  /home/faye/Documents/engine/src/editor/../windowmanager/../../include/GLFW/glfw3.h \
@@ -528,6 +528,7 @@ CMakeFiles/engine.dir/src/editor/editorWM.cpp.o: \
  /usr/x86_64-w64-mingw32/include/_mingw_stdarg.h \
  /home/faye/Documents/engine/src/editor/../windowmanager/../../include/imgui/imgui_impl_glfw.h \
  /home/faye/Documents/engine/src/editor/../windowmanager/../../include/imgui/imgui_impl_opengl3.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.1.0/source_location \
  /home/faye/Documents/engine/src/editor/../editor/editor.hpp \
  /home/faye/Documents/engine/src/editor/../editor/../render/entity.hpp \
  /home/faye/Documents/engine/src/editor/../editor/../render/transform.hpp \
@@ -590,15 +591,15 @@ CMakeFiles/engine.dir/src/editor/editorWM.cpp.o: \
  /usr/x86_64-w64-mingw32/include/c++/16.1.0/algorithm \
  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/ranges_algo.h \
  /usr/x86_64-w64-mingw32/include/c++/16.1.0/pstl/glue_algorithm_defs.h \
- /home/faye/Documents/engine/src/editor/../editor/../system/audio.hpp \
- /home/faye/Documents/engine/src/editor/../editor/../system/../../include/fmod/fmod.h \
- /home/faye/Documents/engine/src/editor/../editor/../system/../../include/fmod/fmod_common.h \
- /home/faye/Documents/engine/src/editor/../editor/../system/../../include/fmod/fmod_codec.h \
- /home/faye/Documents/engine/src/editor/../editor/../system/../../include/fmod/fmod_dsp.h \
- /home/faye/Documents/engine/src/editor/../editor/../system/../../include/fmod/fmod_dsp_effects.h \
- /home/faye/Documents/engine/src/editor/../editor/../system/../../include/fmod/fmod_output.h \
- /home/faye/Documents/engine/src/editor/../editor/../system/../../include/fmod/fmod_errors.h \
- /home/faye/Documents/engine/src/editor/../editor/../system/../../include/fmod/fmod.h \
+ /home/faye/Documents/engine/src/editor/../editor/../audio/audio.hpp \
+ /home/faye/Documents/engine/src/editor/../editor/../audio/../../include/fmod/fmod.h \
+ /home/faye/Documents/engine/src/editor/../editor/../audio/../../include/fmod/fmod_common.h \
+ /home/faye/Documents/engine/src/editor/../editor/../audio/../../include/fmod/fmod_codec.h \
+ /home/faye/Documents/engine/src/editor/../editor/../audio/../../include/fmod/fmod_dsp.h \
+ /home/faye/Documents/engine/src/editor/../editor/../audio/../../include/fmod/fmod_dsp_effects.h \
+ /home/faye/Documents/engine/src/editor/../editor/../audio/../../include/fmod/fmod_output.h \
+ /home/faye/Documents/engine/src/editor/../editor/../audio/../../include/fmod/fmod_errors.h \
+ /home/faye/Documents/engine/src/editor/../editor/../audio/../../include/fmod/fmod.h \
  /usr/x86_64-w64-mingw32/include/c++/16.1.0/future \
  /usr/x86_64-w64-mingw32/include/c++/16.1.0/mutex \
  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/std_mutex.h \
@@ -613,4 +614,7 @@ CMakeFiles/engine.dir/src/editor/editorWM.cpp.o: \
  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/this_thread_sleep.h \
  /usr/x86_64-w64-mingw32/include/c++/16.1.0/bits/atomic_futex.h \
  /usr/x86_64-w64-mingw32/include/c++/16.1.0/thread \
+ /home/faye/Documents/engine/src/editor/../editor/../audio/audioclip.hpp \
+ /home/faye/Documents/engine/src/editor/../editor/../audio/channelgroup.hpp \
+ /home/faye/Documents/engine/src/editor/../editor/../audio/audiosource.hpp \
  /home/faye/Documents/engine/src/editor/../system/mouse.hpp

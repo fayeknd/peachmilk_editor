@@ -21,6 +21,7 @@ protected:
     unsigned int m_format;
     unsigned int m_filterMode;
     unsigned int m_textureType;
+    bool m_serialize = true;
     static inline bool m_shouldFlip = false;
 
     unsigned char* m_textureData = 0;
@@ -29,11 +30,11 @@ protected:
 public:
 
     static std::vector<Texture*> s_allTextures;
-    static void writeDataToMGD(Texture* t, const char* filePath = ""); 
-    static Texture* getLoadedTexture(const char* path);
-    bool createTextureFromPath(const char* path, unsigned int filterMode = DEFAULT_FILTERING, unsigned int format = 0, unsigned int textureType = GL_TEXTURE_2D);
-    static Texture* createNewTextureFromPath(const char* path, unsigned int filterMode = 0, unsigned int format = 0, unsigned int textureType = GL_TEXTURE_2D);
-    static Texture* createNewTextureWithData(unsigned char* data, unsigned int filterMode = 0, unsigned int format = 0, unsigned int textureType = GL_TEXTURE_2D);
+    static void writeDataToMGD(Texture* t, std::string filePath = ""); 
+    static Texture* getLoadedTexture(std::string  path);
+    bool createTextureFromPath(std::string  path, unsigned int filterMode = DEFAULT_FILTERING, unsigned int format = 0, unsigned int textureType = GL_TEXTURE_2D, bool serialize = true);
+    static Texture* createNewTextureFromPath(std::string  path, unsigned int filterMode = 0, unsigned int format = 0, unsigned int textureType = GL_TEXTURE_2D, bool serialize = true);
+    static Texture* createNewTextureWithData(unsigned char* data, unsigned int filterMode = 0, unsigned int format = 0, unsigned int textureType = GL_TEXTURE_2D, bool serialize = true);
     static Texture* getWithID(unsigned int id);
 
     glm::vec2 dimensions() { return m_size; };
@@ -51,8 +52,8 @@ public:
 
     static void shouldFlip(bool flag);
     
-    static unsigned char* getDataFromFileSTBI(const char* file, int* x, int* y, int* c);
-    static unsigned char* getDataFromFileMGD(const char* file, int* x, int* y, unsigned int* filtering, bool flipVertical = false, bool flipHorizontal = false, int rotate = 0);
+    static unsigned char* getDataFromFileSTBI(std::string  file, int* x, int* y, int* c);
+    static unsigned char* getDataFromFileMGD(std::string  file, int* x, int* y, unsigned int* filtering, bool flipVertical = false, bool flipHorizontal = false, int rotate = 0);
 
     ~Texture();
 

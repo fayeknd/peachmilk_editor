@@ -5,6 +5,7 @@
 #include "../system/mouse.hpp"
 #include "../shader/shader.hpp"
 #include "../system/file.hpp"
+#include "../audio/audiosource.hpp"
 #include <fstream>
 
 /*
@@ -56,14 +57,15 @@ void EditorUI::_start() {
     m_serialize = false;
     m_selectionBox.m_serialize = false;
     m_selectionBox.m_destroyOnLoad = false;
-    m_selectionBox.m_material.m_doSerialize = false;
+    m_selectionBox.m_material.m_serialize = false;
     glm::vec2 size = WindowManager::get()->m_size;
     Camera::mainCamera->m_framebuffer = new Framebuffer;
     Camera::mainCamera->m_framebuffer->create(size.x, size.y);
     Camera::mainCamera->m_serialize = false;
     Camera::mainCamera->m_destroyOnLoad = false;
 
-    m_materialIcon = *Texture::createNewTextureFromPath("editor_data/ui/texture1.mgd");
+    m_materialIcon = *Texture::createNewTextureFromPath("editor_data/ui/materialIcon.png", GL_LINEAR, GL_RGBA, GL_TEXTURE_2D, false);
+    m_channelMixerIcon = *Texture::createNewTextureFromPath("editor_data/ui/channelMixerIcon.png", GL_LINEAR, GL_RGBA, GL_TEXTURE_2D, false);
 
     m_fileDiag.SetTitle("File Browser");
     m_fileDiag.SetDirectory(File::getWorkingDirectory());
@@ -75,6 +77,7 @@ void EditorUI::_start() {
     ImGui_ImplGlfw_InitForOpenGL(WindowManager::get()->m_wnd, true);
     ImGui_ImplOpenGL3_Init("#version 460");
     createAxisHandle();
+
     m_hidden = true;
     //ImGui::GetIO().ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 
@@ -290,9 +293,12 @@ void EditorUI::imgui() {
                 for (int i = 0; i < Camera::allCameras().size(); i++) {
                     std::string label = (Camera::allCameras()[i] == Camera::mainCamera) ? "Main Camera" : "Camera " + std::to_string(i);
                     if (ImGui::BeginMenu(label.c_str())){
+                        if (ImGui::MenuItem(Camera::allCameras()[i]->m_isOrtho ? "Perspective View" : "Orthographic View")) {
+                            Camera::allCameras()[i]->m_isOrtho = !Camera::allCameras()[i]->m_isOrtho;
+                        }
                         if (ImGui::MenuItem("Reset View")) {
-                            Camera::mainCamera->transform.setGlobalPosition({0,0,Camera::mainCamera->transform.getGlobalPosition().z});
-                            Camera::mainCamera->m_zoomFactor = 10.0f;
+                            Camera::allCameras()[i]->transform.setGlobalPosition({0,0,Camera::mainCamera->transform.getGlobalPosition().z});
+                            Camera::allCameras()[i]->m_zoomFactor = 10.0f;
                         }
                         ImGui::EndMenu();
                     }
@@ -324,10 +330,8 @@ void EditorUI::imgui() {
             }
             if (ImGui::Button((m_selectedSprites.size() > 1) ? "Delete Entities" : "Delete Entity")) {
                 for (int i = 0; i < m_selectedSprites.size(); i++) {
-                    ScriptableEntity* spr = m_selectedSprites[i];
-                    Sprite* spr2 = dynamic_cast<Sprite*>(spr);
-                    if (spr2) delete spr2;
-                    else if (spr) delete spr;
+                    GameLevel::deleteEntity(m_selectedSprites[i]);
+                    m_selectedSprites.erase(m_selectedSprites.begin() + i);
                 }
                 m_selectedSprites.clear();
             }
@@ -365,6 +369,7 @@ void EditorUI::imgui() {
             bool dirty = false;
             bool gDirty = false;
             ScriptableEntity* spr = m_selectedSprites[0];
+            ImGui::Text((std::string("EntityID: ") + std::to_string(spr->getID())).c_str());
             float t[3];
             float r[3];
             float s[3];
@@ -443,6 +448,11 @@ void EditorUI::imgui() {
                 }
             }
 
+            ImGui::NewLine();
+            ImGui::Checkbox("Destroy on Load?", &spr->m_destroyOnLoad);
+            ImGui::Checkbox("Serialize?", &spr->m_serialize);
+            ImGui::NewLine();
+
             Sprite* spr_s = dynamic_cast<Sprite*>(spr);
             if (spr_s) {
                 if (ImGui::CollapsingHeader("Material Properties", ImGuiTreeNodeFlags_DefaultOpen)) {
@@ -463,6 +473,145 @@ void EditorUI::imgui() {
                     }
                 }
             }
+            AudioSource* audio = dynamic_cast<AudioSource*>(spr);
+            if (audio) {
+                if (ImGui::CollapsingHeader("AudioSource Properties", ImGuiTreeNodeFlags_DefaultOpen)) {
+                    float v = audio->getVolume() * 100;
+                    float p = audio->getPitch() - 1;
+                    float d = audio->getDoppler(); 
+                    float l = audio->get3DLevel();
+                    float f[2] = {audio->getMinFalloff(), audio->getMaxFalloff()};
+
+                    std::string cgtag("Channel Group (" + ((ChannelGroup::getChannelGroup(audio->getChannelGroupName())) ? audio->getChannelGroupName() : "None") + ")");
+
+
+                    if (ImGui::BeginMenu(cgtag.c_str())) {
+                        for (int i = 0; i < ChannelGroup::s_channelGroups.size(); i++) {
+                            ChannelGroup * cg = ChannelGroup::s_channelGroups[i];
+                            if (ImGui::MenuItem(cg->getName().c_str())) {
+                                audio->setChannelGroup(cg->getName());
+                            }
+                        }
+                        if (ImGui::MenuItem("None")) {
+                            audio->setChannelGroup(nullptr);
+                        }
+                        ImGui::EndMenu();
+                    }
+                    
+                    if (ImGui::SliderFloat("Volume", &v, 0, 300, "%.0f%%")) {
+                        audio->setVolume(v / 100);
+                    }
+                    if (ImGui::IsItemHovered()) {
+                        ImGui::SetTooltip("Channel volume (Between 0 and 300, can be set. programmatically higher.)");
+                    }
+
+                    if (ImGui::SliderFloat("Pitch", &p, -1, 1, "%.3f")) {
+                        audio->setPitch(p + 1);
+                    }
+                    if (ImGui::IsItemHovered()) {
+                        ImGui::SetTooltip("Channel Pitch/Frequency. (Between 0 and 1.)");
+                    }
+
+                    if (ImGui::SliderFloat("Doppler", &d, 0, 1)) {
+                        audio->setDoppler(d);
+                    }
+                    if (ImGui::IsItemHovered()) {
+                        ImGui::SetTooltip("Channel Doppler strength.");
+                    }
+
+                    if (ImGui::SliderFloat2("Falloff", f, 0, AUDIO_MAX_FALLOFF_MAX)) {
+                        if (f[0] > f[1]) f[0] = f[1];
+                        audio->setFalloff(f[0], f[1]);
+                    }
+                    if (ImGui::IsItemHovered()) {
+                        std::string tag("Channel Min and max 3D falloff. Default: Min " + std::to_string(AUDIO_MIN_FALLOFF_DEFAULT) + "/ Max " + std::to_string(AUDIO_MAX_FALLOFF_MAX) + ".");
+                        ImGui::SetTooltip(tag.c_str());
+                    }
+
+                    if (ImGui::SliderFloat("3D Level", &l, 0, 1)) {
+                        audio->set3DLevel(l);
+                    }
+                    if (ImGui::IsItemHovered()) {
+                        ImGui::SetTooltip("Channel 3D strength.");
+                    }
+                    int index = 0;
+                    
+                    ImGui::NewLine();
+                    
+                    std::string tag = std::string("Is playing? : ") + ((audio->isPlaying()) ? "true" : "false");
+                    ImGui::Text(tag.c_str());
+                    
+                    ImGui::NewLine();
+
+                    ImGui::BeginListBox("##AudioClips");
+                    ImGui::Text("Audio Clips");
+                    int selectedClipIndex = -1;
+                    bool isSelectedClipSet = false;
+                    for (int i = 0; i < MAX_CLIPS; i++) {
+                        if (audio->m_clips[i] != nullptr) {
+                            index++;
+                            if (m_selectedAudioClip == audio->m_clips[i]) {
+                                selectedClipIndex = i;
+                                isSelectedClipSet = true;
+                                ImGui::Text(">");
+                                ImGui::SameLine();
+                            }
+
+                            if (ImGui::Button(audio->m_clips[i]->getName().c_str())) {
+                                //audio->playSound(i);
+                                m_selectedAudioClip = audio->m_clips[i];
+                                isSelectedClipSet = true;
+                                selectedClipIndex = i;
+                            }
+                        }
+                    }
+                    if (!isSelectedClipSet)
+                        m_selectedAudioClip = nullptr;
+                    ImGui::EndListBox();
+                    if (index != MAX_CLIPS) {
+                        ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 5);
+                        if (ImGui::Button("+##CreateAudioClip")) {
+                            m_fileDiag.Open();
+                            m_fileDiag.ClearSelected();
+                        }
+                        if (m_fileDiag.HasSelected()) {
+                            std::filesystem::path file = m_fileDiag.GetSelected();
+                            std::string ext = File::getExtension(file.string());
+                            if (ext == "wav" || ext == "ogg" || ext == "mp3") {
+                                AudioClip * ac = new AudioClip();
+                                if (ac->createSound(file.string().c_str()))
+                                    audio->m_clips[index] = ac;
+                                else
+                                    delete ac;
+                            }
+                            m_fileDiag.ClearSelected();
+                        }
+                        if (ImGui::IsItemHovered()) {
+                            ImGui::SetTooltip("Create a new AudioClip from a file");
+                        }
+                        ImGui::SameLine();
+                        if (selectedClipIndex != -1) {
+                            if (ImGui::Button("-##DestroyAudioClip")) {
+                                m_selectedAudioClip->destroy();
+                                audio->m_clips[selectedClipIndex] = nullptr;
+                                m_selectedAudioClip = nullptr;
+                            }
+                            if (ImGui::IsItemHovered()) {
+                                ImGui::SetTooltip("Destroy the audio clip");
+                            }
+                            ImGui::SameLine(); 
+                            if (ImGui::Button("Play##PlayAudioClip")) {
+                                audio->playSound(m_selectedAudioClip);
+                            }
+                            if (ImGui::IsItemHovered()) {
+                                ImGui::SetTooltip("Play the selected audio clip");
+                            }
+                        }
+                        
+
+                    }
+                }
+            }
 
             if (dirty) {
                 spr->transform.setLocalPosition({t[0], t[1], t[2]});
@@ -478,6 +627,9 @@ void EditorUI::imgui() {
         else if (sizeGT1){
             ImGui::Text("I'm not doing the logic for that");
         }
+        // 
+        ImGui::Text(" ");
+        ImGui::Text(" ");
     }
     ImGui::EndChild();
     ImGui::End(); 
@@ -651,6 +803,15 @@ void EditorUI::imgui() {
                         closeFlag = true;
                     };
 
+                    if (ImGui::Button("AudioSource Entity")) {
+                        AudioSource* n = new AudioSource;
+                        n->create("AudioSource Parent ");
+                        ScriptableEntity* p = ent->getParent();
+                        if (p != nullptr) n->setParent(p);
+                        ent->setParent(n);
+                        closeFlag = true;
+                    };
+
                     ImGui::EndMenu();
                 }
 
@@ -667,6 +828,13 @@ void EditorUI::imgui() {
                         Sprite* n = new Sprite;
                         n->create("Sprite Child ");
                         n->setScaleToTexelSize();
+                        ent->addChild(n);
+                        closeFlag = true;
+                    }
+
+                    if (ImGui::Button("AudioSource Entity")) {
+                        AudioSource* n = new AudioSource;
+                        n->create("AudioSource Child ");
                         ent->addChild(n);
                         closeFlag = true;
                     }
@@ -702,6 +870,18 @@ void EditorUI::imgui() {
                     closeFlag = true;
                 }   
 
+                if (ImGui::Button("AudioSource Entity")) {
+                    AudioSource* n = new AudioSource;
+                    n->create("AudioSource Entity ");
+                    for (int i = 0; i < m_selectedSprites.size(); i++) {
+                        m_selectedSprites[i]->m_selected = false;
+                    }
+                    m_selectedSprites.clear();
+                    n->m_selected = true;
+                    m_selectedSprites.push_back(n);
+                    closeFlag = true;
+                }   
+
                 ImGui::EndMenu();
 
             }
@@ -710,10 +890,8 @@ void EditorUI::imgui() {
                 ImGui::SetCursorPos({ImGui::GetCursorPos().x - 3, ImGui::GetCursorPos().y + 5});
                 if (ImGui::Button((m_selectedSprites.size() > 1) ? "Delete Entities" : "Delete Entity")) {
                     for (int i = 0; i < m_selectedSprites.size(); i++) {
-                        ScriptableEntity* spr = m_selectedSprites[i];
-                        Sprite* spr2 = dynamic_cast<Sprite*>(spr);
-                        if (spr2) delete spr2;
-                        else if (spr) delete spr;
+                        GameLevel::deleteEntity(m_selectedSprites[i]);
+                        m_selectedSprites.erase(m_selectedSprites.begin() + i);
                     }
                     m_selectedSprites.clear();
                     closeFlag = true;
@@ -725,6 +903,12 @@ void EditorUI::imgui() {
                     }
                     m_selectedSprites.clear();
                     closeFlag = true;
+                }
+                ImGui::SetCursorPos({ImGui::GetCursorPos().x - 3, ImGui::GetCursorPos().y - 3});
+                if (ImGui::Button("Focus")) {
+                    Camera::mainCamera->transform.setGlobalPositionX(m_selectedSprites[0]->transform.getGlobalPosition().x);
+                    Camera::mainCamera->transform.setGlobalPositionY(m_selectedSprites[0]->transform.getGlobalPosition().y);
+                    Camera::mainCamera->m_zoomFactor = Camera::mainCamera->m_zoomFactorDefault;
                 }
             }
             
@@ -767,6 +951,13 @@ void EditorUI::imgui() {
         }
         if (ImGui::IsItemHovered())
             ImGui::SetTooltip("Material Editor");
+
+        if (ImGui::ImageButton("##channelMixer", m_channelMixerIcon.getID(), {64, 64}, {0, 1}, {1, 0})) {
+            m_openChannelMixer = !m_openChannelMixer;
+        }
+        if (ImGui::IsItemHovered())
+            ImGui::SetTooltip("Channel Mixer");
+
 
         ImGui::SetCursorPos({ImGui::GetCursorPos().x + 10, ImGui::GetWindowSize().y - 30});
         std::string zoom = "Zoom: " + std::to_string(Camera::mainCamera->m_zoomFactor / 10).substr(0, (Camera::mainCamera->m_zoomFactor >= 0.1) ? 5 : 10) + "x | ";
@@ -824,6 +1015,85 @@ void EditorUI::imgui() {
         }
         ImGui::End();
     }
+
+    if (m_openChannelMixer) {
+        if(ImGui::Begin("Channel Mixers")) {
+            for (int i = 0; i < ChannelGroup::s_channelGroups.size(); i++) {
+                ChannelGroup* cg = ChannelGroup::s_channelGroups[i];
+                float winSize = ImGui::GetWindowSize().x - 50;
+                ImGui::SetNextWindowSize({(winSize) / 2, ImGui::GetWindowSize().y});
+                ImGui::BeginChild((std::string(cg->getName().c_str()) + std::string("##_")).c_str());
+                if (ImGui::CollapsingHeader(cg->getName().c_str(), ImGuiTreeNodeFlags_Leaf)) {
+                    float v = cg->getVolume() * 100;
+                    float p = cg->getPitch() - 1;
+                    float d = cg->getDoppler(); 
+                    float l = cg->get3DLevel();
+                    float f[2] = {cg->getMinFalloff(), cg->getMaxFalloff()};
+
+                    float sliderSize = (ImGui::GetWindowSize().x - 50) / 5;
+
+                    // TODO : Way to create and destroy (and maybe prompt user on destruction of) channel groups
+
+                    if (ImGui::VSliderFloat((std::string("##ChannelGroupVolume") + cg->getName()).c_str(), {sliderSize, ImGui::GetWindowSize().y - 70}, &v, 0, 300, "%.1f")) {
+                        cg->setVolume(v / 100);
+                    }
+                    if (ImGui::IsItemHovered()) {
+                        ImGui::SetTooltip("Volume (0, 300)");
+                    }
+                    ImGui::SameLine();
+
+                    if (ImGui::VSliderFloat((std::string("##ChannelGroupPitch") + cg->getName()).c_str(), {sliderSize, ImGui::GetWindowSize().y - 70}, &p, -1, 1)) {
+                        cg->setPitch(p + 1);
+                    }
+                    if (ImGui::IsItemHovered()) {
+                        ImGui::SetTooltip("Pitch (-1, 1)");
+                    }
+                    ImGui::SameLine();
+
+                    if (ImGui::VSliderFloat((std::string("##ChannelGroupDoppler") + cg->getName()).c_str(), {sliderSize, ImGui::GetWindowSize().y - 70}, &d, 0, 1)) {
+                        cg->setDoppler(d);
+                    }
+                    if (ImGui::IsItemHovered()) {
+                        ImGui::SetTooltip("Doppler (0, 1)");
+                    }
+                    ImGui::SameLine();
+
+                    ImVec2 pos = ImGui::GetCursorPos();
+                    if (ImGui::VSliderFloat((std::string("##ChannelGroupMaxFalloff") + cg->getName()).c_str(), {sliderSize, ((ImGui::GetWindowSize().y - 70) / 2) - 5}, &f[1], 100, AUDIO_MAX_FALLOFF_MAX)) {
+                        if (f[0] > f[1]) f[0] = f[1];
+                        cg->setFalloff(f[0], f[1]);
+                    }
+                    if (ImGui::IsItemHovered()) {
+                        ImGui::SetTooltip((std::string("Minimum Max Falloff (0, ") + std::to_string(AUDIO_MAX_FALLOFF_MAX) + std::string(")")).c_str());
+                    }
+                    ImGui::SetCursorPos({pos.x, pos.y + ((ImGui::GetWindowSize().y - 70) / 2) + 5});
+                    if (ImGui::VSliderFloat((std::string("##ChannelGroupMinFalloff") + cg->getName()).c_str(), {sliderSize, ((ImGui::GetWindowSize().y - 70) / 2) - 5}, &f[0], 0, f[1])) {
+                        if (f[0] > f[1]) f[0] = f[1];
+                        cg->setFalloff(f[0], f[1]);
+                    }
+                    if (ImGui::IsItemHovered()) {
+                        ImGui::SetTooltip((std::string("Maximum Min Falloff (0, ") + std::to_string(static_cast<int>(f[1])) + std::string(")")).c_str());
+                    }
+                    ImGui::SameLine();
+                    ImGui::SetCursorPos({ImGui::GetCursorPos().x, ImGui::GetCursorPos().y - ((ImGui::GetWindowSize().y - 70) / 2) - 5});
+                    if (ImGui::VSliderFloat((std::string("##ChannelGroup3DLevel") + cg->getName()).c_str(), {sliderSize, ImGui::GetWindowSize().y - 70}, &l, 0, 1)) {
+                        cg->set3DLevel(l);
+                    }
+                    if (ImGui::IsItemHovered()) {
+                        ImGui::SetTooltip("3D Level (0, 1)");
+                    }
+
+
+                }
+                ImGui::EndChild();
+                if (i % 3 == 0)
+                    ImGui::SameLine();
+
+            }
+        }
+        ImGui::End();
+    }
+
     glLineWidth(Shader::m_wireframeWidth * Camera::mainCamera->m_zoomFactor);
     glClearColor(Shader::m_clearCol[0], Shader::m_clearCol[1], Shader::m_clearCol[2], Shader::m_clearCol[3]);
     if (m_contextOpenTF) m_contextOpenTF = false;
@@ -891,19 +1161,6 @@ void EditorUI::scaleAlongW() {
 void EditorUI::update() {
 
     GLFWwindow* m_wnd = WindowManager::get()->m_wnd;
-
-
-    static bool sFlag = false;
-    if (glfwGetKey(m_wnd, GLFW_KEY_R) == GLFW_PRESS && !sFlag) {
-        sFlag = true;
-        std::cout << "Playing Sound" << std::endl;
-        AudioManager::get().playTestSound();
-    }
-    if (glfwGetKey(m_wnd, GLFW_KEY_R) == GLFW_RELEASE && sFlag) {
-        sFlag = false;
-    }
-    
-
 
     // i need a proper input system
     static bool saveShortcutFlag = false;
@@ -1128,6 +1385,12 @@ void EditorUI::update() {
                 if (newS.y < S.y || flag) S.y = newS.y;
                 if (newW.x < W.x || flag) W.x = newW.x;
             }
+            else {
+                newN = glm::vec2(m_selectedSprites[i]->transform.getGlobalPosition().x, m_selectedSprites[i]->transform.getGlobalPosition().y);
+                newE = glm::vec2(m_selectedSprites[i]->transform.getGlobalPosition().x, m_selectedSprites[i]->transform.getGlobalPosition().y);
+                newS = glm::vec2(m_selectedSprites[i]->transform.getGlobalPosition().x, m_selectedSprites[i]->transform.getGlobalPosition().y);
+                newW = glm::vec2(m_selectedSprites[i]->transform.getGlobalPosition().x, m_selectedSprites[i]->transform.getGlobalPosition().y);
+            }
         }
         pos = pos / (float)i;
         m_axisHandle.transform.setLocalPosition(pos);
@@ -1169,15 +1432,17 @@ void EditorUI::update() {
             m_axisHandle.m_yHandle = m_axisHandle.ty.checkCollisionAgainstPoint(Mouse::get().screenPos(), true);
             m_axisHandle.m_xyHandle = m_axisHandle.transformxy.checkCollisionAgainstPoint(Mouse::get().screenPos(), true);
 
-            m_axisHandle.m_nHandle = m_axisHandle.n.checkCollisionAgainstPoint(Mouse::get().screenPos(), true);
-            m_axisHandle.m_neHandle = m_axisHandle.ne.checkCollisionAgainstPoint(Mouse::get().screenPos(), true);
-            m_axisHandle.m_eHandle = m_axisHandle.e.checkCollisionAgainstPoint(Mouse::get().screenPos(), true);
-            m_axisHandle.m_seHandle = m_axisHandle.se.checkCollisionAgainstPoint(Mouse::get().screenPos(), true);
-            m_axisHandle.m_sHandle = m_axisHandle.s.checkCollisionAgainstPoint(Mouse::get().screenPos(), true);
-            m_axisHandle.m_swHandle = m_axisHandle.sw.checkCollisionAgainstPoint(Mouse::get().screenPos(), true);
-            m_axisHandle.m_wHandle = m_axisHandle.w.checkCollisionAgainstPoint(Mouse::get().screenPos(), true);
-            m_axisHandle.m_nwHandle = m_axisHandle.nw.checkCollisionAgainstPoint(Mouse::get().screenPos(), true);
-
+            AudioSource * test = dynamic_cast<AudioSource*>(m_selectedSprites[0]);
+            if (!test) {
+                m_axisHandle.m_nHandle = m_axisHandle.n.checkCollisionAgainstPoint(Mouse::get().screenPos(), true);
+                m_axisHandle.m_neHandle = m_axisHandle.ne.checkCollisionAgainstPoint(Mouse::get().screenPos(), true);
+                m_axisHandle.m_eHandle = m_axisHandle.e.checkCollisionAgainstPoint(Mouse::get().screenPos(), true);
+                m_axisHandle.m_seHandle = m_axisHandle.se.checkCollisionAgainstPoint(Mouse::get().screenPos(), true);
+                m_axisHandle.m_sHandle = m_axisHandle.s.checkCollisionAgainstPoint(Mouse::get().screenPos(), true);
+                m_axisHandle.m_swHandle = m_axisHandle.sw.checkCollisionAgainstPoint(Mouse::get().screenPos(), true);
+                m_axisHandle.m_wHandle = m_axisHandle.w.checkCollisionAgainstPoint(Mouse::get().screenPos(), true);
+                m_axisHandle.m_nwHandle = m_axisHandle.nw.checkCollisionAgainstPoint(Mouse::get().screenPos(), true);
+                }
             if (m_axisHandle.m_xHandle && !m_multiSelect) {
                 m_axisHandle.transformx.setLocalScaleY(1.1f); 
                 hoverFlag = true;
@@ -1357,39 +1622,40 @@ bool EditorUI::drawUI() {
         m_axisHandle.w.calculateWorldMatrix();
         m_axisHandle.nw.calculateWorldMatrix();
 
+        AudioSource* test = dynamic_cast<AudioSource*>(m_selectedSprites[0]);
+        if (!test) {
+            m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.n.localMatrix(), modelUniform);
+            m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
+            glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0); 
 
-                m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.n.localMatrix(), modelUniform);
-        m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
-        glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0); 
+            m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.ne.localMatrix(), modelUniform);
+            m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
+            glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0); 
 
-        m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.ne.localMatrix(), modelUniform);
-        m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
-        glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0); 
+            m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.e.localMatrix(), modelUniform);
+            m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
+            glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0); 
 
-        m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.e.localMatrix(), modelUniform);
-        m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
-        glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0); 
+            m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.se.localMatrix(), modelUniform);
+            m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
+            glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0); 
 
-        m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.se.localMatrix(), modelUniform);
-        m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
-        glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0); 
+            m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.s.localMatrix(), modelUniform);
+            m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
+            glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0); 
 
-        m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.s.localMatrix(), modelUniform);
-        m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
-        glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0); 
+            m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.sw.localMatrix(), modelUniform);
+            m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
+            glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0); 
 
-        m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.sw.localMatrix(), modelUniform);
-        m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
-        glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0); 
+            m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.w.localMatrix(), modelUniform);
+            m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
+            glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0); 
 
-        m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.w.localMatrix(), modelUniform);
-        m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
-        glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0); 
-
-        m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.nw.localMatrix(), modelUniform);
-        m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
-        glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0); 
-
+            m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.nw.localMatrix(), modelUniform);
+            m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
+            glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0); 
+        }
         m_axisHandle.m_mesh.bind();
 
         //glDisable(GL_DEPTH_TEST);
@@ -1460,7 +1726,7 @@ void EditorUI::createAxisHandle() {
         4, 5, 6
     };
 
-    m_axisHandle.m_material.m_doSerialize = false;
+    m_axisHandle.m_material.m_serialize = false;
     m_axisHandle.m_mesh.setupMesh(v, ind);
     m_axisHandle.m_material.m_shader = ShaderManager::get().s_shaderList[0];
     m_axisHandle.transformx.setLocalRotationZ(90);

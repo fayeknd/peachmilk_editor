@@ -28,7 +28,7 @@ public:
         archive(m_colour.x, m_colour.y, m_colour.z, m_colour.w, m_blending.m_mode, m_deserializedTexPath, m_ID); // serialize things by passing them to the archive
     }
 
-    bool m_doSerialize = true;
+    bool m_serialize = true;
     static void deseralizeMaterials(std::string cache = "");
     static void serializeMaterials(std::string cache = "");
     std::string getDeserializedTexPath() { return m_deserializedTexPath; }

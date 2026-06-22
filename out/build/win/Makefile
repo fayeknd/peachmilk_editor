@@ -321,6 +321,102 @@ include/src/glad.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/include/src/glad.c.s
 .PHONY : include/src/glad.c.s
 
+src/audio/audio.o: src/audio/audio.cpp.o
+.PHONY : src/audio/audio.o
+
+# target to build an object file
+src/audio/audio.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/audio/audio.cpp.o
+.PHONY : src/audio/audio.cpp.o
+
+src/audio/audio.i: src/audio/audio.cpp.i
+.PHONY : src/audio/audio.i
+
+# target to preprocess a source file
+src/audio/audio.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/audio/audio.cpp.i
+.PHONY : src/audio/audio.cpp.i
+
+src/audio/audio.s: src/audio/audio.cpp.s
+.PHONY : src/audio/audio.s
+
+# target to generate assembly for a file
+src/audio/audio.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/audio/audio.cpp.s
+.PHONY : src/audio/audio.cpp.s
+
+src/audio/audioclip.o: src/audio/audioclip.cpp.o
+.PHONY : src/audio/audioclip.o
+
+# target to build an object file
+src/audio/audioclip.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/audio/audioclip.cpp.o
+.PHONY : src/audio/audioclip.cpp.o
+
+src/audio/audioclip.i: src/audio/audioclip.cpp.i
+.PHONY : src/audio/audioclip.i
+
+# target to preprocess a source file
+src/audio/audioclip.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/audio/audioclip.cpp.i
+.PHONY : src/audio/audioclip.cpp.i
+
+src/audio/audioclip.s: src/audio/audioclip.cpp.s
+.PHONY : src/audio/audioclip.s
+
+# target to generate assembly for a file
+src/audio/audioclip.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/audio/audioclip.cpp.s
+.PHONY : src/audio/audioclip.cpp.s
+
+src/audio/audiosource.o: src/audio/audiosource.cpp.o
+.PHONY : src/audio/audiosource.o
+
+# target to build an object file
+src/audio/audiosource.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/audio/audiosource.cpp.o
+.PHONY : src/audio/audiosource.cpp.o
+
+src/audio/audiosource.i: src/audio/audiosource.cpp.i
+.PHONY : src/audio/audiosource.i
+
+# target to preprocess a source file
+src/audio/audiosource.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/audio/audiosource.cpp.i
+.PHONY : src/audio/audiosource.cpp.i
+
+src/audio/audiosource.s: src/audio/audiosource.cpp.s
+.PHONY : src/audio/audiosource.s
+
+# target to generate assembly for a file
+src/audio/audiosource.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/audio/audiosource.cpp.s
+.PHONY : src/audio/audiosource.cpp.s
+
+src/audio/channelgroup.o: src/audio/channelgroup.cpp.o
+.PHONY : src/audio/channelgroup.o
+
+# target to build an object file
+src/audio/channelgroup.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/audio/channelgroup.cpp.o
+.PHONY : src/audio/channelgroup.cpp.o
+
+src/audio/channelgroup.i: src/audio/channelgroup.cpp.i
+.PHONY : src/audio/channelgroup.i
+
+# target to preprocess a source file
+src/audio/channelgroup.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/audio/channelgroup.cpp.i
+.PHONY : src/audio/channelgroup.cpp.i
+
+src/audio/channelgroup.s: src/audio/channelgroup.cpp.s
+.PHONY : src/audio/channelgroup.s
+
+# target to generate assembly for a file
+src/audio/channelgroup.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/audio/channelgroup.cpp.s
+.PHONY : src/audio/channelgroup.cpp.s
+
 src/editor/editor.o: src/editor/editor.cpp.o
 .PHONY : src/editor/editor.o
 
@@ -416,30 +512,6 @@ src/main.s: src/main.cpp.s
 src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
-
-src/render/audiosource.o: src/render/audiosource.cpp.o
-.PHONY : src/render/audiosource.o
-
-# target to build an object file
-src/render/audiosource.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/render/audiosource.cpp.o
-.PHONY : src/render/audiosource.cpp.o
-
-src/render/audiosource.i: src/render/audiosource.cpp.i
-.PHONY : src/render/audiosource.i
-
-# target to preprocess a source file
-src/render/audiosource.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/render/audiosource.cpp.i
-.PHONY : src/render/audiosource.cpp.i
-
-src/render/audiosource.s: src/render/audiosource.cpp.s
-.PHONY : src/render/audiosource.s
-
-# target to generate assembly for a file
-src/render/audiosource.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/render/audiosource.cpp.s
-.PHONY : src/render/audiosource.cpp.s
 
 src/render/camera.o: src/render/camera.cpp.o
 .PHONY : src/render/camera.o
@@ -705,30 +777,6 @@ src/shader/shader.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/shader/shader.cpp.s
 .PHONY : src/shader/shader.cpp.s
 
-src/system/audio.o: src/system/audio.cpp.o
-.PHONY : src/system/audio.o
-
-# target to build an object file
-src/system/audio.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/system/audio.cpp.o
-.PHONY : src/system/audio.cpp.o
-
-src/system/audio.i: src/system/audio.cpp.i
-.PHONY : src/system/audio.i
-
-# target to preprocess a source file
-src/system/audio.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/system/audio.cpp.i
-.PHONY : src/system/audio.cpp.i
-
-src/system/audio.s: src/system/audio.cpp.s
-.PHONY : src/system/audio.s
-
-# target to generate assembly for a file
-src/system/audio.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/system/audio.cpp.s
-.PHONY : src/system/audio.cpp.s
-
 src/system/file.o: src/system/file.cpp.o
 .PHONY : src/system/file.o
 
@@ -858,6 +906,18 @@ help:
 	@echo "... include/src/glad.o"
 	@echo "... include/src/glad.i"
 	@echo "... include/src/glad.s"
+	@echo "... src/audio/audio.o"
+	@echo "... src/audio/audio.i"
+	@echo "... src/audio/audio.s"
+	@echo "... src/audio/audioclip.o"
+	@echo "... src/audio/audioclip.i"
+	@echo "... src/audio/audioclip.s"
+	@echo "... src/audio/audiosource.o"
+	@echo "... src/audio/audiosource.i"
+	@echo "... src/audio/audiosource.s"
+	@echo "... src/audio/channelgroup.o"
+	@echo "... src/audio/channelgroup.i"
+	@echo "... src/audio/channelgroup.s"
 	@echo "... src/editor/editor.o"
 	@echo "... src/editor/editor.i"
 	@echo "... src/editor/editor.s"
@@ -870,9 +930,6 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/render/audiosource.o"
-	@echo "... src/render/audiosource.i"
-	@echo "... src/render/audiosource.s"
 	@echo "... src/render/camera.o"
 	@echo "... src/render/camera.i"
 	@echo "... src/render/camera.s"
@@ -906,9 +963,6 @@ help:
 	@echo "... src/shader/shader.o"
 	@echo "... src/shader/shader.i"
 	@echo "... src/shader/shader.s"
-	@echo "... src/system/audio.o"
-	@echo "... src/system/audio.i"
-	@echo "... src/system/audio.s"
 	@echo "... src/system/file.o"
 	@echo "... src/system/file.i"
 	@echo "... src/system/file.s"
