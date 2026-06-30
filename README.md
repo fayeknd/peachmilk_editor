@@ -3,7 +3,7 @@
 A dedicated editor for personal projects.
 please don't look at my code i write this usually at midnight
 
-# 30/06/2026
+# 30/06/2026 (first time i'm actually editing the readme)
 
 - added uhh text rendering
 - cleaned up audio engine
