@@ -4,7 +4,7 @@ FMOD_RESULT nonblockcallback(FMOD_SOUND *sound, FMOD_RESULT result)
 {
     FMOD_SOUND *snd = (FMOD_SOUND *)sound;
 
-    printf("Sound loaded! (%d) %s\n", result, FMOD_ErrorString(result)); 
+    printf("Sound loaded! (%d) %s\n", result, FMOD_ErrorString(result));
 
     return FMOD_OK;
 }
@@ -14,9 +14,9 @@ void AudioManager::setErrCallback(critical_err_func fn) {
 }
 
 void AudioManager::create() {
-    if (m_created) return; 
+    if (m_created) return;
 
-    _FMOD_CreateSystem(&m_pSystem, FMOD_VERSION); 
+    _FMOD_CreateSystem(&m_pSystem, FMOD_VERSION);
     _FMOD_InitSystem(m_pSystem, MAX_AUDIO_CHANNELS, FMOD_INIT_NORMAL, NULL);
     getResult(FMOD_System_Set3DSettings(m_pSystem, AUDIO_DOPPLER, AUDIO_DISTANCEFACTOR, AUDIO_ROLLOFF));
 
@@ -25,14 +25,14 @@ void AudioManager::create() {
     m_exInfo.nonblockcallback = nonblockcallback;
 
     std::cout << "Created FMOD System" << std::endl;
-    createSound("birds.wav", &m_testSound, FMOD_3D, false);
+    //createSound("birds.wav", &m_testSound, FMOD_3D, false);
     m_created = true;
-    
+
 }
 
 void AudioManager::getResult(FMOD_RESULT r) {
     if (r != FMOD_OK) {
-        if (!suppressErrors) 
+        if (!suppressErrors)
             printf("FMOD error! (%d) %s\n", r, FMOD_ErrorString(r));
         m_errFnc();
     }
@@ -58,11 +58,11 @@ void AudioManager::update(Transform & listener, bool is2D) {
 
     // there's probably only ever gonna be one listener anyway
     // unless i decide to do something COMPLETELY wacky
-    
+
     m_pos.x = listener.getGlobalPosition().x;
     m_pos.y = listener.getGlobalPosition().y;
     m_pos.z = (is2D) ? 0 : listener.getGlobalPosition().z;
-    
+
     m_vel.x = m_pos.x - m_listenerLF.x;
     m_vel.y = m_pos.y - m_listenerLF.y;
     m_vel.z = m_pos.z - m_listenerLF.z;
@@ -78,7 +78,7 @@ void AudioManager::update(Transform & listener, bool is2D) {
     FMOD_System_GetChannelsPlaying(m_pSystem, &m_channelsPlaying, &m_realChannels);
     FMOD_System_Set3DListenerAttributes(m_pSystem, 0, &m_pos, &m_vel, &m_forward, &m_up);
     FMOD_System_Update(m_pSystem);
-    
+
     m_listenerLF = m_pos;
 }
 

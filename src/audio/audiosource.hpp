@@ -31,7 +31,7 @@ private:
     FMOD_VECTOR m_posLF{0};
     unsigned int m_clipIDs[MAX_CLIPS] {};
 
-    std::string m_channelGroupName = ""; 
+    std::string m_channelGroupName = "";
     bool m_isDirty = true;
 public:
 
@@ -44,15 +44,15 @@ public:
             m_clipIDs[i] = (m_clips[i] != nullptr) ? m_clips[i]->getID() : -1;
         }
         archive(cereal::base_class<ScriptableEntity>(this), m_doppler, m_pitch, m_volume, m_loop, m_muted, m_minFalloff, m_maxFalloff, m_3dLevel, m_clipIDs, m_channelGroupName);
-    } 
+    }
     void playSound(AudioClip * clip = nullptr);
     void playSound(unsigned int index = 0);
-    void setFalloff(float minf, float maxf, float minf_mulf = 1, float maxf_mult = 1);
+    void setFalloff(float minf, float maxf, float minf_mulf = -256, float maxf_mult = -256);
     void setMuted(FMOD_BOOL muted);
-    void setDoppler(float d, float d_mult = 1);
-    void setPitch(float p, float p_mult = 1);
-    void setVolume(float v, float v_mult = 1);
-    void set3DLevel(float l, float l_mult = 1);
+    void setDoppler(float d, float d_mult = -256);
+    void setPitch(float p, float p_mult = -256);
+    void setVolume(float v, float v_mult = -256);
+    void set3DLevel(float l, float l_mult = -256);
     void setDoesLoop(FMOD_BOOL loop);
 
     float getMinFalloff() { return m_minFalloff; }
@@ -65,12 +65,14 @@ public:
     float getVolume() { return m_volume; }
     float get3DLevel() { return m_3dLevel; }
 
+    void stopAudio();
+
     void _deserializeFnc() override;
     std::string getChannelGroupName() { return m_channelGroupName; }
     void setChannelGroup(std::string name);
     void create(std::string name = "Unnamed ") override;
     void update() override;
-    bool draw() override {return true;};
+    //bool draw() override {return true;};
 
     FMOD_CHANNEL * getChannel() { return m_channel; }
     friend class ChannelGroup;

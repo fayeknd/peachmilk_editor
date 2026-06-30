@@ -13,7 +13,7 @@ void fb_resize_callback(GLFWwindow* window, int width, int height) {
         glViewport(0, 0, width, height);
         WindowManager::get()->m_viewportSize = glm::vec2(width, height);
     }
-    
+
     WindowManager::get()->m_size = glm::vec2(width, height);
 }
 
@@ -24,7 +24,7 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset) {
 void WindowManager::centerWindow() {
     float x, y;
     const GLFWvidmode* vm = glfwGetVideoMode(glfwGetPrimaryMonitor());
-    
+
     x = (vm->width - m_size.x) / 2;
     y = (vm->height - m_size.y) / 2;
 
@@ -42,7 +42,7 @@ void WindowManager::setFullscreenMode(FullscreenMode fsm) {
             m_size = glm::vec2(vidmode->width, vidmode->height);
             break;
         }
-        
+
         case Windowed: {
             glfwSetWindowAttrib(m_wnd, GLFW_DECORATED, true);
             if (m_fullscreenMode == FullscreenMode::Fullscreen) {
@@ -80,20 +80,20 @@ bool WindowManager::init(int width, int height, const char* title, window_hint_f
 
     if (instance != nullptr) {
         std::cout << "ERROR : WindowManager already exists at " << instance << "!";
-        return false; 
+        return false;
     }
     instance = this;
     glfwInit();
-    
+
     if (window_hints != nullptr) {
         window_hints(gl_major, gl_minor);
     }
     else {
         default_window_hints(gl_major, gl_minor);
     }
-    
+
     m_wnd = glfwCreateWindow(width, height, title, NULL, NULL);
-    
+
     m_gl_major = gl_major;
     m_gl_minor = gl_minor;
 
@@ -127,7 +127,7 @@ void WindowManager::triggerUpdates() {
 
 void WindowManager::triggerDraws() {
     for (int i = GameLevel::s_loadedEntities.size() - 1; i >= 0; --i) {
-        GameLevel::s_loadedEntities.at(i)->draw();
+        //GameLevel::s_loadedEntities.at(i)->draw();
     }
 }
 

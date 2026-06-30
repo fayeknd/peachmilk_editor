@@ -33,6 +33,7 @@ public:
     std::string getPath() { return m_path; }
     bool createSound(const char* path, uint16_t mode = FMOD_3D, bool isStream = false, bool assignID = true);
     static AudioClip* getClipViaID(unsigned int ID);    
+    static AudioClip* getClipViaName(std::string name);
     // Note for tomorrow : DO THIS NOW
 
     void assignID();

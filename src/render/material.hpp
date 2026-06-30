@@ -17,18 +17,21 @@ private:
     unsigned int m_deserializedShaderID;
     std::string m_serializedPath = "";
 
+    glm::ivec2 m_uvOffset {0};
+
 public:
 
     template<class Archive>
     void serialize(Archive & archive)
     {
-        m_deserializedTexPath = (m_diffuseTexture != nullptr) ? m_diffuseTexture->getFilePath() : ""; 
+        m_deserializedTexPath = (m_diffuseTexture != nullptr) ? m_diffuseTexture->getFilePath() : "";
         m_deserializedShaderID = (m_shader != nullptr) ? m_shader->getShaderID() : -1;
-        
-        archive(m_colour.x, m_colour.y, m_colour.z, m_colour.w, m_blending.m_mode, m_deserializedTexPath, m_ID); // serialize things by passing them to the archive
+
+        archive(m_colour.x, m_colour.y, m_colour.z, m_colour.w, m_blending.m_mode, m_deserializedTexPath, m_ID, m_serializeTex); // serialize things by passing them to the archive
     }
 
     bool m_serialize = true;
+    bool m_serializeTex = true;
     static void deseralizeMaterials(std::string cache = "");
     static void serializeMaterials(std::string cache = "");
     std::string getDeserializedTexPath() { return m_deserializedTexPath; }
@@ -39,7 +42,7 @@ public:
     static std::vector<Material*> s_allMaterials;
     static Material* s_defaultMaterial;
 
-    Material() { 
+    Material() {
         s_allMaterials.push_back(this);
         if (s_availableID <= s_largestIDused) s_availableID = s_largestIDused + 1;
         m_ID = s_availableID;
@@ -67,5 +70,7 @@ public:
 
     RenderTexture m_displayTexture;
     bool m_displayTextureRendered = false;
+
+    friend class TextFont;
 
 };

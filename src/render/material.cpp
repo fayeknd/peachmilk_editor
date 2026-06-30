@@ -9,7 +9,7 @@ Material* Material::getMaterialViaID(unsigned int id) {
     for (int i = 0; i < s_allMaterials.size(); i++) {
         if (s_allMaterials[i]->getID() == id) return s_allMaterials[i];
     }
-    return nullptr; 
+    return nullptr;
 }
 
 void Material::deseralizeMaterials(std::string cache) {
@@ -20,19 +20,21 @@ void Material::deseralizeMaterials(std::string cache) {
         if (ext == MAT_DEFAULT_EXT) {
             std::ifstream os(file, std::ios::binary);
             {
-                cereal::JSONInputArchive iarchive(os); // Create an output archive
+                cereal::JSONInputArchive iarchive(os);
 
                 Material* m = new Material;
                 iarchive(*m);
-                //deserializedtexpath
-                std::string dstp = m->getDeserializedTexPath();
-                //std::cout << dstp << std::endl;
-                if (File::fileExists(dstp))
-                    m->m_diffuseTexture = Texture::createNewTextureFromPath(dstp.c_str());
+                if (m->m_serializeTex) {
+                    //deserializedtexpath
+                    std::string dstp = m->getDeserializedTexPath();
+                    //std::cout << dstp << std::endl;
+                    if (File::fileExists(dstp))
+                        m->m_diffuseTexture = Texture::createNewTextureFromPath(dstp.c_str());
+                }
                 m->m_serializedPath = file;
                 if (m->getID() > Material::s_largestIDused) Material::s_largestIDused = m->getID();
-            } 
-        }  
+            }
+        }
     }
 }
 
@@ -45,7 +47,7 @@ void Material::serializeMaterials(std::string cache) {
                 file = std::string(cache) + std::string("\\material") + std::to_string(i) + std::string(".") + MAT_DEFAULT_EXT;
             std::ofstream os(file, std::ios::binary);
             {
-                cereal::JSONOutputArchive oarchive(os); // Create an output archive
+                cereal::JSONOutputArchive oarchive(os);
                 oarchive(*Material::s_allMaterials[i]);
             }
         }

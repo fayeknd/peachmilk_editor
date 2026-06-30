@@ -3,16 +3,18 @@
 #include "vertex.hpp"
 #include <vector>
 
+#define MAX_VB_SIZE 1024
+
 struct Mesh {
 
     static Mesh Quad;
     static void s_createUniqueMeshes();
-    static std::vector<Mesh*> s_meshes; 
+    static std::vector<Mesh*> s_meshes;
     static unsigned int s_boundMesh;
 
     std::vector<Vertex> m_vertexData;
     std::vector<unsigned int> m_indexData;
-    
+
     Mesh(std::vector<Vertex> vertexData, std::vector<unsigned int> indexData, int topology = GL_TRIANGLES) {
         setupMesh(vertexData, indexData, topology);
     }
@@ -27,12 +29,13 @@ struct Mesh {
         }
     }
     }
-    
-    void setupMesh(std::vector<Vertex> vertexData, std::vector<unsigned int> indexData, int topology = GL_TRIANGLES);
+
+    void setupMesh(std::vector<Vertex> vertexData, std::vector<unsigned int> indexData, int topology = GL_TRIANGLES, int mode = GL_STATIC_DRAW);
 
     void bind();
 
     unsigned int getVBO() { return m_vbo; }
+    unsigned int getEBO() { return m_ebo; }
     unsigned int getVAO() { return m_vao; }
 
     int m_topology;

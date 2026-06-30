@@ -71,7 +71,7 @@ bool ChannelGroup::create(std::string name, bool skipNameCheck) {
 
     m_created = true;
     return true;
-} 
+}
 
 ChannelGroup::ChannelGroup() {
     s_channelGroups.push_back(this);
@@ -121,9 +121,9 @@ void ChannelGroup::deseralizeChannelGroups(std::string cache) {
                 ChannelGroup * cg = new ChannelGroup;
                 iarchive(*cg);
                 cg->m_serializedPath = file;
-                cg->create(cg->m_name, true); 
-            } 
-        }  
+                cg->create(cg->m_name, true);
+            }
+        }
     }
 }
 void ChannelGroup::serializeChannelGroups(std::string cache) {
@@ -153,4 +153,9 @@ void ChannelGroup::updateChannelMultipliers() {
         audio->m_maxFalloff_mult = m_maxFalloff;
         audio->m_isDirty = true;
     }
+}
+void ChannelGroup::setName(std::string name) {
+    if (name == m_name) return;
+    if (name == "") name = "Unnamed Group";
+    m_name = name;
 }

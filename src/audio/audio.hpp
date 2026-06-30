@@ -7,6 +7,8 @@
 
 #include "../headers.h"
 
+// This is very barebones
+
 #define _FMOD_CreateSystem(SYS, VER) getResult(FMOD_System_Create(SYS, VER))
 #define _FMOD_InitSystem(SYS, CHANNELS, FLAGS, EXDATA) getResult(FMOD_System_Init(SYS, CHANNELS, FLAGS, EXDATA))
 #define _FMOD_CreateSound(SYS, SOUND, MODE, INFO, PTR) getResult(FMOD_System_CreateSound(SYS, SOUND, MODE, INFO, PTR))
@@ -20,20 +22,20 @@ private:
 
     bool m_created = false;
     critical_err_func m_errFnc = NULL;
-    void _defaultErrFnc(); 
+    void _defaultErrFnc();
     FMOD_SYSTEM* m_pSystem = nullptr;
     FMOD_CHANNEL* m_defaultChannel = nullptr;
     FMOD_CREATESOUNDEXINFO m_exInfo;
 
     FMOD_SOUND * m_testSound = nullptr;
     FMOD_VECTOR m_pos;
-    FMOD_VECTOR m_vel; 
+    FMOD_VECTOR m_vel;
     FMOD_VECTOR m_forward;
     FMOD_VECTOR m_up;
     FMOD_VECTOR m_listenerLF{0};
     int m_channelsPlaying = 0;
     int m_realChannels = 0;
-public: 
+public:
 
     bool suppressErrors = false;
     static AudioManager& get() {

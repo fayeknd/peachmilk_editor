@@ -9,13 +9,13 @@
 
 std::vector<Texture*> Texture::s_allTextures {};
 
-/* // mgd or marigold (or "mega giga dih") will store every texture 
+/* // mgd or marigold (or "mega giga dih") will store every texture
 bool Texture::saveAsMGD(const char* pathOverride) {
     std::ofstream os;
     os.open(pathOverride,  std::ofstream::out | std::ofstream::trunc);
 
     std::string str( s_allTextures[0]->m_textureData, s_allTextures[0]->m_textureData + sizeof(s_allTextures[0]->m_textureData) / sizeof(s_allTextures[0]->m_textureData[0]) );
-    
+
     std::cout << s_allTextures[0]->m_textureData[0] << std::endl;
 
     os << str;
@@ -29,9 +29,9 @@ unsigned char* Texture::getDataFromFileSTBI(std::string file, int *x, int *y, in
 
 unsigned char* Texture::getDataFromFileMGD(std::string file, int *x, int *y, unsigned int* filtering, bool flipVertical, bool flipHorizontal, int rotate) {
     std::ifstream is(file);
-    std::string line; 
-    
-    int w, h; 
+    std::string line;
+
+    int w, h;
     bool inDataChunk = false;
     int it = 0;
     while (std::getline(is, line))
@@ -46,7 +46,7 @@ unsigned char* Texture::getDataFromFileMGD(std::string file, int *x, int *y, uns
             line = line.substr(1, line.size());
             int separator = line.find("/");
             w = std::stoi(line.substr(1, separator - 1));
-            h = std::stoi(line.substr(separator + 1, line.size())); 
+            h = std::stoi(line.substr(separator + 1, line.size()));
         }
         if (substr == "\n") break;
         // clearly the mgd file is incorrect
@@ -65,7 +65,7 @@ unsigned char* Texture::getDataFromFileMGD(std::string file, int *x, int *y, uns
             int element_i = std::stoi(element);
             pixel.data[iter] = static_cast<unsigned char>(element_i);
             //std::cout << element_i << std::endl;
-            
+
             // if this is the 4th component of the pixel (alpha)
             if (iter == 3) {
                 //std::cout << static_cast<int>(pixel.data[0]) << ", " << static_cast<int>(pixel.data[1]) << ", " << static_cast<int>(pixel.data[2]) << ", " <<static_cast<int>(pixel.data[3]) << std::endl;
@@ -104,7 +104,7 @@ unsigned char* Texture::getDataFromFileMGD(std::string file, int *x, int *y, uns
             column.clear();
         }
     }
-     
+
     for (int r = 0; r < rotate; r++) {
         std::vector<std::vector<Pixel>> rows {};
         std::vector<Pixel> row {};
@@ -125,7 +125,7 @@ unsigned char* Texture::getDataFromFileMGD(std::string file, int *x, int *y, uns
         }
 
     }
- 
+
     unsigned char* _ = new unsigned char[data.size() * 4];
     for(int i = 0; i < data.size(); i++) {
         int index = ((i + 1) * 4) - 4;
@@ -177,17 +177,17 @@ Texture* Texture::createNewTextureFromPath(std::string path, unsigned int filter
     }
     t = new Texture;
     if (!t->createTextureFromPath(path, filterMode, format, textureType, serialize)) {
-        delete t; 
+        delete t;
         return nullptr;
     }
     return t;
 }
 
 void Texture::writeDataToMGD(Texture* t, std::string  filePath) {
-    if (!t->m_textureData) return;
+    if (!t->m_data.m_pixels) return;
     int y = 0;
-    int w = t->m_size.x;
-    int h = t->m_size.y;
+    int w = t->m_data.m_size.x;
+    int h = t->m_data.m_size.y;
 
     std::string r, g, b, a;
 
@@ -195,7 +195,7 @@ void Texture::writeDataToMGD(Texture* t, std::string  filePath) {
     int tries = 0;
     std::string s;
     while (File::fileExists(filePath) || filePath == "") {
-        s = std::string(Project::get()->getTextureFolder()) + std::string("/texture") + std::to_string(tries) + std::string(".") + std::string(TEX_DEFAULT_EXT);    
+        s = std::string(Project::get()->getTextureFolder()) + std::string("/texture") + std::to_string(tries) + std::string(".") + std::string(TEX_DEFAULT_EXT);
         filePath = s.c_str();
         tries++;
     }
@@ -205,12 +205,12 @@ void Texture::writeDataToMGD(Texture* t, std::string  filePath) {
 
     os << "id " << t->getID() << std::endl;
     os << "f " << t->getFilterMode() << std::endl;
-    os << "s " << t->m_size.x << separator << t->m_size.y << std::endl << std::endl;
+    os << "s " << t->m_data.m_size.x << separator << t->m_data.m_size.y << std::endl << std::endl;
 
     for (int x = 0; x < h; x++) {
         for (int y = 0; y < w; y++) {
 
-            unsigned char* pixelOffset = t->m_textureData + (y + (w * x)) * t->m_channels;
+            unsigned char* pixelOffset = t->m_data.m_pixels + (y + (w * x)) * t->m_channels;
             r = std::to_string(static_cast<int>(pixelOffset[0]));
             g = std::to_string(static_cast<int>(pixelOffset[1]));
             b = std::to_string(static_cast<int>(pixelOffset[2]));
@@ -225,18 +225,20 @@ void Texture::writeDataToMGD(Texture* t, std::string  filePath) {
 }
 
 bool Texture::createTextureFromPath(std::string path, unsigned int filterMode, unsigned int format, unsigned int textureType, bool serialize) {
-    
+
     m_serialize = serialize;
     std::string filePath = path;
-    
+
     if (!File::fileExists(path)) {
         filePath = (std::string(File::getWorkingDirectory()) + std::string(path));
         if (!File::fileExists(filePath)) {
             std::cout << "Texture '" << filePath << "' was not found." << std::endl;
-            return false; 
+            return false;
         }
     }
-    m_fullPath = File::getFullPath(filePath);
+    bool copyFlag = true;
+    if (m_fullPath == filePath) copyFlag = false;
+    else m_fullPath = File::getFullPath(filePath);
 
     std::string ext = File::getExtension(filePath);
     if (ext == "webp") {
@@ -246,11 +248,11 @@ bool Texture::createTextureFromPath(std::string path, unsigned int filterMode, u
     int w, h;
     if (ext != TEX_DEFAULT_EXT) {
         // load image with stbi
-        m_textureData = getDataFromFileSTBI(filePath.c_str(), &w, &h, &m_channels);
+        m_data.m_pixels = getDataFromFileSTBI(filePath.c_str(), &w, &h, &m_channels);
 
         switch (m_channels) {
             case 1:
-            m_format = GL_RGBA;
+            m_format = GL_RED;
             break;
             case 2:
             m_format = GL_RG;
@@ -266,14 +268,14 @@ bool Texture::createTextureFromPath(std::string path, unsigned int filterMode, u
             break;
         }
         m_filterMode = filterMode;
-        m_size = glm::vec2(w, h);
-        if (m_serialize) {\
+        m_data.m_size = glm::vec2(w, h);
+        if (serialize && copyFlag) {
             int tries = 0;
             std::string s = filePath;
             std::filesystem::path p(s);
             if (p.parent_path() != Project::get()->getTextureFolder()) {
                 while (File::fileExists(s)) {
-                    s = std::string(Project::get()->getTextureFolder()) + std::string("/texture") + std::to_string(tries) + std::string(".") + ext;    
+                    s = std::string(Project::get()->getTextureFolder()) + std::string("/texture") + std::to_string(tries) + std::string(".") + ext;
                     tries++;
                 }
                 std::filesystem::copy_file(filePath, s);
@@ -281,21 +283,21 @@ bool Texture::createTextureFromPath(std::string path, unsigned int filterMode, u
             }
         }
         // mgd files were a terrible idea
-        
+
         //writeDataToMGD(this);
     }
     else {
         m_format = GL_RGBA;
         m_channels = 4;
-        m_textureData = getDataFromFileMGD(filePath.c_str(), &w, &h, &m_filterMode, false, !m_shouldFlip);
-        m_size = glm::vec2(w, h);
+        m_data.m_pixels = getDataFromFileMGD(filePath.c_str(), &w, &h, &m_filterMode, false, !m_shouldFlip);
+        m_data.m_size = glm::vec2(w, h);
     }
 
     m_textureType = textureType;
 
-    if (!m_textureData) {
+    if (!m_data.m_pixels) {
         assert("ERROR : Texture Data not loaded!");
-        return false; 
+        return false;
     }
     else
         genTexture();
@@ -303,7 +305,7 @@ bool Texture::createTextureFromPath(std::string path, unsigned int filterMode, u
 }
 
 Texture::~Texture() {
-    stbi_image_free(m_textureData);
+    stbi_image_free(m_data.m_pixels);
     for (int i = 0; i < s_allTextures.size(); i++) {
         if (s_allTextures[i] == this) {
             s_allTextures.erase(s_allTextures.begin() + i);
@@ -315,37 +317,44 @@ Texture::~Texture() {
 void Texture::setFilterMode(unsigned int filterMode) {
     m_filterMode = filterMode;
     glBindTexture(m_textureType, m_ID);
-    glTexParameteri(m_textureType, GL_TEXTURE_MIN_FILTER, (m_filterMode == GL_NEAREST) ? GL_NEAREST_MIPMAP_NEAREST : GL_LINEAR_MIPMAP_LINEAR);
+    glTexParameteri(m_textureType, GL_TEXTURE_MIN_FILTER, m_filterMode);
     glTexParameteri(m_textureType, GL_TEXTURE_MAG_FILTER, m_filterMode);
 }
 
 void Texture::setFormat(unsigned int format) {
     // in fact wtf am i thinking when would you EVER need this
-    // like genuinely why would you need to do this 
-    
+    // like genuinely why would you need to do this
+    // im keeping this here just so you can see how big an idiot i am
+
     m_format = format;
     std::cout << "Fix this" << std::endl;
     //genTexture();
 }
 
 void Texture::genTexture() {
-    
+
     if (m_initialised)
         glDeleteTextures(1, &m_ID);
+
+    // im not gonna lie and pretend i know exactly how
+    // opengl textures are packed - but this fixes them
+    // if they're single-channel images (such as text glyphs)
+    if (m_channels == 1) glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
     glGenTextures(1, &m_ID);
     glBindTexture(m_textureType, m_ID);
 
-    glTexParameteri(m_textureType, GL_TEXTURE_WRAP_S, GL_REPEAT);	
+    glTexParameteri(m_textureType, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(m_textureType, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    //glTexParameteri(m_textureType, GL_TEXTURE_MIN_FILTER, (m_filterMode == GL_NEAREST) ? GL_NEAREST_MIPMAP_NEAREST : GL_LINEAR_MIPMAP_LINEAR);
-    //glTexParameteri(m_textureType, GL_TEXTURE_MAG_FILTER, m_filterMode);
+    glTexParameteri(m_textureType, GL_TEXTURE_MIN_FILTER, m_filterMode);
+    glTexParameteri(m_textureType, GL_TEXTURE_MAG_FILTER, m_filterMode);
 
-    glTexParameteri(m_textureType, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST);
-    glTexParameteri(m_textureType, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    // to be honest this thing isn't really gonna need mipmapping that much
 
-    glTexImage2D(m_textureType, 0, m_format, m_size.x, m_size.y, 0, m_format, GL_UNSIGNED_BYTE, m_textureData);
-    glGenerateMipmap(m_textureType);
+    glTexImage2D(m_textureType, 0, m_format, m_data.m_size.x, m_data.m_size.y, 0, m_format, GL_UNSIGNED_BYTE, m_data.m_pixels);
+    //glGenerateMipmap(m_textureType);
+
+    if (m_channels == 1) glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
 
     m_initialised = true;
     s_allTextures.push_back(this);

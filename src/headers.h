@@ -1,4 +1,5 @@
 #pragma once
+
 #include "../include/glad/glad.h"
 #include "../include/GLFW/glfw3.h"
 #define GLM_ENABLE_EXPERIMENTAL
@@ -11,11 +12,14 @@
 #include "../include/cereal/types/string.hpp"
 #include "../include/cereal/types/base_class.hpp"
 #include "../include/cereal/types/polymorphic.hpp"
-#include "windowmanager/fullscreenmode.hpp" 
+#include "../include/cereal/types/vector.hpp"
+#include "../include/cereal/types/map.hpp"
+#include "windowmanager/fullscreenmode.hpp"
 #include "../include/imgui/imgui.h"
 #include "../include/imgui/imgui_impl_glfw.h"
 #include "../include/imgui/imgui_impl_opengl3.h"
 #include <source_location>
+#include <windows.h>
 
 #define WND_TITLE "Peachmilk Editor"
 #define WND_W 600
@@ -42,7 +46,8 @@
 #define TEX_DEFAULT_EXT "mgd" // marigold
 #define LEV_DEFAULT_EXT "lvd" // lavender
 #define SND_DEFAULT_EXT "sfn" // saffron
-#define CHN_DEFAULT_EXT "mnf"
+#define CHN_DEFAULT_EXT "mnf" // moonflower
+#define FNT_DEFAULT_EXT "ddl" // dandelion
 #define MAX_AUDIO_CHANNELS 512
 #define AUDIO_DISTANCEFACTOR 1
 #define AUDIO_DOPPLER 1

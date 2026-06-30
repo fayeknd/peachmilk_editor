@@ -2,6 +2,7 @@
 #include <vector>
 #include "transform.hpp"
 #include "../system/generic.h"
+#include "renderentity.hpp"
 
 class ScriptableEntity : public Generic {
 private:
@@ -11,11 +12,11 @@ protected:
 
     ScriptableEntity* m_parent = nullptr;
     std::vector<ScriptableEntity*> m_children;
-    static inline unsigned int s_availableID = 0; 
+    static inline unsigned int s_availableID = 0;
     static inline unsigned int s_largestIDused = 0;
     unsigned int m_ID = 0;
     bool m_initialised = false;
-    
+
 public:
 
     bool m_justDeserialized = false;
@@ -23,7 +24,7 @@ public:
     std::string m_entityName;
     static ScriptableEntity* s_sceneEntity;
 
-    Transform transform; 
+    Transform transform;
 
     template <class Archive>
     void serialize(Archive & archive) {
@@ -35,9 +36,9 @@ public:
     virtual unsigned int getID() { return m_ID; }
     static ScriptableEntity* getEntityViaID(unsigned int id);
     virtual void create(std::string name = "Unnamed ");
-    virtual void start(); 
+    virtual void start();
     virtual void update();
-    virtual bool draw();
+    bool preDraw();
     static void updateTransforms();
     void updateSelfAndChildTransforms(bool iter1 = false, bool forceChildren = false);
     virtual void _deserializeFnc();
@@ -47,12 +48,12 @@ public:
     virtual ScriptableEntity* getParent() { return m_parent; }
     virtual std::vector<ScriptableEntity*> getChildren() { return m_children; }
     virtual ScriptableEntity* getChildAt(int index);
-    
+
     // parent->addChild() and child->setParent() are the exact same functions, but the choice to do it from either is fine enough
     // (this allows for stuff like parent->addChild(new Object))
     virtual bool setParent(ScriptableEntity* parent);
     virtual void addChild(ScriptableEntity* child);
-    
+
     ~ScriptableEntity();
 
     bool m_hidden = false;

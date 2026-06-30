@@ -2,7 +2,7 @@
 #include "../editor/project.hpp"
 
 void AudioClip::assignID() {
-    if (m_created) return; 
+    if (m_created) return;
     if (s_availableID <= s_largestIDused) s_availableID = s_largestIDused + 1;
     m_ID = s_availableID;
     s_largestIDused = s_availableID;
@@ -14,7 +14,7 @@ AudioClip::AudioClip(const char* path, uint16_t mode, bool isStream) {
 }
 AudioClip::~AudioClip() {
     for (int i = 0; i < s_allClips.size(); i++) {
-        if (s_allClips[i] == this) { 
+        if (s_allClips[i] == this) {
             s_allClips.erase(s_allClips.begin() + i);
             return;
         }
@@ -28,12 +28,15 @@ bool AudioClip::createSound(const char* path, uint16_t mode, bool isStream, bool
     std::filesystem::path p(s);
     int tries = 0;
     std::string ext = File::getExtension(path);
+    m_name = p.filename().string();
     if (p.parent_path() != Project::get()->getSoundFolder()) {
-        m_name = p.filename().string();
-        s = std::string(Project::get()->getSoundFolder()) + m_name; 
+        s = std::string(Project::get()->getSoundFolder()) + "\\" + m_name;
         if (!File::fileExists(s))
             std::filesystem::copy_file(path, s);
         m_path = s;
+    }
+    else {
+        m_path = path;
     }
     for (int i = 0; i < s_allClips.size(); i++) {
         if (s_allClips[i]->m_path == path) {
@@ -46,9 +49,9 @@ bool AudioClip::createSound(const char* path, uint16_t mode, bool isStream, bool
         am.getResult(FMOD_System_CreateStream(am.getSystem(), path, FMOD_NONBLOCKING, &am.m_exInfo, &m_sound));
     else
         am.getResult(FMOD_System_CreateSound(am.getSystem(), path, mode, &am.m_exInfo, &m_sound));
-    if (_assignID) assignID(); 
+    if (_assignID) assignID();
     m_created = true;
-    m_mode = mode; 
+    m_mode = mode;
     m_isStream = isStream;
     s_allClips.push_back(this);
     return true;
@@ -59,7 +62,14 @@ AudioClip* AudioClip::getClipViaID(unsigned int id) {
         if (s_allClips[i]->m_ID == id) return s_allClips[i];
     }
     return nullptr;
-} 
+}
+
+AudioClip* AudioClip::getClipViaName(std::string name) {
+    for (int i = 0; i < s_allClips.size(); i++) {
+        if (s_allClips[i]->m_name == name) return s_allClips[i];
+    }
+    return nullptr;
+}
 
 void AudioClip::deseralizeSounds(std::string cache) {
     if (cache == "") cache = Project::get()->getSoundFolder();
@@ -69,7 +79,7 @@ void AudioClip::deseralizeSounds(std::string cache) {
         if (ext == SND_DEFAULT_EXT) {
             std::ifstream os(file, std::ios::binary);
             {
-                cereal::JSONInputArchive iarchive(os); // Create an output archive
+                cereal::JSONInputArchive iarchive(os);
 
                 AudioClip* clip = new AudioClip;
                 iarchive(*clip);
@@ -77,8 +87,8 @@ void AudioClip::deseralizeSounds(std::string cache) {
                 if (clip->m_ID > s_largestIDused) s_largestIDused = clip->m_ID;
                 if (clip->m_path != "")
                     clip->createSound(clip->m_path.c_str(), clip->m_mode, clip->m_isStream, false);
-            } 
-        }  
+            }
+        }
     }
 }
 void AudioClip::serializeSounds(std::string cache) {
@@ -90,7 +100,7 @@ void AudioClip::serializeSounds(std::string cache) {
                 file = std::string(cache) + std::string("\\sound") + std::to_string(i) + std::string(".") + SND_DEFAULT_EXT;
             std::ofstream os(file, std::ios::binary);
             {
-                cereal::JSONOutputArchive oarchive(os); // Create an output archive
+                cereal::JSONOutputArchive oarchive(os);
                 oarchive(*s_allClips[i]);
             }
         }

@@ -8,6 +8,7 @@
 #include "../system/mouse.hpp"
 #include "../editor/editor.hpp"
 #include "../audio/audioclip.hpp"
+#include "../render/text/text.hpp"
 
 void EditorWM::create(int width, int height, const char* title, init_func pre_init_func, window_hint_func window_hints, int gl_major, int gl_minor) {
     WindowManager::create(width, height, title, pre_init_func, window_hints, gl_major, gl_minor);
@@ -32,10 +33,7 @@ void EditorWM::default_window_hints(int gl_major, int gl_minor) {
 
 void EditorWM::triggerDraws() {
     //WindowManager::triggerDraws();
-    ScriptableEntity::updateTransforms();
-    for (int i = Sprite::s_sprites.size() - 1; i >= 0; --i) {
-        Sprite::s_sprites[i]->draw();
-    }
+    RenderEntity::drawEntites();
     m_editor->drawUI();
 }
 
@@ -49,13 +47,15 @@ bool EditorWM::init(int width, int height, const char* title, window_hint_func w
     int x, y, n;
     unsigned char* pixels = Texture::getDataFromFileSTBI("game_data/engine.png", &x, &y, &n);
     GLFWimage image[1];
-    image[0].width = x, 
+    image[0].width = x,
     image[0].height = y;
     image[0].pixels = pixels;
     glfwSetWindowIcon(m_wnd, 1, image);
     Camera::mainCamera->transform.setLocalPositionZ(5);
     Texture::shouldFlip(true);
-    
+
+    Mesh::s_createUniqueMeshes();
+
     if (!createProjectSelection()) {
         glfwDestroyWindow(m_wnd);
         glfwTerminate();
@@ -67,7 +67,6 @@ bool EditorWM::init(int width, int height, const char* title, window_hint_func w
     m_targetFps = Math::Inifinity();
     //glfwSwapInterval(0);
 
-    Mesh::s_createUniqueMeshes();
     Shader* shader = new Shader(("game_data/shaders/testshader.vfsh"));
 
     glEnable(GL_BLEND);
@@ -103,10 +102,10 @@ bool EditorWM::createProjectSelection() {
         // fuck you im doing c style casts
         // c style casts from int to float are freaking FINE
         ImGui::SetNextWindowSize({(float)x, (float)y});
-        ImGui::Begin("Project Selection", NULL, 
-            ImGuiWindowFlags_NoResize | 
-            ImGuiWindowFlags_NoMove | 
-            ImGuiWindowFlags_NoScrollbar | 
+        ImGui::Begin("Project Selection", NULL,
+            ImGuiWindowFlags_NoResize |
+            ImGuiWindowFlags_NoMove |
+            ImGuiWindowFlags_NoScrollbar |
             ImGuiWindowFlags_NoScrollWithMouse |
             ImGuiWindowFlags_NoDecoration |
             ImGuiWindowFlags_NoSavedSettings

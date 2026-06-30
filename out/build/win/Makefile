@@ -705,6 +705,54 @@ src/render/sprite.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/render/sprite.cpp.s
 .PHONY : src/render/sprite.cpp.s
 
+src/render/text/font.o: src/render/text/font.cpp.o
+.PHONY : src/render/text/font.o
+
+# target to build an object file
+src/render/text/font.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/render/text/font.cpp.o
+.PHONY : src/render/text/font.cpp.o
+
+src/render/text/font.i: src/render/text/font.cpp.i
+.PHONY : src/render/text/font.i
+
+# target to preprocess a source file
+src/render/text/font.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/render/text/font.cpp.i
+.PHONY : src/render/text/font.cpp.i
+
+src/render/text/font.s: src/render/text/font.cpp.s
+.PHONY : src/render/text/font.s
+
+# target to generate assembly for a file
+src/render/text/font.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/render/text/font.cpp.s
+.PHONY : src/render/text/font.cpp.s
+
+src/render/text/text.o: src/render/text/text.cpp.o
+.PHONY : src/render/text/text.o
+
+# target to build an object file
+src/render/text/text.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/render/text/text.cpp.o
+.PHONY : src/render/text/text.cpp.o
+
+src/render/text/text.i: src/render/text/text.cpp.i
+.PHONY : src/render/text/text.i
+
+# target to preprocess a source file
+src/render/text/text.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/render/text/text.cpp.i
+.PHONY : src/render/text/text.cpp.i
+
+src/render/text/text.s: src/render/text/text.cpp.s
+.PHONY : src/render/text/text.s
+
+# target to generate assembly for a file
+src/render/text/text.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/render/text/text.cpp.s
+.PHONY : src/render/text/text.cpp.s
+
 src/render/texture.o: src/render/texture.cpp.o
 .PHONY : src/render/texture.o
 
@@ -728,6 +776,30 @@ src/render/texture.s: src/render/texture.cpp.s
 src/render/texture.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/render/texture.cpp.s
 .PHONY : src/render/texture.cpp.s
+
+src/render/textureatlas.o: src/render/textureatlas.cpp.o
+.PHONY : src/render/textureatlas.o
+
+# target to build an object file
+src/render/textureatlas.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/render/textureatlas.cpp.o
+.PHONY : src/render/textureatlas.cpp.o
+
+src/render/textureatlas.i: src/render/textureatlas.cpp.i
+.PHONY : src/render/textureatlas.i
+
+# target to preprocess a source file
+src/render/textureatlas.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/render/textureatlas.cpp.i
+.PHONY : src/render/textureatlas.cpp.i
+
+src/render/textureatlas.s: src/render/textureatlas.cpp.s
+.PHONY : src/render/textureatlas.s
+
+# target to generate assembly for a file
+src/render/textureatlas.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/src/render/textureatlas.cpp.s
+.PHONY : src/render/textureatlas.cpp.s
 
 src/render/transform.o: src/render/transform.cpp.o
 .PHONY : src/render/transform.o
@@ -954,9 +1026,18 @@ help:
 	@echo "... src/render/sprite.o"
 	@echo "... src/render/sprite.i"
 	@echo "... src/render/sprite.s"
+	@echo "... src/render/text/font.o"
+	@echo "... src/render/text/font.i"
+	@echo "... src/render/text/font.s"
+	@echo "... src/render/text/text.o"
+	@echo "... src/render/text/text.i"
+	@echo "... src/render/text/text.s"
 	@echo "... src/render/texture.o"
 	@echo "... src/render/texture.i"
 	@echo "... src/render/texture.s"
+	@echo "... src/render/textureatlas.o"
+	@echo "... src/render/textureatlas.i"
+	@echo "... src/render/textureatlas.s"
 	@echo "... src/render/transform.o"
 	@echo "... src/render/transform.i"
 	@echo "... src/render/transform.s"

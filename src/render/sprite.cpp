@@ -4,9 +4,9 @@
 #include "entity.hpp"
 
 Sprite::~Sprite() {
-    for (int i = 0; i < s_sprites.size(); i++) {
-        if (s_sprites[i] == this) {
-            s_sprites.erase(s_sprites.begin() + i);
+    for (int i = 0; i < RenderEntity::s_allRenderEntities.size(); i++) {
+        if (RenderEntity::s_allRenderEntities[i] == this) {
+            RenderEntity::s_allRenderEntities.erase(RenderEntity::s_allRenderEntities.begin() + i);
             break;
         }
     }
@@ -32,7 +32,7 @@ bool Sprite::checkCollisionAgainstTransform(Transform* t) {
 
     size1 = glm::vec3(std::abs(size1.x), std::abs(size1.y), 0);
     size2 = glm::vec3(std::abs(size2.x), std::abs(size2.y), 0);
-    
+
     float w1 = pos1.x - size1.x / 2;
     float e1 = pos1.x + size1.x / 2;
     float n1 = pos1.y + size1.y / 2;
@@ -51,7 +51,7 @@ bool Sprite::checkCollisionAgainstPoint(glm::vec2 point, bool local) {
     glm::vec3 pos, scale;
     if (!local) {
         pos = transform.getGlobalPosition();
-        scale = trueScaleGlobal(); 
+        scale = trueScaleGlobal();
     }
     else {
         pos = transform.getLocalPosition();
@@ -71,47 +71,10 @@ bool Sprite::checkCollisionAgainstPoint(glm::vec2 point, bool local) {
     return true;
 
 }
-
-void Sprite::orderSprites(bool flip) {
-    quicksort(0, s_sprites.size() - 1, flip);
-}
-
-float Sprite::partition(int left, int right, bool flip) {
-    float pivot = s_sprites[right]->transform.getGlobalPosition().z;
-    int sortedIndex = left - 1;
-
-    for (int j = left; j < right; j++) {
-        if (flip) {
-
-            if (s_sprites[j]->transform.getGlobalPosition().z > pivot) {
-                sortedIndex++;
-                std::swap(s_sprites[sortedIndex], s_sprites[j]);
-            }
-        }
-        else if (s_sprites[j]->transform.getGlobalPosition().z < pivot) {
-            sortedIndex++;
-            std::swap(s_sprites[sortedIndex], s_sprites[j]);
-        }
-    }
-
-    std::swap(s_sprites[sortedIndex + 1], s_sprites[right]);
-    return sortedIndex + 1;
-}
-
-void Sprite::quicksort(int left, int right, bool flip) {
-    if (left < right) {
-        int pivot = partition(left, right, flip);
-
-        quicksort(left, pivot - 1, flip);
-        quicksort(pivot + 1, right, flip);
-    }
-}
-
 // TODO : some type of DrawData system, where everything that wants to be drawn sends draw data to a main Draw function, to abstrac this type of code.
 // this draw code does suck yes i know but its actually somewhat efficient right now
 
 bool Sprite::draw() {
-    if (!ScriptableEntity::draw()) return false;
     if (m_material->m_shader == nullptr) {
         std::cout << "WARNING : material " << &m_material << " does not have a shader! Trying to apply an existing shader..." << std::endl;
         m_material->m_shader = ShaderManager::get().s_shaderList[0];
@@ -127,7 +90,7 @@ bool Sprite::draw() {
         m_material->m_shader->setMat4(Camera::mainCamera->vpMatrix(), vpUniform);
     }
     else {
-        std::cout << "WARNING : No camera exists in the scene!" << std::endl; 
+        std::cout << "WARNING : No camera exists in the scene!" << std::endl;
     }
     m_material->m_shader->setMat4(transform.worldOffsetMatrix(), modelUniform);
     m_material->m_shader->setVec4(m_material->m_colour, "multiplyCol");
@@ -143,20 +106,20 @@ bool Sprite::draw() {
             m_material->m_shader->setBool(false, texAppliedUniform);
         }
         else {
-            glBindTexture(m_material->m_diffuseTexture->getType(), m_material->m_diffuseTexture->getID()); 
+            glBindTexture(m_material->m_diffuseTexture->getType(), m_material->m_diffuseTexture->getID());
             m_material->m_shader->setBool(true, texAppliedUniform);
         }
     }
     if (m_selected) {
         m_material->m_shader->setVec4(glm::vec4(
-                                        Shader::m_highlightCol[0], 
-                                        Shader::m_highlightCol[1], 
-                                        Shader::m_highlightCol[2], 
+                                        Shader::m_highlightCol[0],
+                                        Shader::m_highlightCol[1],
+                                        Shader::m_highlightCol[2],
                                         Shader::m_highlightCol[3]
                                     ), highlightColUniform);
         m_material->m_shader->setBool(true, highlightUniform);
     }
-    glDrawElements(m_mesh->m_topology, m_mesh->m_indexData.size(), GL_UNSIGNED_INT, 0);   
+    glDrawElements(m_mesh->m_topology, m_mesh->m_indexData.size(), GL_UNSIGNED_INT, 0);
     if (m_selected) {
         m_material->m_shader->setBool(false, highlightUniform);
     }
@@ -164,17 +127,17 @@ bool Sprite::draw() {
         m_material->m_shader->setBool(true, wireframeUniform);
         if (m_selected) {
             m_material->m_shader->setVec4(glm::vec4(
-                                            Shader::m_highlightCol[0], 
-                                            Shader::m_highlightCol[1], 
-                                            Shader::m_highlightCol[2], 
+                                            Shader::m_highlightCol[0],
+                                            Shader::m_highlightCol[1],
+                                            Shader::m_highlightCol[2],
                                             Shader::m_highlightCol[3]
                                         ), wireframeColUniform);
         }
         else {
             m_material->m_shader->setVec4(glm::vec4(
                                             Shader::m_wireframeCol[0],
-                                            Shader::m_wireframeCol[1], 
-                                            Shader::m_wireframeCol[2], 
+                                            Shader::m_wireframeCol[1],
+                                            Shader::m_wireframeCol[2],
                                             Shader::m_wireframeCol[3]
                                         ), wireframeColUniform);
         }
@@ -190,7 +153,7 @@ bool Sprite::draw() {
 void Sprite::setScaleToTexelSize() {
     if (m_material->m_diffuseTexture == nullptr) {
         std::cout << "ERROR : No texture applied! Cannot set size to texel size from no texture stupid!" << std::endl;
-        return; 
+        return;
     }
     glm::mat4* offset = transform.offsetMatrixPtr();
     *offset = glm::scale(
@@ -205,16 +168,11 @@ void Sprite::setScaleToTexelSize() {
 }
 
 void Sprite::create(std::string name) {
-    if (m_initialised) return; 
+    if (m_initialised) return;
     ScriptableEntity::create(name);
-    s_sprites.push_back(this);
-    if (s_sprites.size() == 1) {
-        transform.setGlobalPositionZ(-255);
-    }
-    else {
-        transform.setGlobalPositionZ(s_sprites[s_sprites.size() - 2]->transform.getGlobalPosition().z + 1);
-    }
-    if (m_material->m_diffuseTexture == nullptr) 
+    RenderEntity::s_allRenderEntities.push_back(this);
+    oncreate_positionZ();
+    if (m_material->m_diffuseTexture == nullptr)
         transform.setGlobalScale(32);
     else
         setScaleToTexelSize();

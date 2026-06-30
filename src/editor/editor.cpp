@@ -6,7 +6,10 @@
 #include "../shader/shader.hpp"
 #include "../system/file.hpp"
 #include "../audio/audiosource.hpp"
+#include <algorithm>
 #include <fstream>
+#include <unistd.h>
+#include "../render/text/text.hpp"
 
 /*
 -------------------------------------------------------------------------
@@ -15,9 +18,9 @@ IT'S OKAY. IT WORKS. THAT'S ALL YOU NEED TO KNOW.
 DON'T SCROLL PLEASE.
 PLEASE.
 
-
-
-
+this is somethign that i didnt think would need so much code and grew
+massively and now is an unoptimised and messy monstrosity so trust me
+do not look at this its best if you dont
 
 
 
@@ -43,13 +46,33 @@ void drop_callback(GLFWwindow* window, int count, const char** paths)
             std::cout << "Provided file " << paths[i] << " is invalid";
         }
         else {
-            Sprite* spr = new Sprite;
-            spr->create();
-            spr->m_material = new Material;
-            spr->m_material->m_diffuseTexture = Texture::createNewTextureFromPath(paths[i], GL_NEAREST);
-            spr->setScaleToTexelSize();
+            std::string ext = File::getExtension(paths[i]);
+            if (ext == "ttf" || ext == "otf") {
+                TextFont* font = TextFont::loadFont(paths[i], -1);
+                if (font) {
+                    TextRenderer* text = new TextRenderer;
+                    text->create(std::filesystem::path(paths[i]).filename().string());
+                    text->setFont(font);
+                    text->setText(std::filesystem::path(paths[i]).filename().string());
+                }
+            }
+            for (int j = 0; j < EditorUI::m_recognisedImageFormatExts.size(); j++) {
+                if (ext == EditorUI::m_recognisedImageFormatExts[j]) {
+                    Sprite* spr = new Sprite;
+                    spr->create();
+                    spr->m_material = new Material;
+                    spr->m_material->m_diffuseTexture = Texture::createNewTextureFromPath(paths[i], GL_NEAREST);
+                    EditorUI::m_entityJustDropped = spr;
+                    spr->setScaleToTexelSize();
+                }
+            }
         }
     }
+}
+
+bool EditorUI::IsItemDroppedHere() {
+    if (ImGui::IsItemHovered() && m_draggedItem != m_draggedItemLF && m_draggedItem == "") return true;
+    return false;
 }
 
 void EditorUI::_start() {
@@ -66,10 +89,12 @@ void EditorUI::_start() {
 
     m_materialIcon = *Texture::createNewTextureFromPath("editor_data/ui/materialIcon.png", GL_LINEAR, GL_RGBA, GL_TEXTURE_2D, false);
     m_channelMixerIcon = *Texture::createNewTextureFromPath("editor_data/ui/channelMixerIcon.png", GL_LINEAR, GL_RGBA, GL_TEXTURE_2D, false);
+    m_folderIcon = *Texture::createNewTextureFromPath("editor_data/ui/folderIcon_pink.png", GL_LINEAR, GL_RGBA, GL_TEXTURE_2D, false);
+    m_unrecognisedFileIcon = *Texture::createNewTextureFromPath("editor_data/ui/unrecognisedFileIcon.png", GL_LINEAR, GL_RGBA, GL_TEXTURE_2D, false);
 
     m_fileDiag.SetTitle("File Browser");
     m_fileDiag.SetDirectory(File::getWorkingDirectory());
-    
+
     glfwSetDropCallback(WindowManager::get()->m_wnd, drop_callback);
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
@@ -78,14 +103,396 @@ void EditorUI::_start() {
     ImGui_ImplOpenGL3_Init("#version 460");
     createAxisHandle();
 
+    setImGuiStyle(7,7,7);
+
+#define _THISBIT
+#ifdef THISBIT
+    TextRenderer* text = new TextRenderer;
+    text->create("Test TextRenderer");
+    TextFont* newFont = new TextFont;
+    newFont->loadTypeFace("Angeles-Regular.ttf", 256);
+    text->m_font = newFont;
+#endif
     m_hidden = true;
     //ImGui::GetIO().ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 
 }
 
+void EditorUI::setImGuiStyle(int hue07, int alt07, int nav07, int lit01, int compact01, int border01, int shape0123) {
+    ImGuiStyle& style = ImGui::GetStyle();
+
+    const float _8 = compact01 ? 4 : 8;
+    const float _4 = compact01 ? 2 : 4;
+    const float _2 = compact01 ? 0.5 : 1;
+
+    style.Alpha = 1.0f;
+    style.DisabledAlpha = 0.3f;
+
+    style.WindowPadding = ImVec2(4, _8);
+    style.FramePadding = ImVec2(4, _4);
+    style.ItemSpacing = ImVec2(_8, _2 + _2);
+    style.ItemInnerSpacing = ImVec2(4, 4);
+    style.IndentSpacing = 16;
+    style.ScrollbarSize = compact01 ? 12 : 18;
+    style.GrabMinSize = compact01 ? 16 : 20;
+
+    style.WindowBorderSize = border01;
+    style.ChildBorderSize = border01;
+    style.PopupBorderSize = border01;
+    style.FrameBorderSize = 0;
+
+    style.WindowRounding = 4;
+    style.ChildRounding = 6;
+    style.FrameRounding = shape0123 == 0 ? 0 : shape0123 == 1 ? 4 : 12;
+    style.PopupRounding = 4;
+    style.ScrollbarRounding = 30 * 8 + 4;
+    style.GrabRounding = style.FrameRounding;
+
+    style.TabBorderSize = 0;
+    style.TabBarBorderSize = 2;
+    style.TabBarOverlineSize = 2;
+    style.TabCloseButtonMinWidthSelected = -1; // -1:always visible, 0:visible when hovered, >0:visible when hovered if minimum width
+    style.TabCloseButtonMinWidthUnselected = -1;
+    style.TabRounding = 30;
+
+    style.CellPadding = ImVec2(8.0f, 4.0f);
+
+    style.WindowTitleAlign = ImVec2(0.5f, 0.5f);
+    style.WindowMenuButtonPosition = ImGuiDir_Right;
+
+    style.ColorButtonPosition = ImGuiDir_Right;
+    style.ButtonTextAlign = ImVec2(0.5f, 0.5f);
+    style.SelectableTextAlign = ImVec2(0.5f, 0.5f);
+    style.SeparatorTextAlign.x = 1.00f;
+    style.SeparatorTextBorderSize = 1;
+    style.SeparatorTextPadding = ImVec2(0,0);
+
+    style.WindowMinSize = ImVec2(32.0f, 16.0f);
+    style.ColumnsMinSpacing = 6.0f;
+
+    // diamond sliders
+    style.CircleTessellationMaxError = shape0123 == 3 ? 4.00f : 0.30f;
+
+    auto lit = [&](ImVec4 hi) {
+        float h,s,v; ImGui::ColorConvertRGBtoHSV(hi.x,hi.y,hi.z, h,s,v);
+        ImVec4 lit = ImColor::HSV(h,s*0.80,v*1.00, hi.w).Value;
+        return lit;
+    };
+    auto dim = [&](ImVec4 hi) {
+        float h,s,v; ImGui::ColorConvertRGBtoHSV(hi.x,hi.y,hi.z, h,s,v);
+        ImVec4 dim = ImColor::HSV(h,s,lit01 ? v*0.65:v*0.65, hi.w).Value;
+        if( hi.z > hi.x && hi.z > hi.y ) return ImVec4(dim.x,dim.y,hi.z,dim.w);
+        return dim;
+    };
+
+    const ImVec4 cyan    = ImVec4(000/255.f, 192/255.f, 255/255.f, 1.00f);
+    const ImVec4 red     = ImVec4(230/255.f, 000/255.f, 000/255.f, 1.00f);
+    const ImVec4 yellow  = ImVec4(240/255.f, 210/255.f, 000/255.f, 1.00f);
+    const ImVec4 orange  = ImVec4(255/255.f, 144/255.f, 000/255.f, 1.00f);
+    const ImVec4 lime    = ImVec4(192/255.f, 255/255.f, 000/255.f, 1.00f);
+    const ImVec4 aqua    = ImVec4(000/255.f, 255/255.f, 192/255.f, 1.00f);
+    const ImVec4 magenta = ImVec4(255/255.f, 000/255.f,  88/255.f, 1.00f);
+    const ImVec4 purple  = ImVec4(192/255.f, 000/255.f, 255/255.f, 1.00f);
+
+    ImVec4 alt = cyan;
+    if( alt07 == 0 || alt07 == 'C' ) alt = cyan;
+    else if( alt07 == 1 || alt07 == 'R' ) alt = red;
+    else if( alt07 == 2 || alt07 == 'Y' ) alt = yellow;
+    else if( alt07 == 3 || alt07 == 'O' ) alt = orange;
+    else if( alt07 == 4 || alt07 == 'L' ) alt = lime;
+    else if( alt07 == 5 || alt07 == 'A' ) alt = aqua;
+    else if( alt07 == 6 || alt07 == 'M' ) alt = magenta;
+    else if( alt07 == 7 || alt07 == 'P' ) alt = purple;
+    if( lit01 ) alt = dim(alt);
+
+    ImVec4 hi = cyan, lo = dim(cyan);
+    if( hue07 == 0 || hue07 == 'C' ) lo = dim( hi = cyan );
+    else if( hue07 == 1 || hue07 == 'R' ) lo = dim( hi = red );
+    else if( hue07 == 2 || hue07 == 'Y' ) lo = dim( hi = yellow );
+    else if( hue07 == 3 || hue07 == 'O' ) lo = dim( hi = orange );
+    else if( hue07 == 4 || hue07 == 'L' ) lo = dim( hi = lime );
+    else if( hue07 == 5 || hue07 == 'A' ) lo = dim( hi = aqua );
+    else if( hue07 == 6 || hue07 == 'M' ) lo = dim( hi = magenta );
+    else if( hue07 == 7 || hue07 == 'P' ) lo = dim( hi = purple );
+//    if( lit01 ) { ImVec4 tmp = hi; hi = lo; lo = lit(tmp); }
+
+    ImVec4 nav = orange;
+    if( nav07 == 0 || nav07 == 'C' ) nav = cyan;
+    else if( nav07 == 1 || nav07 == 'R' ) nav = red;
+    else if( nav07 == 2 || nav07 == 'Y' ) nav = yellow;
+    else if( nav07 == 3 || nav07 == 'O' ) nav = orange;
+    else if( nav07 == 4 || nav07 == 'L' ) nav = lime;
+    else if( nav07 == 5 || nav07 == 'A' ) nav = aqua;
+    else if( nav07 == 6 || nav07 == 'M' ) nav = magenta;
+    else if( nav07 == 7 || nav07 == 'P' ) nav = purple;
+    if( lit01 ) nav = dim(nav);
+
+    const ImVec4
+    link  = ImVec4(0.26f, 0.59f, 0.98f, 1.00f),
+    grey0 = ImVec4(0.04f, 0.05f, 0.07f, 1.00f),
+    grey1 = ImVec4(0.08f, 0.09f, 0.11f, 1.00f),
+    grey2 = ImVec4(0.10f, 0.11f, 0.13f, 1.00f),
+    grey3 = ImVec4(0.12f, 0.13f, 0.15f, 1.00f),
+    grey4 = ImVec4(0.16f, 0.17f, 0.19f, 1.00f),
+    grey5 = ImVec4(0.18f, 0.19f, 0.21f, 1.00f);
+
+    #define Luma(v,a) ImVec4((v)/100.f,(v)/100.f,(v)/100.f,(a)/100.f)
+
+    style.Colors[ImGuiCol_Text]                      = Luma(100,100);
+    style.Colors[ImGuiCol_TextDisabled]              = Luma(39,100);
+    style.Colors[ImGuiCol_WindowBg]                  = grey1;
+    style.Colors[ImGuiCol_ChildBg]                   = ImVec4(0.09f, 0.10f, 0.12f, 1.00f);
+    style.Colors[ImGuiCol_PopupBg]                   = grey1;
+    style.Colors[ImGuiCol_Border]                    = grey4;
+    style.Colors[ImGuiCol_BorderShadow]              = grey1;
+    style.Colors[ImGuiCol_FrameBg]                   = ImVec4(0.11f, 0.13f, 0.15f, 1.00f);
+    style.Colors[ImGuiCol_FrameBgHovered]            = grey4;
+    style.Colors[ImGuiCol_FrameBgActive]             = grey4;
+    style.Colors[ImGuiCol_TitleBg]                   = grey0;
+    style.Colors[ImGuiCol_TitleBgActive]             = grey0;
+    style.Colors[ImGuiCol_TitleBgCollapsed]          = grey1;
+    style.Colors[ImGuiCol_MenuBarBg]                 = grey2;
+    style.Colors[ImGuiCol_ScrollbarBg]               = grey0;
+    style.Colors[ImGuiCol_ScrollbarGrab]             = grey3;
+    style.Colors[ImGuiCol_ScrollbarGrabHovered]      = lo;
+    style.Colors[ImGuiCol_ScrollbarGrabActive]       = hi;
+    style.Colors[ImGuiCol_CheckMark]                 = alt;
+    style.Colors[ImGuiCol_SliderGrab]                = lo;
+    style.Colors[ImGuiCol_SliderGrabActive]          = hi;
+    style.Colors[ImGuiCol_Button]                    = ImVec4(0.10f, 0.11f, 0.14f, 1.00f);
+    style.Colors[ImGuiCol_ButtonHovered]             = lo;
+    style.Colors[ImGuiCol_ButtonActive]              = grey5;
+    style.Colors[ImGuiCol_Header]                    = grey3;
+    style.Colors[ImGuiCol_HeaderHovered]             = lo;
+    style.Colors[ImGuiCol_HeaderActive]              = hi;
+    style.Colors[ImGuiCol_Separator]                 = ImVec4(0.13f, 0.15f, 0.19f, 1.00f);
+    style.Colors[ImGuiCol_SeparatorHovered]          = lo;
+    style.Colors[ImGuiCol_SeparatorActive]           = hi;
+    style.Colors[ImGuiCol_ResizeGrip]                = Luma(15,100);
+    style.Colors[ImGuiCol_ResizeGripHovered]         = lo;
+    style.Colors[ImGuiCol_ResizeGripActive]          = hi;
+    style.Colors[ImGuiCol_InputTextCursor]           = Luma(100,100);
+    style.Colors[ImGuiCol_TabHovered]                = grey3;
+    style.Colors[ImGuiCol_Tab]                       = grey1;
+    style.Colors[ImGuiCol_TabSelected]               = grey3;
+    style.Colors[ImGuiCol_TabSelectedOverline]       = hi;
+    style.Colors[ImGuiCol_TabDimmed]                 = grey1;
+    style.Colors[ImGuiCol_TabDimmedSelected]         = grey1;
+    style.Colors[ImGuiCol_TabDimmedSelectedOverline] = lo;
+    style.Colors[ImGuiCol_PlotLines]                 = grey5;
+    style.Colors[ImGuiCol_PlotLinesHovered]          = lo;
+    style.Colors[ImGuiCol_PlotHistogram]             = grey5;
+    style.Colors[ImGuiCol_PlotHistogramHovered]      = lo;
+    style.Colors[ImGuiCol_TableHeaderBg]             = grey0;
+    style.Colors[ImGuiCol_TableBorderStrong]         = grey0;
+    style.Colors[ImGuiCol_TableBorderLight]          = grey0;
+    style.Colors[ImGuiCol_TableRowBg]                = grey3;
+    style.Colors[ImGuiCol_TableRowBgAlt]             = grey2;
+    style.Colors[ImGuiCol_TextLink]                  = link;
+    style.Colors[ImGuiCol_TextSelectedBg]            = Luma(39,100);
+    style.Colors[ImGuiCol_TreeLines]                 = Luma(39,100);
+    style.Colors[ImGuiCol_DragDropTarget]            = nav;
+    style.Colors[ImGuiCol_NavCursor]                 = nav;
+    style.Colors[ImGuiCol_NavWindowingHighlight]     = lo;
+    style.Colors[ImGuiCol_NavWindowingDimBg]         = Luma(0,63);
+    style.Colors[ImGuiCol_ModalWindowDimBg]          = Luma(0,63);
+
+
+    #undef Luma
+}
+
+void EditorUI::drawProbablyComplicatedFileBrowserTypeShi() {\
+    static bool textFlag = false;
+    static char buf[32];
+    ImGui::SetNextWindowPos({(WindowManager::get()->m_size.x / 100) * 20, (WindowManager::get()->m_size.y / 4) * 3});
+    ImVec2 winSize = {WindowManager::get()->m_size.x - ((WindowManager::get()->m_size.x / 100) * 20), WindowManager::get()->m_size.y - ((WindowManager::get()->m_size.y / 4) * 3)};
+    ImGui::SetNextWindowSize(winSize);
+    if (ImGui::Begin("EngineFileManager", NULL, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoSavedSettings)) {
+        ImGui::CollapsingHeader("File Browser", ImGuiTreeNodeFlags_Leaf);
+        if (m_fbCurrentDir == "") m_fbCurrentDir = Project::get()->getGameDataFolder();
+        std::filesystem::path entry(m_fbCurrentDir);
+        std::vector<std::string> paths;
+        while (entry.has_parent_path()) {
+            if (entry == entry.parent_path()) {
+                paths.insert(paths.begin(), entry.string().substr(0, 3));
+                break;
+            }
+            std::string dir = entry.string();
+            entry = entry.parent_path();
+            dir = dir.substr(dir.find_last_of("\\") + 1, dir.size());
+            if (dir != "") paths.insert(paths.begin(), dir);
+        }
+        if (ImGui::Button("Quick: Project##__pdir")) {
+            m_fbCurrentDir = Project::get()->getGameDataFolder();
+        }
+        ImGui::SameLine();
+        if (ImGui::Button("Quick: Levels##__pdir")) {
+            m_fbCurrentDir = Project::get()->getLevelFolder();
+        }
+        for (int i = 0; i < paths.size(); i++) {
+            ImGui::SameLine();
+            if (ImGui::Button(paths[i].c_str())) {
+                std::string newDir;
+                for (int j = 0; j < i + 1; j++) {
+                    if (j != i)
+                        newDir += paths[j] + "\\";
+                    else
+                        newDir += paths[j];
+                }
+                m_fbCurrentDir = newDir;
+                break;
+            }
+        }
+
+        int i = 0;
+        ImGui::SameLine();
+        ImGui::SetNextItemWidth(150);
+        if (ImGui::SliderInt("Icon Size##imgui", &m_iconSize, 3, 30)) {
+            if (m_iconsPerRow > m_iconSize) m_iconsPerRow = m_iconSize;
+        };
+
+        ImGui::SameLine();
+        ImGui::SetNextItemWidth(150);
+        ImGui::SliderInt("Icons Per Row##imgui", &m_iconsPerRow, 3, m_iconSize);
+
+        ImGui::SameLine();
+        ImGui::Checkbox("Hidden?##imgui", &m_showHiddenFiles);
+
+        ImGui::SameLine();
+        ImGui::Checkbox("Just folders?##imgui", &m_showOnlyFolders);
+
+        ImVec2 btnSize = {winSize.x / m_iconSize, winSize.x / m_iconSize};
+        for (auto entry : std::filesystem::directory_iterator(m_fbCurrentDir)) {
+            std::string dir = entry.path().string();
+            dir = dir.substr(dir.find_last_of("\\") + 1, dir.size());
+            if ((dir.substr(0, 1) != "." || m_showHiddenFiles) && (entry.is_directory() || !m_showOnlyFolders)) {
+                static ImVec2 cursorPos;
+                static float offset;
+                if (i == 0) {
+                    offset = ((winSize.x - btnSize.x) / m_iconsPerRow);
+                    cursorPos = {0, ImGui::GetCursorPosY()};
+                }
+                else {
+                    if (i % (m_iconsPerRow + 1) == 0 && i != 0) {
+                        cursorPos = {0, cursorPos.y + btnSize.y + 20};
+                    }
+                    else {
+                        cursorPos = {cursorPos.x + offset, cursorPos.y};
+                    }
+                }
+                ImGui::SetCursorPos(cursorPos);
+                std::string tag = std::string(entry.path().filename().string() + std::string(" ##Dir")).c_str();
+                ImGui::ImageButton(tag.c_str(), (entry.is_directory()) ? m_folderIcon.getID() : m_unrecognisedFileIcon.getID(), btnSize, {0, 1}, {1, 0}, {0,0,0,0});
+                if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left)) {
+                    std::string ext = File::getExtension(entry.path().filename().string());
+                    if (entry.is_directory()) {
+                        try {
+                            // check if the directory is accessible
+                            bool hasItem = false;
+                            for (auto entry2 : std::filesystem::directory_iterator(entry)) {
+                                m_fbCurrentDir = entry.path().string();
+                                hasItem = true;
+                                break;
+                            }
+                            if (!hasItem) m_fbCurrentDir = entry.path().string();
+                        }
+                        catch (const std::filesystem::filesystem_error& e) {
+                            createPopup(e.what(), "Read Error");
+                        }
+                    }
+                    else {
+                        bool flag = false;
+                        for (int x = 0; x < m_recognisedImageFormatExts.size(); x++) {
+                            std::string p = entry.path().string();
+                            if (ext == m_recognisedImageFormatExts[x]) {
+                                const char* paths[1];
+                                paths[0] = p.c_str();
+                                std::cout << paths [0] << std::endl;
+                                drop_callback(WindowManager::get()->m_wnd, 1, paths);
+                                flag = true;
+                                break;
+                            }
+                        }
+                        if (!flag) {
+                            if (ext == LEV_DEFAULT_EXT) {
+                                GameLevel::loadLevel(entry.path().string());
+                            }
+                            else if (ext == "ttf" || ext == "otf") {
+                                TextFont* font = TextFont::loadFont(entry.path().string(), -1);
+                                if (font) {
+                                    TextRenderer* text = new TextRenderer;
+                                    text->create(entry.path().filename().string());
+                                    text->setFont(font);
+                                    text->setText(entry.path().filename().string());
+                                }
+                            }
+                            else {
+                                createPopup("Filetype has no action.", "Incompatiable Type");
+                            }
+                        }
+                    }
+                }
+                if (ImGui::IsItemHovered()) {
+                    if (ImGui::IsMouseDragging(ImGuiMouseButton_Left)) {
+                        if (m_mouseDownFF) {
+                            m_draggedItem = entry.path();
+                        }
+                        m_mouseDownFF = false;
+                    }
+                }
+                if (ImGui::IsMouseReleased(ImGuiMouseButton_Left)) {
+                    m_draggedItem = "";
+                    if (!m_mouseDownFF) m_mouseDownFF = true;
+                }
+                if (IsItemDroppedHere() && m_draggedItemLF != entry.path() && entry.is_directory()){
+                    try {
+                        if (std::filesystem::directory_entry(m_draggedItemLF).is_directory()) {
+                            std::string name = std::filesystem::path(m_draggedItemLF).filename().string();
+                            std::filesystem::rename(m_draggedItemLF, entry.path().string() + "\\" + name);
+                        }
+                        else {
+                            std::filesystem::copy(std::filesystem::path(m_draggedItemLF), entry);
+                            remove(m_draggedItemLF.string().c_str());
+                        }
+                    }
+                    catch (const std::filesystem::filesystem_error& e) {
+                        createPopup(e.what(), "Read Error");
+                    }
+                }
+
+                ImGui::SetCursorPos(cursorPos);
+                ImGui::Text(entry.path().filename().string().c_str());
+
+                if (m_draggedItem == entry.path()) {
+                    ImGui::Begin("##__dragged_item", NULL, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoBackground | ImGuiWindowFlags_NoMouseInputs | ImGuiWindowFlags_NoSavedSettings);
+
+                    ImGui::SetWindowPos({Mouse::get().rawPos().x, Mouse::get().rawPos().y});
+                    ImGui::SetWindowPos({ImGui::GetWindowPos().x - (ImGui::GetWindowWidth() / 2), ImGui::GetWindowPos().y - (ImGui::GetWindowHeight() / 2)});
+
+                    ImGui::Image((entry.is_directory()) ? m_folderIcon.getID() : m_unrecognisedFileIcon.getID(), btnSize, {0, 1}, {1, 0});
+                    ImGui::SetCursorPos({0,0});
+                    ImGui::Text(entry.path().filename().string().c_str());
+                    ImGui::End();
+                }
+
+                i++;
+            }
+        }
+    }
+
+    ImGui::End();
+}
+
 float scroll_lf;
 float zoom_lf;
 bool test = true;
+
+void EditorUI::createPopup(std::string text, std::string title) {
+    m_popupText = text;
+    m_createPopup = true;
+    m_createPopupFF = true;
+    m_popupTitle = title;
+}
 
 bool EditorUI::drawEntityUI(ScriptableEntity* spr, float xOffset, bool open) {
     //ScriptableEntity* spr = dynamic_cast<Sprite*>(entity);
@@ -101,7 +508,7 @@ bool EditorUI::drawEntityUI(ScriptableEntity* spr, float xOffset, bool open) {
     if (spr->m_selected) {
         flags = flags | ImGuiTreeNodeFlags_Framed;
         if (spr->getChildren().size() == 0) ImGui::SetCursorPos({ImGui::GetCursorPos().x + 20.0f, ImGui::GetCursorPos().y});
-    } 
+    }
     bool thisFrameFlag = false;
     bool openFlag = false;
     if (open) {
@@ -131,7 +538,7 @@ bool EditorUI::drawEntityUI(ScriptableEntity* spr, float xOffset, bool open) {
             m_editingText = false;
             std::string s = m_replacementName;
             m_spriteNameEditing = nullptr;
-            
+
             if (s != "") {
                 spr->m_entityName = m_replacementName;
             }
@@ -139,9 +546,10 @@ bool EditorUI::drawEntityUI(ScriptableEntity* spr, float xOffset, bool open) {
     }
     if (ImGui::IsItemHovered() && ImGui::IsMouseClicked(ImGuiMouseButton_Right)) {
         if (m_selectedSprites.size() != 0) {
-            if (spr != m_selectedSprites[0])
-            m_rightClickedObject = spr;
-            m_rcoSelectedInUI = true;
+            if (spr != m_selectedSprites[0]) {
+                m_rightClickedObject = spr;
+                m_rcoSelectedInUI = true;
+            }
         }
     }
     if (ImGui::IsItemHovered() && ImGui::IsMouseClicked(ImGuiMouseButton_Left)) {
@@ -158,7 +566,7 @@ bool EditorUI::drawEntityUI(ScriptableEntity* spr, float xOffset, bool open) {
             }
             else {
                 m_selectedSprites.push_back(spr);
-                spr->m_selected = true; 
+                spr->m_selected = true;
             }
         }
         else {
@@ -196,14 +604,14 @@ bool EditorUI::drawMaterialPreview(Material* mat, float size, bool inTextureMenu
                 m_openMaterialEditor = true;
                 m_materialEditorForSwapping = true;
                 returnFlag = true;
-            }  
+            }
         }
         if (ImGui::IsItemHovered()) {
             std::stringstream addr_ss;
             addr_ss << static_cast<const void*>(mat->m_diffuseTexture);
             std::string addr = std::string("TxtrAddr:") + addr_ss.str();
             ImGui::SetTooltip(addr.c_str());
-        } 
+        }
         if (ImGui::IsItemClicked(ImGuiMouseButton_Right) && inTextureMenu)
             m_rightClickedMaterial = mat;
         float col[4] { mat->m_colour.x, mat->m_colour.y, mat->m_colour.z, mat->m_colour.w };
@@ -229,7 +637,7 @@ bool EditorUI::drawMaterialPreview(Material* mat, float size, bool inTextureMenu
             if (ImGui::MenuItem("Max")) {
                 mat->m_blending.m_mode = BLEND_MAX;
             }
-            ImGui::EndMenu(); 
+            ImGui::EndMenu();
         }
         std::string filterTag = std::string("Texture Filtering - ") + ((mat->m_diffuseTexture->getFilterMode() == GL_NEAREST) ? "Nearest##" : "Linear##") + id_s;
         if (ImGui::BeginMenu(filterTag.c_str())) {
@@ -248,10 +656,11 @@ bool EditorUI::drawMaterialPreview(Material* mat, float size, bool inTextureMenu
 }
 
 void EditorUI::imgui() {
-    
+
     ImGui_ImplOpenGL3_NewFrame();
     ImGui_ImplGlfw_NewFrame();
     ImGui::NewFrame();
+    drawProbablyComplicatedFileBrowserTypeShi();
     if (ImGui::BeginMainMenuBar()) {
         if (ImGui::BeginMenu("File")) {
             if (ImGui::MenuItem("Close")) {
@@ -267,7 +676,7 @@ void EditorUI::imgui() {
         }
         if (ImGui::BeginMenu("Edit")) {
             if (ImGui::MenuItem("Project Settings & Preferences")) {
-                m_settingsOpen = true; 
+                m_settingsOpen = true;
             }
             ImGui::EndMenu();
         }
@@ -351,7 +760,7 @@ void EditorUI::imgui() {
             }
             ImGui::EndListBox();
         }
-        
+
     }
     std::string tag;
 
@@ -376,7 +785,7 @@ void EditorUI::imgui() {
             float gt[3];
             float gr[3];
             float gs[3];
-            
+
             glm::vec3 pos = spr->transform.getLocalPosition();
             glm::vec3 rot = spr->transform.getLocalRotation();
             glm::vec3 sca = spr->transform.getLocalScale();
@@ -415,17 +824,17 @@ void EditorUI::imgui() {
             if (ImGui::CollapsingHeader("Transform [Local]", ImGuiTreeNodeFlags_DefaultOpen)) {
                 if (ImGui::DragFloat3("Translate##l", t, speed)) {
                     if (ImGui::IsItemEdited()) {
-                        dirty = true; 
+                        dirty = true;
                     }
                 }
                 if (ImGui::DragFloat3("Rotate##l", r, speed)) {
                     if (ImGui::IsItemEdited()) {
-                        dirty = true; 
+                        dirty = true;
                     }
                 }
                 if (ImGui::DragFloat3("Scale##l", s, speed)) {
                     if (ImGui::IsItemEdited()) {
-                        dirty = true; 
+                        dirty = true;
                     }
                 }
             }
@@ -433,27 +842,43 @@ void EditorUI::imgui() {
             if (ImGui::CollapsingHeader("Transform [Global]", ImGuiTreeNodeFlags_DefaultOpen)) {
                 if (ImGui::DragFloat3("Translate##g", gt, speed)) {
                     if (ImGui::IsItemEdited()) {
-                        gDirty = true; 
+                        gDirty = true;
                     }
                 }
                 if (ImGui::DragFloat3("Rotate##g", gr, speed)) {
                     if (ImGui::IsItemEdited()) {
-                        gDirty = true; 
+                        gDirty = true;
                     }
                 }
                 if (ImGui::DragFloat3("Scale##g", gs, speed)) {
                     if (ImGui::IsItemEdited()) {
-                        gDirty = true; 
+                        gDirty = true;
                     }
                 }
             }
 
             ImGui::NewLine();
+
+            bool plock, slock, rlock;
+            plock = spr->transform.isPosRounded();
+            slock = spr->transform.isScaleRounded();
+            rlock = spr->transform.isRotRounded();
+            if (ImGui::Checkbox("Lock pos to int?", &plock)) {
+                spr->transform.setPosRounded(plock);
+            }
+            if (ImGui::Checkbox("Lock scale to int?", &slock)) {
+                spr->transform.setScaleRounded(slock);
+            }
+            if (ImGui::Checkbox("Lock rotation to int?", &rlock)) {
+                spr->transform.setRotRounded(rlock);
+            }
+
             ImGui::Checkbox("Destroy on Load?", &spr->m_destroyOnLoad);
             ImGui::Checkbox("Serialize?", &spr->m_serialize);
             ImGui::NewLine();
 
             Sprite* spr_s = dynamic_cast<Sprite*>(spr);
+            #pragma region SpriteIdentity
             if (spr_s) {
                 if (ImGui::CollapsingHeader("Material Properties", ImGuiTreeNodeFlags_DefaultOpen)) {
                     if (spr_s->m_material->m_diffuseTexture != nullptr) {
@@ -473,12 +898,99 @@ void EditorUI::imgui() {
                     }
                 }
             }
+            #pragma endregion
             AudioSource* audio = dynamic_cast<AudioSource*>(spr);
+            TextRenderer* text = dynamic_cast<TextRenderer*>(spr);
+            #pragma region TextIdentity
+            if (text) {
+
+                if (ImGui::CollapsingHeader("TextRenderer Properties", ImGuiTreeNodeFlags_DefaultOpen)) {
+
+                    std::string fnt = "Loaded font: " + ((text->getFont()) ? std::filesystem::path(text->getFont()->getFontLoc()).filename().string() : "None");
+                    ImGui::Text(fnt.c_str());
+                    if (ImGui::Button("Set Font...")) {
+                        m_fileDiag.SetDirectory(Project::get()->getFontFolder());
+                        m_fileDiag.Open();
+                    }
+                    if (m_fileDiag.HasSelected()) {
+                        std::filesystem::path fontFile = m_fileDiag.GetSelected();
+                        if (!(File::getExtension(fontFile.string()) == "ttf" || File::getExtension(fontFile.string()) == "otf")) {
+                            std::cout << File::getExtension(fontFile.string()) << std::endl;
+                            createPopup("Font file not supported!", "Unsupported Font File");
+                            m_fileDiag.ClearSelected();
+                        }
+                        else {
+                            ImGui::Text("Choose font size, click Load.");
+                            ImGui::Text("Leave at 0 to find loaded font.");
+                            ImGui::DragInt("Font Size", &m_fontSize, 1, 0, 256);
+                            if (ImGui::Button("Load")) {
+                                m_fileDiag.ClearSelected();
+                                TextFont* f = TextFont::loadFont(fontFile.string(), (m_fontSize != 0) ? m_fontSize : -1);
+                                if (f) text->setFont(f);
+                                m_fontSize = ENGINE_DEFTAULT_FONT_SIZE;
+                            }
+                        }
+                    }
+                    if (text->getFont()) {
+                        float spacing = text->getFontLineSpacing();
+                        if (ImGui::InputFloat("Line Spacing", &spacing)) {
+                            text->setFontLineSpacing(spacing);
+                        }
+                    }
+                    ImGui::NewLine();
+                    static char tReplacementText[1024];
+                    memset(&tReplacementText, 0, 1024);
+                    for (int i = 0; i < std::min(static_cast<int>(text->getText().size()), 1024); i++) {
+                        tReplacementText[i] = text->getText()[i];
+                    }
+                    std::string tag = "##textfield" + std::to_string(text->getID());
+                    if (ImGui::InputText(tag.c_str(), tReplacementText, 1024)) {
+                        text->setText(tReplacementText);
+                    }
+                    bool copy = text->getCopyToChildren();
+                    if (ImGui::Checkbox("Copy text to children?", &copy)) {
+                        text->setCopyToChildren(copy);
+                    }
+                    std::string alignment;
+                    switch (text->getTextAlignment()) {
+                        case TextAlignment::Left:
+                        alignment = "Left";
+                        break;
+                        case TextAlignment::Center:
+                        alignment = "Center";
+                        break;
+                        case TextAlignment::Right:
+                        alignment = "Right";
+                        break;
+                        default:
+                        alignment = "Unknown";
+                    }
+                    alignment = "Text Alignment (" + alignment + ")";
+                    if (ImGui::BeginMenu(alignment.c_str())) {
+                        if (ImGui::MenuItem("Left")) {
+                            text->setTextAlignment(TextAlignment::Left);
+                        }
+                        if (ImGui::MenuItem("Center")) {
+                            text->setTextAlignment(TextAlignment::Center);
+                        }
+                        if (ImGui::MenuItem("Right")) {
+                            text->setTextAlignment(TextAlignment::Right);
+                        }
+                        ImGui::EndMenu();
+                    }
+                }
+                float c[4] {text->m_colourMultiplier.x, text->m_colourMultiplier.y, text->m_colourMultiplier.z, text->m_colourMultiplier.w};
+                if (ImGui::ColorEdit4("Text Colour", c)) {
+                    text->m_colourMultiplier = glm::vec4(c[0], c[1], c[2], c[3]);
+                }
+            }
+            #pragma endregion
+            #pragma region AudioIdentity
             if (audio) {
                 if (ImGui::CollapsingHeader("AudioSource Properties", ImGuiTreeNodeFlags_DefaultOpen)) {
                     float v = audio->getVolume() * 100;
                     float p = audio->getPitch() - 1;
-                    float d = audio->getDoppler(); 
+                    float d = audio->getDoppler();
                     float l = audio->get3DLevel();
                     float f[2] = {audio->getMinFalloff(), audio->getMaxFalloff()};
 
@@ -497,7 +1009,7 @@ void EditorUI::imgui() {
                         }
                         ImGui::EndMenu();
                     }
-                    
+
                     if (ImGui::SliderFloat("Volume", &v, 0, 300, "%.0f%%")) {
                         audio->setVolume(v / 100);
                     }
@@ -520,11 +1032,11 @@ void EditorUI::imgui() {
                     }
 
                     if (ImGui::SliderFloat2("Falloff", f, 0, AUDIO_MAX_FALLOFF_MAX)) {
-                        if (f[0] > f[1]) f[0] = f[1];
+                        f[0] = std::min(f[0], f[1]);
                         audio->setFalloff(f[0], f[1]);
                     }
                     if (ImGui::IsItemHovered()) {
-                        std::string tag("Channel Min and max 3D falloff. Default: Min " + std::to_string(AUDIO_MIN_FALLOFF_DEFAULT) + "/ Max " + std::to_string(AUDIO_MAX_FALLOFF_MAX) + ".");
+                        std::string tag("Channel Min and max 3D falloff. Default: Min " + std::to_string(AUDIO_MIN_FALLOFF_DEFAULT) + " / Max " + std::to_string(AUDIO_MAX_FALLOFF_MAX) + ".");
                         ImGui::SetTooltip(tag.c_str());
                     }
 
@@ -535,12 +1047,12 @@ void EditorUI::imgui() {
                         ImGui::SetTooltip("Channel 3D strength.");
                     }
                     int index = 0;
-                    
+
                     ImGui::NewLine();
-                    
+
                     std::string tag = std::string("Is playing? : ") + ((audio->isPlaying()) ? "true" : "false");
                     ImGui::Text(tag.c_str());
-                    
+
                     ImGui::NewLine();
 
                     ImGui::BeginListBox("##AudioClips");
@@ -581,8 +1093,16 @@ void EditorUI::imgui() {
                                 AudioClip * ac = new AudioClip();
                                 if (ac->createSound(file.string().c_str()))
                                     audio->m_clips[index] = ac;
-                                else
-                                    delete ac;
+                                else{
+                                    ac = AudioClip::getClipViaName(file.filename().string());
+                                    if (ac) {
+                                        std::cout << "AudioClip already exists - getting existing clip by that name instead." << std::endl;
+                                        audio->m_clips[index] = ac;
+                                    }
+                                    else {
+                                        delete ac;
+                                    }
+                                }
                             }
                             m_fileDiag.ClearSelected();
                         }
@@ -599,19 +1119,26 @@ void EditorUI::imgui() {
                             if (ImGui::IsItemHovered()) {
                                 ImGui::SetTooltip("Destroy the audio clip");
                             }
-                            ImGui::SameLine(); 
+                            ImGui::SameLine();
                             if (ImGui::Button("Play##PlayAudioClip")) {
                                 audio->playSound(m_selectedAudioClip);
+                            }
+                            ImGui::SameLine();
+                            if (audio->isPlaying()) {
+                                if (ImGui::Button("Stop##StopAudioClip")) {
+                                    audio->stopAudio();
+                                }
                             }
                             if (ImGui::IsItemHovered()) {
                                 ImGui::SetTooltip("Play the selected audio clip");
                             }
                         }
-                        
+
 
                     }
                 }
             }
+            #pragma endregion
 
             if (dirty) {
                 spr->transform.setLocalPosition({t[0], t[1], t[2]});
@@ -627,55 +1154,30 @@ void EditorUI::imgui() {
         else if (sizeGT1){
             ImGui::Text("I'm not doing the logic for that");
         }
-        // 
+        //
         ImGui::Text(" ");
         ImGui::Text(" ");
     }
     ImGui::EndChild();
-    ImGui::End(); 
-    static bool textFlag = false;
-    static char buf[32];
-    ImGui::SetNextWindowPos({(WindowManager::get()->m_size.x / 100) * 20, (WindowManager::get()->m_size.y / 4) * 3});
-    ImGui::SetNextWindowSize({WindowManager::get()->m_size.x - ((WindowManager::get()->m_size.x / 100) * 20), WindowManager::get()->m_size.y - ((WindowManager::get()->m_size.y / 4) * 3)});
-    if (ImGui::Begin("Levels", NULL, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoSavedSettings)) {
-        if (ImGui::Button("Create New")) {
-            textFlag = true;
-        }
-        ImGui::SameLine();
-        ImGui::Text("Levels");
-        ImGui::NewLine();
-        if (textFlag) {
-            ImGui::InputText("##name", buf, 32);
-            if (glfwGetKey(WindowManager::get()->m_wnd, GLFW_KEY_ENTER) == GLFW_PRESS) {
-                textFlag = false;
-                GameLevel::createNewLevel(buf);
-                for (int i = 0; i < 32; i++) {
-                    buf[i] = {};
-                }
-            }
-        }
-        std::string _ = Project::get()->getLevelFolder();
-        for (auto entry : std::filesystem::directory_iterator(_)) {
-            if (File::getExtension(entry.path().string()) == LEV_DEFAULT_EXT) {
-                std::string tag = entry.path().string();
-                tag = tag.substr(tag.find_last_of('\\') + 1, tag.size() - 4);
-                //std::cout << entry.path().string() << std::endl;
-                if (ImGui::Button(tag.c_str())) {
-                    std::string path = File::getFullPath(entry.path().string().c_str());
-                    if (std::filesystem::path(path) != std::filesystem::path(GameLevel::s_loadedLevel->getFilePath())) {
-                        for (int i = 0; i < m_selectedSprites.size(); i++) {
-                            m_selectedSprites[i]->m_selected = false;
-                        }
-                        m_selectedSprites.clear();
-                        GameLevel::loadLevel(path);
-                    }
-                } 
-            }
-        }
-    }
-    
     ImGui::End();
 
+    if (m_createPopup) {
+
+        ImGui::Begin(m_popupTitle.c_str(), NULL, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_AlwaysAutoResize);
+        if (m_createPopupFF) {
+            ImGui::SetWindowFocus();
+            ImGui::SetWindowPos({Mouse::get().rawPos().x, Mouse::get().rawPos().y});
+            ImGui::SetWindowPos({ImGui::GetWindowPos().x - (ImGui::GetWindowWidth() / 2), ImGui::GetWindowPos().y - (ImGui::GetWindowHeight() / 2)});
+        }
+
+        ImGui::Text(m_popupText.c_str());
+        ImGui::SetCursorPosX((ImGui::GetWindowWidth() / 2) - 15);
+        if (ImGui::Button("OK", {30, 30})) {
+            m_createPopup = false;
+        }
+        m_createPopupFF = false;
+        ImGui::End();
+    }
     if (m_settingsOpen) {
         if (ImGui::Begin("Project Settings & Preferences")) {
             ImGui::ColorEdit4("Clear Colour", Shader::m_clearCol);
@@ -688,7 +1190,7 @@ void EditorUI::imgui() {
                 ImGui::GetWindowSize().y - 30,
             });
             if (ImGui::Button("Close")) {
-                m_settingsOpen = false; 
+                m_settingsOpen = false;
             }
             ImGui::End();
         }
@@ -700,12 +1202,24 @@ void EditorUI::imgui() {
 
         if (!m_rcoSelectedInUI) {
             m_rightClickedObject = nullptr;
-            for (int i = 0; i < Sprite::s_sprites.size(); i++) {
-                Sprite* spr = dynamic_cast<Sprite*>(Sprite::s_sprites[i]); 
-                if (spr->checkCollisionAgainstPoint(Mouse::get().screenPos()) && spr->m_visible && !spr->m_selected) {
-                    m_rightClickedObject = spr;
-                    break;
+            for (int i = 0; i < RenderEntity::s_allRenderEntities.size(); i++) {
+                Sprite* spr = dynamic_cast<Sprite*>(RenderEntity::s_allRenderEntities[i]);
+                if (spr) {
+                    if (spr->checkCollisionAgainstPoint(Mouse::get().screenPos()) && spr->m_visible && !spr->m_selected) {
+                        m_rightClickedObject = spr;
+                        break;
+                    }
                 }
+                else {
+                    ScriptableEntity* ent = dynamic_cast<ScriptableEntity*>(RenderEntity::s_allRenderEntities[i]);
+                    if (ent) {
+                        if (ent->transform.checkCollisionAgainstPoint(Mouse::get().screenPos()) && ent->m_visible && !ent->m_selected) {
+                            m_rightClickedObject = ent;
+                            break;
+                        }
+                    }
+                }
+
             }
         }
         else {
@@ -717,7 +1231,7 @@ void EditorUI::imgui() {
     if (m_contextOpen) {
         if (m_contextOpenTF) ImGui::SetNextWindowPos({Mouse::get().rawPos().x, Mouse::get().rawPos().y});
         if (ImGui::Begin("##Context Menu", NULL, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_AlwaysAutoResize)) {
-            
+
             ImGui::PushStyleColor(ImGuiCol_Button, {0,0,0,0});
             ImGui::PushStyleColor(ImGuiCol_ButtonHovered, {1,1,1,0.3f});
 
@@ -812,11 +1326,20 @@ void EditorUI::imgui() {
                         closeFlag = true;
                     };
 
+                    if (ImGui::Button("TextRenderer Entity")) {
+                        TextRenderer* t = new TextRenderer;
+                        t->create("TextRenderer Parent ");
+                        ScriptableEntity* p = ent->getParent();
+                        if (p != nullptr) t->setParent(p);
+                        ent->setParent(t);
+                        closeFlag = true;
+                    };
+
                     ImGui::EndMenu();
                 }
 
                 if (ImGui::BeginMenu("Create New Child...")) {
-                    
+
                     if (ImGui::Button("Empty Entity")) {
                         ScriptableEntity* n = new ScriptableEntity;
                         n->create("Empty Child ");
@@ -839,12 +1362,19 @@ void EditorUI::imgui() {
                         closeFlag = true;
                     }
 
+                    if (ImGui::Button("TextRenderer Entity")) {
+                        TextRenderer* t = new TextRenderer;
+                        t->create("TextRenderer Child ");
+                        ent->addChild(t);
+                        closeFlag = true;
+                    }
+
                     ImGui::EndMenu();
                 }
             }
 
             if (ImGui::BeginMenu("Create New...")) {
-                
+
                 if (ImGui::Button("Empty Entity")) {
                     ScriptableEntity* n = new ScriptableEntity;
                     n->create("Empty Entity ");
@@ -855,7 +1385,7 @@ void EditorUI::imgui() {
                     n->m_selected = true;
                     m_selectedSprites.push_back(n);
                     closeFlag = true;
-                }   
+                }
 
                 if (ImGui::Button("Sprite Entity")) {
                     Sprite* n = new Sprite;
@@ -868,7 +1398,7 @@ void EditorUI::imgui() {
                     n->m_selected = true;
                     m_selectedSprites.push_back(n);
                     closeFlag = true;
-                }   
+                }
 
                 if (ImGui::Button("AudioSource Entity")) {
                     AudioSource* n = new AudioSource;
@@ -880,7 +1410,19 @@ void EditorUI::imgui() {
                     n->m_selected = true;
                     m_selectedSprites.push_back(n);
                     closeFlag = true;
-                }   
+                }
+
+                if (ImGui::Button("TextRenderer Entity")) {
+                    TextRenderer* t = new TextRenderer;
+                    t->create("TextRenderer Entity ");
+                    for (int i = 0; i < m_selectedSprites.size(); i++) {
+                        m_selectedSprites[i]->m_selected = false;
+                    }
+                    m_selectedSprites.clear();
+                    t->m_selected = true;
+                    m_selectedSprites.push_back(t);
+                    closeFlag = true;
+                }
 
                 ImGui::EndMenu();
 
@@ -911,7 +1453,7 @@ void EditorUI::imgui() {
                     Camera::mainCamera->m_zoomFactor = Camera::mainCamera->m_zoomFactorDefault;
                 }
             }
-            
+
             ImGui::PopStyleColor();
             ImGui::PopStyleColor();
             if ((ImGui::IsMouseClicked(ImGuiMouseButton_Left) && !ImGui::IsAnyItemHovered()) || closeFlag) {
@@ -925,25 +1467,50 @@ void EditorUI::imgui() {
     Mouse::get().s_mouseOffset = {((WindowManager::get()->m_size.x / 100) * 20) / 2, ((((WindowManager::get()->m_size.y / 4) * 3) + 19) - WindowManager::get()->m_size.y) / 2};
     ImGui::SetNextWindowPos({(WindowManager::get()->m_size.x / 100) * 20, 19});
     ImGui::SetNextWindowSize(m_viewportSize);
-    if (ImGui::Begin("Viewport", NULL, 
-        ImGuiWindowFlags_NoResize | 
-        ImGuiWindowFlags_NoMove | 
-        ImGuiWindowFlags_NoCollapse | 
-        ImGuiWindowFlags_NoDecoration | 
-        ImGuiWindowFlags_NoScrollbar | 
+    if (ImGui::Begin("Viewport", NULL,
+        ImGuiWindowFlags_NoResize |
+        ImGuiWindowFlags_NoMove |
+        ImGuiWindowFlags_NoCollapse |
+        ImGuiWindowFlags_NoDecoration |
+        ImGuiWindowFlags_NoScrollbar |
         ImGuiWindowFlags_NoScrollWithMouse |
         ImGuiWindowFlags_NoBringToFrontOnFocus)) {
-        
+
         m_toolWndHovering = !ImGui::IsWindowHovered();
         glViewport(0, 0, m_viewportSize.x, m_viewportSize.y);
         Camera::mainCamera->m_framebuffer->setSize({m_viewportSize.x, m_viewportSize.y});
         ImGui::SetCursorPos({0,0});
         ImGui::Image(Camera::mainCamera->m_framebuffer->m_renderTexture.getID(), m_viewportSize, {0, 1}, {1, 0});
         ImGui::SetCursorPos({10, 10});
-        
+
         ImGui::PushStyleColor(ImGuiCol_Button, {1,1,1,0.1f});
         ImGui::PushStyleColor(ImGuiCol_ButtonHovered, {1,1,1,0.2f});
         ImGui::PushStyleColor(ImGuiCol_ButtonActive, {1,1,1,0.3f});
+
+        if (IsItemDroppedHere()) {
+            std::string ext = File::getExtension(m_draggedItemLF.string());
+            if (ext == "ttf" || ext == "otf") {
+                TextFont* font = TextFont::loadFont(m_draggedItemLF.string(), -1);
+                if (font) {
+                    TextRenderer* text = new TextRenderer;
+                    text->create(m_draggedItemLF.filename().string());
+                    text->setFont(font);
+                    text->setText(m_draggedItemLF.filename().string());
+                }
+            }
+            for (int i = 0; i < m_recognisedImageFormatExts.size(); i++) {
+                if (m_recognisedImageFormatExts[i] == File::getExtension(m_draggedItemLF.string())) {
+                    const char* path[1];
+                    std::string file = m_draggedItemLF.string();
+                    path[0] = file.c_str();
+                    drop_callback(WindowManager::get()->m_wnd, 1, path);
+                    float xpos = (((Mouse::get().screenPos().x / Camera::mainCamera->m_zoomFactor) + Camera::mainCamera->transform.getGlobalPosition().x));
+                    float ypos = (((Mouse::get().screenPos().y / Camera::mainCamera->m_zoomFactor) + Camera::mainCamera->transform.getGlobalPosition().y));
+                    m_entityJustDropped->transform.setGlobalPosition(glm::vec3(xpos, ypos, m_entityJustDropped->transform.getGlobalPosition().z));
+                    break;
+                }
+            }
+        }
 
         if (ImGui::ImageButton("##materialEditor", m_materialIcon.getID(), {64, 64}, {0, 1}, {1, 0})) {
             m_openMaterialEditor = !m_openMaterialEditor;
@@ -952,6 +1519,7 @@ void EditorUI::imgui() {
         if (ImGui::IsItemHovered())
             ImGui::SetTooltip("Material Editor");
 
+        ImGui::SetCursorPosX(ImGui::GetCursorPosX() + 6);
         if (ImGui::ImageButton("##channelMixer", m_channelMixerIcon.getID(), {64, 64}, {0, 1}, {1, 0})) {
             m_openChannelMixer = !m_openChannelMixer;
         }
@@ -970,7 +1538,7 @@ void EditorUI::imgui() {
         ImGui::PopStyleColor();
         ImGui::PopStyleColor();
         ImGui::PopStyleColor();
-        
+
         m_viewportHasMouse = ImGui::IsWindowFocused() || ImGui::IsWindowHovered();
 
     }
@@ -1004,13 +1572,13 @@ void EditorUI::imgui() {
                         if ((j - 1) % modulo != 0) {
                             ImGui::SameLine();
                         }
-                        
+
                         float sizex = (winSizex / modulo) - 10;
                         if (modulo == 1) ImGui::SetCursorPos({ImGui::GetCursorPos().x - 10, ImGui::GetCursorPos().y});
 
                         drawMaterialPreview(mat, sizex);
                     }
-                } 
+                }
             }
         }
         ImGui::End();
@@ -1018,73 +1586,89 @@ void EditorUI::imgui() {
 
     if (m_openChannelMixer) {
         if(ImGui::Begin("Channel Mixers")) {
+            if (ImGui::Button("Create New")) {
+                ChannelGroup* newGroup = new ChannelGroup("New Group");
+            }
             for (int i = 0; i < ChannelGroup::s_channelGroups.size(); i++) {
                 ChannelGroup* cg = ChannelGroup::s_channelGroups[i];
                 float winSize = ImGui::GetWindowSize().x - 50;
                 ImGui::SetNextWindowSize({(winSize) / 2, ImGui::GetWindowSize().y});
                 ImGui::BeginChild((std::string(cg->getName().c_str()) + std::string("##_")).c_str());
-                if (ImGui::CollapsingHeader(cg->getName().c_str(), ImGuiTreeNodeFlags_Leaf)) {
-                    float v = cg->getVolume() * 100;
-                    float p = cg->getPitch() - 1;
-                    float d = cg->getDoppler(); 
-                    float l = cg->get3DLevel();
-                    float f[2] = {cg->getMinFalloff(), cg->getMaxFalloff()};
+                if (ImGui::CollapsingHeader(("##" + std::to_string(i)).c_str(), ImGuiTreeNodeFlags_Leaf)) {
+                    char nameBuf[64]{0};
+                    for (int j = 0; j < std::min(static_cast<int>(cg->getName().size()), 64); j++) {
+                        nameBuf[j] = cg->getName()[j];
+                    }
+                    std::string textTag = "##name" + std::to_string(i);
+                    ImGui::InputText(textTag.c_str(), nameBuf, 64);
+                    if (ImGui::IsItemFocused() && (glfwGetKey(WindowManager::get()->m_wnd, GLFW_KEY_ENTER) == GLFW_TRUE || ImGui::IsMouseClicked(ImGuiMouseButton_Left))) {
+                        cg->setName(nameBuf);
+                    }
+                    if (ImGui::Button("Delete")) {
+                        delete cg;
+                    }
+                    else {
+                        float v = cg->getVolume() * 100;
+                        float p = cg->getPitch() - 1;
+                        float d = cg->getDoppler();
+                        float l = cg->get3DLevel();
+                        float f[2] = {cg->getMinFalloff(), cg->getMaxFalloff()};
 
-                    float sliderSize = (ImGui::GetWindowSize().x - 50) / 5;
+                        float sliderSize = (ImGui::GetWindowSize().x - 50) / 5;
 
-                    // TODO : Way to create and destroy (and maybe prompt user on destruction of) channel groups
+                        // TODO : Way to create and destroy (and maybe prompt user on destruction of) channel groups
 
-                    if (ImGui::VSliderFloat((std::string("##ChannelGroupVolume") + cg->getName()).c_str(), {sliderSize, ImGui::GetWindowSize().y - 70}, &v, 0, 300, "%.1f")) {
-                        cg->setVolume(v / 100);
-                    }
-                    if (ImGui::IsItemHovered()) {
-                        ImGui::SetTooltip("Volume (0, 300)");
-                    }
-                    ImGui::SameLine();
+                        if (ImGui::VSliderFloat((std::string("##ChannelGroupVolume") + cg->getName()).c_str(), {sliderSize, ImGui::GetWindowSize().y - 70}, &v, 0, 300, "%.1f")) {
+                            cg->setVolume(v / 100);
+                        }
+                        if (ImGui::IsItemHovered()) {
+                            ImGui::SetTooltip("Volume (0, 300)");
+                        }
+                        ImGui::SameLine();
 
-                    if (ImGui::VSliderFloat((std::string("##ChannelGroupPitch") + cg->getName()).c_str(), {sliderSize, ImGui::GetWindowSize().y - 70}, &p, -1, 1)) {
-                        cg->setPitch(p + 1);
-                    }
-                    if (ImGui::IsItemHovered()) {
-                        ImGui::SetTooltip("Pitch (-1, 1)");
-                    }
-                    ImGui::SameLine();
+                        if (ImGui::VSliderFloat((std::string("##ChannelGroupPitch") + cg->getName()).c_str(), {sliderSize, ImGui::GetWindowSize().y - 70}, &p, -1, 1)) {
+                            cg->setPitch(p + 1);
+                        }
+                        if (ImGui::IsItemHovered()) {
+                            ImGui::SetTooltip("Pitch (-1, 1)");
+                        }
+                        ImGui::SameLine();
 
-                    if (ImGui::VSliderFloat((std::string("##ChannelGroupDoppler") + cg->getName()).c_str(), {sliderSize, ImGui::GetWindowSize().y - 70}, &d, 0, 1)) {
-                        cg->setDoppler(d);
-                    }
-                    if (ImGui::IsItemHovered()) {
-                        ImGui::SetTooltip("Doppler (0, 1)");
-                    }
-                    ImGui::SameLine();
+                        if (ImGui::VSliderFloat((std::string("##ChannelGroupDoppler") + cg->getName()).c_str(), {sliderSize, ImGui::GetWindowSize().y - 70}, &d, 0, 1)) {
+                            cg->setDoppler(d);
+                        }
+                        if (ImGui::IsItemHovered()) {
+                            ImGui::SetTooltip("Doppler (0, 1)");
+                        }
+                        ImGui::SameLine();
 
-                    ImVec2 pos = ImGui::GetCursorPos();
-                    if (ImGui::VSliderFloat((std::string("##ChannelGroupMaxFalloff") + cg->getName()).c_str(), {sliderSize, ((ImGui::GetWindowSize().y - 70) / 2) - 5}, &f[1], 100, AUDIO_MAX_FALLOFF_MAX)) {
-                        if (f[0] > f[1]) f[0] = f[1];
-                        cg->setFalloff(f[0], f[1]);
+                        ImVec2 pos = ImGui::GetCursorPos();
+                        if (ImGui::VSliderFloat((std::string("##ChannelGroupMaxFalloff") + cg->getName()).c_str(), {sliderSize, ((ImGui::GetWindowSize().y - 70) / 2) - 5}, &f[1], 100, AUDIO_MAX_FALLOFF_MAX)) {
+                            if (f[0] > f[1]) f[0] = f[1];
+                            cg->setFalloff(f[0], f[1]);
+                        }
+                        if (ImGui::IsItemHovered()) {
+                            ImGui::SetTooltip((std::string("Minimum Max Falloff (0, ") + std::to_string(AUDIO_MAX_FALLOFF_MAX) + std::string(")")).c_str());
+                        }
+                        ImGui::SetCursorPos({pos.x, pos.y + ((ImGui::GetWindowSize().y - 70) / 2) + 5});
+                        if (ImGui::VSliderFloat((std::string("##ChannelGroupMinFalloff") + cg->getName()).c_str(), {sliderSize, ((ImGui::GetWindowSize().y - 70) / 2) - 5}, &f[0], 0, f[1])) {
+                            if (f[0] > f[1]) f[0] = f[1];
+                            cg->setFalloff(f[0], f[1]);
+                        }
+                        if (ImGui::IsItemHovered()) {
+                            ImGui::SetTooltip((std::string("Maximum Min Falloff (0, ") + std::to_string(static_cast<int>(f[1])) + std::string(")")).c_str());
+                        }
+                        ImGui::SameLine();
+                        ImGui::SetCursorPos({ImGui::GetCursorPos().x, ImGui::GetCursorPos().y - ((ImGui::GetWindowSize().y - 70) / 2) - 5});
+                        if (ImGui::VSliderFloat((std::string("##ChannelGroup3DLevel") + cg->getName()).c_str(), {sliderSize, ImGui::GetWindowSize().y - 70}, &l, 0, 1)) {
+                            cg->set3DLevel(l);
+                        }
+                        if (ImGui::IsItemHovered()) {
+                            ImGui::SetTooltip("3D Level (0, 1)");
+                        }
                     }
-                    if (ImGui::IsItemHovered()) {
-                        ImGui::SetTooltip((std::string("Minimum Max Falloff (0, ") + std::to_string(AUDIO_MAX_FALLOFF_MAX) + std::string(")")).c_str());
-                    }
-                    ImGui::SetCursorPos({pos.x, pos.y + ((ImGui::GetWindowSize().y - 70) / 2) + 5});
-                    if (ImGui::VSliderFloat((std::string("##ChannelGroupMinFalloff") + cg->getName()).c_str(), {sliderSize, ((ImGui::GetWindowSize().y - 70) / 2) - 5}, &f[0], 0, f[1])) {
-                        if (f[0] > f[1]) f[0] = f[1];
-                        cg->setFalloff(f[0], f[1]);
-                    }
-                    if (ImGui::IsItemHovered()) {
-                        ImGui::SetTooltip((std::string("Maximum Min Falloff (0, ") + std::to_string(static_cast<int>(f[1])) + std::string(")")).c_str());
-                    }
-                    ImGui::SameLine();
-                    ImGui::SetCursorPos({ImGui::GetCursorPos().x, ImGui::GetCursorPos().y - ((ImGui::GetWindowSize().y - 70) / 2) - 5});
-                    if (ImGui::VSliderFloat((std::string("##ChannelGroup3DLevel") + cg->getName()).c_str(), {sliderSize, ImGui::GetWindowSize().y - 70}, &l, 0, 1)) {
-                        cg->set3DLevel(l);
-                    }
-                    if (ImGui::IsItemHovered()) {
-                        ImGui::SetTooltip("3D Level (0, 1)");
-                    }
-
-
                 }
+
                 ImGui::EndChild();
                 if (i % 3 == 0)
                     ImGui::SameLine();
@@ -1121,7 +1705,8 @@ void EditorUI::moveAlongHandleY() {
 void EditorUI::scaleAlongN() {
     for (int i = 0; i < m_selectedSprites.size(); i++) {
         Sprite* spr = dynamic_cast<Sprite*>(m_selectedSprites[i]);
-        float delta = (Mouse::get().screenPos().y - Mouse::get().screenPosLF().y) / Camera::mainCamera->m_zoomFactor; 
+        if (!spr) return;
+        float delta = (Mouse::get().screenPos().y - Mouse::get().screenPosLF().y) / Camera::mainCamera->m_zoomFactor;
         float _ = spr->trueScaleGlobal().y;
         spr->transform.setGlobalScaleY(spr->transform.getGlobalScale().y + (delta / ((spr->m_material->m_diffuseTexture) ? spr->m_material->m_diffuseTexture->dimensions().y: 1)));
         spr->transform.translateGlobalPositionY((spr->trueScaleGlobal().y - _) / 2);
@@ -1131,7 +1716,8 @@ void EditorUI::scaleAlongN() {
 void EditorUI::scaleAlongE() {
     for (int i = 0; i < m_selectedSprites.size(); i++) {
         Sprite* spr = dynamic_cast<Sprite*>(m_selectedSprites[i]);
-        float delta = (Mouse::get().screenPos().x - Mouse::get().screenPosLF().x) / Camera::mainCamera->m_zoomFactor; 
+        if (!spr) return;
+        float delta = (Mouse::get().screenPos().x - Mouse::get().screenPosLF().x) / Camera::mainCamera->m_zoomFactor;
         float _ = spr->trueScaleGlobal().x;
         spr->transform.setGlobalScaleX(spr->transform.getGlobalScale().x + (delta / ((spr->m_material->m_diffuseTexture) ? spr->m_material->m_diffuseTexture->dimensions().x: 1)));
         spr->transform.translateGlobalPositionX((spr->trueScaleGlobal().x - _) / 2);
@@ -1141,7 +1727,8 @@ void EditorUI::scaleAlongE() {
 void EditorUI::scaleAlongS() {
     for (int i = 0; i < m_selectedSprites.size(); i++) {
         Sprite* spr = dynamic_cast<Sprite*>(m_selectedSprites[i]);
-        float delta = -(Mouse::get().screenPos().y - Mouse::get().screenPosLF().y) / Camera::mainCamera->m_zoomFactor; 
+        if (!spr) return;
+        float delta = -(Mouse::get().screenPos().y - Mouse::get().screenPosLF().y) / Camera::mainCamera->m_zoomFactor;
         float _ = spr->trueScaleGlobal().y;
         spr->transform.setGlobalScaleY(spr->transform.getGlobalScale().y + (delta / ((spr->m_material->m_diffuseTexture) ? spr->m_material->m_diffuseTexture->dimensions().y: 1)));
         spr->transform.translateGlobalPositionY(-(spr->trueScaleGlobal().y - _) / 2);
@@ -1151,7 +1738,8 @@ void EditorUI::scaleAlongS() {
 void EditorUI::scaleAlongW() {
     for (int i = 0; i < m_selectedSprites.size(); i++) {
         Sprite* spr = dynamic_cast<Sprite*>(m_selectedSprites[i]);
-        float delta = -(Mouse::get().screenPos().x - Mouse::get().screenPosLF().x) / Camera::mainCamera->m_zoomFactor; 
+        if (!spr) return;
+        float delta = -(Mouse::get().screenPos().x - Mouse::get().screenPosLF().x) / Camera::mainCamera->m_zoomFactor;
         float _ = spr->trueScaleGlobal().x;
         spr->transform.setGlobalScaleX(spr->transform.getGlobalScale().x + (delta / ((spr->m_material->m_diffuseTexture) ? spr->m_material->m_diffuseTexture->dimensions().x: 1)));
         spr->transform.translateGlobalPositionX(-(spr->trueScaleGlobal().x - _) / 2);
@@ -1184,7 +1772,7 @@ void EditorUI::update() {
         if (Mouse::get().scrollDelta().y != 0 && !m_toolWndHovering) {
                 Camera::mainCamera->m_zoomFactor += (Mouse::get().scrollDelta().y / (10 / Camera::mainCamera->m_zoomFactor));
                 Camera::mainCamera->m_zoomFactor = Math::clamp(Camera::mainCamera->m_zoomFactor, Camera::mainCamera->m_zoomFactorMin, Camera::mainCamera->m_zoomFactorMax);
-                
+
                 if (Camera::mainCamera->m_zoomFactor > Camera::mainCamera->m_zoomFactorMin && Camera::mainCamera->m_zoomFactor < Camera::mainCamera->m_zoomFactorMax) {
                     glm::vec2 mouseDistFromCenter = (Mouse::get().pos() - (WindowManager::get()->m_size / 2.0f)) / Camera::mainCamera->m_zoomFactor / 10.0f;
 
@@ -1203,7 +1791,7 @@ void EditorUI::update() {
                 zoom_lf = Camera::mainCamera->m_zoomFactor;
         }
     }
-    
+
     if (glfwGetKey(m_wnd, GLFW_KEY_DELETE) == GLFW_PRESS) {
         for (int i = 0; i < m_selectedSprites.size(); i++) {
             GameLevel::deleteEntity(m_selectedSprites[i]);
@@ -1215,7 +1803,7 @@ void EditorUI::update() {
     m_mousePressed = false;
     static bool hoverFlag = false;
 
-    if (m_viewportHasMouse) {
+    if (m_viewportHasMouse && m_draggedItem == "") {
         if (glfwGetMouseButton(m_wnd, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS) {
             m_mousePressed = true;
 
@@ -1238,7 +1826,7 @@ void EditorUI::update() {
                 moveAlongHandleY();
                 Mouse::get().setMouseCursor(Mouse::get().s_moveCursorNS);
             }
-            
+
             else if ((m_axisHandle.m_nHandle) && !m_multiSelect) {
                 m_axisHandle.m_nHandleSelected = true;
                 scaleAlongN();
@@ -1285,16 +1873,16 @@ void EditorUI::update() {
             }
 
             if (Mouse::get().screenPos() != m_mouseScreenPosWhenPressed && !(
-            m_axisHandle.m_xHandleSelected || 
-            m_axisHandle.m_yHandleSelected || 
-            m_axisHandle.m_xyHandleSelected || 
-            m_axisHandle.m_nHandleSelected || 
-            m_axisHandle.m_neHandleSelected || 
-            m_axisHandle.m_eHandleSelected || 
-            m_axisHandle.m_seHandleSelected || 
-            m_axisHandle.m_sHandleSelected || 
-            m_axisHandle.m_swHandleSelected || 
-            m_axisHandle.m_wHandleSelected || 
+            m_axisHandle.m_xHandleSelected  ||
+            m_axisHandle.m_yHandleSelected  ||
+            m_axisHandle.m_xyHandleSelected ||
+            m_axisHandle.m_nHandleSelected  ||
+            m_axisHandle.m_neHandleSelected ||
+            m_axisHandle.m_eHandleSelected  ||
+            m_axisHandle.m_seHandleSelected ||
+            m_axisHandle.m_sHandleSelected  ||
+            m_axisHandle.m_swHandleSelected ||
+            m_axisHandle.m_wHandleSelected  ||
             m_axisHandle.m_nwHandleSelected
         )) {
                 m_multiSelect = true;
@@ -1303,17 +1891,17 @@ void EditorUI::update() {
 
 
         if (glfwGetMouseButton(m_wnd, GLFW_MOUSE_BUTTON_LEFT) == GLFW_RELEASE && m_mousePressedLF) {
-            
-            if ((m_axisHandle.m_xHandleSelected || 
-            m_axisHandle.m_yHandleSelected || 
-            m_axisHandle.m_xyHandleSelected || 
-            m_axisHandle.m_nHandleSelected || 
-            m_axisHandle.m_neHandleSelected || 
-            m_axisHandle.m_eHandleSelected || 
-            m_axisHandle.m_seHandleSelected || 
-            m_axisHandle.m_sHandleSelected || 
-            m_axisHandle.m_swHandleSelected || 
-            m_axisHandle.m_wHandleSelected || 
+
+            if ((m_axisHandle.m_xHandleSelected ||
+            m_axisHandle.m_yHandleSelected ||
+            m_axisHandle.m_xyHandleSelected ||
+            m_axisHandle.m_nHandleSelected ||
+            m_axisHandle.m_neHandleSelected ||
+            m_axisHandle.m_eHandleSelected ||
+            m_axisHandle.m_seHandleSelected ||
+            m_axisHandle.m_sHandleSelected ||
+            m_axisHandle.m_swHandleSelected ||
+            m_axisHandle.m_wHandleSelected ||
             m_axisHandle.m_nwHandleSelected
         )) {
                 m_axisHandle.m_xHandleSelected = false;
@@ -1339,17 +1927,23 @@ void EditorUI::update() {
 
                 if (Mouse::get().screenPos() == m_mouseScreenPosWhenPressed || m_multiSelect) {
                     bool earlyBreak = false; // IGNORE
-                    for (int i = 0; i < Sprite::s_sprites.size(); i++) {
+                    for (int i = 0; i < RenderEntity::s_allRenderEntities.size(); i++) {
                         if (!earlyBreak) {
                             bool condition = false;
 
-                            Sprite* spr = dynamic_cast<Sprite*>(Sprite::s_sprites[i]); 
-                            if (!m_multiSelect) condition = spr->checkCollisionAgainstPoint(Mouse::get().screenPos());
-                            else                condition = spr->checkCollisionAgainstTransform(&m_selectionBox.transform);
-
-                            if (condition && spr->m_visible && !spr->m_selected) {
-                                spr->m_selected = true;
-                                m_selectedSprites.push_back(spr);
+                            ScriptableEntity* ent = dynamic_cast<ScriptableEntity*>(RenderEntity::s_allRenderEntities[i]);
+                            Sprite* spr = dynamic_cast<Sprite*>(ent);
+                            if (spr) {
+                                if (!m_multiSelect) condition = spr->checkCollisionAgainstPoint(Mouse::get().screenPos());
+                                else                condition = spr->checkCollisionAgainstTransform(&m_selectionBox.transform);
+                            }
+                            else{
+                                if (!m_multiSelect) condition = ent->transform.checkCollisionAgainstPoint(Mouse::get().screenPos());
+                                else                condition = ent->transform.checkCollisionAgainstTransform(&m_selectionBox.transform);
+                            }
+                            if (condition && ent->m_visible && !ent->m_selected) {
+                                ent->m_selected = true;
+                                m_selectedSprites.push_back(ent);
                                 if (!m_multiSelect) earlyBreak = true;
                             }
                         }
@@ -1360,7 +1954,7 @@ void EditorUI::update() {
         }
 
     }
-    
+
     if (m_selectedSprites.size() != 0) {
         glm::vec3 pos{};
 
@@ -1379,17 +1973,17 @@ void EditorUI::update() {
                 if (i == 0) flag = true;
                 if (newN.y < spr->transform.getGlobalPosition().y) flag = true;
                 if (newE.x < spr->transform.getGlobalPosition().x) flag = true;
- 
+
                 if (newN.y > N.y || flag) N.y = newN.y;
                 if (newE.x > E.x || flag) E.x = newE.x;
                 if (newS.y < S.y || flag) S.y = newS.y;
                 if (newW.x < W.x || flag) W.x = newW.x;
             }
             else {
-                newN = glm::vec2(m_selectedSprites[i]->transform.getGlobalPosition().x, m_selectedSprites[i]->transform.getGlobalPosition().y);
-                newE = glm::vec2(m_selectedSprites[i]->transform.getGlobalPosition().x, m_selectedSprites[i]->transform.getGlobalPosition().y);
-                newS = glm::vec2(m_selectedSprites[i]->transform.getGlobalPosition().x, m_selectedSprites[i]->transform.getGlobalPosition().y);
-                newW = glm::vec2(m_selectedSprites[i]->transform.getGlobalPosition().x, m_selectedSprites[i]->transform.getGlobalPosition().y);
+                N = glm::vec2(m_selectedSprites[i]->transform.getGlobalPosition().x, m_selectedSprites[i]->transform.getGlobalPosition().y);
+                E = glm::vec2(m_selectedSprites[i]->transform.getGlobalPosition().x, m_selectedSprites[i]->transform.getGlobalPosition().y);
+                S = glm::vec2(m_selectedSprites[i]->transform.getGlobalPosition().x, m_selectedSprites[i]->transform.getGlobalPosition().y);
+                W = glm::vec2(m_selectedSprites[i]->transform.getGlobalPosition().x, m_selectedSprites[i]->transform.getGlobalPosition().y);
             }
         }
         pos = pos / (float)i;
@@ -1416,16 +2010,16 @@ void EditorUI::update() {
         m_axisHandle.nw.setLocalPosition(glm::vec3(W.x, N.y, 0));
 
 
-        if (!(m_axisHandle.m_xHandleSelected || 
-            m_axisHandle.m_yHandleSelected || 
-            m_axisHandle.m_xyHandleSelected || 
-            m_axisHandle.m_nHandleSelected || 
-            m_axisHandle.m_neHandleSelected || 
-            m_axisHandle.m_eHandleSelected || 
-            m_axisHandle.m_seHandleSelected || 
-            m_axisHandle.m_sHandleSelected || 
-            m_axisHandle.m_swHandleSelected || 
-            m_axisHandle.m_wHandleSelected || 
+        if (!(m_axisHandle.m_xHandleSelected ||
+            m_axisHandle.m_yHandleSelected ||
+            m_axisHandle.m_xyHandleSelected ||
+            m_axisHandle.m_nHandleSelected ||
+            m_axisHandle.m_neHandleSelected ||
+            m_axisHandle.m_eHandleSelected ||
+            m_axisHandle.m_seHandleSelected ||
+            m_axisHandle.m_sHandleSelected ||
+            m_axisHandle.m_swHandleSelected ||
+            m_axisHandle.m_wHandleSelected ||
             m_axisHandle.m_nwHandleSelected
         )) {
             m_axisHandle.m_xHandle = m_axisHandle.tx.checkCollisionAgainstPoint(Mouse::get().screenPos(), true);
@@ -1444,7 +2038,7 @@ void EditorUI::update() {
                 m_axisHandle.m_nwHandle = m_axisHandle.nw.checkCollisionAgainstPoint(Mouse::get().screenPos(), true);
                 }
             if (m_axisHandle.m_xHandle && !m_multiSelect) {
-                m_axisHandle.transformx.setLocalScaleY(1.1f); 
+                m_axisHandle.transformx.setLocalScaleY(1.1f);
                 hoverFlag = true;
             }
             else {
@@ -1452,7 +2046,7 @@ void EditorUI::update() {
             }
 
             if (!m_axisHandle.m_xHandle && m_axisHandle.m_yHandle && !m_multiSelect) {
-                m_axisHandle.transformy.setLocalScaleY(1.1f); 
+                m_axisHandle.transformy.setLocalScaleY(1.1f);
                 hoverFlag = true;
             }
             else {
@@ -1460,7 +2054,7 @@ void EditorUI::update() {
             }
 
             if (m_axisHandle.m_xyHandle) {
-                m_axisHandle.transformxy.setLocalScale(glm::vec3(1.1f) * glm::vec3(20, 20, 1) / Camera::mainCamera->m_zoomFactor); 
+                m_axisHandle.transformxy.setLocalScale(glm::vec3(1.1f) * glm::vec3(20, 20, 1) / Camera::mainCamera->m_zoomFactor);
                 hoverFlag = true;
             }
             else {
@@ -1483,7 +2077,7 @@ void EditorUI::update() {
             else {
                 m_axisHandle.ne.setLocalScale(scale);
             }
-            
+
             if (m_axisHandle.m_eHandle && !m_multiSelect) {
                 m_axisHandle.e.setLocalScale(scale * 1.2f);
                 hoverFlag = true;
@@ -1507,7 +2101,7 @@ void EditorUI::update() {
             else {
                 m_axisHandle.s.setLocalScale(scale);
             }
-            
+
             if (m_axisHandle.m_swHandle && !m_multiSelect) {
                 m_axisHandle.sw.setLocalScale(scale * 1.2f);
                 hoverFlag = true;
@@ -1533,16 +2127,16 @@ void EditorUI::update() {
             }
 
             if (!(
-                m_axisHandle.m_xHandle|| 
-                m_axisHandle.m_yHandle  || 
-                m_axisHandle.m_xyHandle || 
-                m_axisHandle.m_nHandle  || 
-                m_axisHandle.m_neHandle || 
-                m_axisHandle.m_eHandle  || 
-                m_axisHandle.m_seHandle || 
-                m_axisHandle.m_sHandle  || 
-                m_axisHandle.m_swHandle || 
-                m_axisHandle.m_wHandle  || 
+                m_axisHandle.m_xHandle||
+                m_axisHandle.m_yHandle  ||
+                m_axisHandle.m_xyHandle ||
+                m_axisHandle.m_nHandle  ||
+                m_axisHandle.m_neHandle ||
+                m_axisHandle.m_eHandle  ||
+                m_axisHandle.m_seHandle ||
+                m_axisHandle.m_sHandle  ||
+                m_axisHandle.m_swHandle ||
+                m_axisHandle.m_wHandle  ||
                 m_axisHandle.m_nwHandle))
                 hoverFlag = false;
         }
@@ -1555,14 +2149,14 @@ void EditorUI::update() {
     else
         Mouse::get().setMouseCursor(Mouse::get().s_defaultCursor);
 
-    
+
     scroll_lf = Camera::mainCamera->m_zoomFactor;
     m_mousePressedLF = m_mousePressed;
     imgui();
+    m_draggedItemLF = m_draggedItem;
 }
 
 bool EditorUI::drawUI() {
-    if (!ScriptableEntity::draw()) return false;
     BlendMode::useDefaultBlending();
     Camera::mainCamera->calculateVPMatrix();
     Camera::mainCamera->bindFramebuffer();
@@ -1584,7 +2178,7 @@ bool EditorUI::drawUI() {
             m_selectionBox.m_material.m_shader->setMat4(Camera::mainCamera->vpMatrix(), vpUniform);
         }
         else {
-            std::cout << "WARNING : No camera exists in the scene!" << std::endl; 
+            std::cout << "WARNING : No camera exists in the scene!" << std::endl;
         }
         m_selectionBox.transform.calculateWorldMatrix();
         m_selectionBox.m_material.m_shader->setMat4(m_selectionBox.transform.worldMatrix(), modelUniform);
@@ -1597,7 +2191,7 @@ bool EditorUI::drawUI() {
             Shader::m_selectBoxCol[2],
             Shader::m_selectBoxCol[3]
         ), "selectionBoxCol");
-        glDrawElements(m_selectionBox.m_mesh->m_topology, m_selectionBox.m_mesh->m_indexData.size(), GL_UNSIGNED_INT, 0); 
+        glDrawElements(m_selectionBox.m_mesh->m_topology, m_selectionBox.m_mesh->m_indexData.size(), GL_UNSIGNED_INT, 0);
         m_selectionBox.m_material.m_shader->setBool(false, "drawSelectionBox");
     }
     if (m_selectedSprites.size() > 0) {
@@ -1622,56 +2216,58 @@ bool EditorUI::drawUI() {
         m_axisHandle.w.calculateWorldMatrix();
         m_axisHandle.nw.calculateWorldMatrix();
 
-        AudioSource* test = dynamic_cast<AudioSource*>(m_selectedSprites[0]);
-        if (!test) {
-            m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.n.localMatrix(), modelUniform);
-            m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
-            glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0); 
-
-            m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.ne.localMatrix(), modelUniform);
-            m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
-            glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0); 
-
-            m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.e.localMatrix(), modelUniform);
-            m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
-            glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0); 
-
-            m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.se.localMatrix(), modelUniform);
-            m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
-            glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0); 
-
-            m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.s.localMatrix(), modelUniform);
-            m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
-            glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0); 
-
-            m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.sw.localMatrix(), modelUniform);
-            m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
-            glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0); 
-
-            m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.w.localMatrix(), modelUniform);
-            m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
-            glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0); 
-
-            m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.nw.localMatrix(), modelUniform);
-            m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
-            glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0); 
-        }
         m_axisHandle.m_mesh.bind();
 
         //glDisable(GL_DEPTH_TEST);
         m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.transform.localMatrix() * m_axisHandle.transformx.localMatrix(), modelUniform);
         m_axisHandle.m_material.m_shader->setVec4({1, 0, 0, 1}, "handleCol");
-        glDrawElements(m_axisHandle.m_mesh.m_topology, m_axisHandle.m_mesh.m_indexData.size(), GL_UNSIGNED_INT, 0); 
+        glDrawElements(m_axisHandle.m_mesh.m_topology, m_axisHandle.m_mesh.m_indexData.size(), GL_UNSIGNED_INT, 0);
 
         m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.transform.localMatrix() * m_axisHandle.transformy.localMatrix(), modelUniform);
         m_axisHandle.m_material.m_shader->setVec4({0, 0, 1, 1}, "handleCol");
-        glDrawElements(m_axisHandle.m_mesh.m_topology, m_axisHandle.m_mesh.m_indexData.size(), GL_UNSIGNED_INT, 0); 
+        glDrawElements(m_axisHandle.m_mesh.m_topology, m_axisHandle.m_mesh.m_indexData.size(), GL_UNSIGNED_INT, 0);
 
+        // always bind the right mesh before drawing lol. lol. 3am btw.
         Mesh::Quad.bind();
+        Sprite* test = dynamic_cast<Sprite*>(m_selectedSprites[0]);
+        if (test) {
+
+            m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.n.localMatrix(), modelUniform);
+            m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
+            glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0);
+
+            m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.ne.localMatrix(), modelUniform);
+            m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
+            glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0);
+
+            m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.e.localMatrix(), modelUniform);
+            m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
+            glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0);
+
+            m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.se.localMatrix(), modelUniform);
+            m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
+            glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0);
+
+            m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.s.localMatrix(), modelUniform);
+            m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
+            glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0);
+
+            m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.sw.localMatrix(), modelUniform);
+            m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
+            glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0);
+
+            m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.w.localMatrix(), modelUniform);
+            m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
+            glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0);
+
+            m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.nw.localMatrix(), modelUniform);
+            m_axisHandle.m_material.m_shader->setVec4({1, 0.5f, 0, 1}, "handleCol");
+            glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0);
+        }
 
         m_axisHandle.m_material.m_shader->setMat4(m_axisHandle.transformxy.localMatrix(), modelUniform);
         m_axisHandle.m_material.m_shader->setVec4({0, 1, 0, 1}, "handleCol");
-        glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0); 
+        glDrawElements(Mesh::Quad.m_topology, Mesh::Quad.m_indexData.size(), GL_UNSIGNED_INT, 0);
 
         // dont look
 
@@ -1703,7 +2299,7 @@ EditorUI::~EditorUI() {
 }
 
 void EditorUI::createAxisHandle() {
-    
+
     float width = 0.015f;
     float height = 0.5f;
     float arrowHeight = 0.1f;

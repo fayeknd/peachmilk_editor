@@ -26,20 +26,22 @@ public:
     std::string getTextureFolder();
     std::string getLevelFolder();
     std::string getChannelGroupFolder();
+    std::string getFontFolder();
+    std::string getFontAtlasFolder();
     static void setLoadedProject(Project* p);
     bool isDeserialized() { return m_deserialized; }
     std::string m_projectTitle = "";
 
-    template <class Archive> 
+    template <class Archive>
     void serialize(Archive & archive) {
         m_campos = Camera::mainCamera->transform.getLocalPosition();
         m_zoom = Camera::mainCamera->m_zoomFactor;
-        archive(m_projectTitle, m_campos.x, m_campos.y, m_campos.z, m_zoom, m_loadedLevelPath);  
+        archive(m_projectTitle, m_campos.x, m_campos.y, m_campos.z, m_zoom, m_loadedLevelPath);
     }
 
     void createProject(std::string title = "Empty Project");
     void serializeProjectInfo();
-    std::string getFilepath() { return m_projectPath; } 
+    std::string getFilepath() { return m_projectPath; }
     void deserializeProjectInfo(std::string pInfoFile);
     bool saveProject();
     void loadProject();

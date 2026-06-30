@@ -1,5 +1,6 @@
 #include "project.hpp"
 #include "../render/material.hpp"
+#include "../render/text/font.hpp"
 #include "../audio/audioclip.hpp"
 #include "../audio/channelgroup.hpp"
 
@@ -17,8 +18,10 @@ std::string Project::getMaterialFolder() {GET_FOLDER("materials")}
 std::string Project::getTextureFolder() {GET_FOLDER("textures")}
 std::string Project::getLevelFolder() {GET_FOLDER("levels")}
 std::string Project::getChannelGroupFolder() {_GET_FOLDER(getSoundFolder(), "channelgroups")}
-void Project::setLoadedProject(Project* p) { 
-    m_activeProject = p; 
+std::string Project::getFontFolder() {GET_FOLDER("fonts")}
+std::string Project::getFontAtlasFolder() {_GET_FOLDER(getFontFolder(), "fontatlases")}
+void Project::setLoadedProject(Project* p) {
+    m_activeProject = p;
 }
 
 void Project::createProject(std::string title) {
@@ -54,7 +57,7 @@ void Project::deserializeProjectInfo(std::string pInfoFile) {
         m_deserialized = true;
         Camera::mainCamera->transform.setGlobalPosition(m_campos);
         Camera::mainCamera->m_zoomFactor = m_zoom;
-        
+
     }
     is.close();
 }
@@ -65,6 +68,7 @@ bool Project::saveProject() {
     Material::serializeMaterials();
     AudioClip::serializeSounds();
     ChannelGroup::serializeChannelGroups();
+    TextFont::serializeFonts();
     return true;
 }
 
@@ -72,6 +76,7 @@ void Project::loadProject() {
     Material::deseralizeMaterials();
     AudioClip::deseralizeSounds();
     ChannelGroup::deseralizeChannelGroups();
+    TextFont::deserializeFonts();
     if (m_loadedLevelPath != "" && File::fileExists(m_loadedLevelPath)) {
         GameLevel::loadLevel(m_loadedLevelPath, false);
     }

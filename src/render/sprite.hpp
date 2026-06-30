@@ -7,20 +7,15 @@
 #include "material.hpp"
 
 // TODO : Sprites do not have to contain one mesh each, it would be a lot more efficient
-// if all sprites were batched together and drawn as instanced quads, with differing 
+// if all sprites were batched together and drawn as instanced quads, with differing
 // transforms and textures.
 
-class Sprite : public ScriptableEntity{
-private: 
-
-    static float partition(int left, int righ, bool flip);
-    static void quicksort(int left, int right, bool flip);
+class Sprite : public ScriptableEntity, public RenderEntity {
+private:
 
 public:
 
     unsigned int m_matID = -1;
-    static inline std::vector<ScriptableEntity*> s_sprites {};
-    static void orderSprites(bool flip);
 
     glm::vec2 textureSize();
     glm::vec3 trueScaleGlobal();
@@ -29,7 +24,7 @@ public:
     //Sprite();
     ~Sprite();
     Mesh* m_mesh = &Mesh::Quad;
-    Material* m_material = Material::s_defaultMaterial; 
+    Material* m_material = Material::s_defaultMaterial;
     Mesh* getMesh() { return m_mesh; }
     void create(std::string name = "Sprite ") override;
 
@@ -59,11 +54,11 @@ public:
         archive(cereal::base_class<ScriptableEntity>(this), m_matID);
     }
 
-    void _deserializeFnc() override { 
+    void _deserializeFnc() override {
         ScriptableEntity::_deserializeFnc();
         if (m_matID != -1) m_material = Material::getMaterialViaID(m_matID);
-        if (!m_material) m_matID = -1; 
-        Sprite::s_sprites.push_back(this);
+        if (!m_material) m_matID = -1;
+        RenderEntity::s_allRenderEntities.push_back(this);
     };
 
     glm::vec2 getTL();

@@ -3,28 +3,40 @@
 #include "channelgroup.hpp"
 
 void AudioSource::setFalloff(float minf, float maxf, float minf_mult, float maxf_mult) {
-    if (m_isPlaying) AudioManager::get().getResult(FMOD_Channel_Set3DMinMaxDistance(m_channel, std::min(minf, minf_mult) * AUDIO_DISTANCEFACTOR, std::max(maxf, maxf_mult) * AUDIO_DISTANCEFACTOR));
+    if (minf_mult == -256) minf_mult = m_minFalloff_mult;
+    if (maxf_mult == -256) maxf_mult = m_maxFalloff_mult;
+    if (m_isPlaying) AudioManager::get().getResult(FMOD_Channel_Set3DMinMaxDistance(m_channel,
+        std::min(minf, minf_mult) * AUDIO_DISTANCEFACTOR,
+        std::max(maxf, maxf_mult) * AUDIO_DISTANCEFACTOR));
     else m_isDirty = true;
     m_minFalloff = minf;
     m_maxFalloff = maxf;
+    m_minFalloff_mult = minf_mult;
+    m_maxFalloff_mult = maxf_mult;
 }
 
 void AudioSource::setDoppler(float d, float d_mult) {
+    if (d_mult == -256) d_mult = m_doppler_mult;
     if (m_isPlaying) AudioManager::get().getResult(FMOD_Channel_Set3DDopplerLevel(m_channel, d * d_mult));
     else m_isDirty = true;
     m_doppler = d;
+    m_doppler_mult = d_mult;
 }
 
 void AudioSource::setPitch(float p, float p_mult) {
+    if (p_mult == -256) p_mult = m_pitch_mult;
     if (m_isPlaying) AudioManager::get().getResult(FMOD_Channel_SetPitch(m_channel, p * p_mult));
     else m_isDirty = true;
     m_pitch = p;
+    m_pitch_mult = p_mult;
 }
 
 void AudioSource::setVolume(float v, float v_mult) {
+    if (v_mult == -256) v_mult = m_volume_mult;
     if (m_isPlaying) AudioManager::get().getResult(FMOD_Channel_SetVolume(m_channel, glm::clamp((v * v_mult), 0.0f, static_cast<float>(AUDIO_MAX_VOLUME))));
     else m_isDirty = true;
     m_volume = v;
+    m_volume_mult = v_mult;
 }
 
 void AudioSource::setMuted(FMOD_BOOL muted) {
@@ -48,9 +60,11 @@ void AudioSource::setDoesLoop(FMOD_BOOL loop) {
 }
 
 void AudioSource::set3DLevel(float l, float l_mult) {
+    if (l_mult == -256) l_mult = m_3dLevel_mult;
     if (m_isPlaying) AudioManager::get().getResult(FMOD_Channel_Set3DLevel(m_channel, l * l_mult));
     else m_isDirty = true;
     m_3dLevel = l;
+    m_3dLevel_mult = l_mult;
 }
 
 void AudioSource::playSound(AudioClip * clip) {
@@ -59,19 +73,23 @@ void AudioSource::playSound(AudioClip * clip) {
 
     // getResult() is an automatic error check.
     // FMOD functions return the type "FMOD_RESULT".
-    // A callback function to decide what happens 
-    // 
-    // the audio error callback can be set via 
-    // AudioManager::get().setErrCallback(errcallback) 
+    // A callback function to decide what happens
+    //
+    // the audio error callback can be set via
+    // AudioManager::get().setErrCallback(errcallback)
 
-    AudioManager::get().playSound(clip->m_sound, &m_channel);   
+    AudioManager::get().playSound(clip->m_sound, &m_channel);
     m_isPlaying = true;
     m_isDirty = true;
-}       
+}
 
 void AudioSource::playSound(unsigned int index) {
     if (!m_clips[index]) return;
     playSound(m_clips[index]);
+}
+
+void AudioSource::stopAudio() {
+    FMOD_Channel_Stop(m_channel);
 }
 
 void AudioSource::create(std::string name) {
@@ -86,12 +104,12 @@ void AudioSource::update() {
             m_pos.x = transform.getGlobalPosition().x;
             m_pos.y = transform.getGlobalPosition().y;
             m_pos.z = (Camera::mainCamera->m_isOrtho) ? 0 : transform.getGlobalPosition().z;
-            
+
             // TODO : velocities at some point
             // (pretty sure this is exclusively for doppler shit)
             m_vel.x = m_pos.x - m_posLF.x;
             m_vel.y = m_pos.y - m_posLF.y;
-            m_vel.z = m_pos.z - m_posLF.z;    
+            m_vel.z = m_pos.z - m_posLF.z;
         }
         if (FMOD_Channel_IsPlaying(m_channel, &m_isPlaying) == FMOD_ERR_INVALID_HANDLE) m_isPlaying = false;
         if (m_isPlaying) {
@@ -100,15 +118,15 @@ void AudioSource::update() {
                 setVolume(m_volume, m_volume_mult);
                 setDoppler(m_doppler, m_doppler_mult);
                 setPitch(m_pitch, m_pitch_mult);
-                setFalloff(m_minFalloff, m_minFalloff_mult, m_maxFalloff, m_minFalloff_mult);
+                setFalloff(m_minFalloff, m_minFalloff_mult, m_maxFalloff, m_maxFalloff_mult);
                 set3DLevel(m_3dLevel, m_3dLevel_mult);
-                setDoesLoop(m_loop); 
+                setDoesLoop(m_loop);
                 m_isDirty = false;
             }
         }
         m_posLF = m_pos;
     }
-}   
+}
 
 void AudioSource::_deserializeFnc() {
     ScriptableEntity::_deserializeFnc();
@@ -120,10 +138,12 @@ void AudioSource::_deserializeFnc() {
 
 AudioSource::~AudioSource() {
     ChannelGroup* cg = ChannelGroup::getChannelGroup(m_channelGroupName);
-    for (int i = 0; i < cg->m_channels.size(); i++) {
-        if (cg->m_channels[i] == this) {
-            cg->m_channels.erase(cg->m_channels.begin() + i);
-            break;
+    if (cg) {
+        for (int i = 0; i < cg->m_channels.size(); i++) {
+            if (cg->m_channels[i] == this) {
+                cg->m_channels.erase(cg->m_channels.begin() + i);
+                break;
+            }
         }
     }
 }

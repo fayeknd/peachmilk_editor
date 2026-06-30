@@ -1,6 +1,7 @@
 #pragma once
 #include "entity.hpp"
 #include "../headers.h"
+#include "../shader/shader.hpp"
 
 class GameLevel{
 private:
@@ -12,12 +13,15 @@ public:
     void saveLevelData();
     static void loadLevel(std::string path, bool additive = false);
     std::string getFilePath() { return m_filePath; }
-    
+    glm::vec4 m_clearCol;
+
     template <class Archive>
     void serialize(Archive & archive) {
-        archive(m_levelName);
+        m_clearCol = glm::vec4(Shader::m_clearCol[0], Shader::m_clearCol[1], Shader::m_clearCol[2], Shader::m_clearCol[3]);
+        archive(m_levelName, m_clearCol.x, m_clearCol.y, m_clearCol.z, m_clearCol.w);
+
     }
-    void unloadLevel(); 
+    void unloadLevel();
     static void createNewLevel(std::string levelName = "New Level");
     ~GameLevel() {
         for (int i = 0; i < s_loadedEntities.size(); i++) {

@@ -12,7 +12,7 @@ if (t) {oarchive(std::string(#Type)); oarchive(*t); break;}}    \
 if (type == #Type) {                                            \
     Type* t = new Type;                                         \
     iarchive(*t);                                               \
-    /*std::cout << t->transform.getLocalPosition().x << std::endl;*/\
+    /*FLAG;*/\
     s_loadedEntities.push_back(t);                              \
     t->m_justDeserialized = true;                               \
     t->_deserializeFnc();                                       \
@@ -42,10 +42,10 @@ void GameLevel::saveLevelData() {
         cereal::JSONOutputArchive oarchive(os);
         oarchive(serializable.size());
         for (int i = 0; i < serializable.size(); i++) {
-            SAVE_TYPES            
+            SAVE_TYPES
         }
         oarchive(*this);
-    }   
+    }
 }
 
 void GameLevel::deleteEntity(ScriptableEntity *entity) {
@@ -54,36 +54,59 @@ void GameLevel::deleteEntity(ScriptableEntity *entity) {
 
 void GameLevel::unloadLevel() {
     saveLevelData();
-    
+
+    // BIG WALL OF TEXT !! INTERESTING! READ!
+
+    // okay, update on this
+    // I feel the need to keep this here so anyone who
+    // sees this can know how much of an idiot i am.
+    //
+    // The reason this was happening (which is so fucking
+    // obvious in hindsight) is because deleting an entity
+    // also deletes it's children, and then erases the child
+    // fropm the s_loadedEntities vector.
+    // This creates a problem in SPECIFICALLY this loop,
+    // because after erasing the item, iterator i skips
+    // to the entity immediately after the one it was meant to.
+    // Creating a separate vector called ent did kind of fix this
+    // until it tried deleting pointers that had already been
+    // deleted, where it caused issues. The simple simple simple
+    // fix was to just reverse the order of the for loop. omg.
+
+    // begin old rant
+
     // genuinely this system gives me the weirdest issues
-    // i wrestled with this for an hour because if the 
-    // "delete" keyword was present at all in this 
+    // i wrestled with this for an hour because if the
+    // "delete" keyword was present at all in this
     // chain then the most recently created entity
     // would NOT be in the s_loadedEntities array
     // ******even if the delete was NEVER called******
     // this means the most recently created object
     // wouldn't be listed in this vector, wouldn't
-    // get destroyed, but then would SUDDENLY exist in 
-    // the SAME VECTOR once again when the next level 
+    // get destroyed, but then would SUDDENLY exist in
+    // the SAME VECTOR once again when the next level
     // saves its data, saving itself in that level's data.
     // i have NO. idea. why.
-    
-    // but if you just copy the pointers into this vector
-    // it works fine 
-    // i SWEAR im not missing something super obvious
-    std::vector<ScriptableEntity*> ent = s_loadedEntities;
-    for (int i = 0; i < ent.size(); i++) {
 
-        if (ent[i]->m_destroyOnLoad) {
-            deleteEntity(ent[i]);
+    // but if you just copy the pointers into this vector
+    // it works fine
+    // i SWEAR im not missing something super obvious
+
+    // end old rant
+
+    std::vector<ScriptableEntity*> ent = s_loadedEntities;
+    for (int i = s_loadedEntities.size() - 1; i >= 0; --i) {
+
+        if (s_loadedEntities[i]->m_destroyOnLoad) {
+            deleteEntity(s_loadedEntities[i]);
         }
-        
+
     }
-    Material::serializeMaterials();
+    //Material::serializeMaterials();
 }
 
 void GameLevel::loadLevel(std::string path, bool additive) {
-    
+
     if (!File::fileExists(path)) return;
     if (s_loadedLevel && !additive) {
         s_loadedLevel->unloadLevel();
@@ -98,7 +121,7 @@ void GameLevel::loadLevel(std::string path, bool additive) {
             iarchive(type);
             LOAD_TYPES
         }
-        
+
         for (int i = 0; i < s_loadedEntities.size(); i++) {
             if (s_loadedEntities[i]->m_justDeserialized) {
                 ScriptableEntity* parent = ScriptableEntity::getEntityViaID(s_loadedEntities[i]->m_parentID);
@@ -113,8 +136,13 @@ void GameLevel::loadLevel(std::string path, bool additive) {
         iarchive(*gl);
         s_loadedLevel = gl;
         Project::get()->m_loadedLevelPath = gl->getFilePath();
-        Sprite::orderSprites(true);
-        
+        Shader::m_clearCol[0] = gl->m_clearCol.x;
+        Shader::m_clearCol[1] = gl->m_clearCol.y;
+        Shader::m_clearCol[2] = gl->m_clearCol.z;
+        Shader::m_clearCol[3] = gl->m_clearCol.w;
+        glClearColor(gl->m_clearCol.x, gl->m_clearCol.y, gl->m_clearCol.z, gl->m_clearCol.w);
+        RenderEntity::orderEntitiesByZ(true);
+
     }
 }
 
@@ -122,17 +150,21 @@ void GameLevel::createNewLevel(std::string name) {
     std::string _ = Project::get()->getLevelFolder() + "\\" + name + "." + LEV_DEFAULT_EXT;
     std::ofstream os(_, std::ios::binary);
     // this is really fucking stupid but it was the only way
-    // for some reason, if you created a level while a level 
+    // for some reason, if you created a level while a level
     // with sprites was loaded, even though the (much better)
     // generation of a file had zero interaction with the
     // sprite vector, the sprites would still start refusing
-    // to run their draw function even when the pointers were 
+    // to run their draw function even when the pointers were
     // valid and they would do other functions just fine
     // this is genuinely the most puzzling thing ive ever
     // come across and clearly something is doing it
-    // but i CANNOT figure out what it is so fuck it im 
+    // but i CANNOT figure out what it is so fuck it im
     // just handwriting a new .lvd file cause fuck you
-    std::string txt(std::string("{\n    ") + '"' + std::string("value0") + '"' + " : 0,\n    " + '"' + std::string("value1") + '"' + " : {\n        " + '"' + std::string("value0") + '"' + " : " + '"' + name + '"' + "\n  }\n}");
+
+    // ok full disclosure (later me) i fully could fix this but i cba
+
+    std::string txt(std::string("{\n    ") + '"' + std::string("value0") + '"' + " : 0,\n    " + '"' + std::string("value1") + '"' + " : {\n        " + '"' + std::string("value0") + '"' + " : " + '"' + name + '"' + ",\n" + '"' + std::string("value1") + '"' + " : " + "0.172" + ",\n" + '"' + std::string("value2") + '"' + " : " + "0.172" + ",\n" + '"' + std::string("value3") + '"' + " : " + "0.172" + ",\n" + '"' + std::string("value4") + '"' + " : " + "1.0" + "\n }\n}");
     os << txt;
     os.close();
+
 }

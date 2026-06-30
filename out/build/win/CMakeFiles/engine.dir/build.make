@@ -506,6 +506,48 @@ CMakeFiles/engine.dir/src/audio/channelgroup.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/engine.dir/src/audio/channelgroup.cpp.s"
 	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/faye/Documents/engine/src/audio/channelgroup.cpp -o CMakeFiles/engine.dir/src/audio/channelgroup.cpp.s
 
+CMakeFiles/engine.dir/src/render/text/text.cpp.o: CMakeFiles/engine.dir/flags.make
+CMakeFiles/engine.dir/src/render/text/text.cpp.o: /home/faye/Documents/engine/src/render/text/text.cpp
+CMakeFiles/engine.dir/src/render/text/text.cpp.o: CMakeFiles/engine.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/faye/Documents/engine/out/build/win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/engine.dir/src/render/text/text.cpp.o"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/engine.dir/src/render/text/text.cpp.o -MF CMakeFiles/engine.dir/src/render/text/text.cpp.o.d -o CMakeFiles/engine.dir/src/render/text/text.cpp.o -c /home/faye/Documents/engine/src/render/text/text.cpp
+
+CMakeFiles/engine.dir/src/render/text/text.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/engine.dir/src/render/text/text.cpp.i"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/faye/Documents/engine/src/render/text/text.cpp > CMakeFiles/engine.dir/src/render/text/text.cpp.i
+
+CMakeFiles/engine.dir/src/render/text/text.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/engine.dir/src/render/text/text.cpp.s"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/faye/Documents/engine/src/render/text/text.cpp -o CMakeFiles/engine.dir/src/render/text/text.cpp.s
+
+CMakeFiles/engine.dir/src/render/text/font.cpp.o: CMakeFiles/engine.dir/flags.make
+CMakeFiles/engine.dir/src/render/text/font.cpp.o: /home/faye/Documents/engine/src/render/text/font.cpp
+CMakeFiles/engine.dir/src/render/text/font.cpp.o: CMakeFiles/engine.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/faye/Documents/engine/out/build/win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/engine.dir/src/render/text/font.cpp.o"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/engine.dir/src/render/text/font.cpp.o -MF CMakeFiles/engine.dir/src/render/text/font.cpp.o.d -o CMakeFiles/engine.dir/src/render/text/font.cpp.o -c /home/faye/Documents/engine/src/render/text/font.cpp
+
+CMakeFiles/engine.dir/src/render/text/font.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/engine.dir/src/render/text/font.cpp.i"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/faye/Documents/engine/src/render/text/font.cpp > CMakeFiles/engine.dir/src/render/text/font.cpp.i
+
+CMakeFiles/engine.dir/src/render/text/font.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/engine.dir/src/render/text/font.cpp.s"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/faye/Documents/engine/src/render/text/font.cpp -o CMakeFiles/engine.dir/src/render/text/font.cpp.s
+
+CMakeFiles/engine.dir/src/render/textureatlas.cpp.o: CMakeFiles/engine.dir/flags.make
+CMakeFiles/engine.dir/src/render/textureatlas.cpp.o: /home/faye/Documents/engine/src/render/textureatlas.cpp
+CMakeFiles/engine.dir/src/render/textureatlas.cpp.o: CMakeFiles/engine.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/faye/Documents/engine/out/build/win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/engine.dir/src/render/textureatlas.cpp.o"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/engine.dir/src/render/textureatlas.cpp.o -MF CMakeFiles/engine.dir/src/render/textureatlas.cpp.o.d -o CMakeFiles/engine.dir/src/render/textureatlas.cpp.o -c /home/faye/Documents/engine/src/render/textureatlas.cpp
+
+CMakeFiles/engine.dir/src/render/textureatlas.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/engine.dir/src/render/textureatlas.cpp.i"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/faye/Documents/engine/src/render/textureatlas.cpp > CMakeFiles/engine.dir/src/render/textureatlas.cpp.i
+
+CMakeFiles/engine.dir/src/render/textureatlas.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/engine.dir/src/render/textureatlas.cpp.s"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/faye/Documents/engine/src/render/textureatlas.cpp -o CMakeFiles/engine.dir/src/render/textureatlas.cpp.s
+
 # Object files for target engine
 engine_OBJECTS = \
 "CMakeFiles/engine.dir/src/main.cpp.o" \
@@ -538,7 +580,10 @@ engine_OBJECTS = \
 "CMakeFiles/engine.dir/src/audio/audio.cpp.o" \
 "CMakeFiles/engine.dir/src/audio/audiosource.cpp.o" \
 "CMakeFiles/engine.dir/src/audio/audioclip.cpp.o" \
-"CMakeFiles/engine.dir/src/audio/channelgroup.cpp.o"
+"CMakeFiles/engine.dir/src/audio/channelgroup.cpp.o" \
+"CMakeFiles/engine.dir/src/render/text/text.cpp.o" \
+"CMakeFiles/engine.dir/src/render/text/font.cpp.o" \
+"CMakeFiles/engine.dir/src/render/textureatlas.cpp.o"
 
 # External object files for target engine
 engine_EXTERNAL_OBJECTS =
@@ -574,12 +619,18 @@ engine: CMakeFiles/engine.dir/src/audio/audio.cpp.o
 engine: CMakeFiles/engine.dir/src/audio/audiosource.cpp.o
 engine: CMakeFiles/engine.dir/src/audio/audioclip.cpp.o
 engine: CMakeFiles/engine.dir/src/audio/channelgroup.cpp.o
+engine: CMakeFiles/engine.dir/src/render/text/text.cpp.o
+engine: CMakeFiles/engine.dir/src/render/text/font.cpp.o
+engine: CMakeFiles/engine.dir/src/render/textureatlas.cpp.o
 engine: CMakeFiles/engine.dir/build.make
 engine: /home/faye/Documents/engine/lib/libglfw3.a
 engine: /home/faye/Documents/engine/lib/fmod_vc.lib
 engine: /home/faye/Documents/engine/lib/fmodL_vc.lib
+engine: /home/faye/Documents/engine/lib/libfreetype.dll.a
+engine: /home/faye/Documents/engine/lib/libfreetype.a
+engine: /usr/lib/libfreetype.so
 engine: CMakeFiles/engine.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/faye/Documents/engine/out/build/win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Linking CXX executable engine"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/faye/Documents/engine/out/build/win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Linking CXX executable engine"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/engine.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

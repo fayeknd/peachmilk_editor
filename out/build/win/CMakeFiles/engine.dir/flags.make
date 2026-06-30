@@ -5,13 +5,13 @@
 # compile CXX with /usr/bin/x86_64-w64-mingw32-g++
 C_DEFINES = 
 
-C_INCLUDES = 
+C_INCLUDES = -isystem /usr/include/freetype2
 
 C_FLAGS = -g
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = 
+CXX_INCLUDES = -isystem /usr/include/freetype2
 
-CXX_FLAGS = -static  -g
+CXX_FLAGS = -static -g
 

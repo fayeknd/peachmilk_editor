@@ -13,5 +13,13 @@
                 "CMAKE_BUILD_TYPE": "Debug"
             }
         }
+    ],
+    "buildPresets": [
+        {
+            "name": "win",
+            "description": "",
+            "displayName": "",
+            "configurePreset": "win"
+        }
     ]
 }

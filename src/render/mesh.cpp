@@ -13,13 +13,13 @@ void Mesh::bind() {
     if (s_boundMesh == m_vao)
         return;
     glBindVertexArray(m_vao);
-    s_boundMesh = m_vao; 
+    s_boundMesh = m_vao;
 }
 
 void Mesh::s_createUniqueMeshes() {
 
     if (s_uniqueMeshesInit)
-        return; 
+        return;
     // Quad
 
     Vertex v0, v1, v2, v3;
@@ -46,10 +46,10 @@ void Mesh::s_createUniqueMeshes() {
     s_uniqueMeshesInit = true;
 }
 
-void Mesh::setupMesh(std::vector<Vertex> vertexData, std::vector<unsigned int> indexData, int topology) {
-       
+void Mesh::setupMesh(std::vector<Vertex> vertexData, std::vector<unsigned int> indexData, int topology, int mode) {
+
     if (init)
-        return; 
+        return;
 
     s_meshes.push_back(this);
 
@@ -64,18 +64,18 @@ void Mesh::setupMesh(std::vector<Vertex> vertexData, std::vector<unsigned int> i
     glGenVertexArrays(1, &m_vao);
     glGenBuffers(1, &m_vbo);
     glGenBuffers(1, &m_ebo);
-    
+
     glBindVertexArray(m_vao);
 
     glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
-    glBufferData(GL_ARRAY_BUFFER, m_vertexData.size() * vertexSize, &m_vertexData[0], GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, m_vertexData.size() * vertexSize, &m_vertexData[0], mode);
 
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ebo);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_indexData.size() * sizeof(unsigned int), &m_indexData[0], GL_STATIC_DRAW);
-    
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_indexData.size() * sizeof(unsigned int), &m_indexData[0], mode);
+
 
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, vertexSize, (void*)offsetof(Vertex, m_position));
-    glEnableVertexAttribArray(0); 
+    glEnableVertexAttribArray(0);
 
     glEnableVertexAttribArray(1);
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, vertexSize, (void*)offsetof(Vertex, m_normal));

@@ -15,7 +15,7 @@ bool Transform::checkCollisionAgainstTransform(Transform* t) {
 
     size1 = glm::vec3(std::abs(size1.x), std::abs(size1.y), 0);
     size2 = glm::vec3(std::abs(size2.x), std::abs(size2.y), 0);
-    
+
     float w1 = pos1.x - size1.x / 2;
     float e1 = pos1.x + size1.x / 2;
     float n1 = pos1.y + size1.y / 2;
@@ -34,7 +34,7 @@ bool Transform::checkCollisionAgainstPoint(glm::vec2 point, bool local) {
     glm::vec3 pos, scale;
     if (!local) {
         pos = m_globalPosition;
-        scale = m_globalScale; 
+        scale = m_globalScale;
     }
     else {
         pos = m_localPosition;
@@ -61,6 +61,11 @@ void Transform::calculateWorldMatrix(bool isSprite, glm::mat4 multiplyMatrix, bo
         //std::cout << m_localPosition.x << std::endl; // for testing how often this function runs
         if (!m_gDirty) {
 
+            if (m_lockPosToInt) m_localPosition = glm::ivec3(m_localPosition.x, m_localPosition.y, m_localPosition.z);
+            if (m_lockRotToInt) m_localRotation = glm::ivec3(m_localRotation.x, m_localRotation.y, m_localRotation.z);
+            if (m_locScalToInt) m_localScale = glm::ivec3(m_localScale.x, m_localScale.y, m_localScale.z);
+
+
             glm::mat4 trans = glm::translate(glm::mat4(1), m_localPosition);
 
             trans = glm::rotate(trans, (float)Math::deg2rad(m_localRotation.y), Math::up());
@@ -70,8 +75,8 @@ void Transform::calculateWorldMatrix(bool isSprite, glm::mat4 multiplyMatrix, bo
             m_localWorldMatrix = glm::scale(trans, m_localScale);
             m_worldMatrix = multiplyMatrix * m_localWorldMatrix;
 
-            // this function is not a traditional function but rather holy in nature and has guided me to god 
-            glm::decompose(m_worldMatrix, m_globalScale, m_globalRotationQ, m_globalPosition, b1, b2); 
+            // this function is not a traditional function but rather holy in nature and has guided me to god
+            glm::decompose(m_worldMatrix, m_globalScale, m_globalRotationQ, m_globalPosition, b1, b2);
             m_globalRotation = glm::eulerAngles(m_globalRotationQ);
             m_globalRotation = glm::vec3(
                 Math::rad2deg(m_globalRotation.x),
@@ -82,6 +87,11 @@ void Transform::calculateWorldMatrix(bool isSprite, glm::mat4 multiplyMatrix, bo
         }
         else {
 
+            if (m_lockPosToInt) m_globalPosition = glm::ivec3(m_globalPosition.x, m_globalPosition.y, m_globalPosition.z);
+            if (m_lockRotToInt) m_globalRotation = glm::ivec3(m_globalRotation.x, m_globalRotation.y, m_globalRotation.z);
+            if (m_locScalToInt) m_globalScale = glm::ivec3(m_globalScale.x, m_globalScale.y, m_globalScale.z);
+
+
             glm::mat4 trans = glm::translate(glm::mat4(1), m_globalPosition);
 
             trans = glm::rotate(trans, (float)Math::deg2rad(m_globalRotation.y), Math::up());
@@ -91,7 +101,7 @@ void Transform::calculateWorldMatrix(bool isSprite, glm::mat4 multiplyMatrix, bo
             m_worldMatrix = glm::scale(trans, m_globalScale);
             m_localWorldMatrix = glm::inverse(multiplyMatrix) * m_worldMatrix;
 
-            glm::decompose(m_localWorldMatrix, m_localScale, m_localRotationQ, m_localPosition, b1, b2); 
+            glm::decompose(m_localWorldMatrix, m_localScale, m_localRotationQ, m_localPosition, b1, b2);
             m_localRotation = glm::eulerAngles(m_localRotationQ);
             m_localRotation = glm::vec3(
                 Math::rad2deg(m_localRotation.x),
@@ -105,7 +115,7 @@ void Transform::calculateWorldMatrix(bool isSprite, glm::mat4 multiplyMatrix, bo
         if (m_zDirty && isSprite) {
             std::cout << "Reordering sprites.." << std::endl;
             m_zDirty = false;
-            Sprite::orderSprites(true);
+            RenderEntity::orderEntitiesByZ(true);
         }
     }
 }
@@ -117,6 +127,33 @@ glm::vec3 Transform::getLocalEulerAngles() {
 glm::vec3 Transform::getGlobalEulerAngles() {
     return glm::vec3(Math::deg2rad(m_globalRotation.x), Math::deg2rad(m_globalRotation.y), Math::deg2rad(m_globalRotation.z));
 }
+
+void Transform::setScaleRounded(bool val) {
+    if (m_locScalToInt == val) return;
+    m_dirty = true;
+    m_gDirty = true;
+    m_zDirty = true;
+    m_locScalToInt = val;
+}
+
+
+void Transform::setRotRounded(bool val) {
+    if (m_lockRotToInt == val) return;
+    m_dirty = true;
+    m_gDirty = true;
+    m_zDirty = true;
+    m_lockRotToInt = val;
+}
+
+
+void Transform::setPosRounded(bool val) {
+    if (m_lockPosToInt == val) return;
+    m_dirty = true;
+    m_gDirty = true;
+    m_zDirty = true;
+    m_lockPosToInt = val;
+}
+
 
 glm::vec3 Transform::localForward() {
     glm::vec3 euler = getLocalEulerAngles();
@@ -172,30 +209,30 @@ glm::vec3 Transform::globalUp() {
     );
 }
 
-void Transform::setLocalPosition(glm::vec3 pos) { 
-    if (pos.z != m_localPosition.z) m_zDirty = true; 
+void Transform::setLocalPosition(glm::vec3 pos) {
+    if (pos.z != m_localPosition.z) m_zDirty = true;
     m_localPosition = pos;
     m_dirty = true;
 }
 
-void Transform::setGlobalPosition(glm::vec3 pos) { 
-    if (pos.z != m_globalPosition.z) m_zDirty = true; 
+void Transform::setGlobalPosition(glm::vec3 pos) {
+    if (pos.z != m_globalPosition.z) m_zDirty = true;
     m_globalPosition = pos;
     m_gDirty = true;
 }
 
 
-void Transform::setLocalPositionX(float x) { 
-    m_localPosition.x = x; 
+void Transform::setLocalPositionX(float x) {
+    m_localPosition.x = x;
     m_dirty = true;
 }
-void Transform::setLocalPositionY(float y) { 
-    m_localPosition.y = y; 
+void Transform::setLocalPositionY(float y) {
+    m_localPosition.y = y;
     m_dirty = true;
 }
-void Transform::setLocalPositionZ(float z) { 
+void Transform::setLocalPositionZ(float z) {
     if (m_localPosition.z != z) m_dirty = true;
-    m_localPosition.z = z; 
+    m_localPosition.z = z;
     m_dirty = true;
 }
 void Transform::translateLocalPosition(glm::vec3 pos) {
@@ -203,31 +240,31 @@ void Transform::translateLocalPosition(glm::vec3 pos) {
     m_localPosition += pos;
     m_dirty = true;
 }
-void Transform::translateLocalPositionX(float x) { 
-    m_localPosition.x += x; 
+void Transform::translateLocalPositionX(float x) {
+    m_localPosition.x += x;
     m_dirty = true;
 }
-void Transform::translateLocalPositionY(float y) { 
-    m_localPosition.y += y; 
+void Transform::translateLocalPositionY(float y) {
+    m_localPosition.y += y;
     m_dirty = true;
 }
-void Transform::translateLocalPositionZ(float z) { 
+void Transform::translateLocalPositionZ(float z) {
     if (m_localPosition.z != z) m_dirty = true;
-    m_localPosition.z += z; 
+    m_localPosition.z += z;
     m_dirty = true;
 }
 
-void Transform::setGlobalPositionX(float x) { 
-    m_globalPosition.x = x; 
+void Transform::setGlobalPositionX(float x) {
+    m_globalPosition.x = x;
     m_gDirty = true;
 }
-void Transform::setGlobalPositionY(float y) { 
-    m_globalPosition.y = y; 
+void Transform::setGlobalPositionY(float y) {
+    m_globalPosition.y = y;
     m_gDirty = true;
 }
-void Transform::setGlobalPositionZ(float z) { 
+void Transform::setGlobalPositionZ(float z) {
     if (m_globalPosition.z != z) m_dirty = true;
-    m_globalPosition.z = z; 
+    m_globalPosition.z = z;
     m_gDirty = true;
 }
 void Transform::translateGlobalPosition(glm::vec3 pos) {
@@ -235,27 +272,27 @@ void Transform::translateGlobalPosition(glm::vec3 pos) {
     m_globalPosition += pos;
     m_gDirty = true;
 }
-void Transform::translateGlobalPositionX(float x) { 
-    m_globalPosition.x += x; 
+void Transform::translateGlobalPositionX(float x) {
+    m_globalPosition.x += x;
     m_gDirty = true;
 }
-void Transform::translateGlobalPositionY(float y) { 
-    m_globalPosition.y += y; 
+void Transform::translateGlobalPositionY(float y) {
+    m_globalPosition.y += y;
     m_gDirty = true;
 }
-void Transform::translateGlobalPositionZ(float z) { 
+void Transform::translateGlobalPositionZ(float z) {
     if (m_globalPosition.z != z) m_dirty = true;
-    m_globalPosition.z += z; 
+    m_globalPosition.z += z;
     m_gDirty = true;
 }
 
 
-void Transform::setLocalScale(glm::vec3 scale) { 
+void Transform::setLocalScale(glm::vec3 scale) {
     m_localScale = scale;
     m_dirty = true;
 }
 
-void Transform::setGlobalScale(glm::vec3 scale) { 
+void Transform::setGlobalScale(glm::vec3 scale) {
     m_globalScale = scale;
     m_gDirty = true;
 }
@@ -275,69 +312,66 @@ void Transform::setGlobalScale(float scale) {
     m_gDirty = true;
 }
 
-void Transform::setLocalScaleX(float x) { 
+void Transform::setLocalScaleX(float x) {
     m_localScale.x = x;
     m_dirty = true;
 }
-void Transform::setLocalScaleY(float y) { 
+void Transform::setLocalScaleY(float y) {
     m_localScale.y = y;
     m_dirty = true;
 }
-void Transform::setLocalScaleZ(float z) { 
+void Transform::setLocalScaleZ(float z) {
     m_localScale.z = z;
     m_dirty = true;
 }
 
-void Transform::setGlobalScaleX(float x) { 
+void Transform::setGlobalScaleX(float x) {
     m_globalScale.x = x;
     m_gDirty = true;
 }
-void Transform::setGlobalScaleY(float y) { 
+void Transform::setGlobalScaleY(float y) {
     m_globalScale.y = y;
     m_gDirty = true;
 }
-void Transform::setGlobalScaleZ(float z) { 
+void Transform::setGlobalScaleZ(float z) {
     m_globalScale.z = z;
     m_gDirty = true;
 }
 
 
 
-void Transform::setLocalRotation(glm::vec3 rot) { 
+void Transform::setLocalRotation(glm::vec3 rot) {
     m_localRotation = rot;
     m_dirty = true;
 }
 
-void Transform::setGlobalRotation(glm::vec3 rot) { 
+void Transform::setGlobalRotation(glm::vec3 rot) {
     m_globalRotation = rot;
     m_gDirty = true;
 }
 
-void Transform::setLocalRotationX(float x) { 
+void Transform::setLocalRotationX(float x) {
     m_localRotation.x = x;
     m_dirty = true;
 }
-void Transform::setLocalRotationY(float y) { 
+void Transform::setLocalRotationY(float y) {
     m_localRotation.y = y;
     m_dirty = true;
 }
-void Transform::setLocalRotationZ(float z) { 
+void Transform::setLocalRotationZ(float z) {
     m_localRotation.z = z;
     m_dirty = true;
 }
 
-void Transform::setGlobalRotationX(float x) { 
+void Transform::setGlobalRotationX(float x) {
     m_globalRotation.x = x;
     m_gDirty = true;
 }
-void Transform::setGlobalRotationY(float y) { 
+void Transform::setGlobalRotationY(float y) {
     m_globalRotation.y = y;
     m_gDirty = true;
 }
-void Transform::setGlobalRotationZ(float z) { 
+void Transform::setGlobalRotationZ(float z) {
     m_globalRotation.z = z;
     m_gDirty = true;
 }
-    
-
-    
